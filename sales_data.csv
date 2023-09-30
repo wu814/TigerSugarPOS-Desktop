@@ -1,0 +1,3011 @@
+Month,Day,Year,Drink,Number of Drinks Sold,Sales ($)
+6,1,2024,Classic Brown Sugar Boba Milk Tea,86,537.5
+6,1,2024,Taro Bubble Tea,42,283.5
+6,1,2024,Matcha Black Sugar,72,486.0
+6,1,2024,Black Sugar Coffee Jelly,88,572.0
+6,1,2024,Strawberry Milk,95,760
+6,1,2024,Mango Sago,13,104
+6,1,2024,Passion Fruit Tea,63,346.5
+6,1,2024,Golden Oolong Tea,56,308.0
+6,1,2024,Red Bean Matcha Milk,82,553.5
+6,1,2024,Jasmine Green Tea,3,14.25
+6,2,2024,Classic Brown Sugar Boba Milk Tea,10,62.5
+6,2,2024,Taro Bubble Tea,40,270.0
+6,2,2024,Matcha Black Sugar,20,135.0
+6,2,2024,Black Sugar Coffee Jelly,34,221.0
+6,2,2024,Strawberry Milk,27,216
+6,2,2024,Mango Sago,85,680
+6,2,2024,Passion Fruit Tea,71,390.5
+6,2,2024,Golden Oolong Tea,33,181.5
+6,2,2024,Red Bean Matcha Milk,86,580.5
+6,2,2024,Jasmine Green Tea,6,28.5
+6,3,2024,Classic Brown Sugar Boba Milk Tea,40,250.0
+6,3,2024,Taro Bubble Tea,85,573.75
+6,3,2024,Matcha Black Sugar,2,13.5
+6,3,2024,Black Sugar Coffee Jelly,57,370.5
+6,3,2024,Strawberry Milk,35,280
+6,3,2024,Mango Sago,74,592
+6,3,2024,Passion Fruit Tea,36,198.0
+6,3,2024,Golden Oolong Tea,22,121.0
+6,3,2024,Red Bean Matcha Milk,2,13.5
+6,3,2024,Jasmine Green Tea,72,342.0
+6,4,2024,Classic Brown Sugar Boba Milk Tea,66,412.5
+6,4,2024,Taro Bubble Tea,65,438.75
+6,4,2024,Matcha Black Sugar,85,573.75
+6,4,2024,Black Sugar Coffee Jelly,35,227.5
+6,4,2024,Strawberry Milk,3,24
+6,4,2024,Mango Sago,63,504
+6,4,2024,Passion Fruit Tea,82,451.0
+6,4,2024,Golden Oolong Tea,37,203.5
+6,4,2024,Red Bean Matcha Milk,70,472.5
+6,4,2024,Jasmine Green Tea,11,52.25
+6,5,2024,Classic Brown Sugar Boba Milk Tea,28,175.0
+6,5,2024,Taro Bubble Tea,69,465.75
+6,5,2024,Matcha Black Sugar,76,513.0
+6,5,2024,Black Sugar Coffee Jelly,89,578.5
+6,5,2024,Strawberry Milk,6,48
+6,5,2024,Mango Sago,16,128
+6,5,2024,Passion Fruit Tea,49,269.5
+6,5,2024,Golden Oolong Tea,78,429.0
+6,5,2024,Red Bean Matcha Milk,99,668.25
+6,5,2024,Jasmine Green Tea,67,318.25
+6,6,2024,Classic Brown Sugar Boba Milk Tea,43,268.75
+6,6,2024,Taro Bubble Tea,49,330.75
+6,6,2024,Matcha Black Sugar,44,297.0
+6,6,2024,Black Sugar Coffee Jelly,25,162.5
+6,6,2024,Strawberry Milk,32,256
+6,6,2024,Mango Sago,68,544
+6,6,2024,Passion Fruit Tea,68,374.0
+6,6,2024,Golden Oolong Tea,27,148.5
+6,6,2024,Red Bean Matcha Milk,87,587.25
+6,6,2024,Jasmine Green Tea,49,232.75
+6,7,2024,Classic Brown Sugar Boba Milk Tea,34,212.5
+6,7,2024,Taro Bubble Tea,82,553.5
+6,7,2024,Matcha Black Sugar,29,195.75
+6,7,2024,Black Sugar Coffee Jelly,62,403.0
+6,7,2024,Strawberry Milk,23,184
+6,7,2024,Mango Sago,1,8
+6,7,2024,Passion Fruit Tea,3,16.5
+6,7,2024,Golden Oolong Tea,67,368.5
+6,7,2024,Red Bean Matcha Milk,18,121.5
+6,7,2024,Jasmine Green Tea,12,57.0
+6,8,2024,Classic Brown Sugar Boba Milk Tea,24,150.0
+6,8,2024,Taro Bubble Tea,59,398.25
+6,8,2024,Matcha Black Sugar,9,60.75
+6,8,2024,Black Sugar Coffee Jelly,7,45.5
+6,8,2024,Strawberry Milk,32,256
+6,8,2024,Mango Sago,74,592
+6,8,2024,Passion Fruit Tea,48,264.0
+6,8,2024,Golden Oolong Tea,32,176.0
+6,8,2024,Red Bean Matcha Milk,28,189.0
+6,8,2024,Jasmine Green Tea,38,180.5
+6,9,2024,Classic Brown Sugar Boba Milk Tea,38,237.5
+6,9,2024,Taro Bubble Tea,54,364.5
+6,9,2024,Matcha Black Sugar,55,371.25
+6,9,2024,Black Sugar Coffee Jelly,28,182.0
+6,9,2024,Strawberry Milk,59,472
+6,9,2024,Mango Sago,32,256
+6,9,2024,Passion Fruit Tea,86,473.0
+6,9,2024,Golden Oolong Tea,28,154.0
+6,9,2024,Red Bean Matcha Milk,82,553.5
+6,9,2024,Jasmine Green Tea,77,365.75
+6,10,2024,Classic Brown Sugar Boba Milk Tea,93,581.25
+6,10,2024,Taro Bubble Tea,83,560.25
+6,10,2024,Matcha Black Sugar,81,546.75
+6,10,2024,Black Sugar Coffee Jelly,84,546.0
+6,10,2024,Strawberry Milk,67,536
+6,10,2024,Mango Sago,83,664
+6,10,2024,Passion Fruit Tea,4,22.0
+6,10,2024,Golden Oolong Tea,1,5.5
+6,10,2024,Red Bean Matcha Milk,4,27.0
+6,10,2024,Jasmine Green Tea,55,261.25
+6,11,2024,Classic Brown Sugar Boba Milk Tea,2,12.5
+6,11,2024,Taro Bubble Tea,46,310.5
+6,11,2024,Matcha Black Sugar,60,405.0
+6,11,2024,Black Sugar Coffee Jelly,82,533.0
+6,11,2024,Strawberry Milk,81,648
+6,11,2024,Mango Sago,95,760
+6,11,2024,Passion Fruit Tea,27,148.5
+6,11,2024,Golden Oolong Tea,14,77.0
+6,11,2024,Red Bean Matcha Milk,23,155.25
+6,11,2024,Jasmine Green Tea,1,4.75
+6,12,2024,Classic Brown Sugar Boba Milk Tea,93,581.25
+6,12,2024,Taro Bubble Tea,49,330.75
+6,12,2024,Matcha Black Sugar,3,20.25
+6,12,2024,Black Sugar Coffee Jelly,46,299.0
+6,12,2024,Strawberry Milk,75,600
+6,12,2024,Mango Sago,77,616
+6,12,2024,Passion Fruit Tea,21,115.5
+6,12,2024,Golden Oolong Tea,38,209.0
+6,12,2024,Red Bean Matcha Milk,62,418.5
+6,12,2024,Jasmine Green Tea,11,52.25
+6,13,2024,Classic Brown Sugar Boba Milk Tea,1,6.25
+6,13,2024,Taro Bubble Tea,98,661.5
+6,13,2024,Matcha Black Sugar,58,391.5
+6,13,2024,Black Sugar Coffee Jelly,62,403.0
+6,13,2024,Strawberry Milk,37,296
+6,13,2024,Mango Sago,15,120
+6,13,2024,Passion Fruit Tea,10,55.0
+6,13,2024,Golden Oolong Tea,42,231.0
+6,13,2024,Red Bean Matcha Milk,98,661.5
+6,13,2024,Jasmine Green Tea,48,228.0
+6,14,2024,Classic Brown Sugar Boba Milk Tea,91,568.75
+6,14,2024,Taro Bubble Tea,94,634.5
+6,14,2024,Matcha Black Sugar,8,54.0
+6,14,2024,Black Sugar Coffee Jelly,1,6.5
+6,14,2024,Strawberry Milk,37,296
+6,14,2024,Mango Sago,94,752
+6,14,2024,Passion Fruit Tea,22,121.0
+6,14,2024,Golden Oolong Tea,85,467.5
+6,14,2024,Red Bean Matcha Milk,28,189.0
+6,14,2024,Jasmine Green Tea,95,451.25
+6,15,2024,Classic Brown Sugar Boba Milk Tea,63,393.75
+6,15,2024,Taro Bubble Tea,94,634.5
+6,15,2024,Matcha Black Sugar,91,614.25
+6,15,2024,Black Sugar Coffee Jelly,35,227.5
+6,15,2024,Strawberry Milk,38,304
+6,15,2024,Mango Sago,49,392
+6,15,2024,Passion Fruit Tea,36,198.0
+6,15,2024,Golden Oolong Tea,93,511.5
+6,15,2024,Red Bean Matcha Milk,4,27.0
+6,15,2024,Jasmine Green Tea,78,370.5
+6,16,2024,Classic Brown Sugar Boba Milk Tea,29,181.25
+6,16,2024,Taro Bubble Tea,58,391.5
+6,16,2024,Matcha Black Sugar,99,668.25
+6,16,2024,Black Sugar Coffee Jelly,67,435.5
+6,16,2024,Strawberry Milk,24,192
+6,16,2024,Mango Sago,54,432
+6,16,2024,Passion Fruit Tea,10,55.0
+6,16,2024,Golden Oolong Tea,53,291.5
+6,16,2024,Red Bean Matcha Milk,30,202.5
+6,16,2024,Jasmine Green Tea,84,399.0
+6,17,2024,Classic Brown Sugar Boba Milk Tea,96,600.0
+6,17,2024,Taro Bubble Tea,59,398.25
+6,17,2024,Matcha Black Sugar,54,364.5
+6,17,2024,Black Sugar Coffee Jelly,1,6.5
+6,17,2024,Strawberry Milk,53,424
+6,17,2024,Mango Sago,61,488
+6,17,2024,Passion Fruit Tea,73,401.5
+6,17,2024,Golden Oolong Tea,30,165.0
+6,17,2024,Red Bean Matcha Milk,19,128.25
+6,17,2024,Jasmine Green Tea,9,42.75
+6,18,2024,Classic Brown Sugar Boba Milk Tea,70,437.5
+6,18,2024,Taro Bubble Tea,95,641.25
+6,18,2024,Matcha Black Sugar,50,337.5
+6,18,2024,Black Sugar Coffee Jelly,53,344.5
+6,18,2024,Strawberry Milk,57,456
+6,18,2024,Mango Sago,30,240
+6,18,2024,Passion Fruit Tea,32,176.0
+6,18,2024,Golden Oolong Tea,22,121.0
+6,18,2024,Red Bean Matcha Milk,48,324.0
+6,18,2024,Jasmine Green Tea,95,451.25
+6,19,2024,Classic Brown Sugar Boba Milk Tea,60,375.0
+6,19,2024,Taro Bubble Tea,34,229.5
+6,19,2024,Matcha Black Sugar,10,67.5
+6,19,2024,Black Sugar Coffee Jelly,32,208.0
+6,19,2024,Strawberry Milk,92,736
+6,19,2024,Mango Sago,20,160
+6,19,2024,Passion Fruit Tea,13,71.5
+6,19,2024,Golden Oolong Tea,65,357.5
+6,19,2024,Red Bean Matcha Milk,37,249.75
+6,19,2024,Jasmine Green Tea,10,47.5
+6,20,2024,Classic Brown Sugar Boba Milk Tea,26,162.5
+6,20,2024,Taro Bubble Tea,68,459.0
+6,20,2024,Matcha Black Sugar,94,634.5
+6,20,2024,Black Sugar Coffee Jelly,49,318.5
+6,20,2024,Strawberry Milk,44,352
+6,20,2024,Mango Sago,24,192
+6,20,2024,Passion Fruit Tea,9,49.5
+6,20,2024,Golden Oolong Tea,76,418.0
+6,20,2024,Red Bean Matcha Milk,66,445.5
+6,20,2024,Jasmine Green Tea,66,313.5
+6,21,2024,Classic Brown Sugar Boba Milk Tea,94,587.5
+6,21,2024,Taro Bubble Tea,93,627.75
+6,21,2024,Matcha Black Sugar,11,74.25
+6,21,2024,Black Sugar Coffee Jelly,71,461.5
+6,21,2024,Strawberry Milk,94,752
+6,21,2024,Mango Sago,34,272
+6,21,2024,Passion Fruit Tea,6,33.0
+6,21,2024,Golden Oolong Tea,15,82.5
+6,21,2024,Red Bean Matcha Milk,65,438.75
+6,21,2024,Jasmine Green Tea,59,280.25
+6,22,2024,Classic Brown Sugar Boba Milk Tea,88,550.0
+6,22,2024,Taro Bubble Tea,18,121.5
+6,22,2024,Matcha Black Sugar,78,526.5
+6,22,2024,Black Sugar Coffee Jelly,38,247.0
+6,22,2024,Strawberry Milk,23,184
+6,22,2024,Mango Sago,22,176
+6,22,2024,Passion Fruit Tea,70,385.0
+6,22,2024,Golden Oolong Tea,18,99.0
+6,22,2024,Red Bean Matcha Milk,21,141.75
+6,22,2024,Jasmine Green Tea,36,171.0
+6,23,2024,Classic Brown Sugar Boba Milk Tea,95,593.75
+6,23,2024,Taro Bubble Tea,45,303.75
+6,23,2024,Matcha Black Sugar,51,344.25
+6,23,2024,Black Sugar Coffee Jelly,21,136.5
+6,23,2024,Strawberry Milk,65,520
+6,23,2024,Mango Sago,36,288
+6,23,2024,Passion Fruit Tea,6,33.0
+6,23,2024,Golden Oolong Tea,91,500.5
+6,23,2024,Red Bean Matcha Milk,4,27.0
+6,23,2024,Jasmine Green Tea,64,304.0
+6,24,2024,Classic Brown Sugar Boba Milk Tea,98,612.5
+6,24,2024,Taro Bubble Tea,91,614.25
+6,24,2024,Matcha Black Sugar,33,222.75
+6,24,2024,Black Sugar Coffee Jelly,52,338.0
+6,24,2024,Strawberry Milk,26,208
+6,24,2024,Mango Sago,11,88
+6,24,2024,Passion Fruit Tea,97,533.5
+6,24,2024,Golden Oolong Tea,64,352.0
+6,24,2024,Red Bean Matcha Milk,35,236.25
+6,24,2024,Jasmine Green Tea,27,128.25
+6,25,2024,Classic Brown Sugar Boba Milk Tea,52,325.0
+6,25,2024,Taro Bubble Tea,45,303.75
+6,25,2024,Matcha Black Sugar,49,330.75
+6,25,2024,Black Sugar Coffee Jelly,29,188.5
+6,25,2024,Strawberry Milk,13,104
+6,25,2024,Mango Sago,20,160
+6,25,2024,Passion Fruit Tea,14,77.0
+6,25,2024,Golden Oolong Tea,53,291.5
+6,25,2024,Red Bean Matcha Milk,47,317.25
+6,25,2024,Jasmine Green Tea,64,304.0
+6,26,2024,Classic Brown Sugar Boba Milk Tea,17,106.25
+6,26,2024,Taro Bubble Tea,15,101.25
+6,26,2024,Matcha Black Sugar,31,209.25
+6,26,2024,Black Sugar Coffee Jelly,93,604.5
+6,26,2024,Strawberry Milk,90,720
+6,26,2024,Mango Sago,46,368
+6,26,2024,Passion Fruit Tea,87,478.5
+6,26,2024,Golden Oolong Tea,1,5.5
+6,26,2024,Red Bean Matcha Milk,77,519.75
+6,26,2024,Jasmine Green Tea,71,337.25
+6,27,2024,Classic Brown Sugar Boba Milk Tea,85,531.25
+6,27,2024,Taro Bubble Tea,72,486.0
+6,27,2024,Matcha Black Sugar,40,270.0
+6,27,2024,Black Sugar Coffee Jelly,9,58.5
+6,27,2024,Strawberry Milk,47,376
+6,27,2024,Mango Sago,26,208
+6,27,2024,Passion Fruit Tea,82,451.0
+6,27,2024,Golden Oolong Tea,89,489.5
+6,27,2024,Red Bean Matcha Milk,91,614.25
+6,27,2024,Jasmine Green Tea,95,451.25
+6,28,2024,Classic Brown Sugar Boba Milk Tea,70,437.5
+6,28,2024,Taro Bubble Tea,38,256.5
+6,28,2024,Matcha Black Sugar,95,641.25
+6,28,2024,Black Sugar Coffee Jelly,27,175.5
+6,28,2024,Strawberry Milk,71,568
+6,28,2024,Mango Sago,69,552
+6,28,2024,Passion Fruit Tea,17,93.5
+6,28,2024,Golden Oolong Tea,44,242.0
+6,28,2024,Red Bean Matcha Milk,33,222.75
+6,28,2024,Jasmine Green Tea,76,361.0
+6,29,2024,Classic Brown Sugar Boba Milk Tea,59,368.75
+6,29,2024,Taro Bubble Tea,69,465.75
+6,29,2024,Matcha Black Sugar,38,256.5
+6,29,2024,Black Sugar Coffee Jelly,8,52.0
+6,29,2024,Strawberry Milk,73,584
+6,29,2024,Mango Sago,72,576
+6,29,2024,Passion Fruit Tea,16,88.0
+6,29,2024,Golden Oolong Tea,45,247.5
+6,29,2024,Red Bean Matcha Milk,83,560.25
+6,29,2024,Jasmine Green Tea,91,432.25
+6,30,2024,Classic Brown Sugar Boba Milk Tea,10,62.5
+6,30,2024,Taro Bubble Tea,49,330.75
+6,30,2024,Matcha Black Sugar,16,108.0
+6,30,2024,Black Sugar Coffee Jelly,61,396.5
+6,30,2024,Strawberry Milk,17,136
+6,30,2024,Mango Sago,80,640
+6,30,2024,Passion Fruit Tea,24,132.0
+6,30,2024,Golden Oolong Tea,46,253.0
+6,30,2024,Red Bean Matcha Milk,59,398.25
+6,30,2024,Jasmine Green Tea,58,275.5
+7,1,2024,Classic Brown Sugar Boba Milk Tea,93,581.25
+7,1,2024,Taro Bubble Tea,28,189.0
+7,1,2024,Matcha Black Sugar,59,398.25
+7,1,2024,Black Sugar Coffee Jelly,20,130.0
+7,1,2024,Strawberry Milk,16,128
+7,1,2024,Mango Sago,79,632
+7,1,2024,Passion Fruit Tea,12,66.0
+7,1,2024,Golden Oolong Tea,1,5.5
+7,1,2024,Red Bean Matcha Milk,13,87.75
+7,1,2024,Jasmine Green Tea,78,370.5
+7,2,2024,Classic Brown Sugar Boba Milk Tea,47,293.75
+7,2,2024,Taro Bubble Tea,49,330.75
+7,2,2024,Matcha Black Sugar,89,600.75
+7,2,2024,Black Sugar Coffee Jelly,62,403.0
+7,2,2024,Strawberry Milk,83,664
+7,2,2024,Mango Sago,91,728
+7,2,2024,Passion Fruit Tea,41,225.5
+7,2,2024,Golden Oolong Tea,15,82.5
+7,2,2024,Red Bean Matcha Milk,2,13.5
+7,2,2024,Jasmine Green Tea,23,109.25
+7,3,2024,Classic Brown Sugar Boba Milk Tea,49,306.25
+7,3,2024,Taro Bubble Tea,88,594.0
+7,3,2024,Matcha Black Sugar,14,94.5
+7,3,2024,Black Sugar Coffee Jelly,31,201.5
+7,3,2024,Strawberry Milk,77,616
+7,3,2024,Mango Sago,53,424
+7,3,2024,Passion Fruit Tea,16,88.0
+7,3,2024,Golden Oolong Tea,39,214.5
+7,3,2024,Red Bean Matcha Milk,7,47.25
+7,3,2024,Jasmine Green Tea,62,294.5
+7,4,2024,Classic Brown Sugar Boba Milk Tea,61,381.25
+7,4,2024,Taro Bubble Tea,10,67.5
+7,4,2024,Matcha Black Sugar,37,249.75
+7,4,2024,Black Sugar Coffee Jelly,60,390.0
+7,4,2024,Strawberry Milk,67,536
+7,4,2024,Mango Sago,96,768
+7,4,2024,Passion Fruit Tea,85,467.5
+7,4,2024,Golden Oolong Tea,64,352.0
+7,4,2024,Red Bean Matcha Milk,49,330.75
+7,4,2024,Jasmine Green Tea,89,422.75
+7,5,2024,Classic Brown Sugar Boba Milk Tea,39,243.75
+7,5,2024,Taro Bubble Tea,68,459.0
+7,5,2024,Matcha Black Sugar,76,513.0
+7,5,2024,Black Sugar Coffee Jelly,88,572.0
+7,5,2024,Strawberry Milk,41,328
+7,5,2024,Mango Sago,74,592
+7,5,2024,Passion Fruit Tea,92,506.0
+7,5,2024,Golden Oolong Tea,11,60.5
+7,5,2024,Red Bean Matcha Milk,17,114.75
+7,5,2024,Jasmine Green Tea,79,375.25
+7,6,2024,Classic Brown Sugar Boba Milk Tea,81,506.25
+7,6,2024,Taro Bubble Tea,52,351.0
+7,6,2024,Matcha Black Sugar,6,40.5
+7,6,2024,Black Sugar Coffee Jelly,63,409.5
+7,6,2024,Strawberry Milk,49,392
+7,6,2024,Mango Sago,92,736
+7,6,2024,Passion Fruit Tea,78,429.0
+7,6,2024,Golden Oolong Tea,48,264.0
+7,6,2024,Red Bean Matcha Milk,93,627.75
+7,6,2024,Jasmine Green Tea,34,161.5
+7,7,2024,Classic Brown Sugar Boba Milk Tea,10,62.5
+7,7,2024,Taro Bubble Tea,77,519.75
+7,7,2024,Matcha Black Sugar,32,216.0
+7,7,2024,Black Sugar Coffee Jelly,20,130.0
+7,7,2024,Strawberry Milk,58,464
+7,7,2024,Mango Sago,68,544
+7,7,2024,Passion Fruit Tea,48,264.0
+7,7,2024,Golden Oolong Tea,95,522.5
+7,7,2024,Red Bean Matcha Milk,85,573.75
+7,7,2024,Jasmine Green Tea,86,408.5
+7,8,2024,Classic Brown Sugar Boba Milk Tea,22,137.5
+7,8,2024,Taro Bubble Tea,75,506.25
+7,8,2024,Matcha Black Sugar,95,641.25
+7,8,2024,Black Sugar Coffee Jelly,30,195.0
+7,8,2024,Strawberry Milk,30,240
+7,8,2024,Mango Sago,61,488
+7,8,2024,Passion Fruit Tea,75,412.5
+7,8,2024,Golden Oolong Tea,56,308.0
+7,8,2024,Red Bean Matcha Milk,79,533.25
+7,8,2024,Jasmine Green Tea,65,308.75
+7,9,2024,Classic Brown Sugar Boba Milk Tea,53,331.25
+7,9,2024,Taro Bubble Tea,15,101.25
+7,9,2024,Matcha Black Sugar,94,634.5
+7,9,2024,Black Sugar Coffee Jelly,49,318.5
+7,9,2024,Strawberry Milk,1,8
+7,9,2024,Mango Sago,97,776
+7,9,2024,Passion Fruit Tea,49,269.5
+7,9,2024,Golden Oolong Tea,77,423.5
+7,9,2024,Red Bean Matcha Milk,37,249.75
+7,9,2024,Jasmine Green Tea,57,270.75
+7,10,2024,Classic Brown Sugar Boba Milk Tea,26,162.5
+7,10,2024,Taro Bubble Tea,91,614.25
+7,10,2024,Matcha Black Sugar,46,310.5
+7,10,2024,Black Sugar Coffee Jelly,14,91.0
+7,10,2024,Strawberry Milk,53,424
+7,10,2024,Mango Sago,19,152
+7,10,2024,Passion Fruit Tea,85,467.5
+7,10,2024,Golden Oolong Tea,55,302.5
+7,10,2024,Red Bean Matcha Milk,52,351.0
+7,10,2024,Jasmine Green Tea,62,294.5
+7,11,2024,Classic Brown Sugar Boba Milk Tea,87,543.75
+7,11,2024,Taro Bubble Tea,67,452.25
+7,11,2024,Matcha Black Sugar,56,378.0
+7,11,2024,Black Sugar Coffee Jelly,81,526.5
+7,11,2024,Strawberry Milk,47,376
+7,11,2024,Mango Sago,38,304
+7,11,2024,Passion Fruit Tea,10,55.0
+7,11,2024,Golden Oolong Tea,43,236.5
+7,11,2024,Red Bean Matcha Milk,51,344.25
+7,11,2024,Jasmine Green Tea,16,76.0
+7,12,2024,Classic Brown Sugar Boba Milk Tea,21,131.25
+7,12,2024,Taro Bubble Tea,18,121.5
+7,12,2024,Matcha Black Sugar,53,357.75
+7,12,2024,Black Sugar Coffee Jelly,55,357.5
+7,12,2024,Strawberry Milk,83,664
+7,12,2024,Mango Sago,30,240
+7,12,2024,Passion Fruit Tea,60,330.0
+7,12,2024,Golden Oolong Tea,75,412.5
+7,12,2024,Red Bean Matcha Milk,24,162.0
+7,12,2024,Jasmine Green Tea,4,19.0
+7,13,2024,Classic Brown Sugar Boba Milk Tea,54,337.5
+7,13,2024,Taro Bubble Tea,6,40.5
+7,13,2024,Matcha Black Sugar,66,445.5
+7,13,2024,Black Sugar Coffee Jelly,72,468.0
+7,13,2024,Strawberry Milk,65,520
+7,13,2024,Mango Sago,97,776
+7,13,2024,Passion Fruit Tea,71,390.5
+7,13,2024,Golden Oolong Tea,48,264.0
+7,13,2024,Red Bean Matcha Milk,53,357.75
+7,13,2024,Jasmine Green Tea,80,380.0
+7,14,2024,Classic Brown Sugar Boba Milk Tea,63,393.75
+7,14,2024,Taro Bubble Tea,7,47.25
+7,14,2024,Matcha Black Sugar,16,108.0
+7,14,2024,Black Sugar Coffee Jelly,81,526.5
+7,14,2024,Strawberry Milk,59,472
+7,14,2024,Mango Sago,96,768
+7,14,2024,Passion Fruit Tea,77,423.5
+7,14,2024,Golden Oolong Tea,27,148.5
+7,14,2024,Red Bean Matcha Milk,91,614.25
+7,14,2024,Jasmine Green Tea,36,171.0
+7,15,2024,Classic Brown Sugar Boba Milk Tea,34,212.5
+7,15,2024,Taro Bubble Tea,25,168.75
+7,15,2024,Matcha Black Sugar,8,54.0
+7,15,2024,Black Sugar Coffee Jelly,57,370.5
+7,15,2024,Strawberry Milk,83,664
+7,15,2024,Mango Sago,7,56
+7,15,2024,Passion Fruit Tea,70,385.0
+7,15,2024,Golden Oolong Tea,5,27.5
+7,15,2024,Red Bean Matcha Milk,45,303.75
+7,15,2024,Jasmine Green Tea,38,180.5
+7,16,2024,Classic Brown Sugar Boba Milk Tea,41,256.25
+7,16,2024,Taro Bubble Tea,31,209.25
+7,16,2024,Matcha Black Sugar,40,270.0
+7,16,2024,Black Sugar Coffee Jelly,8,52.0
+7,16,2024,Strawberry Milk,68,544
+7,16,2024,Mango Sago,91,728
+7,16,2024,Passion Fruit Tea,62,341.0
+7,16,2024,Golden Oolong Tea,97,533.5
+7,16,2024,Red Bean Matcha Milk,90,607.5
+7,16,2024,Jasmine Green Tea,49,232.75
+7,17,2024,Classic Brown Sugar Boba Milk Tea,2,12.5
+7,17,2024,Taro Bubble Tea,29,195.75
+7,17,2024,Matcha Black Sugar,7,47.25
+7,17,2024,Black Sugar Coffee Jelly,76,494.0
+7,17,2024,Strawberry Milk,75,600
+7,17,2024,Mango Sago,31,248
+7,17,2024,Passion Fruit Tea,18,99.0
+7,17,2024,Golden Oolong Tea,88,484.0
+7,17,2024,Red Bean Matcha Milk,54,364.5
+7,17,2024,Jasmine Green Tea,72,342.0
+7,18,2024,Classic Brown Sugar Boba Milk Tea,72,450.0
+7,18,2024,Taro Bubble Tea,95,641.25
+7,18,2024,Matcha Black Sugar,31,209.25
+7,18,2024,Black Sugar Coffee Jelly,41,266.5
+7,18,2024,Strawberry Milk,38,304
+7,18,2024,Mango Sago,46,368
+7,18,2024,Passion Fruit Tea,36,198.0
+7,18,2024,Golden Oolong Tea,31,170.5
+7,18,2024,Red Bean Matcha Milk,71,479.25
+7,18,2024,Jasmine Green Tea,9,42.75
+7,19,2024,Classic Brown Sugar Boba Milk Tea,69,431.25
+7,19,2024,Taro Bubble Tea,2,13.5
+7,19,2024,Matcha Black Sugar,62,418.5
+7,19,2024,Black Sugar Coffee Jelly,59,383.5
+7,19,2024,Strawberry Milk,88,704
+7,19,2024,Mango Sago,80,640
+7,19,2024,Passion Fruit Tea,41,225.5
+7,19,2024,Golden Oolong Tea,17,93.5
+7,19,2024,Red Bean Matcha Milk,58,391.5
+7,19,2024,Jasmine Green Tea,58,275.5
+7,20,2024,Classic Brown Sugar Boba Milk Tea,98,612.5
+7,20,2024,Taro Bubble Tea,14,94.5
+7,20,2024,Matcha Black Sugar,14,94.5
+7,20,2024,Black Sugar Coffee Jelly,69,448.5
+7,20,2024,Strawberry Milk,48,384
+7,20,2024,Mango Sago,35,280
+7,20,2024,Passion Fruit Tea,27,148.5
+7,20,2024,Golden Oolong Tea,98,539.0
+7,20,2024,Red Bean Matcha Milk,97,654.75
+7,20,2024,Jasmine Green Tea,67,318.25
+7,21,2024,Classic Brown Sugar Boba Milk Tea,66,412.5
+7,21,2024,Taro Bubble Tea,60,405.0
+7,21,2024,Matcha Black Sugar,56,378.0
+7,21,2024,Black Sugar Coffee Jelly,52,338.0
+7,21,2024,Strawberry Milk,21,168
+7,21,2024,Mango Sago,39,312
+7,21,2024,Passion Fruit Tea,5,27.5
+7,21,2024,Golden Oolong Tea,59,324.5
+7,21,2024,Red Bean Matcha Milk,49,330.75
+7,21,2024,Jasmine Green Tea,14,66.5
+7,22,2024,Classic Brown Sugar Boba Milk Tea,85,531.25
+7,22,2024,Taro Bubble Tea,10,67.5
+7,22,2024,Matcha Black Sugar,49,330.75
+7,22,2024,Black Sugar Coffee Jelly,21,136.5
+7,22,2024,Strawberry Milk,77,616
+7,22,2024,Mango Sago,95,760
+7,22,2024,Passion Fruit Tea,6,33.0
+7,22,2024,Golden Oolong Tea,57,313.5
+7,22,2024,Red Bean Matcha Milk,39,263.25
+7,22,2024,Jasmine Green Tea,11,52.25
+7,23,2024,Classic Brown Sugar Boba Milk Tea,52,325.0
+7,23,2024,Taro Bubble Tea,4,27.0
+7,23,2024,Matcha Black Sugar,66,445.5
+7,23,2024,Black Sugar Coffee Jelly,19,123.5
+7,23,2024,Strawberry Milk,39,312
+7,23,2024,Mango Sago,85,680
+7,23,2024,Passion Fruit Tea,31,170.5
+7,23,2024,Golden Oolong Tea,95,522.5
+7,23,2024,Red Bean Matcha Milk,57,384.75
+7,23,2024,Jasmine Green Tea,5,23.75
+7,24,2024,Classic Brown Sugar Boba Milk Tea,96,600.0
+7,24,2024,Taro Bubble Tea,92,621.0
+7,24,2024,Matcha Black Sugar,76,513.0
+7,24,2024,Black Sugar Coffee Jelly,40,260.0
+7,24,2024,Strawberry Milk,90,720
+7,24,2024,Mango Sago,60,480
+7,24,2024,Passion Fruit Tea,18,99.0
+7,24,2024,Golden Oolong Tea,33,181.5
+7,24,2024,Red Bean Matcha Milk,9,60.75
+7,24,2024,Jasmine Green Tea,12,57.0
+7,25,2024,Classic Brown Sugar Boba Milk Tea,92,575.0
+7,25,2024,Taro Bubble Tea,35,236.25
+7,25,2024,Matcha Black Sugar,91,614.25
+7,25,2024,Black Sugar Coffee Jelly,91,591.5
+7,25,2024,Strawberry Milk,100,800
+7,25,2024,Mango Sago,90,720
+7,25,2024,Passion Fruit Tea,81,445.5
+7,25,2024,Golden Oolong Tea,38,209.0
+7,25,2024,Red Bean Matcha Milk,92,621.0
+7,25,2024,Jasmine Green Tea,46,218.5
+7,26,2024,Classic Brown Sugar Boba Milk Tea,97,606.25
+7,26,2024,Taro Bubble Tea,47,317.25
+7,26,2024,Matcha Black Sugar,55,371.25
+7,26,2024,Black Sugar Coffee Jelly,84,546.0
+7,26,2024,Strawberry Milk,29,232
+7,26,2024,Mango Sago,38,304
+7,26,2024,Passion Fruit Tea,87,478.5
+7,26,2024,Golden Oolong Tea,18,99.0
+7,26,2024,Red Bean Matcha Milk,94,634.5
+7,26,2024,Jasmine Green Tea,13,61.75
+7,27,2024,Classic Brown Sugar Boba Milk Tea,32,200.0
+7,27,2024,Taro Bubble Tea,60,405.0
+7,27,2024,Matcha Black Sugar,100,675.0
+7,27,2024,Black Sugar Coffee Jelly,44,286.0
+7,27,2024,Strawberry Milk,59,472
+7,27,2024,Mango Sago,16,128
+7,27,2024,Passion Fruit Tea,79,434.5
+7,27,2024,Golden Oolong Tea,85,467.5
+7,27,2024,Red Bean Matcha Milk,91,614.25
+7,27,2024,Jasmine Green Tea,57,270.75
+7,28,2024,Classic Brown Sugar Boba Milk Tea,51,318.75
+7,28,2024,Taro Bubble Tea,77,519.75
+7,28,2024,Matcha Black Sugar,85,573.75
+7,28,2024,Black Sugar Coffee Jelly,42,273.0
+7,28,2024,Strawberry Milk,56,448
+7,28,2024,Mango Sago,15,120
+7,28,2024,Passion Fruit Tea,40,220.0
+7,28,2024,Golden Oolong Tea,99,544.5
+7,28,2024,Red Bean Matcha Milk,56,378.0
+7,28,2024,Jasmine Green Tea,89,422.75
+7,29,2024,Classic Brown Sugar Boba Milk Tea,28,175.0
+7,29,2024,Taro Bubble Tea,9,60.75
+7,29,2024,Matcha Black Sugar,98,661.5
+7,29,2024,Black Sugar Coffee Jelly,84,546.0
+7,29,2024,Strawberry Milk,62,496
+7,29,2024,Mango Sago,23,184
+7,29,2024,Passion Fruit Tea,20,110.0
+7,29,2024,Golden Oolong Tea,32,176.0
+7,29,2024,Red Bean Matcha Milk,7,47.25
+7,29,2024,Jasmine Green Tea,97,460.75
+7,30,2024,Classic Brown Sugar Boba Milk Tea,87,543.75
+7,30,2024,Taro Bubble Tea,71,479.25
+7,30,2024,Matcha Black Sugar,8,54.0
+7,30,2024,Black Sugar Coffee Jelly,12,78.0
+7,30,2024,Strawberry Milk,54,432
+7,30,2024,Mango Sago,22,176
+7,30,2024,Passion Fruit Tea,48,264.0
+7,30,2024,Golden Oolong Tea,20,110.0
+7,30,2024,Red Bean Matcha Milk,65,438.75
+7,30,2024,Jasmine Green Tea,6,28.5
+7,31,2024,Classic Brown Sugar Boba Milk Tea,45,281.25
+7,31,2024,Taro Bubble Tea,17,114.75
+7,31,2024,Matcha Black Sugar,56,378.0
+7,31,2024,Black Sugar Coffee Jelly,15,97.5
+7,31,2024,Strawberry Milk,3,24
+7,31,2024,Mango Sago,54,432
+7,31,2024,Passion Fruit Tea,63,346.5
+7,31,2024,Golden Oolong Tea,41,225.5
+7,31,2024,Red Bean Matcha Milk,100,675.0
+7,31,2024,Jasmine Green Tea,41,194.75
+8,1,2024,Classic Brown Sugar Boba Milk Tea,40,250.0
+8,1,2024,Taro Bubble Tea,22,148.5
+8,1,2024,Matcha Black Sugar,61,411.75
+8,1,2024,Black Sugar Coffee Jelly,75,487.5
+8,1,2024,Strawberry Milk,72,576
+8,1,2024,Mango Sago,17,136
+8,1,2024,Passion Fruit Tea,50,275.0
+8,1,2024,Golden Oolong Tea,13,71.5
+8,1,2024,Red Bean Matcha Milk,100,675.0
+8,1,2024,Jasmine Green Tea,99,470.25
+8,2,2024,Classic Brown Sugar Boba Milk Tea,51,318.75
+8,2,2024,Taro Bubble Tea,48,324.0
+8,2,2024,Matcha Black Sugar,56,378.0
+8,2,2024,Black Sugar Coffee Jelly,31,201.5
+8,2,2024,Strawberry Milk,58,464
+8,2,2024,Mango Sago,79,632
+8,2,2024,Passion Fruit Tea,51,280.5
+8,2,2024,Golden Oolong Tea,1,5.5
+8,2,2024,Red Bean Matcha Milk,52,351.0
+8,2,2024,Jasmine Green Tea,6,28.5
+8,3,2024,Classic Brown Sugar Boba Milk Tea,28,175.0
+8,3,2024,Taro Bubble Tea,98,661.5
+8,3,2024,Matcha Black Sugar,42,283.5
+8,3,2024,Black Sugar Coffee Jelly,13,84.5
+8,3,2024,Strawberry Milk,13,104
+8,3,2024,Mango Sago,52,416
+8,3,2024,Passion Fruit Tea,71,390.5
+8,3,2024,Golden Oolong Tea,96,528.0
+8,3,2024,Red Bean Matcha Milk,56,378.0
+8,3,2024,Jasmine Green Tea,8,38.0
+8,4,2024,Classic Brown Sugar Boba Milk Tea,54,337.5
+8,4,2024,Taro Bubble Tea,97,654.75
+8,4,2024,Matcha Black Sugar,1,6.75
+8,4,2024,Black Sugar Coffee Jelly,71,461.5
+8,4,2024,Strawberry Milk,91,728
+8,4,2024,Mango Sago,27,216
+8,4,2024,Passion Fruit Tea,6,33.0
+8,4,2024,Golden Oolong Tea,70,385.0
+8,4,2024,Red Bean Matcha Milk,4,27.0
+8,4,2024,Jasmine Green Tea,15,71.25
+8,5,2024,Classic Brown Sugar Boba Milk Tea,77,481.25
+8,5,2024,Taro Bubble Tea,68,459.0
+8,5,2024,Matcha Black Sugar,97,654.75
+8,5,2024,Black Sugar Coffee Jelly,4,26.0
+8,5,2024,Strawberry Milk,33,264
+8,5,2024,Mango Sago,2,16
+8,5,2024,Passion Fruit Tea,79,434.5
+8,5,2024,Golden Oolong Tea,27,148.5
+8,5,2024,Red Bean Matcha Milk,19,128.25
+8,5,2024,Jasmine Green Tea,90,427.5
+8,6,2024,Classic Brown Sugar Boba Milk Tea,91,568.75
+8,6,2024,Taro Bubble Tea,56,378.0
+8,6,2024,Matcha Black Sugar,22,148.5
+8,6,2024,Black Sugar Coffee Jelly,26,169.0
+8,6,2024,Strawberry Milk,97,776
+8,6,2024,Mango Sago,82,656
+8,6,2024,Passion Fruit Tea,22,121.0
+8,6,2024,Golden Oolong Tea,49,269.5
+8,6,2024,Red Bean Matcha Milk,2,13.5
+8,6,2024,Jasmine Green Tea,5,23.75
+8,7,2024,Classic Brown Sugar Boba Milk Tea,51,318.75
+8,7,2024,Taro Bubble Tea,67,452.25
+8,7,2024,Matcha Black Sugar,60,405.0
+8,7,2024,Black Sugar Coffee Jelly,46,299.0
+8,7,2024,Strawberry Milk,89,712
+8,7,2024,Mango Sago,77,616
+8,7,2024,Passion Fruit Tea,32,176.0
+8,7,2024,Golden Oolong Tea,54,297.0
+8,7,2024,Red Bean Matcha Milk,17,114.75
+8,7,2024,Jasmine Green Tea,91,432.25
+8,8,2024,Classic Brown Sugar Boba Milk Tea,23,143.75
+8,8,2024,Taro Bubble Tea,65,438.75
+8,8,2024,Matcha Black Sugar,39,263.25
+8,8,2024,Black Sugar Coffee Jelly,15,97.5
+8,8,2024,Strawberry Milk,31,248
+8,8,2024,Mango Sago,97,776
+8,8,2024,Passion Fruit Tea,93,511.5
+8,8,2024,Golden Oolong Tea,33,181.5
+8,8,2024,Red Bean Matcha Milk,77,519.75
+8,8,2024,Jasmine Green Tea,70,332.5
+8,9,2024,Classic Brown Sugar Boba Milk Tea,39,243.75
+8,9,2024,Taro Bubble Tea,98,661.5
+8,9,2024,Matcha Black Sugar,46,310.5
+8,9,2024,Black Sugar Coffee Jelly,94,611.0
+8,9,2024,Strawberry Milk,31,248
+8,9,2024,Mango Sago,31,248
+8,9,2024,Passion Fruit Tea,6,33.0
+8,9,2024,Golden Oolong Tea,6,33.0
+8,9,2024,Red Bean Matcha Milk,94,634.5
+8,9,2024,Jasmine Green Tea,19,90.25
+8,10,2024,Classic Brown Sugar Boba Milk Tea,76,475.0
+8,10,2024,Taro Bubble Tea,41,276.75
+8,10,2024,Matcha Black Sugar,84,567.0
+8,10,2024,Black Sugar Coffee Jelly,68,442.0
+8,10,2024,Strawberry Milk,37,296
+8,10,2024,Mango Sago,83,664
+8,10,2024,Passion Fruit Tea,17,93.5
+8,10,2024,Golden Oolong Tea,19,104.5
+8,10,2024,Red Bean Matcha Milk,59,398.25
+8,10,2024,Jasmine Green Tea,5,23.75
+8,11,2024,Classic Brown Sugar Boba Milk Tea,67,418.75
+8,11,2024,Taro Bubble Tea,92,621.0
+8,11,2024,Matcha Black Sugar,67,452.25
+8,11,2024,Black Sugar Coffee Jelly,41,266.5
+8,11,2024,Strawberry Milk,77,616
+8,11,2024,Mango Sago,25,200
+8,11,2024,Passion Fruit Tea,49,269.5
+8,11,2024,Golden Oolong Tea,48,264.0
+8,11,2024,Red Bean Matcha Milk,100,675.0
+8,11,2024,Jasmine Green Tea,56,266.0
+8,12,2024,Classic Brown Sugar Boba Milk Tea,99,618.75
+8,12,2024,Taro Bubble Tea,80,540.0
+8,12,2024,Matcha Black Sugar,42,283.5
+8,12,2024,Black Sugar Coffee Jelly,42,273.0
+8,12,2024,Strawberry Milk,96,768
+8,12,2024,Mango Sago,45,360
+8,12,2024,Passion Fruit Tea,49,269.5
+8,12,2024,Golden Oolong Tea,58,319.0
+8,12,2024,Red Bean Matcha Milk,37,249.75
+8,12,2024,Jasmine Green Tea,99,470.25
+8,13,2024,Classic Brown Sugar Boba Milk Tea,35,218.75
+8,13,2024,Taro Bubble Tea,25,168.75
+8,13,2024,Matcha Black Sugar,64,432.0
+8,13,2024,Black Sugar Coffee Jelly,39,253.5
+8,13,2024,Strawberry Milk,47,376
+8,13,2024,Mango Sago,86,688
+8,13,2024,Passion Fruit Tea,76,418.0
+8,13,2024,Golden Oolong Tea,63,346.5
+8,13,2024,Red Bean Matcha Milk,87,587.25
+8,13,2024,Jasmine Green Tea,3,14.25
+8,14,2024,Classic Brown Sugar Boba Milk Tea,1,6.25
+8,14,2024,Taro Bubble Tea,22,148.5
+8,14,2024,Matcha Black Sugar,20,135.0
+8,14,2024,Black Sugar Coffee Jelly,62,403.0
+8,14,2024,Strawberry Milk,81,648
+8,14,2024,Mango Sago,97,776
+8,14,2024,Passion Fruit Tea,65,357.5
+8,14,2024,Golden Oolong Tea,16,88.0
+8,14,2024,Red Bean Matcha Milk,13,87.75
+8,14,2024,Jasmine Green Tea,26,123.5
+8,15,2024,Classic Brown Sugar Boba Milk Tea,46,287.5
+8,15,2024,Taro Bubble Tea,23,155.25
+8,15,2024,Matcha Black Sugar,41,276.75
+8,15,2024,Black Sugar Coffee Jelly,54,351.0
+8,15,2024,Strawberry Milk,65,520
+8,15,2024,Mango Sago,52,416
+8,15,2024,Passion Fruit Tea,66,363.0
+8,15,2024,Golden Oolong Tea,53,291.5
+8,15,2024,Red Bean Matcha Milk,95,641.25
+8,15,2024,Jasmine Green Tea,59,280.25
+8,16,2024,Classic Brown Sugar Boba Milk Tea,64,400.0
+8,16,2024,Taro Bubble Tea,92,621.0
+8,16,2024,Matcha Black Sugar,29,195.75
+8,16,2024,Black Sugar Coffee Jelly,50,325.0
+8,16,2024,Strawberry Milk,56,448
+8,16,2024,Mango Sago,8,64
+8,16,2024,Passion Fruit Tea,33,181.5
+8,16,2024,Golden Oolong Tea,55,302.5
+8,16,2024,Red Bean Matcha Milk,76,513.0
+8,16,2024,Jasmine Green Tea,4,19.0
+8,17,2024,Classic Brown Sugar Boba Milk Tea,95,593.75
+8,17,2024,Taro Bubble Tea,91,614.25
+8,17,2024,Matcha Black Sugar,40,270.0
+8,17,2024,Black Sugar Coffee Jelly,41,266.5
+8,17,2024,Strawberry Milk,45,360
+8,17,2024,Mango Sago,41,328
+8,17,2024,Passion Fruit Tea,38,209.0
+8,17,2024,Golden Oolong Tea,16,88.0
+8,17,2024,Red Bean Matcha Milk,93,627.75
+8,17,2024,Jasmine Green Tea,38,180.5
+8,18,2024,Classic Brown Sugar Boba Milk Tea,52,325.0
+8,18,2024,Taro Bubble Tea,57,384.75
+8,18,2024,Matcha Black Sugar,80,540.0
+8,18,2024,Black Sugar Coffee Jelly,92,598.0
+8,18,2024,Strawberry Milk,71,568
+8,18,2024,Mango Sago,2,16
+8,18,2024,Passion Fruit Tea,47,258.5
+8,18,2024,Golden Oolong Tea,47,258.5
+8,18,2024,Red Bean Matcha Milk,62,418.5
+8,18,2024,Jasmine Green Tea,94,446.5
+8,19,2024,Classic Brown Sugar Boba Milk Tea,84,525.0
+8,19,2024,Taro Bubble Tea,30,202.5
+8,19,2024,Matcha Black Sugar,84,567.0
+8,19,2024,Black Sugar Coffee Jelly,10,65.0
+8,19,2024,Strawberry Milk,15,120
+8,19,2024,Mango Sago,74,592
+8,19,2024,Passion Fruit Tea,87,478.5
+8,19,2024,Golden Oolong Tea,27,148.5
+8,19,2024,Red Bean Matcha Milk,34,229.5
+8,19,2024,Jasmine Green Tea,18,85.5
+8,20,2024,Classic Brown Sugar Boba Milk Tea,79,493.75
+8,20,2024,Taro Bubble Tea,89,600.75
+8,20,2024,Matcha Black Sugar,70,472.5
+8,20,2024,Black Sugar Coffee Jelly,90,585.0
+8,20,2024,Strawberry Milk,51,408
+8,20,2024,Mango Sago,95,760
+8,20,2024,Passion Fruit Tea,95,522.5
+8,20,2024,Golden Oolong Tea,45,247.5
+8,20,2024,Red Bean Matcha Milk,82,553.5
+8,20,2024,Jasmine Green Tea,87,413.25
+8,21,2024,Classic Brown Sugar Boba Milk Tea,401,2506.25
+8,21,2024,Taro Bubble Tea,159,1073.25
+8,21,2024,Matcha Black Sugar,467,3152.25
+8,21,2024,Black Sugar Coffee Jelly,261,1696.5
+8,21,2024,Strawberry Milk,38,304
+8,21,2024,Mango Sago,371,2968
+8,21,2024,Passion Fruit Tea,370,2035.0
+8,21,2024,Golden Oolong Tea,109,599.5
+8,21,2024,Red Bean Matcha Milk,393,2652.75
+8,21,2024,Jasmine Green Tea,218,1035.5
+8,22,2024,Classic Brown Sugar Boba Milk Tea,54,337.5
+8,22,2024,Taro Bubble Tea,48,324.0
+8,22,2024,Matcha Black Sugar,27,182.25
+8,22,2024,Black Sugar Coffee Jelly,1,6.5
+8,22,2024,Strawberry Milk,10,80
+8,22,2024,Mango Sago,43,344
+8,22,2024,Passion Fruit Tea,44,242.0
+8,22,2024,Golden Oolong Tea,82,451.0
+8,22,2024,Red Bean Matcha Milk,85,573.75
+8,22,2024,Jasmine Green Tea,40,190.0
+8,23,2024,Classic Brown Sugar Boba Milk Tea,38,237.5
+8,23,2024,Taro Bubble Tea,27,182.25
+8,23,2024,Matcha Black Sugar,10,67.5
+8,23,2024,Black Sugar Coffee Jelly,10,65.0
+8,23,2024,Strawberry Milk,18,144
+8,23,2024,Mango Sago,32,256
+8,23,2024,Passion Fruit Tea,3,16.5
+8,23,2024,Golden Oolong Tea,93,511.5
+8,23,2024,Red Bean Matcha Milk,20,135.0
+8,23,2024,Jasmine Green Tea,10,47.5
+8,24,2024,Classic Brown Sugar Boba Milk Tea,100,625.0
+8,24,2024,Taro Bubble Tea,92,621.0
+8,24,2024,Matcha Black Sugar,70,472.5
+8,24,2024,Black Sugar Coffee Jelly,51,331.5
+8,24,2024,Strawberry Milk,92,736
+8,24,2024,Mango Sago,30,240
+8,24,2024,Passion Fruit Tea,18,99.0
+8,24,2024,Golden Oolong Tea,42,231.0
+8,24,2024,Red Bean Matcha Milk,97,654.75
+8,24,2024,Jasmine Green Tea,31,147.25
+8,25,2024,Classic Brown Sugar Boba Milk Tea,91,568.75
+8,25,2024,Taro Bubble Tea,38,256.5
+8,25,2024,Matcha Black Sugar,11,74.25
+8,25,2024,Black Sugar Coffee Jelly,1,6.5
+8,25,2024,Strawberry Milk,50,400
+8,25,2024,Mango Sago,87,696
+8,25,2024,Passion Fruit Tea,34,187.0
+8,25,2024,Golden Oolong Tea,22,121.0
+8,25,2024,Red Bean Matcha Milk,2,13.5
+8,25,2024,Jasmine Green Tea,10,47.5
+8,26,2024,Classic Brown Sugar Boba Milk Tea,8,50.0
+8,26,2024,Taro Bubble Tea,31,209.25
+8,26,2024,Matcha Black Sugar,91,614.25
+8,26,2024,Black Sugar Coffee Jelly,78,507.0
+8,26,2024,Strawberry Milk,65,520
+8,26,2024,Mango Sago,83,664
+8,26,2024,Passion Fruit Tea,100,550.0
+8,26,2024,Golden Oolong Tea,37,203.5
+8,26,2024,Red Bean Matcha Milk,34,229.5
+8,26,2024,Jasmine Green Tea,15,71.25
+8,27,2024,Classic Brown Sugar Boba Milk Tea,94,587.5
+8,27,2024,Taro Bubble Tea,16,108.0
+8,27,2024,Matcha Black Sugar,94,634.5
+8,27,2024,Black Sugar Coffee Jelly,44,286.0
+8,27,2024,Strawberry Milk,19,152
+8,27,2024,Mango Sago,33,264
+8,27,2024,Passion Fruit Tea,7,38.5
+8,27,2024,Golden Oolong Tea,47,258.5
+8,27,2024,Red Bean Matcha Milk,90,607.5
+8,27,2024,Jasmine Green Tea,52,247.0
+8,28,2024,Classic Brown Sugar Boba Milk Tea,5,31.25
+8,28,2024,Taro Bubble Tea,25,168.75
+8,28,2024,Matcha Black Sugar,32,216.0
+8,28,2024,Black Sugar Coffee Jelly,81,526.5
+8,28,2024,Strawberry Milk,53,424
+8,28,2024,Mango Sago,46,368
+8,28,2024,Passion Fruit Tea,15,82.5
+8,28,2024,Golden Oolong Tea,22,121.0
+8,28,2024,Red Bean Matcha Milk,23,155.25
+8,28,2024,Jasmine Green Tea,9,42.75
+8,29,2024,Classic Brown Sugar Boba Milk Tea,57,356.25
+8,29,2024,Taro Bubble Tea,4,27.0
+8,29,2024,Matcha Black Sugar,56,378.0
+8,29,2024,Black Sugar Coffee Jelly,76,494.0
+8,29,2024,Strawberry Milk,55,440
+8,29,2024,Mango Sago,86,688
+8,29,2024,Passion Fruit Tea,70,385.0
+8,29,2024,Golden Oolong Tea,56,308.0
+8,29,2024,Red Bean Matcha Milk,36,243.0
+8,29,2024,Jasmine Green Tea,47,223.25
+8,30,2024,Classic Brown Sugar Boba Milk Tea,59,368.75
+8,30,2024,Taro Bubble Tea,90,607.5
+8,30,2024,Matcha Black Sugar,5,33.75
+8,30,2024,Black Sugar Coffee Jelly,22,143.0
+8,30,2024,Strawberry Milk,76,608
+8,30,2024,Mango Sago,39,312
+8,30,2024,Passion Fruit Tea,89,489.5
+8,30,2024,Golden Oolong Tea,79,434.5
+8,30,2024,Red Bean Matcha Milk,45,303.75
+8,30,2024,Jasmine Green Tea,88,418.0
+8,31,2024,Classic Brown Sugar Boba Milk Tea,23,143.75
+8,31,2024,Taro Bubble Tea,44,297.0
+8,31,2024,Matcha Black Sugar,18,121.5
+8,31,2024,Black Sugar Coffee Jelly,75,487.5
+8,31,2024,Strawberry Milk,81,648
+8,31,2024,Mango Sago,8,64
+8,31,2024,Passion Fruit Tea,87,478.5
+8,31,2024,Golden Oolong Tea,83,456.5
+8,31,2024,Red Bean Matcha Milk,78,526.5
+8,31,2024,Jasmine Green Tea,38,180.5
+9,1,2024,Classic Brown Sugar Boba Milk Tea,78,487.5
+9,1,2024,Taro Bubble Tea,97,654.75
+9,1,2024,Matcha Black Sugar,8,54.0
+9,1,2024,Black Sugar Coffee Jelly,1,6.5
+9,1,2024,Strawberry Milk,36,288
+9,1,2024,Mango Sago,53,424
+9,1,2024,Passion Fruit Tea,86,473.0
+9,1,2024,Golden Oolong Tea,71,390.5
+9,1,2024,Red Bean Matcha Milk,14,94.5
+9,1,2024,Jasmine Green Tea,59,280.25
+9,2,2024,Classic Brown Sugar Boba Milk Tea,37,231.25
+9,2,2024,Taro Bubble Tea,90,607.5
+9,2,2024,Matcha Black Sugar,67,452.25
+9,2,2024,Black Sugar Coffee Jelly,65,422.5
+9,2,2024,Strawberry Milk,54,432
+9,2,2024,Mango Sago,88,704
+9,2,2024,Passion Fruit Tea,91,500.5
+9,2,2024,Golden Oolong Tea,57,313.5
+9,2,2024,Red Bean Matcha Milk,54,364.5
+9,2,2024,Jasmine Green Tea,23,109.25
+9,3,2024,Classic Brown Sugar Boba Milk Tea,91,568.75
+9,3,2024,Taro Bubble Tea,6,40.5
+9,3,2024,Matcha Black Sugar,55,371.25
+9,3,2024,Black Sugar Coffee Jelly,99,643.5
+9,3,2024,Strawberry Milk,3,24
+9,3,2024,Mango Sago,75,600
+9,3,2024,Passion Fruit Tea,100,550.0
+9,3,2024,Golden Oolong Tea,13,71.5
+9,3,2024,Red Bean Matcha Milk,35,236.25
+9,3,2024,Jasmine Green Tea,83,394.25
+9,4,2024,Classic Brown Sugar Boba Milk Tea,30,187.5
+9,4,2024,Taro Bubble Tea,82,553.5
+9,4,2024,Matcha Black Sugar,86,580.5
+9,4,2024,Black Sugar Coffee Jelly,84,546.0
+9,4,2024,Strawberry Milk,77,616
+9,4,2024,Mango Sago,35,280
+9,4,2024,Passion Fruit Tea,69,379.5
+9,4,2024,Golden Oolong Tea,54,297.0
+9,4,2024,Red Bean Matcha Milk,17,114.75
+9,4,2024,Jasmine Green Tea,22,104.5
+9,5,2024,Classic Brown Sugar Boba Milk Tea,38,237.5
+9,5,2024,Taro Bubble Tea,18,121.5
+9,5,2024,Matcha Black Sugar,8,54.0
+9,5,2024,Black Sugar Coffee Jelly,67,435.5
+9,5,2024,Strawberry Milk,13,104
+9,5,2024,Mango Sago,99,792
+9,5,2024,Passion Fruit Tea,46,253.0
+9,5,2024,Golden Oolong Tea,77,423.5
+9,5,2024,Red Bean Matcha Milk,15,101.25
+9,5,2024,Jasmine Green Tea,29,137.75
+9,6,2024,Classic Brown Sugar Boba Milk Tea,89,556.25
+9,6,2024,Taro Bubble Tea,1,6.75
+9,6,2024,Matcha Black Sugar,34,229.5
+9,6,2024,Black Sugar Coffee Jelly,20,130.0
+9,6,2024,Strawberry Milk,96,768
+9,6,2024,Mango Sago,47,376
+9,6,2024,Passion Fruit Tea,82,451.0
+9,6,2024,Golden Oolong Tea,89,489.5
+9,6,2024,Red Bean Matcha Milk,18,121.5
+9,6,2024,Jasmine Green Tea,92,437.0
+9,7,2024,Classic Brown Sugar Boba Milk Tea,96,600.0
+9,7,2024,Taro Bubble Tea,25,168.75
+9,7,2024,Matcha Black Sugar,63,425.25
+9,7,2024,Black Sugar Coffee Jelly,59,383.5
+9,7,2024,Strawberry Milk,2,16
+9,7,2024,Mango Sago,94,752
+9,7,2024,Passion Fruit Tea,30,165.0
+9,7,2024,Golden Oolong Tea,52,286.0
+9,7,2024,Red Bean Matcha Milk,44,297.0
+9,7,2024,Jasmine Green Tea,68,323.0
+9,8,2024,Classic Brown Sugar Boba Milk Tea,81,506.25
+9,8,2024,Taro Bubble Tea,40,270.0
+9,8,2024,Matcha Black Sugar,96,648.0
+9,8,2024,Black Sugar Coffee Jelly,83,539.5
+9,8,2024,Strawberry Milk,51,408
+9,8,2024,Mango Sago,4,32
+9,8,2024,Passion Fruit Tea,89,489.5
+9,8,2024,Golden Oolong Tea,34,187.0
+9,8,2024,Red Bean Matcha Milk,69,465.75
+9,8,2024,Jasmine Green Tea,86,408.5
+9,9,2024,Classic Brown Sugar Boba Milk Tea,17,106.25
+9,9,2024,Taro Bubble Tea,64,432.0
+9,9,2024,Matcha Black Sugar,69,465.75
+9,9,2024,Black Sugar Coffee Jelly,27,175.5
+9,9,2024,Strawberry Milk,37,296
+9,9,2024,Mango Sago,75,600
+9,9,2024,Passion Fruit Tea,3,16.5
+9,9,2024,Golden Oolong Tea,35,192.5
+9,9,2024,Red Bean Matcha Milk,95,641.25
+9,9,2024,Jasmine Green Tea,19,90.25
+9,10,2024,Classic Brown Sugar Boba Milk Tea,78,487.5
+9,10,2024,Taro Bubble Tea,11,74.25
+9,10,2024,Matcha Black Sugar,23,155.25
+9,10,2024,Black Sugar Coffee Jelly,8,52.0
+9,10,2024,Strawberry Milk,43,344
+9,10,2024,Mango Sago,73,584
+9,10,2024,Passion Fruit Tea,81,445.5
+9,10,2024,Golden Oolong Tea,59,324.5
+9,10,2024,Red Bean Matcha Milk,48,324.0
+9,10,2024,Jasmine Green Tea,72,342.0
+9,11,2024,Classic Brown Sugar Boba Milk Tea,59,368.75
+9,11,2024,Taro Bubble Tea,59,398.25
+9,11,2024,Matcha Black Sugar,79,533.25
+9,11,2024,Black Sugar Coffee Jelly,54,351.0
+9,11,2024,Strawberry Milk,14,112
+9,11,2024,Mango Sago,81,648
+9,11,2024,Passion Fruit Tea,21,115.5
+9,11,2024,Golden Oolong Tea,89,489.5
+9,11,2024,Red Bean Matcha Milk,24,162.0
+9,11,2024,Jasmine Green Tea,33,156.75
+9,12,2024,Classic Brown Sugar Boba Milk Tea,69,431.25
+9,12,2024,Taro Bubble Tea,97,654.75
+9,12,2024,Matcha Black Sugar,63,425.25
+9,12,2024,Black Sugar Coffee Jelly,25,162.5
+9,12,2024,Strawberry Milk,4,32
+9,12,2024,Mango Sago,77,616
+9,12,2024,Passion Fruit Tea,3,16.5
+9,12,2024,Golden Oolong Tea,98,539.0
+9,12,2024,Red Bean Matcha Milk,96,648.0
+9,12,2024,Jasmine Green Tea,40,190.0
+9,13,2024,Classic Brown Sugar Boba Milk Tea,5,31.25
+9,13,2024,Taro Bubble Tea,29,195.75
+9,13,2024,Matcha Black Sugar,44,297.0
+9,13,2024,Black Sugar Coffee Jelly,61,396.5
+9,13,2024,Strawberry Milk,54,432
+9,13,2024,Mango Sago,31,248
+9,13,2024,Passion Fruit Tea,48,264.0
+9,13,2024,Golden Oolong Tea,67,368.5
+9,13,2024,Red Bean Matcha Milk,86,580.5
+9,13,2024,Jasmine Green Tea,40,190.0
+9,14,2024,Classic Brown Sugar Boba Milk Tea,91,568.75
+9,14,2024,Taro Bubble Tea,50,337.5
+9,14,2024,Matcha Black Sugar,91,614.25
+9,14,2024,Black Sugar Coffee Jelly,86,559.0
+9,14,2024,Strawberry Milk,99,792
+9,14,2024,Mango Sago,39,312
+9,14,2024,Passion Fruit Tea,43,236.5
+9,14,2024,Golden Oolong Tea,84,462.0
+9,14,2024,Red Bean Matcha Milk,35,236.25
+9,14,2024,Jasmine Green Tea,52,247.0
+9,15,2024,Classic Brown Sugar Boba Milk Tea,36,225.0
+9,15,2024,Taro Bubble Tea,47,317.25
+9,15,2024,Matcha Black Sugar,32,216.0
+9,15,2024,Black Sugar Coffee Jelly,27,175.5
+9,15,2024,Strawberry Milk,71,568
+9,15,2024,Mango Sago,97,776
+9,15,2024,Passion Fruit Tea,9,49.5
+9,15,2024,Golden Oolong Tea,18,99.0
+9,15,2024,Red Bean Matcha Milk,75,506.25
+9,15,2024,Jasmine Green Tea,20,95.0
+9,16,2024,Classic Brown Sugar Boba Milk Tea,83,518.75
+9,16,2024,Taro Bubble Tea,69,465.75
+9,16,2024,Matcha Black Sugar,38,256.5
+9,16,2024,Black Sugar Coffee Jelly,54,351.0
+9,16,2024,Strawberry Milk,22,176
+9,16,2024,Mango Sago,94,752
+9,16,2024,Passion Fruit Tea,82,451.0
+9,16,2024,Golden Oolong Tea,90,495.0
+9,16,2024,Red Bean Matcha Milk,63,425.25
+9,16,2024,Jasmine Green Tea,38,180.5
+9,17,2024,Classic Brown Sugar Boba Milk Tea,11,68.75
+9,17,2024,Taro Bubble Tea,23,155.25
+9,17,2024,Matcha Black Sugar,80,540.0
+9,17,2024,Black Sugar Coffee Jelly,73,474.5
+9,17,2024,Strawberry Milk,50,400
+9,17,2024,Mango Sago,57,456
+9,17,2024,Passion Fruit Tea,3,16.5
+9,17,2024,Golden Oolong Tea,76,418.0
+9,17,2024,Red Bean Matcha Milk,74,499.5
+9,17,2024,Jasmine Green Tea,79,375.25
+9,18,2024,Classic Brown Sugar Boba Milk Tea,89,556.25
+9,18,2024,Taro Bubble Tea,93,627.75
+9,18,2024,Matcha Black Sugar,10,67.5
+9,18,2024,Black Sugar Coffee Jelly,74,481.0
+9,18,2024,Strawberry Milk,58,464
+9,18,2024,Mango Sago,52,416
+9,18,2024,Passion Fruit Tea,98,539.0
+9,18,2024,Golden Oolong Tea,100,550.0
+9,18,2024,Red Bean Matcha Milk,95,641.25
+9,18,2024,Jasmine Green Tea,30,142.5
+9,19,2024,Classic Brown Sugar Boba Milk Tea,41,256.25
+9,19,2024,Taro Bubble Tea,7,47.25
+9,19,2024,Matcha Black Sugar,28,189.0
+9,19,2024,Black Sugar Coffee Jelly,53,344.5
+9,19,2024,Strawberry Milk,70,560
+9,19,2024,Mango Sago,18,144
+9,19,2024,Passion Fruit Tea,93,511.5
+9,19,2024,Golden Oolong Tea,41,225.5
+9,19,2024,Red Bean Matcha Milk,60,405.0
+9,19,2024,Jasmine Green Tea,6,28.5
+9,20,2024,Classic Brown Sugar Boba Milk Tea,82,512.5
+9,20,2024,Taro Bubble Tea,45,303.75
+9,20,2024,Matcha Black Sugar,86,580.5
+9,20,2024,Black Sugar Coffee Jelly,64,416.0
+9,20,2024,Strawberry Milk,65,520
+9,20,2024,Mango Sago,68,544
+9,20,2024,Passion Fruit Tea,56,308.0
+9,20,2024,Golden Oolong Tea,61,335.5
+9,20,2024,Red Bean Matcha Milk,28,189.0
+9,20,2024,Jasmine Green Tea,67,318.25
+9,21,2024,Classic Brown Sugar Boba Milk Tea,2,12.5
+9,21,2024,Taro Bubble Tea,95,641.25
+9,21,2024,Matcha Black Sugar,64,432.0
+9,21,2024,Black Sugar Coffee Jelly,54,351.0
+9,21,2024,Strawberry Milk,5,40
+9,21,2024,Mango Sago,38,304
+9,21,2024,Passion Fruit Tea,15,82.5
+9,21,2024,Golden Oolong Tea,100,550.0
+9,21,2024,Red Bean Matcha Milk,30,202.5
+9,21,2024,Jasmine Green Tea,30,142.5
+9,22,2024,Classic Brown Sugar Boba Milk Tea,57,356.25
+9,22,2024,Taro Bubble Tea,42,283.5
+9,22,2024,Matcha Black Sugar,9,60.75
+9,22,2024,Black Sugar Coffee Jelly,82,533.0
+9,22,2024,Strawberry Milk,89,712
+9,22,2024,Mango Sago,38,304
+9,22,2024,Passion Fruit Tea,94,517.0
+9,22,2024,Golden Oolong Tea,47,258.5
+9,22,2024,Red Bean Matcha Milk,5,33.75
+9,22,2024,Jasmine Green Tea,42,199.5
+9,23,2024,Classic Brown Sugar Boba Milk Tea,53,331.25
+9,23,2024,Taro Bubble Tea,67,452.25
+9,23,2024,Matcha Black Sugar,22,148.5
+9,23,2024,Black Sugar Coffee Jelly,54,351.0
+9,23,2024,Strawberry Milk,38,304
+9,23,2024,Mango Sago,40,320
+9,23,2024,Passion Fruit Tea,18,99.0
+9,23,2024,Golden Oolong Tea,76,418.0
+9,23,2024,Red Bean Matcha Milk,9,60.75
+9,23,2024,Jasmine Green Tea,51,242.25
+9,24,2024,Classic Brown Sugar Boba Milk Tea,23,143.75
+9,24,2024,Taro Bubble Tea,55,371.25
+9,24,2024,Matcha Black Sugar,31,209.25
+9,24,2024,Black Sugar Coffee Jelly,92,598.0
+9,24,2024,Strawberry Milk,56,448
+9,24,2024,Mango Sago,22,176
+9,24,2024,Passion Fruit Tea,95,522.5
+9,24,2024,Golden Oolong Tea,36,198.0
+9,24,2024,Red Bean Matcha Milk,40,270.0
+9,24,2024,Jasmine Green Tea,88,418.0
+9,25,2024,Classic Brown Sugar Boba Milk Tea,58,362.5
+9,25,2024,Taro Bubble Tea,42,283.5
+9,25,2024,Matcha Black Sugar,21,141.75
+9,25,2024,Black Sugar Coffee Jelly,56,364.0
+9,25,2024,Strawberry Milk,2,16
+9,25,2024,Mango Sago,88,704
+9,25,2024,Passion Fruit Tea,14,77.0
+9,25,2024,Golden Oolong Tea,18,99.0
+9,25,2024,Red Bean Matcha Milk,35,236.25
+9,25,2024,Jasmine Green Tea,97,460.75
+9,26,2024,Classic Brown Sugar Boba Milk Tea,60,375.0
+9,26,2024,Taro Bubble Tea,2,13.5
+9,26,2024,Matcha Black Sugar,78,526.5
+9,26,2024,Black Sugar Coffee Jelly,79,513.5
+9,26,2024,Strawberry Milk,78,624
+9,26,2024,Mango Sago,29,232
+9,26,2024,Passion Fruit Tea,24,132.0
+9,26,2024,Golden Oolong Tea,29,159.5
+9,26,2024,Red Bean Matcha Milk,13,87.75
+9,26,2024,Jasmine Green Tea,60,285.0
+9,27,2024,Classic Brown Sugar Boba Milk Tea,50,312.5
+9,27,2024,Taro Bubble Tea,93,627.75
+9,27,2024,Matcha Black Sugar,71,479.25
+9,27,2024,Black Sugar Coffee Jelly,33,214.5
+9,27,2024,Strawberry Milk,65,520
+9,27,2024,Mango Sago,93,744
+9,27,2024,Passion Fruit Tea,69,379.5
+9,27,2024,Golden Oolong Tea,43,236.5
+9,27,2024,Red Bean Matcha Milk,82,553.5
+9,27,2024,Jasmine Green Tea,80,380.0
+9,28,2024,Classic Brown Sugar Boba Milk Tea,97,606.25
+9,28,2024,Taro Bubble Tea,60,405.0
+9,28,2024,Matcha Black Sugar,38,256.5
+9,28,2024,Black Sugar Coffee Jelly,64,416.0
+9,28,2024,Strawberry Milk,85,680
+9,28,2024,Mango Sago,13,104
+9,28,2024,Passion Fruit Tea,62,341.0
+9,28,2024,Golden Oolong Tea,51,280.5
+9,28,2024,Red Bean Matcha Milk,58,391.5
+9,28,2024,Jasmine Green Tea,47,223.25
+9,29,2024,Classic Brown Sugar Boba Milk Tea,49,306.25
+9,29,2024,Taro Bubble Tea,39,263.25
+9,29,2024,Matcha Black Sugar,45,303.75
+9,29,2024,Black Sugar Coffee Jelly,14,91.0
+9,29,2024,Strawberry Milk,83,664
+9,29,2024,Mango Sago,43,344
+9,29,2024,Passion Fruit Tea,18,99.0
+9,29,2024,Golden Oolong Tea,91,500.5
+9,29,2024,Red Bean Matcha Milk,73,492.75
+9,29,2024,Jasmine Green Tea,59,280.25
+9,30,2024,Classic Brown Sugar Boba Milk Tea,1,6.25
+9,30,2024,Taro Bubble Tea,7,47.25
+9,30,2024,Matcha Black Sugar,52,351.0
+9,30,2024,Black Sugar Coffee Jelly,48,312.0
+9,30,2024,Strawberry Milk,42,336
+9,30,2024,Mango Sago,71,568
+9,30,2024,Passion Fruit Tea,19,104.5
+9,30,2024,Golden Oolong Tea,81,445.5
+9,30,2024,Red Bean Matcha Milk,88,594.0
+9,30,2024,Jasmine Green Tea,37,175.75
+10,1,2024,Classic Brown Sugar Boba Milk Tea,58,362.5
+10,1,2024,Taro Bubble Tea,58,391.5
+10,1,2024,Matcha Black Sugar,22,148.5
+10,1,2024,Black Sugar Coffee Jelly,53,344.5
+10,1,2024,Strawberry Milk,90,720
+10,1,2024,Mango Sago,1,8
+10,1,2024,Passion Fruit Tea,52,286.0
+10,1,2024,Golden Oolong Tea,45,247.5
+10,1,2024,Red Bean Matcha Milk,48,324.0
+10,1,2024,Jasmine Green Tea,35,166.25
+10,2,2024,Classic Brown Sugar Boba Milk Tea,70,437.5
+10,2,2024,Taro Bubble Tea,9,60.75
+10,2,2024,Matcha Black Sugar,38,256.5
+10,2,2024,Black Sugar Coffee Jelly,73,474.5
+10,2,2024,Strawberry Milk,54,432
+10,2,2024,Mango Sago,5,40
+10,2,2024,Passion Fruit Tea,26,143.0
+10,2,2024,Golden Oolong Tea,42,231.0
+10,2,2024,Red Bean Matcha Milk,63,425.25
+10,2,2024,Jasmine Green Tea,9,42.75
+10,3,2024,Classic Brown Sugar Boba Milk Tea,18,112.5
+10,3,2024,Taro Bubble Tea,51,344.25
+10,3,2024,Matcha Black Sugar,5,33.75
+10,3,2024,Black Sugar Coffee Jelly,57,370.5
+10,3,2024,Strawberry Milk,32,256
+10,3,2024,Mango Sago,60,480
+10,3,2024,Passion Fruit Tea,34,187.0
+10,3,2024,Golden Oolong Tea,73,401.5
+10,3,2024,Red Bean Matcha Milk,68,459.0
+10,3,2024,Jasmine Green Tea,54,256.5
+10,4,2024,Classic Brown Sugar Boba Milk Tea,78,487.5
+10,4,2024,Taro Bubble Tea,11,74.25
+10,4,2024,Matcha Black Sugar,86,580.5
+10,4,2024,Black Sugar Coffee Jelly,26,169.0
+10,4,2024,Strawberry Milk,17,136
+10,4,2024,Mango Sago,5,40
+10,4,2024,Passion Fruit Tea,43,236.5
+10,4,2024,Golden Oolong Tea,84,462.0
+10,4,2024,Red Bean Matcha Milk,52,351.0
+10,4,2024,Jasmine Green Tea,25,118.75
+10,5,2024,Classic Brown Sugar Boba Milk Tea,54,337.5
+10,5,2024,Taro Bubble Tea,18,121.5
+10,5,2024,Matcha Black Sugar,71,479.25
+10,5,2024,Black Sugar Coffee Jelly,83,539.5
+10,5,2024,Strawberry Milk,15,120
+10,5,2024,Mango Sago,88,704
+10,5,2024,Passion Fruit Tea,39,214.5
+10,5,2024,Golden Oolong Tea,12,66.0
+10,5,2024,Red Bean Matcha Milk,46,310.5
+10,5,2024,Jasmine Green Tea,8,38.0
+10,6,2024,Classic Brown Sugar Boba Milk Tea,51,318.75
+10,6,2024,Taro Bubble Tea,34,229.5
+10,6,2024,Matcha Black Sugar,10,67.5
+10,6,2024,Black Sugar Coffee Jelly,64,416.0
+10,6,2024,Strawberry Milk,86,688
+10,6,2024,Mango Sago,23,184
+10,6,2024,Passion Fruit Tea,84,462.0
+10,6,2024,Golden Oolong Tea,55,302.5
+10,6,2024,Red Bean Matcha Milk,46,310.5
+10,6,2024,Jasmine Green Tea,63,299.25
+10,7,2024,Classic Brown Sugar Boba Milk Tea,59,368.75
+10,7,2024,Taro Bubble Tea,90,607.5
+10,7,2024,Matcha Black Sugar,18,121.5
+10,7,2024,Black Sugar Coffee Jelly,66,429.0
+10,7,2024,Strawberry Milk,83,664
+10,7,2024,Mango Sago,46,368
+10,7,2024,Passion Fruit Tea,98,539.0
+10,7,2024,Golden Oolong Tea,90,495.0
+10,7,2024,Red Bean Matcha Milk,36,243.0
+10,7,2024,Jasmine Green Tea,43,204.25
+10,8,2024,Classic Brown Sugar Boba Milk Tea,4,25.0
+10,8,2024,Taro Bubble Tea,27,182.25
+10,8,2024,Matcha Black Sugar,38,256.5
+10,8,2024,Black Sugar Coffee Jelly,74,481.0
+10,8,2024,Strawberry Milk,59,472
+10,8,2024,Mango Sago,67,536
+10,8,2024,Passion Fruit Tea,97,533.5
+10,8,2024,Golden Oolong Tea,50,275.0
+10,8,2024,Red Bean Matcha Milk,60,405.0
+10,8,2024,Jasmine Green Tea,42,199.5
+10,9,2024,Classic Brown Sugar Boba Milk Tea,39,243.75
+10,9,2024,Taro Bubble Tea,59,398.25
+10,9,2024,Matcha Black Sugar,41,276.75
+10,9,2024,Black Sugar Coffee Jelly,95,617.5
+10,9,2024,Strawberry Milk,70,560
+10,9,2024,Mango Sago,36,288
+10,9,2024,Passion Fruit Tea,20,110.0
+10,9,2024,Golden Oolong Tea,79,434.5
+10,9,2024,Red Bean Matcha Milk,62,418.5
+10,9,2024,Jasmine Green Tea,72,342.0
+10,10,2024,Classic Brown Sugar Boba Milk Tea,22,137.5
+10,10,2024,Taro Bubble Tea,31,209.25
+10,10,2024,Matcha Black Sugar,30,202.5
+10,10,2024,Black Sugar Coffee Jelly,82,533.0
+10,10,2024,Strawberry Milk,46,368
+10,10,2024,Mango Sago,75,600
+10,10,2024,Passion Fruit Tea,29,159.5
+10,10,2024,Golden Oolong Tea,39,214.5
+10,10,2024,Red Bean Matcha Milk,66,445.5
+10,10,2024,Jasmine Green Tea,44,209.0
+10,11,2024,Classic Brown Sugar Boba Milk Tea,17,106.25
+10,11,2024,Taro Bubble Tea,29,195.75
+10,11,2024,Matcha Black Sugar,63,425.25
+10,11,2024,Black Sugar Coffee Jelly,88,572.0
+10,11,2024,Strawberry Milk,49,392
+10,11,2024,Mango Sago,50,400
+10,11,2024,Passion Fruit Tea,57,313.5
+10,11,2024,Golden Oolong Tea,53,291.5
+10,11,2024,Red Bean Matcha Milk,91,614.25
+10,11,2024,Jasmine Green Tea,49,232.75
+10,12,2024,Classic Brown Sugar Boba Milk Tea,69,431.25
+10,12,2024,Taro Bubble Tea,87,587.25
+10,12,2024,Matcha Black Sugar,55,371.25
+10,12,2024,Black Sugar Coffee Jelly,89,578.5
+10,12,2024,Strawberry Milk,31,248
+10,12,2024,Mango Sago,84,672
+10,12,2024,Passion Fruit Tea,29,159.5
+10,12,2024,Golden Oolong Tea,6,33.0
+10,12,2024,Red Bean Matcha Milk,50,337.5
+10,12,2024,Jasmine Green Tea,78,370.5
+10,13,2024,Classic Brown Sugar Boba Milk Tea,75,468.75
+10,13,2024,Taro Bubble Tea,70,472.5
+10,13,2024,Matcha Black Sugar,93,627.75
+10,13,2024,Black Sugar Coffee Jelly,79,513.5
+10,13,2024,Strawberry Milk,80,640
+10,13,2024,Mango Sago,18,144
+10,13,2024,Passion Fruit Tea,91,500.5
+10,13,2024,Golden Oolong Tea,54,297.0
+10,13,2024,Red Bean Matcha Milk,91,614.25
+10,13,2024,Jasmine Green Tea,38,180.5
+10,14,2024,Classic Brown Sugar Boba Milk Tea,91,568.75
+10,14,2024,Taro Bubble Tea,56,378.0
+10,14,2024,Matcha Black Sugar,87,587.25
+10,14,2024,Black Sugar Coffee Jelly,7,45.5
+10,14,2024,Strawberry Milk,9,72
+10,14,2024,Mango Sago,23,184
+10,14,2024,Passion Fruit Tea,8,44.0
+10,14,2024,Golden Oolong Tea,79,434.5
+10,14,2024,Red Bean Matcha Milk,96,648.0
+10,14,2024,Jasmine Green Tea,16,76.0
+10,15,2024,Classic Brown Sugar Boba Milk Tea,45,281.25
+10,15,2024,Taro Bubble Tea,37,249.75
+10,15,2024,Matcha Black Sugar,52,351.0
+10,15,2024,Black Sugar Coffee Jelly,70,455.0
+10,15,2024,Strawberry Milk,58,464
+10,15,2024,Mango Sago,84,672
+10,15,2024,Passion Fruit Tea,73,401.5
+10,15,2024,Golden Oolong Tea,39,214.5
+10,15,2024,Red Bean Matcha Milk,83,560.25
+10,15,2024,Jasmine Green Tea,58,275.5
+10,16,2024,Classic Brown Sugar Boba Milk Tea,46,287.5
+10,16,2024,Taro Bubble Tea,43,290.25
+10,16,2024,Matcha Black Sugar,34,229.5
+10,16,2024,Black Sugar Coffee Jelly,12,78.0
+10,16,2024,Strawberry Milk,78,624
+10,16,2024,Mango Sago,59,472
+10,16,2024,Passion Fruit Tea,72,396.0
+10,16,2024,Golden Oolong Tea,93,511.5
+10,16,2024,Red Bean Matcha Milk,4,27.0
+10,16,2024,Jasmine Green Tea,23,109.25
+10,17,2024,Classic Brown Sugar Boba Milk Tea,100,625.0
+10,17,2024,Taro Bubble Tea,24,162.0
+10,17,2024,Matcha Black Sugar,70,472.5
+10,17,2024,Black Sugar Coffee Jelly,12,78.0
+10,17,2024,Strawberry Milk,43,344
+10,17,2024,Mango Sago,16,128
+10,17,2024,Passion Fruit Tea,93,511.5
+10,17,2024,Golden Oolong Tea,57,313.5
+10,17,2024,Red Bean Matcha Milk,37,249.75
+10,17,2024,Jasmine Green Tea,87,413.25
+10,18,2024,Classic Brown Sugar Boba Milk Tea,91,568.75
+10,18,2024,Taro Bubble Tea,91,614.25
+10,18,2024,Matcha Black Sugar,75,506.25
+10,18,2024,Black Sugar Coffee Jelly,44,286.0
+10,18,2024,Strawberry Milk,41,328
+10,18,2024,Mango Sago,47,376
+10,18,2024,Passion Fruit Tea,35,192.5
+10,18,2024,Golden Oolong Tea,14,77.0
+10,18,2024,Red Bean Matcha Milk,89,600.75
+10,18,2024,Jasmine Green Tea,16,76.0
+10,19,2024,Classic Brown Sugar Boba Milk Tea,74,462.5
+10,19,2024,Taro Bubble Tea,45,303.75
+10,19,2024,Matcha Black Sugar,21,141.75
+10,19,2024,Black Sugar Coffee Jelly,26,169.0
+10,19,2024,Strawberry Milk,6,48
+10,19,2024,Mango Sago,63,504
+10,19,2024,Passion Fruit Tea,39,214.5
+10,19,2024,Golden Oolong Tea,25,137.5
+10,19,2024,Red Bean Matcha Milk,99,668.25
+10,19,2024,Jasmine Green Tea,22,104.5
+10,20,2024,Classic Brown Sugar Boba Milk Tea,67,418.75
+10,20,2024,Taro Bubble Tea,30,202.5
+10,20,2024,Matcha Black Sugar,74,499.5
+10,20,2024,Black Sugar Coffee Jelly,22,143.0
+10,20,2024,Strawberry Milk,75,600
+10,20,2024,Mango Sago,39,312
+10,20,2024,Passion Fruit Tea,51,280.5
+10,20,2024,Golden Oolong Tea,15,82.5
+10,20,2024,Red Bean Matcha Milk,98,661.5
+10,20,2024,Jasmine Green Tea,46,218.5
+10,21,2024,Classic Brown Sugar Boba Milk Tea,84,525.0
+10,21,2024,Taro Bubble Tea,64,432.0
+10,21,2024,Matcha Black Sugar,74,499.5
+10,21,2024,Black Sugar Coffee Jelly,87,565.5
+10,21,2024,Strawberry Milk,63,504
+10,21,2024,Mango Sago,3,24
+10,21,2024,Passion Fruit Tea,65,357.5
+10,21,2024,Golden Oolong Tea,1,5.5
+10,21,2024,Red Bean Matcha Milk,3,20.25
+10,21,2024,Jasmine Green Tea,7,33.25
+10,22,2024,Classic Brown Sugar Boba Milk Tea,59,368.75
+10,22,2024,Taro Bubble Tea,88,594.0
+10,22,2024,Matcha Black Sugar,5,33.75
+10,22,2024,Black Sugar Coffee Jelly,88,572.0
+10,22,2024,Strawberry Milk,21,168
+10,22,2024,Mango Sago,77,616
+10,22,2024,Passion Fruit Tea,70,385.0
+10,22,2024,Golden Oolong Tea,12,66.0
+10,22,2024,Red Bean Matcha Milk,57,384.75
+10,22,2024,Jasmine Green Tea,42,199.5
+10,23,2024,Classic Brown Sugar Boba Milk Tea,52,325.0
+10,23,2024,Taro Bubble Tea,69,465.75
+10,23,2024,Matcha Black Sugar,9,60.75
+10,23,2024,Black Sugar Coffee Jelly,94,611.0
+10,23,2024,Strawberry Milk,16,128
+10,23,2024,Mango Sago,64,512
+10,23,2024,Passion Fruit Tea,19,104.5
+10,23,2024,Golden Oolong Tea,12,66.0
+10,23,2024,Red Bean Matcha Milk,64,432.0
+10,23,2024,Jasmine Green Tea,59,280.25
+10,24,2024,Classic Brown Sugar Boba Milk Tea,29,181.25
+10,24,2024,Taro Bubble Tea,37,249.75
+10,24,2024,Matcha Black Sugar,31,209.25
+10,24,2024,Black Sugar Coffee Jelly,84,546.0
+10,24,2024,Strawberry Milk,28,224
+10,24,2024,Mango Sago,35,280
+10,24,2024,Passion Fruit Tea,96,528.0
+10,24,2024,Golden Oolong Tea,70,385.0
+10,24,2024,Red Bean Matcha Milk,70,472.5
+10,24,2024,Jasmine Green Tea,62,294.5
+10,25,2024,Classic Brown Sugar Boba Milk Tea,22,137.5
+10,25,2024,Taro Bubble Tea,41,276.75
+10,25,2024,Matcha Black Sugar,67,452.25
+10,25,2024,Black Sugar Coffee Jelly,3,19.5
+10,25,2024,Strawberry Milk,100,800
+10,25,2024,Mango Sago,28,224
+10,25,2024,Passion Fruit Tea,34,187.0
+10,25,2024,Golden Oolong Tea,98,539.0
+10,25,2024,Red Bean Matcha Milk,77,519.75
+10,25,2024,Jasmine Green Tea,98,465.5
+10,26,2024,Classic Brown Sugar Boba Milk Tea,28,175.0
+10,26,2024,Taro Bubble Tea,36,243.0
+10,26,2024,Matcha Black Sugar,92,621.0
+10,26,2024,Black Sugar Coffee Jelly,75,487.5
+10,26,2024,Strawberry Milk,70,560
+10,26,2024,Mango Sago,37,296
+10,26,2024,Passion Fruit Tea,95,522.5
+10,26,2024,Golden Oolong Tea,95,522.5
+10,26,2024,Red Bean Matcha Milk,75,506.25
+10,26,2024,Jasmine Green Tea,58,275.5
+10,27,2024,Classic Brown Sugar Boba Milk Tea,6,37.5
+10,27,2024,Taro Bubble Tea,13,87.75
+10,27,2024,Matcha Black Sugar,72,486.0
+10,27,2024,Black Sugar Coffee Jelly,97,630.5
+10,27,2024,Strawberry Milk,90,720
+10,27,2024,Mango Sago,24,192
+10,27,2024,Passion Fruit Tea,37,203.5
+10,27,2024,Golden Oolong Tea,58,319.0
+10,27,2024,Red Bean Matcha Milk,64,432.0
+10,27,2024,Jasmine Green Tea,34,161.5
+10,28,2024,Classic Brown Sugar Boba Milk Tea,96,600.0
+10,28,2024,Taro Bubble Tea,91,614.25
+10,28,2024,Matcha Black Sugar,14,94.5
+10,28,2024,Black Sugar Coffee Jelly,27,175.5
+10,28,2024,Strawberry Milk,58,464
+10,28,2024,Mango Sago,44,352
+10,28,2024,Passion Fruit Tea,47,258.5
+10,28,2024,Golden Oolong Tea,12,66.0
+10,28,2024,Red Bean Matcha Milk,62,418.5
+10,28,2024,Jasmine Green Tea,25,118.75
+10,29,2024,Classic Brown Sugar Boba Milk Tea,49,306.25
+10,29,2024,Taro Bubble Tea,5,33.75
+10,29,2024,Matcha Black Sugar,30,202.5
+10,29,2024,Black Sugar Coffee Jelly,89,578.5
+10,29,2024,Strawberry Milk,94,752
+10,29,2024,Mango Sago,61,488
+10,29,2024,Passion Fruit Tea,2,11.0
+10,29,2024,Golden Oolong Tea,67,368.5
+10,29,2024,Red Bean Matcha Milk,70,472.5
+10,29,2024,Jasmine Green Tea,74,351.5
+10,30,2024,Classic Brown Sugar Boba Milk Tea,9,56.25
+10,30,2024,Taro Bubble Tea,50,337.5
+10,30,2024,Matcha Black Sugar,53,357.75
+10,30,2024,Black Sugar Coffee Jelly,17,110.5
+10,30,2024,Strawberry Milk,86,688
+10,30,2024,Mango Sago,10,80
+10,30,2024,Passion Fruit Tea,43,236.5
+10,30,2024,Golden Oolong Tea,29,159.5
+10,30,2024,Red Bean Matcha Milk,43,290.25
+10,30,2024,Jasmine Green Tea,57,270.75
+10,31,2024,Classic Brown Sugar Boba Milk Tea,15,93.75
+10,31,2024,Taro Bubble Tea,54,364.5
+10,31,2024,Matcha Black Sugar,82,553.5
+10,31,2024,Black Sugar Coffee Jelly,17,110.5
+10,31,2024,Strawberry Milk,75,600
+10,31,2024,Mango Sago,57,456
+10,31,2024,Passion Fruit Tea,14,77.0
+10,31,2024,Golden Oolong Tea,70,385.0
+10,31,2024,Red Bean Matcha Milk,51,344.25
+10,31,2024,Jasmine Green Tea,34,161.5
+11,1,2024,Classic Brown Sugar Boba Milk Tea,7,43.75
+11,1,2024,Taro Bubble Tea,59,398.25
+11,1,2024,Matcha Black Sugar,66,445.5
+11,1,2024,Black Sugar Coffee Jelly,92,598.0
+11,1,2024,Strawberry Milk,23,184
+11,1,2024,Mango Sago,13,104
+11,1,2024,Passion Fruit Tea,64,352.0
+11,1,2024,Golden Oolong Tea,84,462.0
+11,1,2024,Red Bean Matcha Milk,31,209.25
+11,1,2024,Jasmine Green Tea,19,90.25
+11,2,2024,Classic Brown Sugar Boba Milk Tea,35,218.75
+11,2,2024,Taro Bubble Tea,7,47.25
+11,2,2024,Matcha Black Sugar,66,445.5
+11,2,2024,Black Sugar Coffee Jelly,3,19.5
+11,2,2024,Strawberry Milk,19,152
+11,2,2024,Mango Sago,39,312
+11,2,2024,Passion Fruit Tea,91,500.5
+11,2,2024,Golden Oolong Tea,98,539.0
+11,2,2024,Red Bean Matcha Milk,78,526.5
+11,2,2024,Jasmine Green Tea,27,128.25
+11,3,2024,Classic Brown Sugar Boba Milk Tea,6,37.5
+11,3,2024,Taro Bubble Tea,74,499.5
+11,3,2024,Matcha Black Sugar,7,47.25
+11,3,2024,Black Sugar Coffee Jelly,52,338.0
+11,3,2024,Strawberry Milk,50,400
+11,3,2024,Mango Sago,18,144
+11,3,2024,Passion Fruit Tea,92,506.0
+11,3,2024,Golden Oolong Tea,8,44.0
+11,3,2024,Red Bean Matcha Milk,42,283.5
+11,3,2024,Jasmine Green Tea,90,427.5
+11,4,2024,Classic Brown Sugar Boba Milk Tea,53,331.25
+11,4,2024,Taro Bubble Tea,78,526.5
+11,4,2024,Matcha Black Sugar,49,330.75
+11,4,2024,Black Sugar Coffee Jelly,75,487.5
+11,4,2024,Strawberry Milk,84,672
+11,4,2024,Mango Sago,60,480
+11,4,2024,Passion Fruit Tea,60,330.0
+11,4,2024,Golden Oolong Tea,36,198.0
+11,4,2024,Red Bean Matcha Milk,13,87.75
+11,4,2024,Jasmine Green Tea,74,351.5
+11,5,2024,Classic Brown Sugar Boba Milk Tea,22,137.5
+11,5,2024,Taro Bubble Tea,21,141.75
+11,5,2024,Matcha Black Sugar,40,270.0
+11,5,2024,Black Sugar Coffee Jelly,97,630.5
+11,5,2024,Strawberry Milk,30,240
+11,5,2024,Mango Sago,25,200
+11,5,2024,Passion Fruit Tea,70,385.0
+11,5,2024,Golden Oolong Tea,28,154.0
+11,5,2024,Red Bean Matcha Milk,38,256.5
+11,5,2024,Jasmine Green Tea,1,4.75
+11,6,2024,Classic Brown Sugar Boba Milk Tea,90,562.5
+11,6,2024,Taro Bubble Tea,41,276.75
+11,6,2024,Matcha Black Sugar,18,121.5
+11,6,2024,Black Sugar Coffee Jelly,42,273.0
+11,6,2024,Strawberry Milk,6,48
+11,6,2024,Mango Sago,92,736
+11,6,2024,Passion Fruit Tea,11,60.5
+11,6,2024,Golden Oolong Tea,17,93.5
+11,6,2024,Red Bean Matcha Milk,12,81.0
+11,6,2024,Jasmine Green Tea,16,76.0
+11,7,2024,Classic Brown Sugar Boba Milk Tea,32,200.0
+11,7,2024,Taro Bubble Tea,44,297.0
+11,7,2024,Matcha Black Sugar,24,162.0
+11,7,2024,Black Sugar Coffee Jelly,59,383.5
+11,7,2024,Strawberry Milk,59,472
+11,7,2024,Mango Sago,68,544
+11,7,2024,Passion Fruit Tea,78,429.0
+11,7,2024,Golden Oolong Tea,62,341.0
+11,7,2024,Red Bean Matcha Milk,99,668.25
+11,7,2024,Jasmine Green Tea,88,418.0
+11,8,2024,Classic Brown Sugar Boba Milk Tea,77,481.25
+11,8,2024,Taro Bubble Tea,44,297.0
+11,8,2024,Matcha Black Sugar,88,594.0
+11,8,2024,Black Sugar Coffee Jelly,79,513.5
+11,8,2024,Strawberry Milk,64,512
+11,8,2024,Mango Sago,89,712
+11,8,2024,Passion Fruit Tea,63,346.5
+11,8,2024,Golden Oolong Tea,71,390.5
+11,8,2024,Red Bean Matcha Milk,76,513.0
+11,8,2024,Jasmine Green Tea,98,465.5
+11,9,2024,Classic Brown Sugar Boba Milk Tea,43,268.75
+11,9,2024,Taro Bubble Tea,86,580.5
+11,9,2024,Matcha Black Sugar,94,634.5
+11,9,2024,Black Sugar Coffee Jelly,14,91.0
+11,9,2024,Strawberry Milk,52,416
+11,9,2024,Mango Sago,44,352
+11,9,2024,Passion Fruit Tea,18,99.0
+11,9,2024,Golden Oolong Tea,85,467.5
+11,9,2024,Red Bean Matcha Milk,12,81.0
+11,9,2024,Jasmine Green Tea,52,247.0
+11,10,2024,Classic Brown Sugar Boba Milk Tea,44,275.0
+11,10,2024,Taro Bubble Tea,23,155.25
+11,10,2024,Matcha Black Sugar,2,13.5
+11,10,2024,Black Sugar Coffee Jelly,15,97.5
+11,10,2024,Strawberry Milk,64,512
+11,10,2024,Mango Sago,80,640
+11,10,2024,Passion Fruit Tea,63,346.5
+11,10,2024,Golden Oolong Tea,88,484.0
+11,10,2024,Red Bean Matcha Milk,88,594.0
+11,10,2024,Jasmine Green Tea,6,28.5
+11,11,2024,Classic Brown Sugar Boba Milk Tea,52,325.0
+11,11,2024,Taro Bubble Tea,100,675.0
+11,11,2024,Matcha Black Sugar,76,513.0
+11,11,2024,Black Sugar Coffee Jelly,34,221.0
+11,11,2024,Strawberry Milk,58,464
+11,11,2024,Mango Sago,3,24
+11,11,2024,Passion Fruit Tea,47,258.5
+11,11,2024,Golden Oolong Tea,35,192.5
+11,11,2024,Red Bean Matcha Milk,8,54.0
+11,11,2024,Jasmine Green Tea,45,213.75
+11,12,2024,Classic Brown Sugar Boba Milk Tea,72,450.0
+11,12,2024,Taro Bubble Tea,51,344.25
+11,12,2024,Matcha Black Sugar,99,668.25
+11,12,2024,Black Sugar Coffee Jelly,5,32.5
+11,12,2024,Strawberry Milk,75,600
+11,12,2024,Mango Sago,81,648
+11,12,2024,Passion Fruit Tea,55,302.5
+11,12,2024,Golden Oolong Tea,3,16.5
+11,12,2024,Red Bean Matcha Milk,51,344.25
+11,12,2024,Jasmine Green Tea,44,209.0
+11,13,2024,Classic Brown Sugar Boba Milk Tea,72,450.0
+11,13,2024,Taro Bubble Tea,94,634.5
+11,13,2024,Matcha Black Sugar,52,351.0
+11,13,2024,Black Sugar Coffee Jelly,30,195.0
+11,13,2024,Strawberry Milk,76,608
+11,13,2024,Mango Sago,38,304
+11,13,2024,Passion Fruit Tea,36,198.0
+11,13,2024,Golden Oolong Tea,6,33.0
+11,13,2024,Red Bean Matcha Milk,11,74.25
+11,13,2024,Jasmine Green Tea,24,114.0
+11,14,2024,Classic Brown Sugar Boba Milk Tea,6,37.5
+11,14,2024,Taro Bubble Tea,69,465.75
+11,14,2024,Matcha Black Sugar,21,141.75
+11,14,2024,Black Sugar Coffee Jelly,85,552.5
+11,14,2024,Strawberry Milk,27,216
+11,14,2024,Mango Sago,78,624
+11,14,2024,Passion Fruit Tea,76,418.0
+11,14,2024,Golden Oolong Tea,67,368.5
+11,14,2024,Red Bean Matcha Milk,54,364.5
+11,14,2024,Jasmine Green Tea,89,422.75
+11,15,2024,Classic Brown Sugar Boba Milk Tea,4,25.0
+11,15,2024,Taro Bubble Tea,58,391.5
+11,15,2024,Matcha Black Sugar,40,270.0
+11,15,2024,Black Sugar Coffee Jelly,16,104.0
+11,15,2024,Strawberry Milk,48,384
+11,15,2024,Mango Sago,56,448
+11,15,2024,Passion Fruit Tea,10,55.0
+11,15,2024,Golden Oolong Tea,3,16.5
+11,15,2024,Red Bean Matcha Milk,28,189.0
+11,15,2024,Jasmine Green Tea,32,152.0
+11,16,2024,Classic Brown Sugar Boba Milk Tea,12,75.0
+11,16,2024,Taro Bubble Tea,82,553.5
+11,16,2024,Matcha Black Sugar,35,236.25
+11,16,2024,Black Sugar Coffee Jelly,53,344.5
+11,16,2024,Strawberry Milk,23,184
+11,16,2024,Mango Sago,29,232
+11,16,2024,Passion Fruit Tea,48,264.0
+11,16,2024,Golden Oolong Tea,8,44.0
+11,16,2024,Red Bean Matcha Milk,50,337.5
+11,16,2024,Jasmine Green Tea,80,380.0
+11,17,2024,Classic Brown Sugar Boba Milk Tea,73,456.25
+11,17,2024,Taro Bubble Tea,46,310.5
+11,17,2024,Matcha Black Sugar,94,634.5
+11,17,2024,Black Sugar Coffee Jelly,64,416.0
+11,17,2024,Strawberry Milk,33,264
+11,17,2024,Mango Sago,21,168
+11,17,2024,Passion Fruit Tea,93,511.5
+11,17,2024,Golden Oolong Tea,23,126.5
+11,17,2024,Red Bean Matcha Milk,33,222.75
+11,17,2024,Jasmine Green Tea,25,118.75
+11,18,2024,Classic Brown Sugar Boba Milk Tea,32,200.0
+11,18,2024,Taro Bubble Tea,86,580.5
+11,18,2024,Matcha Black Sugar,75,506.25
+11,18,2024,Black Sugar Coffee Jelly,27,175.5
+11,18,2024,Strawberry Milk,28,224
+11,18,2024,Mango Sago,97,776
+11,18,2024,Passion Fruit Tea,35,192.5
+11,18,2024,Golden Oolong Tea,32,176.0
+11,18,2024,Red Bean Matcha Milk,37,249.75
+11,18,2024,Jasmine Green Tea,79,375.25
+11,19,2024,Classic Brown Sugar Boba Milk Tea,5,31.25
+11,19,2024,Taro Bubble Tea,97,654.75
+11,19,2024,Matcha Black Sugar,30,202.5
+11,19,2024,Black Sugar Coffee Jelly,94,611.0
+11,19,2024,Strawberry Milk,97,776
+11,19,2024,Mango Sago,22,176
+11,19,2024,Passion Fruit Tea,82,451.0
+11,19,2024,Golden Oolong Tea,51,280.5
+11,19,2024,Red Bean Matcha Milk,86,580.5
+11,19,2024,Jasmine Green Tea,73,346.75
+11,20,2024,Classic Brown Sugar Boba Milk Tea,94,587.5
+11,20,2024,Taro Bubble Tea,14,94.5
+11,20,2024,Matcha Black Sugar,93,627.75
+11,20,2024,Black Sugar Coffee Jelly,9,58.5
+11,20,2024,Strawberry Milk,68,544
+11,20,2024,Mango Sago,5,40
+11,20,2024,Passion Fruit Tea,46,253.0
+11,20,2024,Golden Oolong Tea,99,544.5
+11,20,2024,Red Bean Matcha Milk,22,148.5
+11,20,2024,Jasmine Green Tea,71,337.25
+11,21,2024,Classic Brown Sugar Boba Milk Tea,6,37.5
+11,21,2024,Taro Bubble Tea,14,94.5
+11,21,2024,Matcha Black Sugar,17,114.75
+11,21,2024,Black Sugar Coffee Jelly,62,403.0
+11,21,2024,Strawberry Milk,57,456
+11,21,2024,Mango Sago,48,384
+11,21,2024,Passion Fruit Tea,76,418.0
+11,21,2024,Golden Oolong Tea,59,324.5
+11,21,2024,Red Bean Matcha Milk,72,486.0
+11,21,2024,Jasmine Green Tea,71,337.25
+11,22,2024,Classic Brown Sugar Boba Milk Tea,100,625.0
+11,22,2024,Taro Bubble Tea,33,222.75
+11,22,2024,Matcha Black Sugar,45,303.75
+11,22,2024,Black Sugar Coffee Jelly,26,169.0
+11,22,2024,Strawberry Milk,5,40
+11,22,2024,Mango Sago,65,520
+11,22,2024,Passion Fruit Tea,24,132.0
+11,22,2024,Golden Oolong Tea,52,286.0
+11,22,2024,Red Bean Matcha Milk,78,526.5
+11,22,2024,Jasmine Green Tea,55,261.25
+11,23,2024,Classic Brown Sugar Boba Milk Tea,46,287.5
+11,23,2024,Taro Bubble Tea,92,621.0
+11,23,2024,Matcha Black Sugar,12,81.0
+11,23,2024,Black Sugar Coffee Jelly,48,312.0
+11,23,2024,Strawberry Milk,87,696
+11,23,2024,Mango Sago,26,208
+11,23,2024,Passion Fruit Tea,77,423.5
+11,23,2024,Golden Oolong Tea,41,225.5
+11,23,2024,Red Bean Matcha Milk,77,519.75
+11,23,2024,Jasmine Green Tea,19,90.25
+11,24,2024,Classic Brown Sugar Boba Milk Tea,68,425.0
+11,24,2024,Taro Bubble Tea,9,60.75
+11,24,2024,Matcha Black Sugar,24,162.0
+11,24,2024,Black Sugar Coffee Jelly,87,565.5
+11,24,2024,Strawberry Milk,22,176
+11,24,2024,Mango Sago,76,608
+11,24,2024,Passion Fruit Tea,46,253.0
+11,24,2024,Golden Oolong Tea,15,82.5
+11,24,2024,Red Bean Matcha Milk,57,384.75
+11,24,2024,Jasmine Green Tea,56,266.0
+11,25,2024,Classic Brown Sugar Boba Milk Tea,77,481.25
+11,25,2024,Taro Bubble Tea,61,411.75
+11,25,2024,Matcha Black Sugar,98,661.5
+11,25,2024,Black Sugar Coffee Jelly,13,84.5
+11,25,2024,Strawberry Milk,14,112
+11,25,2024,Mango Sago,93,744
+11,25,2024,Passion Fruit Tea,88,484.0
+11,25,2024,Golden Oolong Tea,10,55.0
+11,25,2024,Red Bean Matcha Milk,20,135.0
+11,25,2024,Jasmine Green Tea,82,389.5
+11,26,2024,Classic Brown Sugar Boba Milk Tea,28,175.0
+11,26,2024,Taro Bubble Tea,26,175.5
+11,26,2024,Matcha Black Sugar,89,600.75
+11,26,2024,Black Sugar Coffee Jelly,70,455.0
+11,26,2024,Strawberry Milk,3,24
+11,26,2024,Mango Sago,55,440
+11,26,2024,Passion Fruit Tea,49,269.5
+11,26,2024,Golden Oolong Tea,53,291.5
+11,26,2024,Red Bean Matcha Milk,66,445.5
+11,26,2024,Jasmine Green Tea,73,346.75
+11,27,2024,Classic Brown Sugar Boba Milk Tea,41,256.25
+11,27,2024,Taro Bubble Tea,91,614.25
+11,27,2024,Matcha Black Sugar,95,641.25
+11,27,2024,Black Sugar Coffee Jelly,64,416.0
+11,27,2024,Strawberry Milk,14,112
+11,27,2024,Mango Sago,11,88
+11,27,2024,Passion Fruit Tea,82,451.0
+11,27,2024,Golden Oolong Tea,4,22.0
+11,27,2024,Red Bean Matcha Milk,65,438.75
+11,27,2024,Jasmine Green Tea,78,370.5
+11,28,2024,Classic Brown Sugar Boba Milk Tea,74,462.5
+11,28,2024,Taro Bubble Tea,93,627.75
+11,28,2024,Matcha Black Sugar,40,270.0
+11,28,2024,Black Sugar Coffee Jelly,41,266.5
+11,28,2024,Strawberry Milk,60,480
+11,28,2024,Mango Sago,29,232
+11,28,2024,Passion Fruit Tea,66,363.0
+11,28,2024,Golden Oolong Tea,97,533.5
+11,28,2024,Red Bean Matcha Milk,79,533.25
+11,28,2024,Jasmine Green Tea,94,446.5
+11,29,2024,Classic Brown Sugar Boba Milk Tea,4,25.0
+11,29,2024,Taro Bubble Tea,31,209.25
+11,29,2024,Matcha Black Sugar,33,222.75
+11,29,2024,Black Sugar Coffee Jelly,30,195.0
+11,29,2024,Strawberry Milk,7,56
+11,29,2024,Mango Sago,20,160
+11,29,2024,Passion Fruit Tea,73,401.5
+11,29,2024,Golden Oolong Tea,85,467.5
+11,29,2024,Red Bean Matcha Milk,19,128.25
+11,29,2024,Jasmine Green Tea,34,161.5
+11,30,2024,Classic Brown Sugar Boba Milk Tea,42,262.5
+11,30,2024,Taro Bubble Tea,17,114.75
+11,30,2024,Matcha Black Sugar,85,573.75
+11,30,2024,Black Sugar Coffee Jelly,61,396.5
+11,30,2024,Strawberry Milk,61,488
+11,30,2024,Mango Sago,29,232
+11,30,2024,Passion Fruit Tea,38,209.0
+11,30,2024,Golden Oolong Tea,69,379.5
+11,30,2024,Red Bean Matcha Milk,83,560.25
+11,30,2024,Jasmine Green Tea,17,80.75
+12,1,2024,Classic Brown Sugar Boba Milk Tea,19,118.75
+12,1,2024,Taro Bubble Tea,52,351.0
+12,1,2024,Matcha Black Sugar,21,141.75
+12,1,2024,Black Sugar Coffee Jelly,32,208.0
+12,1,2024,Strawberry Milk,85,680
+12,1,2024,Mango Sago,13,104
+12,1,2024,Passion Fruit Tea,3,16.5
+12,1,2024,Golden Oolong Tea,45,247.5
+12,1,2024,Red Bean Matcha Milk,70,472.5
+12,1,2024,Jasmine Green Tea,26,123.5
+12,2,2024,Classic Brown Sugar Boba Milk Tea,11,68.75
+12,2,2024,Taro Bubble Tea,81,546.75
+12,2,2024,Matcha Black Sugar,35,236.25
+12,2,2024,Black Sugar Coffee Jelly,39,253.5
+12,2,2024,Strawberry Milk,58,464
+12,2,2024,Mango Sago,17,136
+12,2,2024,Passion Fruit Tea,35,192.5
+12,2,2024,Golden Oolong Tea,96,528.0
+12,2,2024,Red Bean Matcha Milk,79,533.25
+12,2,2024,Jasmine Green Tea,49,232.75
+12,3,2024,Classic Brown Sugar Boba Milk Tea,86,537.5
+12,3,2024,Taro Bubble Tea,93,627.75
+12,3,2024,Matcha Black Sugar,9,60.75
+12,3,2024,Black Sugar Coffee Jelly,56,364.0
+12,3,2024,Strawberry Milk,54,432
+12,3,2024,Mango Sago,14,112
+12,3,2024,Passion Fruit Tea,51,280.5
+12,3,2024,Golden Oolong Tea,6,33.0
+12,3,2024,Red Bean Matcha Milk,58,391.5
+12,3,2024,Jasmine Green Tea,47,223.25
+12,4,2024,Classic Brown Sugar Boba Milk Tea,3,18.75
+12,4,2024,Taro Bubble Tea,41,276.75
+12,4,2024,Matcha Black Sugar,81,546.75
+12,4,2024,Black Sugar Coffee Jelly,38,247.0
+12,4,2024,Strawberry Milk,43,344
+12,4,2024,Mango Sago,89,712
+12,4,2024,Passion Fruit Tea,43,236.5
+12,4,2024,Golden Oolong Tea,46,253.0
+12,4,2024,Red Bean Matcha Milk,70,472.5
+12,4,2024,Jasmine Green Tea,77,365.75
+12,5,2024,Classic Brown Sugar Boba Milk Tea,2,12.5
+12,5,2024,Taro Bubble Tea,54,364.5
+12,5,2024,Matcha Black Sugar,67,452.25
+12,5,2024,Black Sugar Coffee Jelly,22,143.0
+12,5,2024,Strawberry Milk,82,656
+12,5,2024,Mango Sago,88,704
+12,5,2024,Passion Fruit Tea,77,423.5
+12,5,2024,Golden Oolong Tea,48,264.0
+12,5,2024,Red Bean Matcha Milk,64,432.0
+12,5,2024,Jasmine Green Tea,57,270.75
+12,6,2024,Classic Brown Sugar Boba Milk Tea,66,412.5
+12,6,2024,Taro Bubble Tea,6,40.5
+12,6,2024,Matcha Black Sugar,73,492.75
+12,6,2024,Black Sugar Coffee Jelly,79,513.5
+12,6,2024,Strawberry Milk,74,592
+12,6,2024,Mango Sago,84,672
+12,6,2024,Passion Fruit Tea,22,121.0
+12,6,2024,Golden Oolong Tea,46,253.0
+12,6,2024,Red Bean Matcha Milk,90,607.5
+12,6,2024,Jasmine Green Tea,45,213.75
+12,7,2024,Classic Brown Sugar Boba Milk Tea,67,418.75
+12,7,2024,Taro Bubble Tea,14,94.5
+12,7,2024,Matcha Black Sugar,26,175.5
+12,7,2024,Black Sugar Coffee Jelly,37,240.5
+12,7,2024,Strawberry Milk,20,160
+12,7,2024,Mango Sago,54,432
+12,7,2024,Passion Fruit Tea,76,418.0
+12,7,2024,Golden Oolong Tea,83,456.5
+12,7,2024,Red Bean Matcha Milk,87,587.25
+12,7,2024,Jasmine Green Tea,18,85.5
+12,8,2024,Classic Brown Sugar Boba Milk Tea,64,400.0
+12,8,2024,Taro Bubble Tea,34,229.5
+12,8,2024,Matcha Black Sugar,49,330.75
+12,8,2024,Black Sugar Coffee Jelly,52,338.0
+12,8,2024,Strawberry Milk,51,408
+12,8,2024,Mango Sago,5,40
+12,8,2024,Passion Fruit Tea,87,478.5
+12,8,2024,Golden Oolong Tea,13,71.5
+12,8,2024,Red Bean Matcha Milk,13,87.75
+12,8,2024,Jasmine Green Tea,27,128.25
+12,9,2024,Classic Brown Sugar Boba Milk Tea,85,531.25
+12,9,2024,Taro Bubble Tea,13,87.75
+12,9,2024,Matcha Black Sugar,27,182.25
+12,9,2024,Black Sugar Coffee Jelly,6,39.0
+12,9,2024,Strawberry Milk,29,232
+12,9,2024,Mango Sago,4,32
+12,9,2024,Passion Fruit Tea,62,341.0
+12,9,2024,Golden Oolong Tea,79,434.5
+12,9,2024,Red Bean Matcha Milk,48,324.0
+12,9,2024,Jasmine Green Tea,84,399.0
+12,10,2024,Classic Brown Sugar Boba Milk Tea,96,600.0
+12,10,2024,Taro Bubble Tea,65,438.75
+12,10,2024,Matcha Black Sugar,55,371.25
+12,10,2024,Black Sugar Coffee Jelly,42,273.0
+12,10,2024,Strawberry Milk,40,320
+12,10,2024,Mango Sago,45,360
+12,10,2024,Passion Fruit Tea,58,319.0
+12,10,2024,Golden Oolong Tea,94,517.0
+12,10,2024,Red Bean Matcha Milk,30,202.5
+12,10,2024,Jasmine Green Tea,69,327.75
+12,11,2024,Classic Brown Sugar Boba Milk Tea,56,350.0
+12,11,2024,Taro Bubble Tea,17,114.75
+12,11,2024,Matcha Black Sugar,88,594.0
+12,11,2024,Black Sugar Coffee Jelly,7,45.5
+12,11,2024,Strawberry Milk,89,712
+12,11,2024,Mango Sago,23,184
+12,11,2024,Passion Fruit Tea,6,33.0
+12,11,2024,Golden Oolong Tea,4,22.0
+12,11,2024,Red Bean Matcha Milk,38,256.5
+12,11,2024,Jasmine Green Tea,78,370.5
+12,12,2024,Classic Brown Sugar Boba Milk Tea,37,231.25
+12,12,2024,Taro Bubble Tea,20,135.0
+12,12,2024,Matcha Black Sugar,1,6.75
+12,12,2024,Black Sugar Coffee Jelly,11,71.5
+12,12,2024,Strawberry Milk,26,208
+12,12,2024,Mango Sago,10,80
+12,12,2024,Passion Fruit Tea,33,181.5
+12,12,2024,Golden Oolong Tea,33,181.5
+12,12,2024,Red Bean Matcha Milk,93,627.75
+12,12,2024,Jasmine Green Tea,4,19.0
+12,13,2024,Classic Brown Sugar Boba Milk Tea,30,187.5
+12,13,2024,Taro Bubble Tea,87,587.25
+12,13,2024,Matcha Black Sugar,15,101.25
+12,13,2024,Black Sugar Coffee Jelly,91,591.5
+12,13,2024,Strawberry Milk,67,536
+12,13,2024,Mango Sago,5,40
+12,13,2024,Passion Fruit Tea,72,396.0
+12,13,2024,Golden Oolong Tea,26,143.0
+12,13,2024,Red Bean Matcha Milk,73,492.75
+12,13,2024,Jasmine Green Tea,1,4.75
+12,14,2024,Classic Brown Sugar Boba Milk Tea,77,481.25
+12,14,2024,Taro Bubble Tea,16,108.0
+12,14,2024,Matcha Black Sugar,22,148.5
+12,14,2024,Black Sugar Coffee Jelly,27,175.5
+12,14,2024,Strawberry Milk,59,472
+12,14,2024,Mango Sago,18,144
+12,14,2024,Passion Fruit Tea,7,38.5
+12,14,2024,Golden Oolong Tea,15,82.5
+12,14,2024,Red Bean Matcha Milk,78,526.5
+12,14,2024,Jasmine Green Tea,90,427.5
+12,15,2024,Classic Brown Sugar Boba Milk Tea,82,512.5
+12,15,2024,Taro Bubble Tea,40,270.0
+12,15,2024,Matcha Black Sugar,88,594.0
+12,15,2024,Black Sugar Coffee Jelly,90,585.0
+12,15,2024,Strawberry Milk,32,256
+12,15,2024,Mango Sago,15,120
+12,15,2024,Passion Fruit Tea,8,44.0
+12,15,2024,Golden Oolong Tea,66,363.0
+12,15,2024,Red Bean Matcha Milk,78,526.5
+12,15,2024,Jasmine Green Tea,84,399.0
+12,16,2024,Classic Brown Sugar Boba Milk Tea,93,581.25
+12,16,2024,Taro Bubble Tea,52,351.0
+12,16,2024,Matcha Black Sugar,26,175.5
+12,16,2024,Black Sugar Coffee Jelly,69,448.5
+12,16,2024,Strawberry Milk,99,792
+12,16,2024,Mango Sago,81,648
+12,16,2024,Passion Fruit Tea,8,44.0
+12,16,2024,Golden Oolong Tea,42,231.0
+12,16,2024,Red Bean Matcha Milk,83,560.25
+12,16,2024,Jasmine Green Tea,30,142.5
+12,17,2024,Classic Brown Sugar Boba Milk Tea,84,525.0
+12,17,2024,Taro Bubble Tea,58,391.5
+12,17,2024,Matcha Black Sugar,28,189.0
+12,17,2024,Black Sugar Coffee Jelly,53,344.5
+12,17,2024,Strawberry Milk,89,712
+12,17,2024,Mango Sago,47,376
+12,17,2024,Passion Fruit Tea,93,511.5
+12,17,2024,Golden Oolong Tea,43,236.5
+12,17,2024,Red Bean Matcha Milk,90,607.5
+12,17,2024,Jasmine Green Tea,41,194.75
+12,18,2024,Classic Brown Sugar Boba Milk Tea,67,418.75
+12,18,2024,Taro Bubble Tea,68,459.0
+12,18,2024,Matcha Black Sugar,15,101.25
+12,18,2024,Black Sugar Coffee Jelly,41,266.5
+12,18,2024,Strawberry Milk,64,512
+12,18,2024,Mango Sago,51,408
+12,18,2024,Passion Fruit Tea,41,225.5
+12,18,2024,Golden Oolong Tea,39,214.5
+12,18,2024,Red Bean Matcha Milk,31,209.25
+12,18,2024,Jasmine Green Tea,78,370.5
+12,19,2024,Classic Brown Sugar Boba Milk Tea,21,131.25
+12,19,2024,Taro Bubble Tea,52,351.0
+12,19,2024,Matcha Black Sugar,86,580.5
+12,19,2024,Black Sugar Coffee Jelly,22,143.0
+12,19,2024,Strawberry Milk,41,328
+12,19,2024,Mango Sago,15,120
+12,19,2024,Passion Fruit Tea,68,374.0
+12,19,2024,Golden Oolong Tea,26,143.0
+12,19,2024,Red Bean Matcha Milk,16,108.0
+12,19,2024,Jasmine Green Tea,76,361.0
+12,20,2024,Classic Brown Sugar Boba Milk Tea,50,312.5
+12,20,2024,Taro Bubble Tea,50,337.5
+12,20,2024,Matcha Black Sugar,8,54.0
+12,20,2024,Black Sugar Coffee Jelly,6,39.0
+12,20,2024,Strawberry Milk,64,512
+12,20,2024,Mango Sago,35,280
+12,20,2024,Passion Fruit Tea,61,335.5
+12,20,2024,Golden Oolong Tea,36,198.0
+12,20,2024,Red Bean Matcha Milk,20,135.0
+12,20,2024,Jasmine Green Tea,82,389.5
+12,21,2024,Classic Brown Sugar Boba Milk Tea,96,600.0
+12,21,2024,Taro Bubble Tea,15,101.25
+12,21,2024,Matcha Black Sugar,21,141.75
+12,21,2024,Black Sugar Coffee Jelly,14,91.0
+12,21,2024,Strawberry Milk,84,672
+12,21,2024,Mango Sago,9,72
+12,21,2024,Passion Fruit Tea,84,462.0
+12,21,2024,Golden Oolong Tea,76,418.0
+12,21,2024,Red Bean Matcha Milk,79,533.25
+12,21,2024,Jasmine Green Tea,76,361.0
+12,22,2024,Classic Brown Sugar Boba Milk Tea,33,206.25
+12,22,2024,Taro Bubble Tea,35,236.25
+12,22,2024,Matcha Black Sugar,98,661.5
+12,22,2024,Black Sugar Coffee Jelly,29,188.5
+12,22,2024,Strawberry Milk,27,216
+12,22,2024,Mango Sago,8,64
+12,22,2024,Passion Fruit Tea,31,170.5
+12,22,2024,Golden Oolong Tea,55,302.5
+12,22,2024,Red Bean Matcha Milk,26,175.5
+12,22,2024,Jasmine Green Tea,65,308.75
+12,23,2024,Classic Brown Sugar Boba Milk Tea,56,350.0
+12,23,2024,Taro Bubble Tea,86,580.5
+12,23,2024,Matcha Black Sugar,32,216.0
+12,23,2024,Black Sugar Coffee Jelly,91,591.5
+12,23,2024,Strawberry Milk,95,760
+12,23,2024,Mango Sago,71,568
+12,23,2024,Passion Fruit Tea,5,27.5
+12,23,2024,Golden Oolong Tea,31,170.5
+12,23,2024,Red Bean Matcha Milk,73,492.75
+12,23,2024,Jasmine Green Tea,47,223.25
+12,24,2024,Classic Brown Sugar Boba Milk Tea,100,625.0
+12,24,2024,Taro Bubble Tea,39,263.25
+12,24,2024,Matcha Black Sugar,20,135.0
+12,24,2024,Black Sugar Coffee Jelly,1,6.5
+12,24,2024,Strawberry Milk,5,40
+12,24,2024,Mango Sago,62,496
+12,24,2024,Passion Fruit Tea,57,313.5
+12,24,2024,Golden Oolong Tea,15,82.5
+12,24,2024,Red Bean Matcha Milk,38,256.5
+12,24,2024,Jasmine Green Tea,91,432.25
+12,25,2024,Classic Brown Sugar Boba Milk Tea,78,487.5
+12,25,2024,Taro Bubble Tea,88,594.0
+12,25,2024,Matcha Black Sugar,5,33.75
+12,25,2024,Black Sugar Coffee Jelly,30,195.0
+12,25,2024,Strawberry Milk,25,200
+12,25,2024,Mango Sago,2,16
+12,25,2024,Passion Fruit Tea,97,533.5
+12,25,2024,Golden Oolong Tea,66,363.0
+12,25,2024,Red Bean Matcha Milk,38,256.5
+12,25,2024,Jasmine Green Tea,85,403.75
+12,26,2024,Classic Brown Sugar Boba Milk Tea,56,350.0
+12,26,2024,Taro Bubble Tea,60,405.0
+12,26,2024,Matcha Black Sugar,77,519.75
+12,26,2024,Black Sugar Coffee Jelly,32,208.0
+12,26,2024,Strawberry Milk,5,40
+12,26,2024,Mango Sago,51,408
+12,26,2024,Passion Fruit Tea,96,528.0
+12,26,2024,Golden Oolong Tea,44,242.0
+12,26,2024,Red Bean Matcha Milk,27,182.25
+12,26,2024,Jasmine Green Tea,72,342.0
+12,27,2024,Classic Brown Sugar Boba Milk Tea,48,300.0
+12,27,2024,Taro Bubble Tea,61,411.75
+12,27,2024,Matcha Black Sugar,79,533.25
+12,27,2024,Black Sugar Coffee Jelly,64,416.0
+12,27,2024,Strawberry Milk,76,608
+12,27,2024,Mango Sago,53,424
+12,27,2024,Passion Fruit Tea,85,467.5
+12,27,2024,Golden Oolong Tea,94,517.0
+12,27,2024,Red Bean Matcha Milk,14,94.5
+12,27,2024,Jasmine Green Tea,93,441.75
+12,28,2024,Classic Brown Sugar Boba Milk Tea,18,112.5
+12,28,2024,Taro Bubble Tea,57,384.75
+12,28,2024,Matcha Black Sugar,90,607.5
+12,28,2024,Black Sugar Coffee Jelly,48,312.0
+12,28,2024,Strawberry Milk,15,120
+12,28,2024,Mango Sago,72,576
+12,28,2024,Passion Fruit Tea,65,357.5
+12,28,2024,Golden Oolong Tea,79,434.5
+12,28,2024,Red Bean Matcha Milk,51,344.25
+12,28,2024,Jasmine Green Tea,52,247.0
+12,29,2024,Classic Brown Sugar Boba Milk Tea,58,362.5
+12,29,2024,Taro Bubble Tea,39,263.25
+12,29,2024,Matcha Black Sugar,80,540.0
+12,29,2024,Black Sugar Coffee Jelly,9,58.5
+12,29,2024,Strawberry Milk,70,560
+12,29,2024,Mango Sago,57,456
+12,29,2024,Passion Fruit Tea,40,220.0
+12,29,2024,Golden Oolong Tea,97,533.5
+12,29,2024,Red Bean Matcha Milk,73,492.75
+12,29,2024,Jasmine Green Tea,72,342.0
+12,30,2024,Classic Brown Sugar Boba Milk Tea,21,131.25
+12,30,2024,Taro Bubble Tea,69,465.75
+12,30,2024,Matcha Black Sugar,72,486.0
+12,30,2024,Black Sugar Coffee Jelly,65,422.5
+12,30,2024,Strawberry Milk,31,248
+12,30,2024,Mango Sago,94,752
+12,30,2024,Passion Fruit Tea,90,495.0
+12,30,2024,Golden Oolong Tea,48,264.0
+12,30,2024,Red Bean Matcha Milk,72,486.0
+12,30,2024,Jasmine Green Tea,10,47.5
+12,31,2024,Classic Brown Sugar Boba Milk Tea,93,581.25
+12,31,2024,Taro Bubble Tea,66,445.5
+12,31,2024,Matcha Black Sugar,79,533.25
+12,31,2024,Black Sugar Coffee Jelly,99,643.5
+12,31,2024,Strawberry Milk,48,384
+12,31,2024,Mango Sago,69,552
+12,31,2024,Passion Fruit Tea,6,33.0
+12,31,2024,Golden Oolong Tea,3,16.5
+12,31,2024,Red Bean Matcha Milk,97,654.75
+12,31,2024,Jasmine Green Tea,50,237.5
+1,1,2025,Classic Brown Sugar Boba Milk Tea,63,393.75
+1,1,2025,Taro Bubble Tea,19,128.25
+1,1,2025,Matcha Black Sugar,6,40.5
+1,1,2025,Black Sugar Coffee Jelly,86,559.0
+1,1,2025,Strawberry Milk,50,400
+1,1,2025,Mango Sago,47,376
+1,1,2025,Passion Fruit Tea,10,55.0
+1,1,2025,Golden Oolong Tea,84,462.0
+1,1,2025,Red Bean Matcha Milk,57,384.75
+1,1,2025,Jasmine Green Tea,73,346.75
+1,2,2025,Classic Brown Sugar Boba Milk Tea,59,368.75
+1,2,2025,Taro Bubble Tea,24,162.0
+1,2,2025,Matcha Black Sugar,20,135.0
+1,2,2025,Black Sugar Coffee Jelly,19,123.5
+1,2,2025,Strawberry Milk,67,536
+1,2,2025,Mango Sago,71,568
+1,2,2025,Passion Fruit Tea,80,440.0
+1,2,2025,Golden Oolong Tea,5,27.5
+1,2,2025,Red Bean Matcha Milk,56,378.0
+1,2,2025,Jasmine Green Tea,10,47.5
+1,3,2025,Classic Brown Sugar Boba Milk Tea,89,556.25
+1,3,2025,Taro Bubble Tea,8,54.0
+1,3,2025,Matcha Black Sugar,32,216.0
+1,3,2025,Black Sugar Coffee Jelly,59,383.5
+1,3,2025,Strawberry Milk,50,400
+1,3,2025,Mango Sago,98,784
+1,3,2025,Passion Fruit Tea,68,374.0
+1,3,2025,Golden Oolong Tea,37,203.5
+1,3,2025,Red Bean Matcha Milk,31,209.25
+1,3,2025,Jasmine Green Tea,43,204.25
+1,4,2025,Classic Brown Sugar Boba Milk Tea,47,293.75
+1,4,2025,Taro Bubble Tea,25,168.75
+1,4,2025,Matcha Black Sugar,15,101.25
+1,4,2025,Black Sugar Coffee Jelly,68,442.0
+1,4,2025,Strawberry Milk,65,520
+1,4,2025,Mango Sago,56,448
+1,4,2025,Passion Fruit Tea,67,368.5
+1,4,2025,Golden Oolong Tea,51,280.5
+1,4,2025,Red Bean Matcha Milk,86,580.5
+1,4,2025,Jasmine Green Tea,39,185.25
+1,5,2025,Classic Brown Sugar Boba Milk Tea,53,331.25
+1,5,2025,Taro Bubble Tea,91,614.25
+1,5,2025,Matcha Black Sugar,77,519.75
+1,5,2025,Black Sugar Coffee Jelly,24,156.0
+1,5,2025,Strawberry Milk,5,40
+1,5,2025,Mango Sago,15,120
+1,5,2025,Passion Fruit Tea,41,225.5
+1,5,2025,Golden Oolong Tea,14,77.0
+1,5,2025,Red Bean Matcha Milk,56,378.0
+1,5,2025,Jasmine Green Tea,79,375.25
+1,6,2025,Classic Brown Sugar Boba Milk Tea,59,368.75
+1,6,2025,Taro Bubble Tea,32,216.0
+1,6,2025,Matcha Black Sugar,57,384.75
+1,6,2025,Black Sugar Coffee Jelly,83,539.5
+1,6,2025,Strawberry Milk,39,312
+1,6,2025,Mango Sago,73,584
+1,6,2025,Passion Fruit Tea,56,308.0
+1,6,2025,Golden Oolong Tea,33,181.5
+1,6,2025,Red Bean Matcha Milk,15,101.25
+1,6,2025,Jasmine Green Tea,5,23.75
+1,7,2025,Classic Brown Sugar Boba Milk Tea,74,462.5
+1,7,2025,Taro Bubble Tea,91,614.25
+1,7,2025,Matcha Black Sugar,18,121.5
+1,7,2025,Black Sugar Coffee Jelly,57,370.5
+1,7,2025,Strawberry Milk,25,200
+1,7,2025,Mango Sago,58,464
+1,7,2025,Passion Fruit Tea,27,148.5
+1,7,2025,Golden Oolong Tea,89,489.5
+1,7,2025,Red Bean Matcha Milk,73,492.75
+1,7,2025,Jasmine Green Tea,58,275.5
+1,8,2025,Classic Brown Sugar Boba Milk Tea,56,350.0
+1,8,2025,Taro Bubble Tea,9,60.75
+1,8,2025,Matcha Black Sugar,7,47.25
+1,8,2025,Black Sugar Coffee Jelly,69,448.5
+1,8,2025,Strawberry Milk,49,392
+1,8,2025,Mango Sago,37,296
+1,8,2025,Passion Fruit Tea,11,60.5
+1,8,2025,Golden Oolong Tea,97,533.5
+1,8,2025,Red Bean Matcha Milk,2,13.5
+1,8,2025,Jasmine Green Tea,77,365.75
+1,9,2025,Classic Brown Sugar Boba Milk Tea,57,356.25
+1,9,2025,Taro Bubble Tea,37,249.75
+1,9,2025,Matcha Black Sugar,19,128.25
+1,9,2025,Black Sugar Coffee Jelly,69,448.5
+1,9,2025,Strawberry Milk,75,600
+1,9,2025,Mango Sago,57,456
+1,9,2025,Passion Fruit Tea,28,154.0
+1,9,2025,Golden Oolong Tea,64,352.0
+1,9,2025,Red Bean Matcha Milk,20,135.0
+1,9,2025,Jasmine Green Tea,62,294.5
+1,10,2025,Classic Brown Sugar Boba Milk Tea,2,12.5
+1,10,2025,Taro Bubble Tea,54,364.5
+1,10,2025,Matcha Black Sugar,30,202.5
+1,10,2025,Black Sugar Coffee Jelly,36,234.0
+1,10,2025,Strawberry Milk,71,568
+1,10,2025,Mango Sago,58,464
+1,10,2025,Passion Fruit Tea,9,49.5
+1,10,2025,Golden Oolong Tea,24,132.0
+1,10,2025,Red Bean Matcha Milk,6,40.5
+1,10,2025,Jasmine Green Tea,54,256.5
+1,11,2025,Classic Brown Sugar Boba Milk Tea,17,106.25
+1,11,2025,Taro Bubble Tea,41,276.75
+1,11,2025,Matcha Black Sugar,42,283.5
+1,11,2025,Black Sugar Coffee Jelly,6,39.0
+1,11,2025,Strawberry Milk,73,584
+1,11,2025,Mango Sago,48,384
+1,11,2025,Passion Fruit Tea,94,517.0
+1,11,2025,Golden Oolong Tea,96,528.0
+1,11,2025,Red Bean Matcha Milk,11,74.25
+1,11,2025,Jasmine Green Tea,56,266.0
+1,12,2025,Classic Brown Sugar Boba Milk Tea,49,306.25
+1,12,2025,Taro Bubble Tea,5,33.75
+1,12,2025,Matcha Black Sugar,38,256.5
+1,12,2025,Black Sugar Coffee Jelly,69,448.5
+1,12,2025,Strawberry Milk,20,160
+1,12,2025,Mango Sago,11,88
+1,12,2025,Passion Fruit Tea,69,379.5
+1,12,2025,Golden Oolong Tea,88,484.0
+1,12,2025,Red Bean Matcha Milk,19,128.25
+1,12,2025,Jasmine Green Tea,66,313.5
+1,13,2025,Classic Brown Sugar Boba Milk Tea,81,506.25
+1,13,2025,Taro Bubble Tea,1,6.75
+1,13,2025,Matcha Black Sugar,53,357.75
+1,13,2025,Black Sugar Coffee Jelly,82,533.0
+1,13,2025,Strawberry Milk,59,472
+1,13,2025,Mango Sago,75,600
+1,13,2025,Passion Fruit Tea,49,269.5
+1,13,2025,Golden Oolong Tea,94,517.0
+1,13,2025,Red Bean Matcha Milk,85,573.75
+1,13,2025,Jasmine Green Tea,74,351.5
+1,14,2025,Classic Brown Sugar Boba Milk Tea,41,256.25
+1,14,2025,Taro Bubble Tea,3,20.25
+1,14,2025,Matcha Black Sugar,37,249.75
+1,14,2025,Black Sugar Coffee Jelly,38,247.0
+1,14,2025,Strawberry Milk,41,328
+1,14,2025,Mango Sago,84,672
+1,14,2025,Passion Fruit Tea,10,55.0
+1,14,2025,Golden Oolong Tea,30,165.0
+1,14,2025,Red Bean Matcha Milk,39,263.25
+1,14,2025,Jasmine Green Tea,67,318.25
+1,15,2025,Classic Brown Sugar Boba Milk Tea,74,462.5
+1,15,2025,Taro Bubble Tea,93,627.75
+1,15,2025,Matcha Black Sugar,53,357.75
+1,15,2025,Black Sugar Coffee Jelly,11,71.5
+1,15,2025,Strawberry Milk,90,720
+1,15,2025,Mango Sago,88,704
+1,15,2025,Passion Fruit Tea,49,269.5
+1,15,2025,Golden Oolong Tea,43,236.5
+1,15,2025,Red Bean Matcha Milk,70,472.5
+1,15,2025,Jasmine Green Tea,96,456.0
+1,16,2025,Classic Brown Sugar Boba Milk Tea,105,656.25
+1,16,2025,Taro Bubble Tea,189,1275.75
+1,16,2025,Matcha Black Sugar,416,2808.0
+1,16,2025,Black Sugar Coffee Jelly,60,390.0
+1,16,2025,Strawberry Milk,270,2160
+1,16,2025,Mango Sago,274,2192
+1,16,2025,Passion Fruit Tea,160,880.0
+1,16,2025,Golden Oolong Tea,59,324.5
+1,16,2025,Red Bean Matcha Milk,315,2126.25
+1,16,2025,Jasmine Green Tea,388,1843.0
+1,17,2025,Classic Brown Sugar Boba Milk Tea,14,87.5
+1,17,2025,Taro Bubble Tea,20,135.0
+1,17,2025,Matcha Black Sugar,71,479.25
+1,17,2025,Black Sugar Coffee Jelly,1,6.5
+1,17,2025,Strawberry Milk,66,528
+1,17,2025,Mango Sago,58,464
+1,17,2025,Passion Fruit Tea,51,280.5
+1,17,2025,Golden Oolong Tea,55,302.5
+1,17,2025,Red Bean Matcha Milk,52,351.0
+1,17,2025,Jasmine Green Tea,82,389.5
+1,18,2025,Classic Brown Sugar Boba Milk Tea,83,518.75
+1,18,2025,Taro Bubble Tea,37,249.75
+1,18,2025,Matcha Black Sugar,41,276.75
+1,18,2025,Black Sugar Coffee Jelly,20,130.0
+1,18,2025,Strawberry Milk,17,136
+1,18,2025,Mango Sago,10,80
+1,18,2025,Passion Fruit Tea,95,522.5
+1,18,2025,Golden Oolong Tea,25,137.5
+1,18,2025,Red Bean Matcha Milk,17,114.75
+1,18,2025,Jasmine Green Tea,82,389.5
+1,19,2025,Classic Brown Sugar Boba Milk Tea,94,587.5
+1,19,2025,Taro Bubble Tea,11,74.25
+1,19,2025,Matcha Black Sugar,44,297.0
+1,19,2025,Black Sugar Coffee Jelly,91,591.5
+1,19,2025,Strawberry Milk,27,216
+1,19,2025,Mango Sago,88,704
+1,19,2025,Passion Fruit Tea,64,352.0
+1,19,2025,Golden Oolong Tea,65,357.5
+1,19,2025,Red Bean Matcha Milk,53,357.75
+1,19,2025,Jasmine Green Tea,27,128.25
+1,20,2025,Classic Brown Sugar Boba Milk Tea,61,381.25
+1,20,2025,Taro Bubble Tea,75,506.25
+1,20,2025,Matcha Black Sugar,98,661.5
+1,20,2025,Black Sugar Coffee Jelly,85,552.5
+1,20,2025,Strawberry Milk,46,368
+1,20,2025,Mango Sago,43,344
+1,20,2025,Passion Fruit Tea,6,33.0
+1,20,2025,Golden Oolong Tea,58,319.0
+1,20,2025,Red Bean Matcha Milk,23,155.25
+1,20,2025,Jasmine Green Tea,33,156.75
+1,21,2025,Classic Brown Sugar Boba Milk Tea,8,50.0
+1,21,2025,Taro Bubble Tea,24,162.0
+1,21,2025,Matcha Black Sugar,99,668.25
+1,21,2025,Black Sugar Coffee Jelly,95,617.5
+1,21,2025,Strawberry Milk,81,648
+1,21,2025,Mango Sago,87,696
+1,21,2025,Passion Fruit Tea,36,198.0
+1,21,2025,Golden Oolong Tea,73,401.5
+1,21,2025,Red Bean Matcha Milk,40,270.0
+1,21,2025,Jasmine Green Tea,59,280.25
+1,22,2025,Classic Brown Sugar Boba Milk Tea,85,531.25
+1,22,2025,Taro Bubble Tea,10,67.5
+1,22,2025,Matcha Black Sugar,13,87.75
+1,22,2025,Black Sugar Coffee Jelly,84,546.0
+1,22,2025,Strawberry Milk,56,448
+1,22,2025,Mango Sago,54,432
+1,22,2025,Passion Fruit Tea,87,478.5
+1,22,2025,Golden Oolong Tea,53,291.5
+1,22,2025,Red Bean Matcha Milk,2,13.5
+1,22,2025,Jasmine Green Tea,34,161.5
+1,23,2025,Classic Brown Sugar Boba Milk Tea,34,212.5
+1,23,2025,Taro Bubble Tea,42,283.5
+1,23,2025,Matcha Black Sugar,63,425.25
+1,23,2025,Black Sugar Coffee Jelly,18,117.0
+1,23,2025,Strawberry Milk,99,792
+1,23,2025,Mango Sago,61,488
+1,23,2025,Passion Fruit Tea,49,269.5
+1,23,2025,Golden Oolong Tea,57,313.5
+1,23,2025,Red Bean Matcha Milk,73,492.75
+1,23,2025,Jasmine Green Tea,79,375.25
+1,24,2025,Classic Brown Sugar Boba Milk Tea,85,531.25
+1,24,2025,Taro Bubble Tea,95,641.25
+1,24,2025,Matcha Black Sugar,63,425.25
+1,24,2025,Black Sugar Coffee Jelly,49,318.5
+1,24,2025,Strawberry Milk,69,552
+1,24,2025,Mango Sago,42,336
+1,24,2025,Passion Fruit Tea,61,335.5
+1,24,2025,Golden Oolong Tea,7,38.5
+1,24,2025,Red Bean Matcha Milk,12,81.0
+1,24,2025,Jasmine Green Tea,12,57.0
+1,25,2025,Classic Brown Sugar Boba Milk Tea,48,300.0
+1,25,2025,Taro Bubble Tea,53,357.75
+1,25,2025,Matcha Black Sugar,79,533.25
+1,25,2025,Black Sugar Coffee Jelly,51,331.5
+1,25,2025,Strawberry Milk,26,208
+1,25,2025,Mango Sago,91,728
+1,25,2025,Passion Fruit Tea,88,484.0
+1,25,2025,Golden Oolong Tea,85,467.5
+1,25,2025,Red Bean Matcha Milk,23,155.25
+1,25,2025,Jasmine Green Tea,26,123.5
+1,26,2025,Classic Brown Sugar Boba Milk Tea,96,600.0
+1,26,2025,Taro Bubble Tea,30,202.5
+1,26,2025,Matcha Black Sugar,100,675.0
+1,26,2025,Black Sugar Coffee Jelly,25,162.5
+1,26,2025,Strawberry Milk,20,160
+1,26,2025,Mango Sago,80,640
+1,26,2025,Passion Fruit Tea,1,5.5
+1,26,2025,Golden Oolong Tea,57,313.5
+1,26,2025,Red Bean Matcha Milk,57,384.75
+1,26,2025,Jasmine Green Tea,8,38.0
+1,27,2025,Classic Brown Sugar Boba Milk Tea,26,162.5
+1,27,2025,Taro Bubble Tea,29,195.75
+1,27,2025,Matcha Black Sugar,75,506.25
+1,27,2025,Black Sugar Coffee Jelly,60,390.0
+1,27,2025,Strawberry Milk,37,296
+1,27,2025,Mango Sago,80,640
+1,27,2025,Passion Fruit Tea,42,231.0
+1,27,2025,Golden Oolong Tea,82,451.0
+1,27,2025,Red Bean Matcha Milk,71,479.25
+1,27,2025,Jasmine Green Tea,85,403.75
+1,28,2025,Classic Brown Sugar Boba Milk Tea,28,175.0
+1,28,2025,Taro Bubble Tea,58,391.5
+1,28,2025,Matcha Black Sugar,74,499.5
+1,28,2025,Black Sugar Coffee Jelly,13,84.5
+1,28,2025,Strawberry Milk,89,712
+1,28,2025,Mango Sago,39,312
+1,28,2025,Passion Fruit Tea,63,346.5
+1,28,2025,Golden Oolong Tea,4,22.0
+1,28,2025,Red Bean Matcha Milk,14,94.5
+1,28,2025,Jasmine Green Tea,54,256.5
+1,29,2025,Classic Brown Sugar Boba Milk Tea,35,218.75
+1,29,2025,Taro Bubble Tea,2,13.5
+1,29,2025,Matcha Black Sugar,1,6.75
+1,29,2025,Black Sugar Coffee Jelly,8,52.0
+1,29,2025,Strawberry Milk,61,488
+1,29,2025,Mango Sago,90,720
+1,29,2025,Passion Fruit Tea,68,374.0
+1,29,2025,Golden Oolong Tea,37,203.5
+1,29,2025,Red Bean Matcha Milk,66,445.5
+1,29,2025,Jasmine Green Tea,63,299.25
+1,30,2025,Classic Brown Sugar Boba Milk Tea,55,343.75
+1,30,2025,Taro Bubble Tea,21,141.75
+1,30,2025,Matcha Black Sugar,64,432.0
+1,30,2025,Black Sugar Coffee Jelly,39,253.5
+1,30,2025,Strawberry Milk,62,496
+1,30,2025,Mango Sago,77,616
+1,30,2025,Passion Fruit Tea,53,291.5
+1,30,2025,Golden Oolong Tea,30,165.0
+1,30,2025,Red Bean Matcha Milk,4,27.0
+1,30,2025,Jasmine Green Tea,70,332.5
+1,31,2025,Classic Brown Sugar Boba Milk Tea,64,400.0
+1,31,2025,Taro Bubble Tea,17,114.75
+1,31,2025,Matcha Black Sugar,98,661.5
+1,31,2025,Black Sugar Coffee Jelly,100,650.0
+1,31,2025,Strawberry Milk,39,312
+1,31,2025,Mango Sago,3,24
+1,31,2025,Passion Fruit Tea,81,445.5
+1,31,2025,Golden Oolong Tea,82,451.0
+1,31,2025,Red Bean Matcha Milk,55,371.25
+1,31,2025,Jasmine Green Tea,78,370.5
+2,1,2025,Classic Brown Sugar Boba Milk Tea,63,393.75
+2,1,2025,Taro Bubble Tea,46,310.5
+2,1,2025,Matcha Black Sugar,33,222.75
+2,1,2025,Black Sugar Coffee Jelly,58,377.0
+2,1,2025,Strawberry Milk,28,224
+2,1,2025,Mango Sago,22,176
+2,1,2025,Passion Fruit Tea,70,385.0
+2,1,2025,Golden Oolong Tea,52,286.0
+2,1,2025,Red Bean Matcha Milk,43,290.25
+2,1,2025,Jasmine Green Tea,89,422.75
+2,2,2025,Classic Brown Sugar Boba Milk Tea,57,356.25
+2,2,2025,Taro Bubble Tea,100,675.0
+2,2,2025,Matcha Black Sugar,48,324.0
+2,2,2025,Black Sugar Coffee Jelly,9,58.5
+2,2,2025,Strawberry Milk,48,384
+2,2,2025,Mango Sago,67,536
+2,2,2025,Passion Fruit Tea,100,550.0
+2,2,2025,Golden Oolong Tea,65,357.5
+2,2,2025,Red Bean Matcha Milk,15,101.25
+2,2,2025,Jasmine Green Tea,54,256.5
+2,3,2025,Classic Brown Sugar Boba Milk Tea,34,212.5
+2,3,2025,Taro Bubble Tea,91,614.25
+2,3,2025,Matcha Black Sugar,19,128.25
+2,3,2025,Black Sugar Coffee Jelly,25,162.5
+2,3,2025,Strawberry Milk,1,8
+2,3,2025,Mango Sago,30,240
+2,3,2025,Passion Fruit Tea,42,231.0
+2,3,2025,Golden Oolong Tea,68,374.0
+2,3,2025,Red Bean Matcha Milk,69,465.75
+2,3,2025,Jasmine Green Tea,47,223.25
+2,4,2025,Classic Brown Sugar Boba Milk Tea,92,575.0
+2,4,2025,Taro Bubble Tea,17,114.75
+2,4,2025,Matcha Black Sugar,55,371.25
+2,4,2025,Black Sugar Coffee Jelly,83,539.5
+2,4,2025,Strawberry Milk,38,304
+2,4,2025,Mango Sago,58,464
+2,4,2025,Passion Fruit Tea,98,539.0
+2,4,2025,Golden Oolong Tea,14,77.0
+2,4,2025,Red Bean Matcha Milk,26,175.5
+2,4,2025,Jasmine Green Tea,23,109.25
+2,5,2025,Classic Brown Sugar Boba Milk Tea,56,350.0
+2,5,2025,Taro Bubble Tea,23,155.25
+2,5,2025,Matcha Black Sugar,28,189.0
+2,5,2025,Black Sugar Coffee Jelly,42,273.0
+2,5,2025,Strawberry Milk,71,568
+2,5,2025,Mango Sago,13,104
+2,5,2025,Passion Fruit Tea,87,478.5
+2,5,2025,Golden Oolong Tea,3,16.5
+2,5,2025,Red Bean Matcha Milk,88,594.0
+2,5,2025,Jasmine Green Tea,80,380.0
+2,6,2025,Classic Brown Sugar Boba Milk Tea,71,443.75
+2,6,2025,Taro Bubble Tea,100,675.0
+2,6,2025,Matcha Black Sugar,26,175.5
+2,6,2025,Black Sugar Coffee Jelly,17,110.5
+2,6,2025,Strawberry Milk,44,352
+2,6,2025,Mango Sago,23,184
+2,6,2025,Passion Fruit Tea,59,324.5
+2,6,2025,Golden Oolong Tea,86,473.0
+2,6,2025,Red Bean Matcha Milk,96,648.0
+2,6,2025,Jasmine Green Tea,56,266.0
+2,7,2025,Classic Brown Sugar Boba Milk Tea,12,75.0
+2,7,2025,Taro Bubble Tea,86,580.5
+2,7,2025,Matcha Black Sugar,14,94.5
+2,7,2025,Black Sugar Coffee Jelly,24,156.0
+2,7,2025,Strawberry Milk,99,792
+2,7,2025,Mango Sago,33,264
+2,7,2025,Passion Fruit Tea,40,220.0
+2,7,2025,Golden Oolong Tea,13,71.5
+2,7,2025,Red Bean Matcha Milk,25,168.75
+2,7,2025,Jasmine Green Tea,17,80.75
+2,8,2025,Classic Brown Sugar Boba Milk Tea,9,56.25
+2,8,2025,Taro Bubble Tea,86,580.5
+2,8,2025,Matcha Black Sugar,36,243.0
+2,8,2025,Black Sugar Coffee Jelly,28,182.0
+2,8,2025,Strawberry Milk,34,272
+2,8,2025,Mango Sago,54,432
+2,8,2025,Passion Fruit Tea,79,434.5
+2,8,2025,Golden Oolong Tea,53,291.5
+2,8,2025,Red Bean Matcha Milk,41,276.75
+2,8,2025,Jasmine Green Tea,94,446.5
+2,9,2025,Classic Brown Sugar Boba Milk Tea,25,156.25
+2,9,2025,Taro Bubble Tea,70,472.5
+2,9,2025,Matcha Black Sugar,32,216.0
+2,9,2025,Black Sugar Coffee Jelly,13,84.5
+2,9,2025,Strawberry Milk,56,448
+2,9,2025,Mango Sago,79,632
+2,9,2025,Passion Fruit Tea,27,148.5
+2,9,2025,Golden Oolong Tea,46,253.0
+2,9,2025,Red Bean Matcha Milk,67,452.25
+2,9,2025,Jasmine Green Tea,16,76.0
+2,10,2025,Classic Brown Sugar Boba Milk Tea,55,343.75
+2,10,2025,Taro Bubble Tea,17,114.75
+2,10,2025,Matcha Black Sugar,5,33.75
+2,10,2025,Black Sugar Coffee Jelly,12,78.0
+2,10,2025,Strawberry Milk,90,720
+2,10,2025,Mango Sago,54,432
+2,10,2025,Passion Fruit Tea,91,500.5
+2,10,2025,Golden Oolong Tea,30,165.0
+2,10,2025,Red Bean Matcha Milk,7,47.25
+2,10,2025,Jasmine Green Tea,62,294.5
+2,11,2025,Classic Brown Sugar Boba Milk Tea,12,75.0
+2,11,2025,Taro Bubble Tea,2,13.5
+2,11,2025,Matcha Black Sugar,30,202.5
+2,11,2025,Black Sugar Coffee Jelly,23,149.5
+2,11,2025,Strawberry Milk,66,528
+2,11,2025,Mango Sago,33,264
+2,11,2025,Passion Fruit Tea,69,379.5
+2,11,2025,Golden Oolong Tea,83,456.5
+2,11,2025,Red Bean Matcha Milk,66,445.5
+2,11,2025,Jasmine Green Tea,89,422.75
+2,12,2025,Classic Brown Sugar Boba Milk Tea,60,375.0
+2,12,2025,Taro Bubble Tea,91,614.25
+2,12,2025,Matcha Black Sugar,74,499.5
+2,12,2025,Black Sugar Coffee Jelly,35,227.5
+2,12,2025,Strawberry Milk,26,208
+2,12,2025,Mango Sago,64,512
+2,12,2025,Passion Fruit Tea,2,11.0
+2,12,2025,Golden Oolong Tea,88,484.0
+2,12,2025,Red Bean Matcha Milk,79,533.25
+2,12,2025,Jasmine Green Tea,21,99.75
+2,13,2025,Classic Brown Sugar Boba Milk Tea,94,587.5
+2,13,2025,Taro Bubble Tea,78,526.5
+2,13,2025,Matcha Black Sugar,43,290.25
+2,13,2025,Black Sugar Coffee Jelly,93,604.5
+2,13,2025,Strawberry Milk,84,672
+2,13,2025,Mango Sago,4,32
+2,13,2025,Passion Fruit Tea,84,462.0
+2,13,2025,Golden Oolong Tea,63,346.5
+2,13,2025,Red Bean Matcha Milk,90,607.5
+2,13,2025,Jasmine Green Tea,75,356.25
+2,14,2025,Classic Brown Sugar Boba Milk Tea,32,200.0
+2,14,2025,Taro Bubble Tea,76,513.0
+2,14,2025,Matcha Black Sugar,28,189.0
+2,14,2025,Black Sugar Coffee Jelly,82,533.0
+2,14,2025,Strawberry Milk,13,104
+2,14,2025,Mango Sago,64,512
+2,14,2025,Passion Fruit Tea,67,368.5
+2,14,2025,Golden Oolong Tea,49,269.5
+2,14,2025,Red Bean Matcha Milk,50,337.5
+2,14,2025,Jasmine Green Tea,65,308.75
+2,15,2025,Classic Brown Sugar Boba Milk Tea,28,175.0
+2,15,2025,Taro Bubble Tea,9,60.75
+2,15,2025,Matcha Black Sugar,27,182.25
+2,15,2025,Black Sugar Coffee Jelly,47,305.5
+2,15,2025,Strawberry Milk,4,32
+2,15,2025,Mango Sago,4,32
+2,15,2025,Passion Fruit Tea,23,126.5
+2,15,2025,Golden Oolong Tea,5,27.5
+2,15,2025,Red Bean Matcha Milk,33,222.75
+2,15,2025,Jasmine Green Tea,74,351.5
+2,16,2025,Classic Brown Sugar Boba Milk Tea,62,387.5
+2,16,2025,Taro Bubble Tea,31,209.25
+2,16,2025,Matcha Black Sugar,14,94.5
+2,16,2025,Black Sugar Coffee Jelly,22,143.0
+2,16,2025,Strawberry Milk,13,104
+2,16,2025,Mango Sago,39,312
+2,16,2025,Passion Fruit Tea,100,550.0
+2,16,2025,Golden Oolong Tea,48,264.0
+2,16,2025,Red Bean Matcha Milk,9,60.75
+2,16,2025,Jasmine Green Tea,81,384.75
+2,17,2025,Classic Brown Sugar Boba Milk Tea,37,231.25
+2,17,2025,Taro Bubble Tea,91,614.25
+2,17,2025,Matcha Black Sugar,54,364.5
+2,17,2025,Black Sugar Coffee Jelly,35,227.5
+2,17,2025,Strawberry Milk,37,296
+2,17,2025,Mango Sago,6,48
+2,17,2025,Passion Fruit Tea,18,99.0
+2,17,2025,Golden Oolong Tea,31,170.5
+2,17,2025,Red Bean Matcha Milk,42,283.5
+2,17,2025,Jasmine Green Tea,55,261.25
+2,18,2025,Classic Brown Sugar Boba Milk Tea,40,250.0
+2,18,2025,Taro Bubble Tea,13,87.75
+2,18,2025,Matcha Black Sugar,96,648.0
+2,18,2025,Black Sugar Coffee Jelly,95,617.5
+2,18,2025,Strawberry Milk,91,728
+2,18,2025,Mango Sago,37,296
+2,18,2025,Passion Fruit Tea,15,82.5
+2,18,2025,Golden Oolong Tea,13,71.5
+2,18,2025,Red Bean Matcha Milk,8,54.0
+2,18,2025,Jasmine Green Tea,50,237.5
+2,19,2025,Classic Brown Sugar Boba Milk Tea,30,187.5
+2,19,2025,Taro Bubble Tea,77,519.75
+2,19,2025,Matcha Black Sugar,90,607.5
+2,19,2025,Black Sugar Coffee Jelly,27,175.5
+2,19,2025,Strawberry Milk,86,688
+2,19,2025,Mango Sago,81,648
+2,19,2025,Passion Fruit Tea,81,445.5
+2,19,2025,Golden Oolong Tea,66,363.0
+2,19,2025,Red Bean Matcha Milk,89,600.75
+2,19,2025,Jasmine Green Tea,82,389.5
+2,20,2025,Classic Brown Sugar Boba Milk Tea,55,343.75
+2,20,2025,Taro Bubble Tea,3,20.25
+2,20,2025,Matcha Black Sugar,39,263.25
+2,20,2025,Black Sugar Coffee Jelly,83,539.5
+2,20,2025,Strawberry Milk,56,448
+2,20,2025,Mango Sago,93,744
+2,20,2025,Passion Fruit Tea,52,286.0
+2,20,2025,Golden Oolong Tea,99,544.5
+2,20,2025,Red Bean Matcha Milk,84,567.0
+2,20,2025,Jasmine Green Tea,1,4.75
+2,21,2025,Classic Brown Sugar Boba Milk Tea,18,112.5
+2,21,2025,Taro Bubble Tea,96,648.0
+2,21,2025,Matcha Black Sugar,10,67.5
+2,21,2025,Black Sugar Coffee Jelly,44,286.0
+2,21,2025,Strawberry Milk,4,32
+2,21,2025,Mango Sago,19,152
+2,21,2025,Passion Fruit Tea,32,176.0
+2,21,2025,Golden Oolong Tea,84,462.0
+2,21,2025,Red Bean Matcha Milk,64,432.0
+2,21,2025,Jasmine Green Tea,99,470.25
+2,22,2025,Classic Brown Sugar Boba Milk Tea,69,431.25
+2,22,2025,Taro Bubble Tea,52,351.0
+2,22,2025,Matcha Black Sugar,2,13.5
+2,22,2025,Black Sugar Coffee Jelly,61,396.5
+2,22,2025,Strawberry Milk,14,112
+2,22,2025,Mango Sago,85,680
+2,22,2025,Passion Fruit Tea,62,341.0
+2,22,2025,Golden Oolong Tea,44,242.0
+2,22,2025,Red Bean Matcha Milk,6,40.5
+2,22,2025,Jasmine Green Tea,74,351.5
+2,23,2025,Classic Brown Sugar Boba Milk Tea,81,506.25
+2,23,2025,Taro Bubble Tea,38,256.5
+2,23,2025,Matcha Black Sugar,60,405.0
+2,23,2025,Black Sugar Coffee Jelly,96,624.0
+2,23,2025,Strawberry Milk,17,136
+2,23,2025,Mango Sago,72,576
+2,23,2025,Passion Fruit Tea,96,528.0
+2,23,2025,Golden Oolong Tea,24,132.0
+2,23,2025,Red Bean Matcha Milk,7,47.25
+2,23,2025,Jasmine Green Tea,64,304.0
+2,24,2025,Classic Brown Sugar Boba Milk Tea,33,206.25
+2,24,2025,Taro Bubble Tea,84,567.0
+2,24,2025,Matcha Black Sugar,51,344.25
+2,24,2025,Black Sugar Coffee Jelly,35,227.5
+2,24,2025,Strawberry Milk,13,104
+2,24,2025,Mango Sago,70,560
+2,24,2025,Passion Fruit Tea,47,258.5
+2,24,2025,Golden Oolong Tea,58,319.0
+2,24,2025,Red Bean Matcha Milk,13,87.75
+2,24,2025,Jasmine Green Tea,74,351.5
+2,25,2025,Classic Brown Sugar Boba Milk Tea,82,512.5
+2,25,2025,Taro Bubble Tea,95,641.25
+2,25,2025,Matcha Black Sugar,80,540.0
+2,25,2025,Black Sugar Coffee Jelly,70,455.0
+2,25,2025,Strawberry Milk,39,312
+2,25,2025,Mango Sago,89,712
+2,25,2025,Passion Fruit Tea,70,385.0
+2,25,2025,Golden Oolong Tea,40,220.0
+2,25,2025,Red Bean Matcha Milk,33,222.75
+2,25,2025,Jasmine Green Tea,13,61.75
+2,26,2025,Classic Brown Sugar Boba Milk Tea,77,481.25
+2,26,2025,Taro Bubble Tea,82,553.5
+2,26,2025,Matcha Black Sugar,97,654.75
+2,26,2025,Black Sugar Coffee Jelly,28,182.0
+2,26,2025,Strawberry Milk,96,768
+2,26,2025,Mango Sago,90,720
+2,26,2025,Passion Fruit Tea,91,500.5
+2,26,2025,Golden Oolong Tea,12,66.0
+2,26,2025,Red Bean Matcha Milk,75,506.25
+2,26,2025,Jasmine Green Tea,72,342.0
+2,27,2025,Classic Brown Sugar Boba Milk Tea,15,93.75
+2,27,2025,Taro Bubble Tea,31,209.25
+2,27,2025,Matcha Black Sugar,73,492.75
+2,27,2025,Black Sugar Coffee Jelly,29,188.5
+2,27,2025,Strawberry Milk,33,264
+2,27,2025,Mango Sago,52,416
+2,27,2025,Passion Fruit Tea,6,33.0
+2,27,2025,Golden Oolong Tea,51,280.5
+2,27,2025,Red Bean Matcha Milk,29,195.75
+2,27,2025,Jasmine Green Tea,97,460.75
+2,28,2025,Classic Brown Sugar Boba Milk Tea,69,431.25
+2,28,2025,Taro Bubble Tea,18,121.5
+2,28,2025,Matcha Black Sugar,91,614.25
+2,28,2025,Black Sugar Coffee Jelly,6,39.0
+2,28,2025,Strawberry Milk,1,8
+2,28,2025,Mango Sago,100,800
+2,28,2025,Passion Fruit Tea,45,247.5
+2,28,2025,Golden Oolong Tea,39,214.5
+2,28,2025,Red Bean Matcha Milk,34,229.5
+2,28,2025,Jasmine Green Tea,98,465.5
+3,1,2025,Classic Brown Sugar Boba Milk Tea,90,562.5
+3,1,2025,Taro Bubble Tea,81,546.75
+3,1,2025,Matcha Black Sugar,40,270.0
+3,1,2025,Black Sugar Coffee Jelly,30,195.0
+3,1,2025,Strawberry Milk,80,640
+3,1,2025,Mango Sago,5,40
+3,1,2025,Passion Fruit Tea,94,517.0
+3,1,2025,Golden Oolong Tea,45,247.5
+3,1,2025,Red Bean Matcha Milk,49,330.75
+3,1,2025,Jasmine Green Tea,26,123.5
+3,2,2025,Classic Brown Sugar Boba Milk Tea,39,243.75
+3,2,2025,Taro Bubble Tea,45,303.75
+3,2,2025,Matcha Black Sugar,79,533.25
+3,2,2025,Black Sugar Coffee Jelly,21,136.5
+3,2,2025,Strawberry Milk,51,408
+3,2,2025,Mango Sago,87,696
+3,2,2025,Passion Fruit Tea,59,324.5
+3,2,2025,Golden Oolong Tea,90,495.0
+3,2,2025,Red Bean Matcha Milk,31,209.25
+3,2,2025,Jasmine Green Tea,33,156.75
+3,3,2025,Classic Brown Sugar Boba Milk Tea,20,125.0
+3,3,2025,Taro Bubble Tea,6,40.5
+3,3,2025,Matcha Black Sugar,55,371.25
+3,3,2025,Black Sugar Coffee Jelly,76,494.0
+3,3,2025,Strawberry Milk,9,72
+3,3,2025,Mango Sago,29,232
+3,3,2025,Passion Fruit Tea,36,198.0
+3,3,2025,Golden Oolong Tea,86,473.0
+3,3,2025,Red Bean Matcha Milk,100,675.0
+3,3,2025,Jasmine Green Tea,95,451.25
+3,4,2025,Classic Brown Sugar Boba Milk Tea,57,356.25
+3,4,2025,Taro Bubble Tea,99,668.25
+3,4,2025,Matcha Black Sugar,59,398.25
+3,4,2025,Black Sugar Coffee Jelly,21,136.5
+3,4,2025,Strawberry Milk,70,560
+3,4,2025,Mango Sago,97,776
+3,4,2025,Passion Fruit Tea,59,324.5
+3,4,2025,Golden Oolong Tea,81,445.5
+3,4,2025,Red Bean Matcha Milk,33,222.75
+3,4,2025,Jasmine Green Tea,11,52.25
+3,5,2025,Classic Brown Sugar Boba Milk Tea,8,50.0
+3,5,2025,Taro Bubble Tea,77,519.75
+3,5,2025,Matcha Black Sugar,57,384.75
+3,5,2025,Black Sugar Coffee Jelly,12,78.0
+3,5,2025,Strawberry Milk,43,344
+3,5,2025,Mango Sago,70,560
+3,5,2025,Passion Fruit Tea,36,198.0
+3,5,2025,Golden Oolong Tea,57,313.5
+3,5,2025,Red Bean Matcha Milk,86,580.5
+3,5,2025,Jasmine Green Tea,50,237.5
+3,6,2025,Classic Brown Sugar Boba Milk Tea,49,306.25
+3,6,2025,Taro Bubble Tea,42,283.5
+3,6,2025,Matcha Black Sugar,22,148.5
+3,6,2025,Black Sugar Coffee Jelly,48,312.0
+3,6,2025,Strawberry Milk,19,152
+3,6,2025,Mango Sago,43,344
+3,6,2025,Passion Fruit Tea,58,319.0
+3,6,2025,Golden Oolong Tea,64,352.0
+3,6,2025,Red Bean Matcha Milk,4,27.0
+3,6,2025,Jasmine Green Tea,89,422.75
+3,7,2025,Classic Brown Sugar Boba Milk Tea,78,487.5
+3,7,2025,Taro Bubble Tea,27,182.25
+3,7,2025,Matcha Black Sugar,2,13.5
+3,7,2025,Black Sugar Coffee Jelly,30,195.0
+3,7,2025,Strawberry Milk,9,72
+3,7,2025,Mango Sago,77,616
+3,7,2025,Passion Fruit Tea,64,352.0
+3,7,2025,Golden Oolong Tea,59,324.5
+3,7,2025,Red Bean Matcha Milk,61,411.75
+3,7,2025,Jasmine Green Tea,65,308.75
+3,8,2025,Classic Brown Sugar Boba Milk Tea,25,156.25
+3,8,2025,Taro Bubble Tea,77,519.75
+3,8,2025,Matcha Black Sugar,85,573.75
+3,8,2025,Black Sugar Coffee Jelly,84,546.0
+3,8,2025,Strawberry Milk,11,88
+3,8,2025,Mango Sago,42,336
+3,8,2025,Passion Fruit Tea,32,176.0
+3,8,2025,Golden Oolong Tea,84,462.0
+3,8,2025,Red Bean Matcha Milk,98,661.5
+3,8,2025,Jasmine Green Tea,30,142.5
+3,9,2025,Classic Brown Sugar Boba Milk Tea,6,37.5
+3,9,2025,Taro Bubble Tea,33,222.75
+3,9,2025,Matcha Black Sugar,2,13.5
+3,9,2025,Black Sugar Coffee Jelly,66,429.0
+3,9,2025,Strawberry Milk,29,232
+3,9,2025,Mango Sago,73,584
+3,9,2025,Passion Fruit Tea,24,132.0
+3,9,2025,Golden Oolong Tea,35,192.5
+3,9,2025,Red Bean Matcha Milk,21,141.75
+3,9,2025,Jasmine Green Tea,33,156.75
+3,10,2025,Classic Brown Sugar Boba Milk Tea,20,125.0
+3,10,2025,Taro Bubble Tea,48,324.0
+3,10,2025,Matcha Black Sugar,95,641.25
+3,10,2025,Black Sugar Coffee Jelly,81,526.5
+3,10,2025,Strawberry Milk,65,520
+3,10,2025,Mango Sago,12,96
+3,10,2025,Passion Fruit Tea,36,198.0
+3,10,2025,Golden Oolong Tea,42,231.0
+3,10,2025,Red Bean Matcha Milk,93,627.75
+3,10,2025,Jasmine Green Tea,41,194.75
+3,11,2025,Classic Brown Sugar Boba Milk Tea,57,356.25
+3,11,2025,Taro Bubble Tea,82,553.5
+3,11,2025,Matcha Black Sugar,6,40.5
+3,11,2025,Black Sugar Coffee Jelly,84,546.0
+3,11,2025,Strawberry Milk,29,232
+3,11,2025,Mango Sago,38,304
+3,11,2025,Passion Fruit Tea,30,165.0
+3,11,2025,Golden Oolong Tea,99,544.5
+3,11,2025,Red Bean Matcha Milk,8,54.0
+3,11,2025,Jasmine Green Tea,87,413.25
+3,12,2025,Classic Brown Sugar Boba Milk Tea,58,362.5
+3,12,2025,Taro Bubble Tea,9,60.75
+3,12,2025,Matcha Black Sugar,30,202.5
+3,12,2025,Black Sugar Coffee Jelly,67,435.5
+3,12,2025,Strawberry Milk,5,40
+3,12,2025,Mango Sago,3,24
+3,12,2025,Passion Fruit Tea,17,93.5
+3,12,2025,Golden Oolong Tea,100,550.0
+3,12,2025,Red Bean Matcha Milk,32,216.0
+3,12,2025,Jasmine Green Tea,65,308.75
+3,13,2025,Classic Brown Sugar Boba Milk Tea,3,18.75
+3,13,2025,Taro Bubble Tea,10,67.5
+3,13,2025,Matcha Black Sugar,57,384.75
+3,13,2025,Black Sugar Coffee Jelly,44,286.0
+3,13,2025,Strawberry Milk,35,280
+3,13,2025,Mango Sago,86,688
+3,13,2025,Passion Fruit Tea,2,11.0
+3,13,2025,Golden Oolong Tea,96,528.0
+3,13,2025,Red Bean Matcha Milk,15,101.25
+3,13,2025,Jasmine Green Tea,48,228.0
+3,14,2025,Classic Brown Sugar Boba Milk Tea,69,431.25
+3,14,2025,Taro Bubble Tea,81,546.75
+3,14,2025,Matcha Black Sugar,3,20.25
+3,14,2025,Black Sugar Coffee Jelly,31,201.5
+3,14,2025,Strawberry Milk,27,216
+3,14,2025,Mango Sago,41,328
+3,14,2025,Passion Fruit Tea,18,99.0
+3,14,2025,Golden Oolong Tea,42,231.0
+3,14,2025,Red Bean Matcha Milk,14,94.5
+3,14,2025,Jasmine Green Tea,49,232.75
+3,15,2025,Classic Brown Sugar Boba Milk Tea,57,356.25
+3,15,2025,Taro Bubble Tea,49,330.75
+3,15,2025,Matcha Black Sugar,10,67.5
+3,15,2025,Black Sugar Coffee Jelly,81,526.5
+3,15,2025,Strawberry Milk,21,168
+3,15,2025,Mango Sago,27,216
+3,15,2025,Passion Fruit Tea,61,335.5
+3,15,2025,Golden Oolong Tea,16,88.0
+3,15,2025,Red Bean Matcha Milk,70,472.5
+3,15,2025,Jasmine Green Tea,98,465.5
+3,16,2025,Classic Brown Sugar Boba Milk Tea,32,200.0
+3,16,2025,Taro Bubble Tea,27,182.25
+3,16,2025,Matcha Black Sugar,83,560.25
+3,16,2025,Black Sugar Coffee Jelly,56,364.0
+3,16,2025,Strawberry Milk,54,432
+3,16,2025,Mango Sago,58,464
+3,16,2025,Passion Fruit Tea,52,286.0
+3,16,2025,Golden Oolong Tea,63,346.5
+3,16,2025,Red Bean Matcha Milk,58,391.5
+3,16,2025,Jasmine Green Tea,74,351.5
+3,17,2025,Classic Brown Sugar Boba Milk Tea,77,481.25
+3,17,2025,Taro Bubble Tea,18,121.5
+3,17,2025,Matcha Black Sugar,82,553.5
+3,17,2025,Black Sugar Coffee Jelly,37,240.5
+3,17,2025,Strawberry Milk,77,616
+3,17,2025,Mango Sago,75,600
+3,17,2025,Passion Fruit Tea,42,231.0
+3,17,2025,Golden Oolong Tea,78,429.0
+3,17,2025,Red Bean Matcha Milk,36,243.0
+3,17,2025,Jasmine Green Tea,67,318.25
+3,18,2025,Classic Brown Sugar Boba Milk Tea,40,250.0
+3,18,2025,Taro Bubble Tea,25,168.75
+3,18,2025,Matcha Black Sugar,48,324.0
+3,18,2025,Black Sugar Coffee Jelly,99,643.5
+3,18,2025,Strawberry Milk,6,48
+3,18,2025,Mango Sago,4,32
+3,18,2025,Passion Fruit Tea,12,66.0
+3,18,2025,Golden Oolong Tea,12,66.0
+3,18,2025,Red Bean Matcha Milk,44,297.0
+3,18,2025,Jasmine Green Tea,28,133.0
+3,19,2025,Classic Brown Sugar Boba Milk Tea,5,31.25
+3,19,2025,Taro Bubble Tea,37,249.75
+3,19,2025,Matcha Black Sugar,68,459.0
+3,19,2025,Black Sugar Coffee Jelly,43,279.5
+3,19,2025,Strawberry Milk,17,136
+3,19,2025,Mango Sago,51,408
+3,19,2025,Passion Fruit Tea,59,324.5
+3,19,2025,Golden Oolong Tea,67,368.5
+3,19,2025,Red Bean Matcha Milk,4,27.0
+3,19,2025,Jasmine Green Tea,83,394.25
+3,20,2025,Classic Brown Sugar Boba Milk Tea,3,18.75
+3,20,2025,Taro Bubble Tea,62,418.5
+3,20,2025,Matcha Black Sugar,87,587.25
+3,20,2025,Black Sugar Coffee Jelly,18,117.0
+3,20,2025,Strawberry Milk,56,448
+3,20,2025,Mango Sago,43,344
+3,20,2025,Passion Fruit Tea,42,231.0
+3,20,2025,Golden Oolong Tea,10,55.0
+3,20,2025,Red Bean Matcha Milk,7,47.25
+3,20,2025,Jasmine Green Tea,64,304.0
+3,21,2025,Classic Brown Sugar Boba Milk Tea,28,175.0
+3,21,2025,Taro Bubble Tea,51,344.25
+3,21,2025,Matcha Black Sugar,99,668.25
+3,21,2025,Black Sugar Coffee Jelly,78,507.0
+3,21,2025,Strawberry Milk,3,24
+3,21,2025,Mango Sago,33,264
+3,21,2025,Passion Fruit Tea,47,258.5
+3,21,2025,Golden Oolong Tea,16,88.0
+3,21,2025,Red Bean Matcha Milk,6,40.5
+3,21,2025,Jasmine Green Tea,22,104.5
+3,22,2025,Classic Brown Sugar Boba Milk Tea,66,412.5
+3,22,2025,Taro Bubble Tea,3,20.25
+3,22,2025,Matcha Black Sugar,11,74.25
+3,22,2025,Black Sugar Coffee Jelly,15,97.5
+3,22,2025,Strawberry Milk,73,584
+3,22,2025,Mango Sago,91,728
+3,22,2025,Passion Fruit Tea,85,467.5
+3,22,2025,Golden Oolong Tea,4,22.0
+3,22,2025,Red Bean Matcha Milk,24,162.0
+3,22,2025,Jasmine Green Tea,19,90.25
+3,23,2025,Classic Brown Sugar Boba Milk Tea,69,431.25
+3,23,2025,Taro Bubble Tea,68,459.0
+3,23,2025,Matcha Black Sugar,15,101.25
+3,23,2025,Black Sugar Coffee Jelly,31,201.5
+3,23,2025,Strawberry Milk,28,224
+3,23,2025,Mango Sago,72,576
+3,23,2025,Passion Fruit Tea,85,467.5
+3,23,2025,Golden Oolong Tea,4,22.0
+3,23,2025,Red Bean Matcha Milk,78,526.5
+3,23,2025,Jasmine Green Tea,94,446.5
+3,24,2025,Classic Brown Sugar Boba Milk Tea,56,350.0
+3,24,2025,Taro Bubble Tea,7,47.25
+3,24,2025,Matcha Black Sugar,15,101.25
+3,24,2025,Black Sugar Coffee Jelly,47,305.5
+3,24,2025,Strawberry Milk,99,792
+3,24,2025,Mango Sago,87,696
+3,24,2025,Passion Fruit Tea,67,368.5
+3,24,2025,Golden Oolong Tea,72,396.0
+3,24,2025,Red Bean Matcha Milk,19,128.25
+3,24,2025,Jasmine Green Tea,98,465.5
+3,25,2025,Classic Brown Sugar Boba Milk Tea,70,437.5
+3,25,2025,Taro Bubble Tea,75,506.25
+3,25,2025,Matcha Black Sugar,94,634.5
+3,25,2025,Black Sugar Coffee Jelly,46,299.0
+3,25,2025,Strawberry Milk,26,208
+3,25,2025,Mango Sago,4,32
+3,25,2025,Passion Fruit Tea,57,313.5
+3,25,2025,Golden Oolong Tea,13,71.5
+3,25,2025,Red Bean Matcha Milk,97,654.75
+3,25,2025,Jasmine Green Tea,58,275.5
+3,26,2025,Classic Brown Sugar Boba Milk Tea,86,537.5
+3,26,2025,Taro Bubble Tea,22,148.5
+3,26,2025,Matcha Black Sugar,38,256.5
+3,26,2025,Black Sugar Coffee Jelly,27,175.5
+3,26,2025,Strawberry Milk,79,632
+3,26,2025,Mango Sago,61,488
+3,26,2025,Passion Fruit Tea,29,159.5
+3,26,2025,Golden Oolong Tea,30,165.0
+3,26,2025,Red Bean Matcha Milk,41,276.75
+3,26,2025,Jasmine Green Tea,53,251.75
+3,27,2025,Classic Brown Sugar Boba Milk Tea,65,406.25
+3,27,2025,Taro Bubble Tea,83,560.25
+3,27,2025,Matcha Black Sugar,24,162.0
+3,27,2025,Black Sugar Coffee Jelly,28,182.0
+3,27,2025,Strawberry Milk,25,200
+3,27,2025,Mango Sago,64,512
+3,27,2025,Passion Fruit Tea,71,390.5
+3,27,2025,Golden Oolong Tea,99,544.5
+3,27,2025,Red Bean Matcha Milk,38,256.5
+3,27,2025,Jasmine Green Tea,31,147.25
+3,28,2025,Classic Brown Sugar Boba Milk Tea,54,337.5
+3,28,2025,Taro Bubble Tea,50,337.5
+3,28,2025,Matcha Black Sugar,76,513.0
+3,28,2025,Black Sugar Coffee Jelly,50,325.0
+3,28,2025,Strawberry Milk,93,744
+3,28,2025,Mango Sago,16,128
+3,28,2025,Passion Fruit Tea,48,264.0
+3,28,2025,Golden Oolong Tea,41,225.5
+3,28,2025,Red Bean Matcha Milk,39,263.25
+3,28,2025,Jasmine Green Tea,75,356.25
