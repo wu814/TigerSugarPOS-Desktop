@@ -1,5 +1,4 @@
 /*Display weekly sales*/
-/*DECLARE currDate DATE = "2024-6-1"*/
 
 SELECT SUM(sales) AS total_sales
 FROM sales_data
