@@ -34,7 +34,7 @@ with open("sales_data.csv", mode="w", newline="") as file:
     writer.writerow(["Month", "Day", "Year", "Drink", "Number of Drinks Sold", "Sales ($)"])
 
     # Generate sales data for each day
-    while start_date < end_date and total_sales_target > 0:
+    while start_date < end_date:
         current_date = start_date
         week_sales = 0
 
