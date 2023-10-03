@@ -16,7 +16,18 @@ inventory = {
     "To-Go Bags (Small)": 0,
     "Lids (Dome)": 0,
     "Lids (Flat)": 0,
-    "Condiment Station Supplies": 0
+    "Condiment Station Supplies": 0,
+    "Taro": 0,
+    "Matcha": 0,
+    "Brown Sugar": 0,
+    "Black Sugar": 0,
+    "Strawberry Milk Cream": 0,
+    "Mango Milk Cream": 0,
+    "Sago": 0,
+    "Crystal Jelly": 0,
+    "Jasmine Green Tea Leaves": 0,
+    "Passion Fruit Tea Leaves": 0,
+    "Oolong Tea Leaves": 0
 }
 
 # Drink to inventory item mapping
@@ -28,7 +39,9 @@ drink_to_inventory = {
         ("Lids (Flat)", 1),
         ("Condiment Station Supplies", 1),
         ("Napkins (Regular)", 1),
-        ("To-Go Bags (Small)", 1)
+        ("To-Go Bags (Small)", 1),
+        ("Brown Sugar", 1),
+        ("Fresh Milk", 1)
     ],
     "Taro Bubble Tea": [
         ("Tapioca Pearls (Boba)", 1),
@@ -37,7 +50,8 @@ drink_to_inventory = {
         ("Lids (Flat)", 1),
         ("Condiment Station Supplies", 1),
         ("Napkins (Regular)", 1),
-        ("To-Go Bags (Small)", 1)
+        ("To-Go Bags (Small)", 1),
+        ("Taro", 1)
     ],
     "Matcha Black Sugar": [
         ("Cups (Regular)", 1),
@@ -45,7 +59,10 @@ drink_to_inventory = {
         ("Lids (Flat)", 1),
         ("Condiment Station Supplies", 1),
         ("Napkins (Regular)", 1),
-        ("To-Go Bags (Small)", 1)
+        ("To-Go Bags (Small)", 1),
+        ("Matcha", 1),
+        ("Black Sugar", 1),
+        ("Fresh Milk", 1)
     ],
     "Black Sugar Coffee Jelly": [
         ("Grass Jelly", 1),
@@ -54,7 +71,8 @@ drink_to_inventory = {
         ("Lids (Flat)", 1),
         ("Condiment Station Supplies", 1),
         ("Napkins (Regular)", 1),
-        ("To-Go Bags (Small)", 1)
+        ("To-Go Bags (Small)", 1),
+        ("Black Sugar", 1)
     ],
     "Strawberry Milk": [
         ("Cups (Regular)", 1),
@@ -63,14 +81,18 @@ drink_to_inventory = {
         ("Condiment Station Supplies", 1),
         ("Napkins (Regular)", 1),
         ("To-Go Bags (Small)", 1),
-        ("Fresh Milk", 1)
+        ("Fresh Milk", 1),
+        ("Strawberry Milk Cream", 1)
     ],
     "Mango Sago": [
         ("Cups (Regular)", 1),
         ("Straws (Regular)", 1),
         ("Lids (Flat)", 1),
         ("Napkins (Regular)", 1),
-        ("To-Go Bags (Small)", 1)
+        ("To-Go Bags (Small)", 1),
+        ("Sago", 1),
+        ("Crystal Jelly", 1),
+        ("Mango Milk Cream", 1)
     ],
     "Passion Fruit Tea": [
         ("Cups (Regular)", 1),
@@ -78,7 +100,8 @@ drink_to_inventory = {
         ("Lids (Flat)", 1),
         ("Napkins (Regular)", 1),
         ("To-Go Bags (Small)", 1),
-        ("Lychee Jelly", 2)
+        ("Lychee Jelly", 2),
+        ("Passion Fruit Tea Leaves", 1)
     ],
     "Golden Oolong Tea": [
         ("Cups (Regular)", 1),
@@ -86,7 +109,8 @@ drink_to_inventory = {
         ("Lids (Flat)", 1),
         ("Napkins (Regular)", 1),
         ("To-Go Bags (Small)", 1),
-        ("Aloe Vera Bits", 1)
+        ("Aloe Vera Bits", 1),
+        ("Oolong Tea Leaves", 1)
     ],
     "Red Bean Matcha Milk": [
         ("Cups (Regular)", 1),
@@ -96,14 +120,16 @@ drink_to_inventory = {
         ("Napkins (Regular)", 1),
         ("To-Go Bags (Small)", 1),
         ("Fresh Milk", 1),
-        ("Red Beans", 1)
+        ("Red Beans", 1),
+        ("Matcha", 1)
     ],
     "Jasmine Green Tea": [
         ("Cups (Regular)", 1),
         ("Straws (Regular)", 1),
         ("Lids (Flat)", 1),
         ("Napkins (Regular)", 1),
-        ("To-Go Bags (Small)", 1)
+        ("To-Go Bags (Small)", 1),
+        ("Jasmine Green Tea Leaves", 1)
     ]
 }
 
