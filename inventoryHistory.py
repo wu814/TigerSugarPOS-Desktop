@@ -116,11 +116,11 @@ with open("sales_data.csv", mode="r") as file:
     next(reader)
 
     for row in reader:
-        month, day, year = map(int, (row[0], row[1], row[2]))
-        date_str = f"{year}-{month:02d}-{day:02d}"
+        year, month, day, hour = map(int, (row[0], row[1], row[2], row[3]))
+        date_str = f"{year}-{month:02d}-{day:02d}-{hour:02d}"  # Include the hour component
 
-        drink = row[3]
-        num_sold = int(row[4])
+        drink = row[4]
+        num_sold = int(row[5])
 
         for item, quantity in drink_to_inventory[drink]:
             inventory[item] -= quantity * num_sold
@@ -133,15 +133,14 @@ with open("sales_data.csv", mode="r") as file:
 
 with open(aggregated_inventory_file, mode="w", newline="") as inventory_file:
     writer = csv.writer(inventory_file)
-    header = ["Date"] + list(inventory.keys())
+    header = ["Year", "Month", "Day", "Hour"] + list(inventory.keys())  # Update header
     writer.writerow(header)
 
     for date, data in aggregated_inventory.items():
-        row = [date] + [data[item] for item in inventory.keys()]
+        year, month, day, hour = map(int, date.split('-'))
+        row = [year, month, day, hour] + [data[item] for item in inventory.keys()]
         writer.writerow(row)
-
 
 # Print remaining inventory
 for item, quantity in inventory.items():
     print(f"{item}: {quantity}")
-
