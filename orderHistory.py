@@ -6,10 +6,10 @@ from datetime import datetime, timedelta
 drink_prices = {
     "Classic Brown Sugar Boba Milk Tea": 6.25,
     "Taro Bubble Tea": 6.75,
-    "Matcha Black Sugar": 6.75,
+    "Matcha Black Sugar Boba Milk": 6.75,
     "Black Sugar Coffee Jelly": 6.50,
     "Strawberry Milk": 8,
-    "Mango Sago": 8,
+    "Tiger Mango Sago": 8,
     "Passion Fruit Tea": 5.50,
     "Golden Oolong Tea": 5.50,
     "Red Bean Matcha Milk": 6.75,
