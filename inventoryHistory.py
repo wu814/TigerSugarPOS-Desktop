@@ -53,7 +53,7 @@ drink_to_inventory = {
         ("To-Go Bags (Small)", 1),
         ("Taro", 1)
     ],
-    "Matcha Black Sugar": [
+    "Matcha Black Sugar Boba Milk": [
         ("Cups (Regular)", 1),
         ("Straws (Regular)", 1),
         ("Lids (Flat)", 1),
@@ -84,7 +84,7 @@ drink_to_inventory = {
         ("Fresh Milk", 1),
         ("Strawberry Milk Cream", 1)
     ],
-    "Mango Sago": [
+    "Tiger Mango Sago": [
         ("Cups (Regular)", 1),
         ("Straws (Regular)", 1),
         ("Lids (Flat)", 1),
