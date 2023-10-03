@@ -1,6 +1,6 @@
 import csv
 import random
-from datetime import date, timedelta
+from datetime import datetime, timedelta
 
 # Dictionary of drinks and their prices
 drink_prices = {
@@ -17,52 +17,52 @@ drink_prices = {
 }
 
 # Total sales target for the year
-total_sales_target = 1000000 # Might be unused
+total_sales_target = 1000000  # Might be unused
 
-start_date = date(2024, 6, 1)
+start_date = datetime(2024, 6, 1, 0, 0)  # Start date with hour component
 
-end_date = date(2025, 6, 1)
+end_date = datetime(2025, 6, 1, 0, 0)  # End date with hour component
 
 # Initialize total sales variable
 total_sales = 0
 
-drinkMaxSales = 100
+drinkMaxSales = 3
 
 # Initialize CSV file
 with open("sales_data.csv", mode="w", newline="") as file:
     writer = csv.writer(file)
-    writer.writerow(["Month", "Day", "Year", "Drink", "Number of Drinks Sold", "Sales ($)"])
+    writer.writerow(["Year", "Month", "Day", "Hour", "Drink", "Number of Drinks Sold", "Sales ($)"])
 
-    # Generate sales data for each day
+    # Generate sales data for each hour
     while start_date < end_date:
         current_date = start_date
-        week_sales = 0
+        day_sales = 0
 
-        for _ in range(7):
+        for _ in range(24):
             if current_date >= end_date:
                 break
 
             for drink, price in drink_prices.items():
-                max_sales = min(drinkMaxSales, drinkMaxSales)  # Maximum sales for the day per drink
+                max_sales = min(drinkMaxSales, drinkMaxSales)  # Maximum sales for the hour per drink
 
                 # Check for day exceptions (8/21/2024 and 1/16/2025)
-                if current_date == date(2024, 8, 21) or current_date == date(2025, 1, 16):
-                    num_sold = random.randint(5, max_sales*5)  # Higher sales on exceptions
+                if current_date.date() == datetime(2024, 8, 21).date() or current_date.date() == datetime(2025, 1, 16).date():
+                    num_sold = random.randint(5, max_sales * 5)  # Higher sales on exceptions
                 else:
                     num_sold = random.randint(1, max_sales)  # Random number of drinks sold (1 to max_sales)
 
                 sales = round(num_sold * price, 2)  # Calculate sales and round to two decimal places
-                week_sales += sales
+                day_sales += sales
                 total_sales += sales  # Update total sales
                 total_sales_target -= sales
 
-                writer.writerow([current_date.month, current_date.day, current_date.year, drink, num_sold, sales])
+                writer.writerow([current_date.year, current_date.month, current_date.day, current_date.hour, drink, num_sold, sales])
 
-            current_date += timedelta(days=1)
+            current_date += timedelta(hours=1)
 
-        week_end_date = current_date - timedelta(days=7)
-        print(f"Sales for week starting {week_end_date.month}/{week_end_date.day}/{week_end_date.year} to {current_date.month}/{current_date.day}/{current_date.year}: ${week_sales}")
-        start_date += timedelta(days=7)
+        day_end_date = current_date - timedelta(hours=24)
+        print(f"Sales for {day_end_date.strftime('%Y-%m-%d')} (Day): ${day_sales}")
+        start_date += timedelta(days=1)
 
 # Print total sales
 print(f"Total sales: ${total_sales}")
