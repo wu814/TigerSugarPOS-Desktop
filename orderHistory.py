@@ -26,7 +26,7 @@ end_date = datetime(2025, 6, 1, 0, 0)  # End date with hour component
 # Initialize total sales variable
 total_sales = 0
 
-drinkMaxSales = 3
+drinkMaxSales = 6
 
 # Initialize CSV file
 with open("sales_data.csv", mode="w", newline="") as file:
@@ -38,7 +38,7 @@ with open("sales_data.csv", mode="w", newline="") as file:
         current_date = start_date
         day_sales = 0
 
-        for _ in range(24):
+        for _ in range(0, 12):
             if current_date >= end_date:
                 break
 
