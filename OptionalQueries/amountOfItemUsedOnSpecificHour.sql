@@ -1,4 +1,4 @@
-/*Display the stock of a specific item during a specific hour*/
+/*Display the amount of a specific item used during a specific hour*/
 SELECT year, month, day, hour, red_beans
 FROM aggregated_inventory_data
 WHERE month = 6
