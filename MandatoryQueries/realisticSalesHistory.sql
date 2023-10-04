@@ -5,7 +5,7 @@ SELECT
     day,
     hour,
     SUM(number_of_drinks_sold) AS orderCount,
-    SUM(Sales) AS TotalSales
+    SUM(sales) AS total_sales
 FROM
     sales_data
 GROUP BY

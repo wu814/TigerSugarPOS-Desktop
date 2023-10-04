@@ -65,7 +65,7 @@ with open("sales_data.csv", mode="w", newline="") as file:
         print(f"Sales for {day_end_date.strftime('%Y-%m-%d')} (Day): ${day_sales}")
         start_date += timedelta(days=1)
 
-        if start_date.day % 7 == 1:
+        if (start_date.weekday()) == 5: # on saturdays
             current_week += 1
 
 # Print total sales
