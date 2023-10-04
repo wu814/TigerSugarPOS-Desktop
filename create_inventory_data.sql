@@ -1,7 +1,7 @@
 CREATE TABLE aggregated_inventory_data (
+    year INT,
     month INT,
     day INT,
-    year INT,
     hour INT,
     Tapioca_Pearls_Boba INT,
     Lychee_Jelly INT,
