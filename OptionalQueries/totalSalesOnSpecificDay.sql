@@ -1,5 +1,5 @@
 /*Retrieve total sales on a specific day*/
-SELECT year, month, day, SUM(Sales) AS TotalSales
+SELECT year, month, day, SUM(Sales) AS total_sales
 FROM sales_data
 WHERE Month = 6
     AND Day = 1
