@@ -31,8 +31,9 @@ drinkMaxSales = 6
 # Initialize CSV file
 with open("sales_data.csv", mode="w", newline="") as file:
     writer = csv.writer(file)
-    writer.writerow(["Year", "Month", "Day", "Hour", "Drink", "Number of Drinks Sold", "Sales ($)"])
+    writer.writerow(["Year", "Month", "Day", "Hour", "Drink", "Number of Drinks Sold", "Sales ($), Week"])
 
+    current_week = 1
     # Generate sales data for each hour
     while start_date < end_date:
         current_date = start_date
@@ -56,13 +57,16 @@ with open("sales_data.csv", mode="w", newline="") as file:
                 total_sales += sales  # Update total sales
                 total_sales_target -= sales
 
-                writer.writerow([current_date.year, current_date.month, current_date.day, current_date.hour, drink, num_sold, sales])
+                writer.writerow([current_date.year, current_date.month, current_date.day, current_date.hour, drink, num_sold, sales, current_week])
 
             current_date += timedelta(hours=1)
 
         day_end_date = current_date - timedelta(hours=24)
         print(f"Sales for {day_end_date.strftime('%Y-%m-%d')} (Day): ${day_sales}")
         start_date += timedelta(days=1)
+
+        if start_date.day % 7 == 1:
+            current_week += 1
 
 # Print total sales
 print(f"Total sales: ${total_sales}")
