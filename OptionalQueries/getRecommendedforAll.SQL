@@ -1,3 +1,4 @@
+-- Displays the recommended amount of each drink based on peak day (8/14/2024)
 SELECT
     drink,
     SUM(number_of_drinks_sold) AS number_of_drinks_sold

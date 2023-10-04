@@ -1,10 +1,8 @@
 /*display the lowest sale drink on a specific month */
-SELECT month, drink, sales AS lowestSales
+SELECT drink, SUM(sales) AS lowestSales
 FROM sales_data 
-WHERE sales = (
-    SELECT MIN(sales)
-    FROM sales_data
-    WHERE month = 6
-    AND year = 2024
-)
+WHERE month = 7 AND year = 2024
+
+GROUP BY drink
+ORDER BY lowestSales ASC
 LIMIT 1;
