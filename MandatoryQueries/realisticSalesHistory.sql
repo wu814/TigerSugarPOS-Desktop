@@ -3,7 +3,7 @@ SELECT
     month,
     day,
     hour,
-    SUM(number_of_drinks_sold) AS NumberOfDrinksSold,
+    SUM(number_of_drinks_sold) AS orderCount,
     SUM(Sales) AS TotalSales
 FROM
     sales_data
