@@ -120,13 +120,15 @@ drink_data = []
 
 for drink, price in drink_prices.items():
     ingredients_list = drink_to_ingredients[drink]
-    drink_data.append([drink, price, ingredients_list])
+    # Join the list elements into a string with commas and curly braces
+    ingredients_str = "{" + ", ".join(ingredients_list) + "}"
+    drink_data.append([drink, price, ingredients_str])
 
 output_csv_file = "products.csv"
 
 with open(output_csv_file, mode="w", newline="") as file:
     writer = csv.writer(file)
-    writer.writerow(["drinkName", "price", "ingredients"])
+    writer.writerow(["drink_name", "price", "ingredients"])
     writer.writerows(drink_data)
 
 print(f"Data has been written to {output_csv_file}")

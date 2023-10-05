@@ -1,6 +1,6 @@
-employeeID,name,wage,hoursworked,position
-1,Doby,12.25,35,Sales Associate
-2,Josh,12.26,27,Manager
-3,Tyson,20.51,21,Assistant
-4,Will,10.14,25,Customer Service
-5,Chris,21.67,39,Customer Service
+first_name,last_name,wage,hours_worked,position
+Doby,Lanete,13.34,38,Assistant
+Josh,Hare,17.62,37,Customer Service
+Tyson,Long,11.7,39,Manager
+William,Wu,23.63,29,Assistant
+Christopher,Vu,15.32,22,Sales Associate
