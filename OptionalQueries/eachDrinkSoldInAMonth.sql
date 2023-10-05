@@ -1,4 +1,4 @@
-/*display the drink with the lowest sales on a specific month */
+/* Display the number of drinks sold for each drink in descending order in a month*/
 SELECT 
 drink, 
 EXTRACT(YEAR FROM order_timestamp) AS year_value,
@@ -8,7 +8,6 @@ FROM orders, unnest(order_items) AS drink
 WHERE EXTRACT(YEAR FROM order_timestamp) = '2024'
     AND EXTRACT(MONTH FROM order_timestamp) = '06'
 GROUP BY drink, year_value, month_value
-ORDER BY total_drinks_sold ASC
-LIMIT 1;
+ORDER BY total_drinks_sold DESC
 ;
 
