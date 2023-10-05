@@ -1,8 +1,6 @@
 /*Number of sold drinks on a specific day*/
-SELECT year, month, day, SUM(number_of_drinks_sold) AS total_drinks_sold
-FROM sales_data
-WHERE Month = 6
-    AND Day = 1
-    AND Year = 2024
-
-GROUP BY year, month, day;
+SELECT DATE(order_timestamp), COUNT(*) AS total_drinks_sold
+FROM orders, unnest(order_items) AS drink
+WHERE DATE(order_timestamp) = '2024-06-02'
+GROUP BY DATE(order_timestamp)
+;
