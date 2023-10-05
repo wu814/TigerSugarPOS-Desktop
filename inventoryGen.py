@@ -34,14 +34,14 @@ supplies = list(inventory.keys())
 default_stock = 10000
 
 # Create a list of supply data with default stock values
-supply_data = [{"supplies": supply, "stock": default_stock} for supply in supplies]
+supply_data = [{"supply": supply, "stock_remaining": default_stock} for supply in supplies]
 
 # Define the output CSV file name
 output_csv_file = "inventory.csv"
 
 # Write the supply data to the CSV file
 with open(output_csv_file, mode="w", newline="") as file:
-    writer = csv.DictWriter(file, fieldnames=["supplies", "stock"])
+    writer = csv.DictWriter(file, fieldnames=["supply", "stock_remaining"])
     # Write header row
     writer.writeheader()
     # Write supply data rows
