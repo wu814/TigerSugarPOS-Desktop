@@ -10,5 +10,3 @@ WHERE EXTRACT(YEAR FROM order_timestamp) = '2024'
 GROUP BY drink, year_value, month_value
 ORDER BY total_drinks_sold ASC
 LIMIT 1;
-;
-
