@@ -1,3 +1,4 @@
+/*Displaying order count for each week*/
 SELECT
     EXTRACT(WEEK FROM order_timestamp) AS week_number,
     COUNT(*) AS order_count
