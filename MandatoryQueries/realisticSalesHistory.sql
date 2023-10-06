@@ -1,20 +1,12 @@
--- Retrieving realistic sales history by date, ordercount, and total sales
 SELECT
-    year,
-    month,
-    day,
-    hour,
-    SUM(number_of_drinks_sold) AS order_count,
-    SUM(sales) AS total_sales
+    DATE(order_timestamp) AS order_date,
+    EXTRACT(HOUR FROM order_timestamp) AS hour,
+    COUNT(*) AS order_count,
+    SUM(order_total) AS total_sales
 FROM
-    sales_data
+    orders
 GROUP BY
-    year,
-    month,
-    day,
+    order_date,
     hour
 ORDER BY
-    year ASC,
-    month ASC,
-    day ASC,
-    hour ASC;
+    order_date;
