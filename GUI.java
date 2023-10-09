@@ -1,5 +1,6 @@
 import java.sql.*;
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.GridLayout;
 import java.awt.event.*;
 import java.awt.BorderLayout;
@@ -7,8 +8,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Dimension;
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
-import javax.swing.BorderFactory;
+
 import java.util.*;
 
 
@@ -169,7 +171,7 @@ public class GUI extends JFrame implements ActionListener {
 
         JPanel mainPanel = new JPanel(new BorderLayout());
 
-        Font titleButtonFont = new Font("Roboto", Font.BOLD, 24);
+        //Font titleButtonFont = new Font("Roboto", Font.BOLD, 24);
 
         // Left Nav panel
         JPanel navPanel = new JPanel();
@@ -177,45 +179,30 @@ public class GUI extends JFrame implements ActionListener {
         navPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         // Drink Type Buttons
-        JButton creamyButton = new JButton("Sweet and Creamy", null);
-        creamyButton.setFont(titleButtonFont);
+        JButton creamyButton = StyledButton("Sweet and Creamy");
+        JButton fruityButton = StyledButton("Fruity and Refreshing");
+        JButton coffeeButton = StyledButton("Coffee Flavored");
+
         navPanel.add(creamyButton);
-
-        JButton fruityButton = new JButton("Fruity and Refreshing", null);
-        fruityButton.setFont(titleButtonFont);
         navPanel.add(fruityButton);
-
-        JButton coffeeButton = new JButton("Coffee Flavored", null);
-        coffeeButton.setFont(titleButtonFont);
         navPanel.add(coffeeButton);
-
         mainPanel.add(navPanel, BorderLayout.WEST);
 
         // Content Panel for drinks
-        Font drinkButtonFont = new Font("Roboto", Font.PLAIN, 20);
-
         JPanel contentPanel = new JPanel();
-        contentPanel.setBackground(Color.LIGHT_GRAY);
-        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
+        contentPanel.setBackground(Color.WHITE);
+        contentPanel.setLayout(new GridLayout(3, 2, 20, 20));
 
-        JButton drinkButton1 = new JButton("Classing Brown Sugar Boba Milk Tea", null);
-        drinkButton1.setFont(drinkButtonFont);
+        JButton drinkButton1 = StyledButton("Classic Brown Sugar Boba Milk Tea");
+        JButton drinkButton2 = StyledButton("Matcha Black Sugar Boba Milk");
+        JButton drinkButton3 = StyledButton("Red Bean Matcha Milk");
+        JButton drinkButton4 = StyledButton("Strawberry Milk");
+        JButton drinkButton5 = StyledButton("Golden Oolong Tea");
+
         contentPanel.add(drinkButton1);
-
-        JButton drinkButton2 = new JButton("Match Black Sugar Boba Milk", null);
-        drinkButton2.setFont(drinkButtonFont);
         contentPanel.add(drinkButton2);
-
-        JButton drinkButton3 = new JButton("Red Bean Matcha Milk", null);
-        drinkButton3.setFont(drinkButtonFont);
         contentPanel.add(drinkButton3);
-
-        JButton drinkButton4 = new JButton("Strawberry Milk", null);
-        drinkButton4.setFont(drinkButtonFont);
         contentPanel.add(drinkButton4);
-        
-        JButton drinkButton5 = new JButton("Golden Oolong Tea", null);
-        drinkButton5.setFont(drinkButtonFont);
         contentPanel.add(drinkButton5);
        
         backToLogin = new JButton("Back to Login");
@@ -228,6 +215,7 @@ public class GUI extends JFrame implements ActionListener {
         //Right Panel for orders
 
         JPanel rightPanel = new JPanel(new BorderLayout());
+
         JLabel orderListLabel = new JLabel("Order List");
         orderListLabel.setFont(new Font("Arial", Font.BOLD, 24));
         orderListLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -251,5 +239,30 @@ public class GUI extends JFrame implements ActionListener {
 
         changeFrame(cashierFrame);
       }
+    }
+
+    private static JButton StyledButton(String text) {
+      JButton button = new JButton("<html><center>" + text + "</center></html>", null);
+      button.setFont(new Font("Roboto", Font.PLAIN, 20));
+      button.setBackground(Color.WHITE);
+      button.setFocusPainted(false);
+      
+      button.setBorder(BorderFactory.createEmptyBorder());
+
+      button.setBorderPainted(false);
+      button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+      //button.setToolTipText(text); // INteresting mechanic
+
+      // Hover Mechanics
+      button.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+          button.setBackground(new Color(230, 230, 230));
+        }
+
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+          button.setBackground(Color.WHITE);
+        }
+      });
+      return button;
     }
 }
