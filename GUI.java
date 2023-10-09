@@ -156,7 +156,7 @@ public class GUI extends JFrame implements ActionListener {
         if (s.equals("Sweet and Creamy")) {
           System.out.println("SAC");
           changeFrame(createSweetAndCreamyPage());
-        }
+      }
       
     }
 
@@ -180,9 +180,35 @@ public class GUI extends JFrame implements ActionListener {
     }
 
     private static JButton StyledButton(String text) {
-      JFrame fruityAndRefreshingFrame = new JFrame("Fruity and Refreshing");
-        fruityAndRefreshingFrame.setSize(1000, 800);
-        fruityAndRefreshingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      JButton button = new JButton("<html><center>" + text + "</center></html>", null);
+      button.setFont(new Font("Roboto", Font.PLAIN, 20));
+      button.setBackground(Color.WHITE);
+      button.setFocusPainted(false);
+      
+      button.setBorder(BorderFactory.createEmptyBorder());
+
+      button.setBorderPainted(false);
+      button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+      //button.setToolTipText(text); // INteresting mechanic
+
+      // Hover Mechanics
+      button.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+          button.setBackground(new Color(230, 230, 230));
+        }
+
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+          button.setBackground(Color.WHITE);
+        }
+      });
+      return button;
+    }
+
+    // FruityRefreshingPage
+    public JFrame createFruityRefreshingPage() {
+      JFrame fruityRefreshingFrame = new JFrame("Fruity and Refreshing");
+        fruityRefreshingFrame.setSize(1000, 800);
+        fruityRefreshingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel mainPanel = new JPanel(new BorderLayout());
 
@@ -254,13 +280,12 @@ public class GUI extends JFrame implements ActionListener {
 
         mainPanel.add(rightPanel, BorderLayout.EAST);
 
-        fruityAndRefreshingFrame.add(mainPanel);
-        fruityAndRefreshingFrame.setVisible(true);
+        fruityRefreshingFrame.add(mainPanel);
+        fruityRefreshingFrame.setVisible(true);
 
-        changeFrame(fruityAndRefreshingFrame);
+        changeFrame(fruityRefreshingFrame);
       
-        return fruityAndRefreshingFrame;
-    }
+        return fruityRefreshingFrame;
     }
 
     public JFrame createSweetAndCreamyPage() {
@@ -279,6 +304,8 @@ public class GUI extends JFrame implements ActionListener {
 
         // Drink Type Buttons
         JButton creamyButton = StyledButton("Sweet and Creamy");
+        creamyButton.setActionCommand("Sweet and Creamy");
+        creamyButton.addActionListener(s);
         JButton fruityButton = StyledButton("Fruity and Refreshing");
         fruityButton.setActionCommand("Fruity and Refreshing");
         fruityButton.addActionListener(s);
