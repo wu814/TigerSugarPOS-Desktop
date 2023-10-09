@@ -1,6 +1,8 @@
 import java.sql.*;
 import java.awt.Component;
+import java.awt.GridLayout;
 import java.awt.event.*;
+import java.awt.BorderLayout;
 import javax.swing.*;
 import java.util.*;
 
@@ -25,7 +27,7 @@ public class GUI extends JFrame implements ActionListener {
       try {
         conn = DriverManager.getConnection(
           "jdbc:postgresql://csce-315-db.engr.tamu.edu/csce315331_10g_db",
-          "csce315_910_jmhhare",
+          "csce315_910_dlanete",
           "password");
       } catch (Exception e) {
         e.printStackTrace();
@@ -157,11 +159,52 @@ public class GUI extends JFrame implements ActionListener {
       }
       else{
         JFrame cashierFrame = new JFrame("Cashier Display");
-        cashierFrame.setSize(300, 100);
+        cashierFrame.setSize(600, 400);
         cashierFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel mainPanel = new JPanel(new BorderLayout(10, 10));
+
+        JPanel drinkPanel = new JPanel(new GridLayout(5,4));
+
+        drinkPanel.add(new JButton("button 1"));
+        drinkPanel.add(new JButton("button 2"));
+        drinkPanel.add(new JButton("button 3"));
+        drinkPanel.add(new JButton("button 4"));
+
+        mainPanel.add(drinkPanel, BorderLayout.CENTER);
+
+        //Middle Section
+        JPanel optionPanel = new JPanel(new GridLayout(1,3));
+
+        optionPanel.add(new JButton("Black", null));
+        optionPanel.add(new JButton("Red", null));
+        optionPanel.add(new JButton("Blue", null));
+
+        mainPanel.add(optionPanel, BorderLayout.SOUTH);
+
+        // Bottom Panel
+        JPanel bottomPanel = new JPanel(new GridLayout(2, 2));
+
+        bottomPanel.add(new JButton("Square"));
+        bottomPanel.add(new JButton("Circle"));
+        bottomPanel.add(new JButton("Triangle"));
+
+        JPanel southPanel = new JPanel(new BorderLayout());
+
+        southPanel.add(optionPanel, BorderLayout.NORTH);
+        southPanel.add(bottomPanel, BorderLayout.CENTER);
+
+        mainPanel.add(southPanel, BorderLayout.SOUTH);
+
+        cashierFrame.add(mainPanel);
+        cashierFrame.pack();
+       
         backToLogin = new JButton("Back to Login");
         backToLogin.addActionListener(s);
-        cashierFrame.add(backToLogin);
+        southPanel.add(backToLogin, BorderLayout.SOUTH);
+
+        cashierFrame.setVisible(true);
+
         changeFrame(cashierFrame);
       }
     }
