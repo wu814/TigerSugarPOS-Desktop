@@ -8,6 +8,7 @@ import java.awt.Font;
 import java.awt.Dimension;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
+import javax.swing.BorderFactory;
 import java.util.*;
 
 
@@ -168,12 +169,12 @@ public class GUI extends JFrame implements ActionListener {
 
         JPanel mainPanel = new JPanel(new BorderLayout());
 
-        //Font buttonFont = new Font("Arial", Font.PLAIN, 24);
         Font titleButtonFont = new Font("Roboto", Font.BOLD, 24);
 
         // Left Nav panel
         JPanel navPanel = new JPanel();
         navPanel.setLayout(new BoxLayout(navPanel, BoxLayout.Y_AXIS));
+        navPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         // Drink Type Buttons
         JButton creamyButton = new JButton("Sweet and Creamy", null);
@@ -190,16 +191,60 @@ public class GUI extends JFrame implements ActionListener {
 
         mainPanel.add(navPanel, BorderLayout.WEST);
 
-        // Center Panel
+        // Content Panel for drinks
+        Font drinkButtonFont = new Font("Roboto", Font.PLAIN, 20);
 
         JPanel contentPanel = new JPanel();
         contentPanel.setBackground(Color.LIGHT_GRAY);
+        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
+
+        JButton drinkButton1 = new JButton("Classing Brown Sugar Boba Milk Tea", null);
+        drinkButton1.setFont(drinkButtonFont);
+        contentPanel.add(drinkButton1);
+
+        JButton drinkButton2 = new JButton("Match Black Sugar Boba Milk", null);
+        drinkButton2.setFont(drinkButtonFont);
+        contentPanel.add(drinkButton2);
+
+        JButton drinkButton3 = new JButton("Red Bean Matcha Milk", null);
+        drinkButton3.setFont(drinkButtonFont);
+        contentPanel.add(drinkButton3);
+
+        JButton drinkButton4 = new JButton("Strawberry Milk", null);
+        drinkButton4.setFont(drinkButtonFont);
+        contentPanel.add(drinkButton4);
+        
+        JButton drinkButton5 = new JButton("Golden Oolong Tea", null);
+        drinkButton5.setFont(drinkButtonFont);
+        contentPanel.add(drinkButton5);
        
         backToLogin = new JButton("Back to Login");
         backToLogin.addActionListener(s);
+        contentPanel.add(Box.createVerticalGlue());
         contentPanel.add(backToLogin);
 
         mainPanel.add(contentPanel, BorderLayout.CENTER);
+
+        //Right Panel for orders
+
+        JPanel rightPanel = new JPanel(new BorderLayout());
+        JLabel orderListLabel = new JLabel("Order List");
+        orderListLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        orderListLabel.setHorizontalAlignment(JLabel.CENTER);
+        rightPanel.add(orderListLabel, BorderLayout.NORTH);
+
+          //Order Text
+        JTextArea orderLogs = new JTextArea(10, 20);
+        orderLogs.setEditable(false);
+        orderLogs.setFont(new Font("Arial", Font.PLAIN, 16));
+        JScrollPane orderScrollPane = new JScrollPane(orderLogs);
+        rightPanel.add(orderScrollPane, BorderLayout.CENTER);
+
+        JButton payButton = new JButton("Pay Now");
+        payButton.setFont(new Font("Arial", Font.BOLD, 20));
+        rightPanel.add(payButton, BorderLayout.SOUTH);
+
+        mainPanel.add(rightPanel, BorderLayout.EAST);
 
         cashierFrame.add(mainPanel);
         cashierFrame.setVisible(true);
