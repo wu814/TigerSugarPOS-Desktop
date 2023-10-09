@@ -149,6 +149,14 @@ public class GUI extends JFrame implements ActionListener {
           System.out.println("ASF");
           changeFrame(startFrame);
         }
+        if (s.equals("Fruity and Refreshing")) {
+          System.out.println("FAR");
+          changeFrame(createFruityRefreshingPage());
+        }
+        if (s.equals("Sweet and Creamy")) {
+          System.out.println("SAC");
+          changeFrame(createSweetAndCreamyPage());
+        }
       
     }
 
@@ -160,14 +168,21 @@ public class GUI extends JFrame implements ActionListener {
         cashierFrame.setSize(300, 100);
         cashierFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         backToLogin = new JButton("Back to Login");
-         backToLogin.addActionListener(s);
+        backToLogin.addActionListener(s);
         cashierFrame.add(backToLogin);
         changeFrame(cashierFrame);
       }
       else{
-        JFrame cashierFrame = new JFrame("Cashier Display");
-        cashierFrame.setSize(1000, 800);
-        cashierFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        GUI guiInstance = new GUI();
+        JFrame cashierFrame = guiInstance.createSweetAndCreamyPage();
+        changeFrame(cashierFrame);
+      }
+    }
+
+    private static JButton StyledButton(String text) {
+      JFrame fruityAndRefreshingFrame = new JFrame("Fruity and Refreshing");
+        fruityAndRefreshingFrame.setSize(1000, 800);
+        fruityAndRefreshingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel mainPanel = new JPanel(new BorderLayout());
 
@@ -180,11 +195,16 @@ public class GUI extends JFrame implements ActionListener {
 
         // Drink Type Buttons
         JButton creamyButton = StyledButton("Sweet and Creamy");
+        creamyButton.setActionCommand("Sweet and Creamy");
+        creamyButton.addActionListener(s);
         JButton fruityButton = StyledButton("Fruity and Refreshing");
+        fruityButton.setActionCommand("Fruity and Refreshing");
+        fruityButton.addActionListener(s);
         JButton coffeeButton = StyledButton("Coffee Flavored");
 
         navPanel.add(creamyButton);
         navPanel.add(fruityButton);
+        
         navPanel.add(coffeeButton);
         mainPanel.add(navPanel, BorderLayout.WEST);
 
@@ -234,35 +254,93 @@ public class GUI extends JFrame implements ActionListener {
 
         mainPanel.add(rightPanel, BorderLayout.EAST);
 
-        cashierFrame.add(mainPanel);
-        cashierFrame.setVisible(true);
+        fruityAndRefreshingFrame.add(mainPanel);
+        fruityAndRefreshingFrame.setVisible(true);
 
-        changeFrame(cashierFrame);
-      }
+        changeFrame(fruityAndRefreshingFrame);
+      
+        return fruityAndRefreshingFrame;
+    }
     }
 
-    private static JButton StyledButton(String text) {
-      JButton button = new JButton("<html><center>" + text + "</center></html>", null);
-      button.setFont(new Font("Roboto", Font.PLAIN, 20));
-      button.setBackground(Color.WHITE);
-      button.setFocusPainted(false);
+    public JFrame createSweetAndCreamyPage() {
+      JFrame sweetAndCreamyFrame = new JFrame("Sweet and Creamy");
+        sweetAndCreamyFrame.setSize(1000, 800);
+        sweetAndCreamyFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel mainPanel = new JPanel(new BorderLayout());
+
+        //Font titleButtonFont = new Font("Roboto", Font.BOLD, 24);
+
+        // Left Nav panel
+        JPanel navPanel = new JPanel();
+        navPanel.setLayout(new BoxLayout(navPanel, BoxLayout.Y_AXIS));
+        navPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        // Drink Type Buttons
+        JButton creamyButton = StyledButton("Sweet and Creamy");
+        JButton fruityButton = StyledButton("Fruity and Refreshing");
+        fruityButton.setActionCommand("Fruity and Refreshing");
+        fruityButton.addActionListener(s);
+        JButton coffeeButton = StyledButton("Coffee Flavored");
+
+        navPanel.add(creamyButton);
+        navPanel.add(fruityButton);
+        
+        navPanel.add(coffeeButton);
+        mainPanel.add(navPanel, BorderLayout.WEST);
+
+        // Content Panel for drinks
+        JPanel contentPanel = new JPanel();
+        contentPanel.setBackground(Color.WHITE);
+        contentPanel.setLayout(new GridLayout(3, 2, 20, 20));
+
+        JButton drinkButton1 = StyledButton("Classic Brown Sugar Boba Milk Tea");
+        JButton drinkButton2 = StyledButton("Matcha Black Sugar Boba Milk");
+        JButton drinkButton3 = StyledButton("Red Bean Matcha Milk");
+        JButton drinkButton4 = StyledButton("Strawberry Milk");
+        JButton drinkButton5 = StyledButton("Golden Oolong Tea");
+
+        contentPanel.add(drinkButton1);
+        contentPanel.add(drinkButton2);
+        contentPanel.add(drinkButton3);
+        contentPanel.add(drinkButton4);
+        contentPanel.add(drinkButton5);
+       
+        backToLogin = new JButton("Back to Login");
+        backToLogin.addActionListener(s);
+        contentPanel.add(Box.createVerticalGlue());
+        contentPanel.add(backToLogin);
+
+        mainPanel.add(contentPanel, BorderLayout.CENTER);
+
+        //Right Panel for orders
+
+        JPanel rightPanel = new JPanel(new BorderLayout());
+
+        JLabel orderListLabel = new JLabel("Order List");
+        orderListLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        orderListLabel.setHorizontalAlignment(JLabel.CENTER);
+        rightPanel.add(orderListLabel, BorderLayout.NORTH);
+
+          //Order Text
+        JTextArea orderLogs = new JTextArea(10, 20);
+        orderLogs.setEditable(false);
+        orderLogs.setFont(new Font("Arial", Font.PLAIN, 16));
+        JScrollPane orderScrollPane = new JScrollPane(orderLogs);
+        rightPanel.add(orderScrollPane, BorderLayout.CENTER);
+
+        JButton payButton = new JButton("Pay Now");
+        payButton.setFont(new Font("Arial", Font.BOLD, 20));
+        rightPanel.add(payButton, BorderLayout.SOUTH);
+
+        mainPanel.add(rightPanel, BorderLayout.EAST);
+
+        sweetAndCreamyFrame.add(mainPanel);
+        sweetAndCreamyFrame.setVisible(true);
+
+        changeFrame(sweetAndCreamyFrame);
       
-      button.setBorder(BorderFactory.createEmptyBorder());
-
-      button.setBorderPainted(false);
-      button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-      //button.setToolTipText(text); // INteresting mechanic
-
-      // Hover Mechanics
-      button.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseEntered(java.awt.event.MouseEvent evt) {
-          button.setBackground(new Color(230, 230, 230));
-        }
-
-        public void mouseExited(java.awt.event.MouseEvent evt) {
-          button.setBackground(Color.WHITE);
-        }
-      });
-      return button;
+        return sweetAndCreamyFrame;
     }
 }
