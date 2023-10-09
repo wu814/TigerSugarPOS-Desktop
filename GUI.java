@@ -145,18 +145,23 @@ public class GUI extends JFrame implements ActionListener {
         if (s.equals("Enter")) {
             viewSelector(((Employee) employeeSelector.getSelectedItem()).isManager());
         }
-        if(s.equals("Back to Login")){
+        else if(s.equals("Back to Login")){
           System.out.println("ASF");
           changeFrame(startFrame);
         }
-        if (s.equals("Fruity and Refreshing")) {
+        else if (s.equals("Fruity and Refreshing")) {
           System.out.println("FAR");
           changeFrame(createFruityRefreshingPage());
         }
-        if (s.equals("Sweet and Creamy")) {
+        else if (s.equals("Sweet and Creamy")) {
           System.out.println("SAC");
           changeFrame(createSweetAndCreamyPage());
-      }
+        }
+        else if (s.equals("Coffee Flavored")) {
+          System.out.println("CF");
+          changeFrame(createCoffeeFlavoredPage());
+        }
+
       
     }
 
@@ -227,11 +232,19 @@ public class GUI extends JFrame implements ActionListener {
         fruityButton.setActionCommand("Fruity and Refreshing");
         fruityButton.addActionListener(s);
         JButton coffeeButton = StyledButton("Coffee Flavored");
+        coffeeButton.setActionCommand("Coffee Flavored");
+        coffeeButton.addActionListener(s);
 
         navPanel.add(creamyButton);
         navPanel.add(fruityButton);
-        
         navPanel.add(coffeeButton);
+
+        navPanel.add(Box.createVerticalGlue());
+        backToLogin = new JButton("Back to Login");
+        backToLogin.addActionListener(s);
+        navPanel.add(backToLogin);
+        
+       
         mainPanel.add(navPanel, BorderLayout.WEST);
 
         // Content Panel for drinks
@@ -239,22 +252,15 @@ public class GUI extends JFrame implements ActionListener {
         contentPanel.setBackground(Color.WHITE);
         contentPanel.setLayout(new GridLayout(3, 2, 20, 20));
 
-        JButton drinkButton1 = StyledButton("Classic Brown Sugar Boba Milk Tea");
-        JButton drinkButton2 = StyledButton("Matcha Black Sugar Boba Milk");
-        JButton drinkButton3 = StyledButton("Red Bean Matcha Milk");
-        JButton drinkButton4 = StyledButton("Strawberry Milk");
-        JButton drinkButton5 = StyledButton("Golden Oolong Tea");
+        JButton drinkButton1 = StyledButton("Taro Bubble Tea");
+        JButton drinkButton2 = StyledButton("Tiger Mango Sago");
+        JButton drinkButton3 = StyledButton("Passion Fruit Tea");
+        JButton drinkButton4 = StyledButton("Jasmine Green Tea");
 
         contentPanel.add(drinkButton1);
         contentPanel.add(drinkButton2);
         contentPanel.add(drinkButton3);
         contentPanel.add(drinkButton4);
-        contentPanel.add(drinkButton5);
-       
-        backToLogin = new JButton("Back to Login");
-        backToLogin.addActionListener(s);
-        contentPanel.add(Box.createVerticalGlue());
-        contentPanel.add(backToLogin);
 
         mainPanel.add(contentPanel, BorderLayout.CENTER);
 
@@ -310,11 +316,18 @@ public class GUI extends JFrame implements ActionListener {
         fruityButton.setActionCommand("Fruity and Refreshing");
         fruityButton.addActionListener(s);
         JButton coffeeButton = StyledButton("Coffee Flavored");
+        coffeeButton.setActionCommand("Coffee Flavored");
+        coffeeButton.addActionListener(s);
 
         navPanel.add(creamyButton);
         navPanel.add(fruityButton);
-        
         navPanel.add(coffeeButton);
+
+        navPanel.add(Box.createVerticalGlue());
+        backToLogin = new JButton("Back to Login");
+        backToLogin.addActionListener(s);
+        navPanel.add(backToLogin);
+
         mainPanel.add(navPanel, BorderLayout.WEST);
 
         // Content Panel for drinks
@@ -333,11 +346,6 @@ public class GUI extends JFrame implements ActionListener {
         contentPanel.add(drinkButton3);
         contentPanel.add(drinkButton4);
         contentPanel.add(drinkButton5);
-       
-        backToLogin = new JButton("Back to Login");
-        backToLogin.addActionListener(s);
-        contentPanel.add(Box.createVerticalGlue());
-        contentPanel.add(backToLogin);
 
         mainPanel.add(contentPanel, BorderLayout.CENTER);
 
@@ -369,5 +377,84 @@ public class GUI extends JFrame implements ActionListener {
         changeFrame(sweetAndCreamyFrame);
       
         return sweetAndCreamyFrame;
+    }
+
+    public JFrame createCoffeeFlavoredPage() {
+      JFrame coffeeFlavoredFrame = new JFrame("Coffee Flavored");
+        coffeeFlavoredFrame.setSize(1000, 800);
+        coffeeFlavoredFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel mainPanel = new JPanel(new BorderLayout());
+
+        //Font titleButtonFont = new Font("Roboto", Font.BOLD, 24);
+
+        // Left Nav panel
+        JPanel navPanel = new JPanel();
+        navPanel.setLayout(new BoxLayout(navPanel, BoxLayout.Y_AXIS));
+        navPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        // Drink Type Buttons
+        JButton creamyButton = StyledButton("Sweet and Creamy");
+        creamyButton.setActionCommand("Sweet and Creamy");
+        creamyButton.addActionListener(s);
+        JButton fruityButton = StyledButton("Fruity and Refreshing");
+        fruityButton.setActionCommand("Fruity and Refreshing");
+        fruityButton.addActionListener(s);
+        JButton coffeeButton = StyledButton("Coffee Flavored");
+        coffeeButton.setActionCommand("Coffee Flavored");
+        coffeeButton.addActionListener(s);
+
+
+        navPanel.add(creamyButton);
+        navPanel.add(fruityButton);
+        navPanel.add(coffeeButton);
+
+        navPanel.add(Box.createVerticalGlue());
+        backToLogin = new JButton("Back to Login");
+        backToLogin.addActionListener(s);
+        navPanel.add(backToLogin);
+        
+       
+        mainPanel.add(navPanel, BorderLayout.WEST);
+
+        // Content Panel for drinks
+        JPanel contentPanel = new JPanel();
+        contentPanel.setBackground(Color.WHITE);
+        contentPanel.setLayout(new GridLayout(3, 2, 20, 20));
+
+        JButton drinkButton1 = StyledButton("Black Sugar Coffee Jelly");
+
+        contentPanel.add(drinkButton1);
+
+        mainPanel.add(contentPanel, BorderLayout.CENTER);
+
+        //Right Panel for orders
+
+        JPanel rightPanel = new JPanel(new BorderLayout());
+
+        JLabel orderListLabel = new JLabel("Order List");
+        orderListLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        orderListLabel.setHorizontalAlignment(JLabel.CENTER);
+        rightPanel.add(orderListLabel, BorderLayout.NORTH);
+
+          //Order Text
+        JTextArea orderLogs = new JTextArea(10, 20);
+        orderLogs.setEditable(false);
+        orderLogs.setFont(new Font("Arial", Font.PLAIN, 16));
+        JScrollPane orderScrollPane = new JScrollPane(orderLogs);
+        rightPanel.add(orderScrollPane, BorderLayout.CENTER);
+
+        JButton payButton = new JButton("Pay Now");
+        payButton.setFont(new Font("Arial", Font.BOLD, 20));
+        rightPanel.add(payButton, BorderLayout.SOUTH);
+
+        mainPanel.add(rightPanel, BorderLayout.EAST);
+
+        coffeeFlavoredFrame.add(mainPanel);
+        coffeeFlavoredFrame.setVisible(true);
+
+        changeFrame(coffeeFlavoredFrame);
+      
+        return coffeeFlavoredFrame;
     }
 }
