@@ -10,14 +10,15 @@ public class GUI extends JFrame implements ActionListener {
     static Connection conn; //database connection
 
     static JFrame startFrame; 
-    static JFrame currFrame;
-    static JFrame prevFrame;
-    static GUI s;
+    static JFrame inventoryFrame;
+    static JFrame managerFrame;
+    static JFrame cashierFrame;
+    static JFrame currFrame; //the current framethat is being used.
+    static GUI gui;
     static JPanel p; 
     static JTextArea hello; //text area for testing
     static JComboBox<Employee> employeeSelector; //drop down for employees, how we know to go in cashier view or  manager view
     static JButton employeeEnter;//locks in combobox entry
-    static JButton backToLogin; //back button that returns to employee select
 
     //establishes connection to the database, through the conn variable
     public static void connect(){
@@ -34,28 +35,25 @@ public class GUI extends JFrame implements ActionListener {
       }
     }
 
+    //change frame to a new frame, use when switching menus
     public static void changeFrame(JFrame newFrame){
       currFrame.setVisible(false);
-      prevFrame = currFrame;
       currFrame = newFrame;
       currFrame.setVisible(true);
     }
 
     //Initialize variables and components necessary for the GUI
-    public static void frameSetup(){
+    public static void startFrameSetup(){
       //frame setup
       startFrame = new JFrame("Tiger Sugar POS");
       startFrame.setSize(1000, 800);
       startFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       //initalize componenets
-      s = new GUI();
+      gui = new GUI();
       p = new JPanel();
       hello = new JTextArea();
 
       startFrame.add(p);
-
-  
-
       p.add(hello);
 
       //ComboBox for Employees
@@ -64,12 +62,55 @@ public class GUI extends JFrame implements ActionListener {
 
       //setup enter button
       employeeEnter = new JButton("Enter"); 
-      employeeEnter.addActionListener(s);
+      employeeEnter.addActionListener(gui);
       
       p.add(employeeEnter);
       currFrame = startFrame;
       currFrame.setVisible(true);
     }
+
+    public static void setUpInventory(){
+        //frame setup
+        inventoryFrame = new JFrame("Inventory");
+        inventoryFrame.setSize(1000, 800);
+        JPanel inventoryPanel = new JPanel();
+        inventoryFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        inventoryFrame.add(inventoryPanel);
+
+        JButton backToManager = new JButton("Back to Manager Menu"); //goes back to manager menu
+        backToManager.addActionListener(gui);
+        inventoryPanel.add(backToManager);
+
+        //getting the data
+        String supply = "";
+        String stock = "";
+        try{
+          Statement stmt = conn.createStatement();
+          ResultSet result = stmt.executeQuery("SELECT * FROM inventory;");
+          while (result.next()) { //initializes employees with info from database, adds to vector
+              supply += result.getString("supply") + '\n';
+              stock +=result.getString("stock_remaining")+ '\n';
+        }
+        
+        } catch (Exception e){ //errors connecting to database
+          JOptionPane.showMessageDialog(null,e);
+        }
+        JTextArea supplies = new JTextArea(supply);
+        JTextArea stocks = new JTextArea(stock);
+        inventoryPanel.add(supplies);
+        inventoryPanel.add(stocks);
+    }
+      public static void updateInventory(String ingredient){
+        String query = "UPDATE inventory SET stock_remaining = stock_remaining - 1 WHERE supply = " + ingredient + ";";
+        try{
+          Statement stmt = conn.createStatement();
+          stmt.executeQuery(query);
+        } catch (Exception e){ //errors connecting to database
+          JOptionPane.showMessageDialog(null,e);
+        }
+      }
+
+
 
     public static void setEmployeeComboBox(){
       //loads in the names of the employees
@@ -108,14 +149,25 @@ public class GUI extends JFrame implements ActionListener {
       });
       
     }
+    //updates order history
+    // public static void addOrderToDatabase(String timestamp,String employee, String customer, String[] items){
+    //     String query = "INSERT INTO orders (order_timestamp, employee_id, customer_id, order_items, order_total) VALUES (" + timestamp + ", " + employee + ", " + customerID + ", " + ARRAY['Item1', 'Item2', 'Item3'] + ", " + total + ");";
+    //     try{
+    //       Statement stmt = conn.createStatement();
+    //       stmt.executeQuery(query);
+    //     } catch (Exception e){ //errors connecting to database
+    //       JOptionPane.showMessageDialog(null,e);
+    //     }
+    // }
 
     public static void main(String[] args)
     {
       //Connect to Database
       connect();
 
-      //Setup Frame
-      frameSetup();
+      //Setup Start Frame
+      startFrameSetup();
+      setUpInventory();
      
       
       //closing the connection
@@ -130,37 +182,68 @@ public class GUI extends JFrame implements ActionListener {
     // if button is pressed
     public void actionPerformed(ActionEvent e)
     {
-        String s = e.getActionCommand();
+        String event = e.getActionCommand();
 
         //Employee Enter
-        if (s.equals("Enter")) {
+        if (event.equals("Enter")) {
             viewSelector(((Employee) employeeSelector.getSelectedItem()).isManager());
         }
-        if(s.equals("Back to Login")){
-          System.out.println("ASF");
+        if(event.equals("Back to Login")){
           changeFrame(startFrame);
         }
+        if(event.equals("Back to Manager Menu")){
+          changeFrame(managerFrame);
+        }
+        if(event.equals("View Inventory")){
+          
+          changeFrame(inventoryFrame);
+        }
+        if(event.equals("Edit Prices")){
+          System.out.println("asdf");
+        }
+        if(event.equals("Order Statistics")){
+          System.out.println("asdf");
+        }
+        
       
     }
 
     //displays either the cashier view or the manager view based on combobox selection
     public static void viewSelector(boolean manager){
-      startFrame.setVisible(false);
-      if(manager){
-        JFrame cashierFrame = new JFrame("Manager Display");
-        cashierFrame.setSize(300, 100);
-        cashierFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        backToLogin = new JButton("Back to Login");
-         backToLogin.addActionListener(s);
-        cashierFrame.add(backToLogin);
-        changeFrame(cashierFrame);
+      //startFrame.setVisible(false);
+      if(manager){ //go to manager view
+        //setup manager frame
+        managerFrame = new JFrame("Manager Display");
+        managerFrame.setSize(1000, 800);
+        JPanel managerPanel = new JPanel();
+        managerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        managerFrame.add(managerPanel);
+
+        JButton backToLogin = new JButton("Back to Login"); //goes back to login
+        backToLogin.addActionListener(gui);
+        managerPanel.add(backToLogin);
+
+        JButton viewInventory = new JButton("View Inventory"); //open view inventory menu
+        viewInventory.addActionListener(gui);
+        managerPanel.add(viewInventory);
+
+        JButton editPrices = new JButton("Edit Prices"); //open edit prices menu
+        editPrices.addActionListener(gui);
+        managerPanel.add(editPrices);
+
+        JButton orderStats = new JButton("Order Statistics"); //open order stats
+        orderStats.addActionListener(gui);
+        managerPanel.add(orderStats);
+
+         //switch frame
+        changeFrame(managerFrame);
       }
-      else{
-        JFrame cashierFrame = new JFrame("Cashier Display");
+      else{ //go to cashier view
+        cashierFrame = new JFrame("Cashier Display");
         cashierFrame.setSize(300, 100);
         cashierFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        backToLogin = new JButton("Back to Login");
-        backToLogin.addActionListener(s);
+        JButton backToLogin = new JButton("Back to Login");
+        backToLogin.addActionListener(gui);
         cashierFrame.add(backToLogin);
         changeFrame(cashierFrame);
       }
