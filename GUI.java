@@ -3,7 +3,11 @@ import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.*;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Dimension;
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import java.util.*;
 
 
@@ -159,50 +163,45 @@ public class GUI extends JFrame implements ActionListener {
       }
       else{
         JFrame cashierFrame = new JFrame("Cashier Display");
-        cashierFrame.setSize(600, 400);
+        cashierFrame.setSize(1000, 800);
         cashierFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel mainPanel = new JPanel(new BorderLayout(10, 10));
+        JPanel mainPanel = new JPanel(new BorderLayout());
 
-        JPanel drinkPanel = new JPanel(new GridLayout(5,4));
+        //Font buttonFont = new Font("Arial", Font.PLAIN, 24);
+        Font titleButtonFont = new Font("Roboto", Font.BOLD, 24);
 
-        drinkPanel.add(new JButton("button 1"));
-        drinkPanel.add(new JButton("button 2"));
-        drinkPanel.add(new JButton("button 3"));
-        drinkPanel.add(new JButton("button 4"));
+        // Left Nav panel
+        JPanel navPanel = new JPanel();
+        navPanel.setLayout(new BoxLayout(navPanel, BoxLayout.Y_AXIS));
 
-        mainPanel.add(drinkPanel, BorderLayout.CENTER);
+        // Drink Type Buttons
+        JButton creamyButton = new JButton("Sweet and Creamy", null);
+        creamyButton.setFont(titleButtonFont);
+        navPanel.add(creamyButton);
 
-        //Middle Section
-        JPanel optionPanel = new JPanel(new GridLayout(1,3));
+        JButton fruityButton = new JButton("Fruity and Refreshing", null);
+        fruityButton.setFont(titleButtonFont);
+        navPanel.add(fruityButton);
 
-        optionPanel.add(new JButton("Black", null));
-        optionPanel.add(new JButton("Red", null));
-        optionPanel.add(new JButton("Blue", null));
+        JButton coffeeButton = new JButton("Coffee Flavored", null);
+        coffeeButton.setFont(titleButtonFont);
+        navPanel.add(coffeeButton);
 
-        mainPanel.add(optionPanel, BorderLayout.SOUTH);
+        mainPanel.add(navPanel, BorderLayout.WEST);
 
-        // Bottom Panel
-        JPanel bottomPanel = new JPanel(new GridLayout(2, 2));
+        // Center Panel
 
-        bottomPanel.add(new JButton("Square"));
-        bottomPanel.add(new JButton("Circle"));
-        bottomPanel.add(new JButton("Triangle"));
-
-        JPanel southPanel = new JPanel(new BorderLayout());
-
-        southPanel.add(optionPanel, BorderLayout.NORTH);
-        southPanel.add(bottomPanel, BorderLayout.CENTER);
-
-        mainPanel.add(southPanel, BorderLayout.SOUTH);
-
-        cashierFrame.add(mainPanel);
-        cashierFrame.pack();
+        JPanel contentPanel = new JPanel();
+        contentPanel.setBackground(Color.LIGHT_GRAY);
        
         backToLogin = new JButton("Back to Login");
         backToLogin.addActionListener(s);
-        southPanel.add(backToLogin, BorderLayout.SOUTH);
+        contentPanel.add(backToLogin);
 
+        mainPanel.add(contentPanel, BorderLayout.CENTER);
+
+        cashierFrame.add(mainPanel);
         cashierFrame.setVisible(true);
 
         changeFrame(cashierFrame);
