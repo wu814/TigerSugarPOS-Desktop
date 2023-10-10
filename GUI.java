@@ -545,7 +545,7 @@ public class GUI extends JFrame implements ActionListener {
       
       //closing the connection
       try {
-        conn.close();
+        // conn.close();
         //JOptionPane.showMessageDialog(null,"Connection Closed.");
       } catch(Exception e) {
        // JOptionPane.showMessageDialog(null,"Connection NOT Closed.");
@@ -580,6 +580,131 @@ public class GUI extends JFrame implements ActionListener {
         else if (event.equals("Coffee Flavored")) {
           System.out.println("CF");
           changeFrame(createCoffeeFlavoredPage());
+        }
+        else if(event.equals("Back to Manager Menu")){
+          changeFrame(managerFrame);
+        }
+
+        //opens inventory page
+        else if(event.equals("View Inventory")){
+          
+          changeFrame(inventoryFrame);
+        }
+
+        //opens price editor
+        else if(event.equals("Edit Prices")){
+          changeFrame(editorFrame);
+        }
+        
+        //opens order stats
+        else if(event.equals("Order Statistics")){
+          changeFrame(statsFrame);
+        }
+
+        //opens recent orders
+        else if(event.equals("Recent Orders")){
+          changeFrame(recentFrame);
+        }
+
+        //on order stats page, shows daily stats
+        else if(event.equals("Daily Stats")){
+          dailyStats();
+        }
+
+        //on order stats page, show stats for inputted range, input with TwoInputDialog
+        else if(event.equals("Custom Range")){
+          TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter start date: YYYY-MM-DD","Enter end date: YYYY-MM-DD");
+          TwoInputs inputs = dialog.showInputDialog();
+          String start = inputs.input1;
+          String end = inputs.input2;
+          if(start != "" && end != ""){
+              System.out.println("VALID");
+          }
+          else{
+            JOptionPane.showMessageDialog(null, "You have entered an invalid date.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+          }
+        }
+
+        //on inventory page, adds a supply item to the database
+        else if(event.equals("Add Supply Item")){
+          try{
+            //create a statement object
+            TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter new supply","Enter amount of new stock");
+            TwoInputs inputs = dialog.showInputDialog();
+            String newSupply = inputs.input1;
+            Integer newStock = Integer.parseInt(inputs.input2);
+            Statement stmt = conn.createStatement();
+            ResultSet r = stmt.executeQuery("INSERT INTO inventory (inventory_id, supply, stock_remaining) VALUES (DEFAULT, '"+newSupply+"', "+newStock+");");
+        
+          }  catch (Exception ex){ //errors connecting to database
+            //JOptionPane.showMessageDialog(null,ex);
+          }
+          setUpInventory();
+        }
+
+        //on inventory page, removes a supply item from the database
+        else if(event.equals("Remove Supply Item")){
+          try{
+            Integer item = Integer.parseInt(JOptionPane.showInputDialog("Enter ID of object to be removed"));
+            Statement stmt = conn.createStatement();
+            ResultSet r = stmt.executeQuery("DELETE FROM inventory WHERE inventory_id = "+item+";");
+          }catch (Exception ex){ //errors connecting to database
+            //JOptionPane.showMessageDialog(null,ex);
+          }
+          setUpInventory();
+        }
+
+        //on menu editor page, adds a menu item to the database
+        else if(event.equals("Add Menu Item")){
+          try{
+            //create a statement object
+            TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter new menu item","Enter price");
+            TwoInputs inputs = dialog.showInputDialog();
+            String newDrink = inputs.input1;
+            Double newPrice = Double.parseDouble(inputs.input2); //WARNING: MUST BE between 0 and 9.99
+            Vector<String> ings = new Vector<>();
+            //get ingredients
+            Integer ingredientCount = Integer.parseInt(JOptionPane.showInputDialog("How many ingredients does this drink have?"));
+            for(int i = 0;i<ingredientCount;i++){
+              String ingredient = JOptionPane.showInputDialog("Enter an ingredient");
+              ings.add(ingredient);
+              Statement stmt = conn.createStatement();
+              ResultSet result = stmt.executeQuery("SELECT * FROM inventory WHERE supply = '"+ingredient+"';");
+              if(!result.next()){ //if supply is not in the inventory
+                System.out.println(ingredient);
+                Statement stmt2 = conn.createStatement();
+                ResultSet adsf = stmt2.executeQuery("INSERT INTO inventory (inventory_id, supply, stock_remaining) VALUES (DEFAULT, '"+ingredient+"', 100);");
+              }
+
+            }
+
+            String[] ingredients = ings.toArray(new String[0]);
+           
+            String query = "INSERT INTO products (product_id, drink_name, price, ingredients) VALUES (DEFAULT, ?, ?, string_to_array(?, ', '));";
+
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
+            preparedStatement.setString(1,newDrink);
+            preparedStatement.setDouble(2,newPrice);
+
+            String ing = String.join(",",ingredients);
+            preparedStatement.setString(3,ing);
+            preparedStatement.executeUpdate();
+            System.out.println(ing);
+        
+          }  catch (Exception ex){ //errors connecting to database
+            System.out.println(ex);   
+           }
+          setUpMenuEditor();
+        }
+        else if(event.equals("Remove Menu Item")){
+          try{
+            Integer item = Integer.parseInt(JOptionPane.showInputDialog("Enter ID of object to be removed"));
+            Statement stmt = conn.createStatement();
+            ResultSet r = stmt.executeQuery("DELETE FROM products WHERE product_id = "+item+";");
+          }catch (Exception ex){ //errors connecting to database
+            //JOptionPane.showMessageDialog(null,ex);
+          }
+          setUpMenuEditor();
         }
 
       
@@ -643,14 +768,36 @@ public class GUI extends JFrame implements ActionListener {
     //displays either the cashier view or the manager view based on combobox selection
     public static void viewSelector(boolean manager){
       startFrame.setVisible(false);
-      if(manager){
-        JFrame cashierFrame = new JFrame("Manager Display");
-        cashierFrame.setSize(300, 100);
-        cashierFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        backToLogin = new JButton("Back to Login");
+      if(manager){ //go to manager view
+        //setup manager frame
+        managerFrame = new JFrame("Manager Display");
+        managerFrame.setSize(1000, 800);
+        JPanel managerPanel = new JPanel();
+        managerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        managerFrame.add(managerPanel);
+
+        JButton backToLogin = new JButton("Back to Login"); //goes back to login
         backToLogin.addActionListener(gui);
-        cashierFrame.add(backToLogin);
-        changeFrame(cashierFrame);
+        managerPanel.add(backToLogin);
+
+        JButton viewInventory = new JButton("View Inventory"); //open view inventory menu
+        viewInventory.addActionListener(gui);
+        managerPanel.add(viewInventory);
+
+        JButton editPrices = new JButton("Edit Prices"); //open edit prices menu
+        editPrices.addActionListener(gui);
+        managerPanel.add(editPrices);
+
+        JButton orderStats = new JButton("Order Statistics"); //open order stats
+        orderStats.addActionListener(gui);
+        managerPanel.add(orderStats);
+
+        JButton recentOrders = new JButton("Recent Orders"); //open recent orders
+        recentOrders.addActionListener(gui);
+        managerPanel.add(recentOrders);
+
+         //switch frame
+        changeFrame(managerFrame);
       }
       else{
         GUI guiInstance = new GUI();
