@@ -29,7 +29,9 @@ public class GUI extends JFrame implements ActionListener {
     static JButton backToLogin; //back button that returns to employee select
     static JTextArea orderLogs;
     static ArrayList<String> order = new ArrayList<String>();
-    static PlaceOrder placeOrder = new PlaceOrder();
+    static OrderLogic orderLogic = new OrderLogic();
+    static double orderTotal = 0.0;
+    static Map<String, Double> drinkPriceMap = new HashMap<String, Double>();
 
     //establishes connection to the database, through the conn variable
     public static void connect(){
@@ -59,7 +61,7 @@ public class GUI extends JFrame implements ActionListener {
       startFrame = new JFrame("Tiger Sugar POS");
       startFrame.setSize(1000, 800);
       startFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      //initalize componenets
+      //initalize components
       s = new GUI();
       p = new JPanel();
       hello = new JTextArea();
@@ -146,6 +148,9 @@ public class GUI extends JFrame implements ActionListener {
 
         //Employee Enter
         if (s.equals("Enter")) {
+            // caching drink prices
+            drinkPriceMap = OrderLogic.fetchAllDrinkPrices();
+
             viewSelector(((Employee) employeeSelector.getSelectedItem()).isManager());
         }
         else if(s.equals("Back to Login")){
@@ -168,9 +173,25 @@ public class GUI extends JFrame implements ActionListener {
       
     }
 
+    private void removeFromOrder(String drinkName) {
+        // fix what is on the orderlogs
+        orderLogs.setText(orderLogs.getText().replace("\n" + drinkName, ""));
+        
+        orderTotal -= drinkPriceMap.get(drinkName);
+
+        System.out.println("Order total: " + orderTotal);
+
+        // adding to arraylist of drinks in order
+        order.remove(drinkName);
+    }
+
     // handle adding a drink to the order list
     private void addToOrder(String drinkName) {
         orderLogs.setText(orderLogs.getText() + "\n" + drinkName);
+
+        orderTotal += drinkPriceMap.get(drinkName);
+
+        System.out.println("Order total: " + orderTotal);
 
         // adding to arraylist of drinks in order
         order.add(drinkName);
@@ -178,7 +199,7 @@ public class GUI extends JFrame implements ActionListener {
 
     private void completeOrder() {
         // TODO: add employee id and customer id and order total
-        PlaceOrder.placeOrder(1, 1, order.toArray(new String[order.size()]), 0.0);
+        OrderLogic.placeOrder(1, 1, order.toArray(new String[order.size()]), orderTotal);
     }
 
     //displays either the cashier view or the manager view based on combobox selection
@@ -226,6 +247,7 @@ public class GUI extends JFrame implements ActionListener {
     }
 
     // FruityRefreshingPage
+    // TODO: add to the order list a remove button next to each drink
     public JFrame createFruityRefreshingPage() {
       JFrame fruityRefreshingFrame = new JFrame("Fruity and Refreshing");
         fruityRefreshingFrame.setSize(1000, 800);
@@ -343,6 +365,7 @@ public class GUI extends JFrame implements ActionListener {
         return fruityRefreshingFrame;
     }
 
+    // TODO: add to the order list a remove button next to each drink
     public JFrame createSweetAndCreamyPage() {
       JFrame sweetAndCreamyFrame = new JFrame("Sweet and Creamy");
         sweetAndCreamyFrame.setSize(1000, 800);
@@ -466,6 +489,7 @@ public class GUI extends JFrame implements ActionListener {
         return sweetAndCreamyFrame;
     }
 
+    // TODO: add to the order list a remove button next to each drink
     public JFrame createCoffeeFlavoredPage() {
       JFrame coffeeFlavoredFrame = new JFrame("Coffee Flavored");
         coffeeFlavoredFrame.setSize(1000, 800);
