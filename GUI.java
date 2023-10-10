@@ -33,6 +33,7 @@ public class GUI extends JFrame implements ActionListener {
     static JFrame statsFrame;
     static JFrame currFrame; //the current framethat is being used.
     static JTable statsTable; //stats table
+    static JFrame editorFrame;
     static GUI gui;
     static JPanel p; 
     static JTextArea hello; //text area for testing
@@ -160,13 +161,15 @@ public class GUI extends JFrame implements ActionListener {
 
               public void tableChanged(TableModelEvent e) {
                 if (e.getType() == TableModelEvent.UPDATE) {
-                    int row = e.getFirstRow();
+                    int id = e.getFirstRow();
+                 //   System.out.println(id);
                     int column = e.getColumn();
                     String columnName = model.getColumnName(column);
-                    Integer newValue = Integer.parseInt(model.getValueAt(row, column).toString());
+                    Integer newValue = Integer.parseInt(model.getValueAt(id, column).toString());
                     if(columnName.equals("stock_remaining")){
-                      row = (int)model.getValueAt(row,0);
+                      id = (int)model.getValueAt(id,0);
                     }
+                //    System.out.println(id);
 
                     // Update the corresponding database record
                    // updateDatabase(row, columnName, newValue);
@@ -174,7 +177,7 @@ public class GUI extends JFrame implements ActionListener {
                     String query = "UPDATE inventory SET " +columnName+ " = ? WHERE inventory_id = ?";
                     PreparedStatement pStat = conn.prepareStatement(query);
                     pStat.setInt(1,newValue);
-                    pStat.setInt(2,row);
+                    pStat.setInt(2,id);
                     pStat.executeUpdate();
                    }catch (Exception ex){
                       System.out.println(ex);
@@ -370,15 +373,96 @@ public class GUI extends JFrame implements ActionListener {
 
     }
 
-      //DECREAES STOCK BY 1 FOR AN INGREDIENT
-    public static void updateInventory(String ingredient){
-        String query = "UPDATE inventory SET stock_remaining = stock_remaining - 1 WHERE supply = " + ingredient + ";";
+    public static void setUpMenuEditor(){
+              //frame setup
+        editorFrame = new JFrame("Menu Editor");
+        editorFrame.setSize(1000, 800);
+        JPanel editorPanel = new JPanel();
+        editorFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        editorFrame.add(editorPanel);
+
+        JPanel titlePanel = new JPanel();
+        titlePanel.setPreferredSize(new Dimension(1000,50));
+        JLabel title = new JLabel("Menu Editor");
+        titlePanel.add(title);
+
+        JPanel menuPanel = new JPanel();
+        menuPanel.setPreferredSize(new Dimension(1000,50));
+
+        editorFrame.add(titlePanel,BorderLayout.NORTH);
+        editorFrame.add(menuPanel,BorderLayout.CENTER);
+        editorFrame.add(editorPanel,BorderLayout.SOUTH);
+
+        JButton backToManager = new JButton("Back to Manager Menu"); //goes back to manager menu
+        backToManager.addActionListener(gui);
+        menuPanel.add(backToManager);
+
+        JButton add = new JButton("Add Menu Item");
+        add.addActionListener(gui);
+        menuPanel.add(add);
+
+        JButton remove = new JButton("Remove Menu Item");
+        remove.addActionListener(gui);
+        menuPanel.add(remove);
+
+        JTable table = new JTable();
+        JScrollPane  scroll = new JScrollPane(table);
+        editorPanel.add(scroll);
+
+        //getting the data
         try{
           Statement stmt = conn.createStatement();
-          stmt.executeQuery(query);
+          ResultSet result = stmt.executeQuery("SELECT * FROM products ORDER BY product_id;");
+
+          //get column names
+          int cols = result.getMetaData().getColumnCount();
+          Vector<String> colNames = new Vector<>();
+          for(int i = 1;i<=cols;i++){
+            colNames.add(result.getMetaData().getColumnName(i));
+          }
+
+          //get data
+          Vector<Vector<Object>> data = new Vector<>();
+          while (result.next()) { 
+              Vector<Object> row = new Vector<>();
+              for(int i = 1;i<=cols;i++){
+                row.add(result.getObject(i));
+              }
+              data.add(row);
+      
+          }
+          DefaultTableModel model = new DefaultTableModel(data,colNames);
+          table.setModel(model);
+          table.getModel().addTableModelListener(new TableModelListener(){
+
+              public void tableChanged(TableModelEvent e) {
+                if (e.getType() == TableModelEvent.UPDATE) {
+                    int id = e.getFirstRow();
+                    int column = e.getColumn();
+                    String columnName = model.getColumnName(column);
+                    Double newValue = Double.parseDouble(model.getValueAt(id, column).toString());
+                    if(columnName.equals("price")){
+                      id = (int)model.getValueAt(id,0);
+                    }
+                    // Update the corresponding database record
+                   try{
+                    String query = "UPDATE products SET " +columnName+ " = ? WHERE product_id = ?";
+                    PreparedStatement pStat = conn.prepareStatement(query);
+                    pStat.setBigDecimal(1,BigDecimal.valueOf(newValue));
+                    pStat.setInt(2,id);
+                    pStat.executeUpdate();
+                   }catch (Exception ex){
+                      System.out.println("HELP"+ex);
+                   }
+                 }
+              }
+            });
+
+        
         } catch (Exception e){ //errors connecting to database
           JOptionPane.showMessageDialog(null,e);
         }
+        editorFrame.pack();
     }
 
     public static Timestamp getCurrentTime(){
@@ -445,6 +529,7 @@ public class GUI extends JFrame implements ActionListener {
       setUpInventory();
       setUpRecentOrders();
       setUpOrderStats();
+      setUpMenuEditor();
       
       //closing the connection
       // try {
@@ -460,33 +545,47 @@ public class GUI extends JFrame implements ActionListener {
     {
         String event = e.getActionCommand();
 
-        //Employee Enter
+        //Employee Enter in Combo Box
         if (event.equals("Enter")) {
             viewSelector(((Employee) employeeSelector.getSelectedItem()).isManager());
         }
-        else if(event.equals("Back to Login")){
-          System.out.println("ASF");
+        //Returns to Login from cashier page or manager menu
+        if(event.equals("Back to Login")){
           changeFrame(startFrame);
         }
+
+        //Returns to manager menu from view inventory, edit prices, order stats, and recent orders
         if(event.equals("Back to Manager Menu")){
           changeFrame(managerFrame);
         }
+
+        //opens inventory page
         if(event.equals("View Inventory")){
           
           changeFrame(inventoryFrame);
         }
+
+        //opens price editor
         if(event.equals("Edit Prices")){
-          System.out.println("asdf");
+          changeFrame(editorFrame);
         }
+        
+        //opens order stats
         if(event.equals("Order Statistics")){
           changeFrame(statsFrame);
         }
+
+        //opens recent orders
         if(event.equals("Recent Orders")){
           changeFrame(recentFrame);
         }
+
+        //on order stats page, shows daily stats
         if(event.equals("Daily Stats")){
           dailyStats();
         }
+
+        //on order stats page, show stats for inputted range, input with TwoInputDialog
         if(event.equals("Custom Range")){
           TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter start date: YYYY-MM-DD","Enter end date: YYYY-MM-DD");
           TwoInputs inputs = dialog.showInputDialog();
@@ -499,6 +598,8 @@ public class GUI extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null, "You have entered an invalid date.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
           }
         }
+
+        //on inventory page, adds a supply item to the database
         if(event.equals("Add Supply Item")){
           try{
             //create a statement object
@@ -514,6 +615,8 @@ public class GUI extends JFrame implements ActionListener {
           }
           setUpInventory();
         }
+
+        //on inventory page, removes a supply item from the database
         if(event.equals("Remove Supply Item")){
           try{
             Integer item = Integer.parseInt(JOptionPane.showInputDialog("Enter ID of object to be removed"));
@@ -523,8 +626,62 @@ public class GUI extends JFrame implements ActionListener {
             //JOptionPane.showMessageDialog(null,ex);
           }
           setUpInventory();
-
         }
+
+        //on menu editor page, adds a menu item to the database
+        if(event.equals("Add Menu Item")){
+          try{
+            //create a statement object
+            TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter new menu item","Enter price");
+            TwoInputs inputs = dialog.showInputDialog();
+            String newDrink = inputs.input1;
+            Double newPrice = Double.parseDouble(inputs.input2); //WARNING: MUST BE between 0 and 9.99
+            Vector<String> ings = new Vector<>();
+            //get ingredients
+            Integer ingredientCount = Integer.parseInt(JOptionPane.showInputDialog("How many ingredients does this drink have?"));
+            for(int i = 0;i<ingredientCount;i++){
+              String ingredient = JOptionPane.showInputDialog("Enter an ingredient");
+              ings.add(ingredient);
+              Statement stmt = conn.createStatement();
+              ResultSet result = stmt.executeQuery("SELECT * FROM inventory WHERE supply = '"+ingredient+"';");
+              if(!result.next()){ //if supply is not in the inventory
+                System.out.println(ingredient);
+                Statement stmt2 = conn.createStatement();
+                ResultSet adsf = stmt2.executeQuery("INSERT INTO inventory (inventory_id, supply, stock_remaining) VALUES (DEFAULT, '"+ingredient+"', 100);");
+              }
+
+            }
+
+            String[] ingredients = ings.toArray(new String[0]);
+           
+            String query = "INSERT INTO products (product_id, drink_name, price, ingredients) VALUES (DEFAULT, ?, ?, string_to_array(?, ', '));";
+
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
+            preparedStatement.setString(1,newDrink);
+            preparedStatement.setDouble(2,newPrice);
+
+            String ing = String.join(",",ingredients);
+            preparedStatement.setString(3,ing);
+            preparedStatement.executeUpdate();
+            System.out.println(ing);
+        
+          }  catch (Exception ex){ //errors connecting to database
+            System.out.println(ex);   
+           }
+          setUpMenuEditor();
+        }
+        if(event.equals("Remove Menu Item")){
+          try{
+            Integer item = Integer.parseInt(JOptionPane.showInputDialog("Enter ID of object to be removed"));
+            Statement stmt = conn.createStatement();
+            ResultSet r = stmt.executeQuery("DELETE FROM products WHERE product_id = "+item+";");
+          }catch (Exception ex){ //errors connecting to database
+            //JOptionPane.showMessageDialog(null,ex);
+          }
+          setUpMenuEditor();
+        }
+
+        
         
       
     }
