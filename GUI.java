@@ -29,6 +29,7 @@ public class GUI extends JFrame implements ActionListener {
     static JButton backToLogin; //back button that returns to employee select
     static JTextArea orderLogs;
     static ArrayList<String> order = new ArrayList<String>();
+    static PlaceOrder placeOrder = new PlaceOrder();
 
     //establishes connection to the database, through the conn variable
     public static void connect(){
@@ -173,6 +174,11 @@ public class GUI extends JFrame implements ActionListener {
 
         // adding to arraylist of drinks in order
         order.add(drinkName);
+    }
+
+    private void completeOrder() {
+        // TODO: add employee id and customer id and order total
+        PlaceOrder.placeOrder(1, 1, order.toArray(new String[order.size()]), 0.0);
     }
 
     //displays either the cashier view or the manager view based on combobox selection
@@ -320,6 +326,11 @@ public class GUI extends JFrame implements ActionListener {
 
         JButton payButton = new JButton("Pay Now");
         payButton.setFont(new Font("Arial", Font.BOLD, 20));
+        payButton.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            completeOrder();
+          }
+        });
         rightPanel.add(payButton, BorderLayout.SOUTH);
 
         mainPanel.add(rightPanel, BorderLayout.EAST);
@@ -438,6 +449,11 @@ public class GUI extends JFrame implements ActionListener {
 
         JButton payButton = new JButton("Pay Now");
         payButton.setFont(new Font("Arial", Font.BOLD, 20));
+        payButton.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            completeOrder();
+          }
+        });
         rightPanel.add(payButton, BorderLayout.SOUTH);
 
         mainPanel.add(rightPanel, BorderLayout.EAST);
@@ -530,6 +546,11 @@ public class GUI extends JFrame implements ActionListener {
 
         JButton payButton = new JButton("Pay Now");
         payButton.setFont(new Font("Arial", Font.BOLD, 20));
+        payButton.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            completeOrder();
+          }
+        });
         rightPanel.add(payButton, BorderLayout.SOUTH);
 
         mainPanel.add(rightPanel, BorderLayout.EAST);
