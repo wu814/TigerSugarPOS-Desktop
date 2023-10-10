@@ -36,6 +36,8 @@ public class GUI extends JFrame implements ActionListener {
     static JFrame currFrame; //the current framethat is being used.
     static JTable statsTable; //stats table
     static JFrame editorFrame;
+    static JFrame currFrame;
+    static JFrame prevFrame;
     static GUI gui;
     static JPanel p; 
     static JTextArea hello; //text area for testing
@@ -69,22 +71,26 @@ public class GUI extends JFrame implements ActionListener {
     //change frame to a new frame, use when switching menus
     public static void changeFrame(JFrame newFrame){
       currFrame.setVisible(false);
+      prevFrame = currFrame;
       currFrame = newFrame;
       currFrame.setVisible(true);
     }
 
     //Initialize variables and components necessary for the GUI
-    public static void startFrameSetup(){
+    public static void frameSetup(){
       //frame setup
       startFrame = new JFrame("Tiger Sugar POS");
       startFrame.setSize(1000, 800);
       startFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      //initalize componenets
+      //initalize components
       gui = new GUI();
       p = new JPanel();
       hello = new JTextArea();
 
       startFrame.add(p);
+
+  
+
       p.add(hello);
 
       //ComboBox for Employees
@@ -99,6 +105,7 @@ public class GUI extends JFrame implements ActionListener {
       currFrame = startFrame;
       currFrame.setVisible(true);
     }
+
     //CREATES THE INVENTORY FRAME AND READS IN FROM DATABASE
     public static void setUpInventory(){
         //frame setup
@@ -376,6 +383,7 @@ public class GUI extends JFrame implements ActionListener {
 
     }
 
+    
     public static void setUpMenuEditor(){
               //frame setup
         editorFrame = new JFrame("Menu Editor");
@@ -474,6 +482,7 @@ public class GUI extends JFrame implements ActionListener {
 
 
 
+
     public static void setEmployeeComboBox(){
       //loads in the names of the employees
       Vector<Employee> employees = new Vector<>();
@@ -511,7 +520,7 @@ public class GUI extends JFrame implements ActionListener {
       });
       
     }
-    //updates order history
+        //updates order history
     // public static void addOrderToDatabase(String timestamp,String employee, String customer, String[] items){
     //     String query = "INSERT INTO orders (order_timestamp, employee_id, customer_id, order_items, order_total) VALUES (" + timestamp + ", " + employee + ", " + customerID + ", " + ARRAY['Item1', 'Item2', 'Item3'] + ", " + total + ");";
     //     try{
@@ -527,29 +536,33 @@ public class GUI extends JFrame implements ActionListener {
       //Connect to Database
       connect();
 
-      //Setup Start Frame
-      startFrameSetup();
+      //Setup Frame
+      frameSetup();
       setUpInventory();
       setUpRecentOrders();
       setUpOrderStats();
       setUpMenuEditor();
+     
       
       //closing the connection
-      // try {
-      //   conn.close();
-      //   //JOptionPane.showMessageDialog(null,"Connection Closed.");
-      // } catch(Exception e) {
-      //  // JOptionPane.showMessageDialog(null,"Connection NOT Closed.");
-      // }
+      try {
+        conn.close();
+        //JOptionPane.showMessageDialog(null,"Connection Closed.");
+      } catch(Exception e) {
+       // JOptionPane.showMessageDialog(null,"Connection NOT Closed.");
+      }
     }
 
     // if button is pressed
     public void actionPerformed(ActionEvent e)
     {
-        String event = e.getActionCommand();
+        String s = e.getActionCommand();
 
-        //Employee Enter in Combo Box
-        if (event.equals("Enter")) {
+        //Employee Enter
+        if (s.equals("Enter")) {
+            // caching drink prices
+            drinkPriceMap = OrderLogic.fetchAllDrinkPrices();
+
             viewSelector(((Employee) employeeSelector.getSelectedItem()).isManager());
         }
 
@@ -557,181 +570,484 @@ public class GUI extends JFrame implements ActionListener {
         if(event.equals("Back to Login")){
           changeFrame(startFrame);
         }
-
-        //Returns to manager menu from view inventory, edit prices, order stats, and recent orders
-        if(event.equals("Back to Manager Menu")){
-          changeFrame(managerFrame);
+        else if (event.equals("Fruity and Refreshing")) {
+          System.out.println("FAR");
+          changeFrame(createFruityRefreshingPage());
+        }
+        else if (event.equals("Sweet and Creamy")) {
+          System.out.println("SAC");
+          changeFrame(createSweetAndCreamyPage());
+        }
+        else if (event.equals("Coffee Flavored")) {
+          System.out.println("CF");
+          changeFrame(createCoffeeFlavoredPage());
         }
 
-        //opens inventory page
-        if(event.equals("View Inventory")){
-          
-          changeFrame(inventoryFrame);
-        }
-
-        //opens price editor
-        if(event.equals("Edit Prices")){
-          changeFrame(editorFrame);
-        }
-        
-        //opens order stats
-        if(event.equals("Order Statistics")){
-          changeFrame(statsFrame);
-        }
-
-        //opens recent orders
-        if(event.equals("Recent Orders")){
-          changeFrame(recentFrame);
-        }
-
-        //on order stats page, shows daily stats
-        if(event.equals("Daily Stats")){
-          dailyStats();
-        }
-
-        //on order stats page, show stats for inputted range, input with TwoInputDialog
-        if(event.equals("Custom Range")){
-          TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter start date: YYYY-MM-DD","Enter end date: YYYY-MM-DD");
-          TwoInputs inputs = dialog.showInputDialog();
-          String start = inputs.input1;
-          String end = inputs.input2;
-          if(start != "" && end != ""){
-              System.out.println("VALID");
-          }
-          else{
-            JOptionPane.showMessageDialog(null, "You have entered an invalid date.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
-          }
-        }
-
-        //on inventory page, adds a supply item to the database
-        if(event.equals("Add Supply Item")){
-          try{
-            //create a statement object
-            TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter new supply","Enter amount of new stock");
-            TwoInputs inputs = dialog.showInputDialog();
-            String newSupply = inputs.input1;
-            Integer newStock = Integer.parseInt(inputs.input2);
-            Statement stmt = conn.createStatement();
-            ResultSet r = stmt.executeQuery("INSERT INTO inventory (inventory_id, supply, stock_remaining) VALUES (DEFAULT, '"+newSupply+"', "+newStock+");");
-        
-          }  catch (Exception ex){ //errors connecting to database
-            //JOptionPane.showMessageDialog(null,ex);
-          }
-          setUpInventory();
-        }
-
-        //on inventory page, removes a supply item from the database
-        if(event.equals("Remove Supply Item")){
-          try{
-            Integer item = Integer.parseInt(JOptionPane.showInputDialog("Enter ID of object to be removed"));
-            Statement stmt = conn.createStatement();
-            ResultSet r = stmt.executeQuery("DELETE FROM inventory WHERE inventory_id = "+item+";");
-          }catch (Exception ex){ //errors connecting to database
-            //JOptionPane.showMessageDialog(null,ex);
-          }
-          setUpInventory();
-        }
-
-        //on menu editor page, adds a menu item to the database
-        if(event.equals("Add Menu Item")){
-          try{
-            //create a statement object
-            TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter new menu item","Enter price");
-            TwoInputs inputs = dialog.showInputDialog();
-            String newDrink = inputs.input1;
-            Double newPrice = Double.parseDouble(inputs.input2); //WARNING: MUST BE between 0 and 9.99
-            Vector<String> ings = new Vector<>();
-            //get ingredients
-            Integer ingredientCount = Integer.parseInt(JOptionPane.showInputDialog("How many ingredients does this drink have?"));
-            for(int i = 0;i<ingredientCount;i++){
-              String ingredient = JOptionPane.showInputDialog("Enter an ingredient");
-              ings.add(ingredient);
-              Statement stmt = conn.createStatement();
-              ResultSet result = stmt.executeQuery("SELECT * FROM inventory WHERE supply = '"+ingredient+"';");
-              if(!result.next()){ //if supply is not in the inventory
-                System.out.println(ingredient);
-                Statement stmt2 = conn.createStatement();
-                ResultSet adsf = stmt2.executeQuery("INSERT INTO inventory (inventory_id, supply, stock_remaining) VALUES (DEFAULT, '"+ingredient+"', 100);");
-              }
-
-            }
-
-            String[] ingredients = ings.toArray(new String[0]);
-           
-            String query = "INSERT INTO products (product_id, drink_name, price, ingredients) VALUES (DEFAULT, ?, ?, string_to_array(?, ', '));";
-
-            PreparedStatement preparedStatement = conn.prepareStatement(query);
-            preparedStatement.setString(1,newDrink);
-            preparedStatement.setDouble(2,newPrice);
-
-            String ing = String.join(",",ingredients);
-            preparedStatement.setString(3,ing);
-            preparedStatement.executeUpdate();
-            System.out.println(ing);
-        
-          }  catch (Exception ex){ //errors connecting to database
-            System.out.println(ex);   
-           }
-          setUpMenuEditor();
-        }
-        if(event.equals("Remove Menu Item")){
-          try{
-            Integer item = Integer.parseInt(JOptionPane.showInputDialog("Enter ID of object to be removed"));
-            Statement stmt = conn.createStatement();
-            ResultSet r = stmt.executeQuery("DELETE FROM products WHERE product_id = "+item+";");
-          }catch (Exception ex){ //errors connecting to database
-            //JOptionPane.showMessageDialog(null,ex);
-          }
-          setUpMenuEditor();
-        }
-
-        
-        
       
+    }
+
+    private void removeFromOrder(JButton drinkButton) {
+
+        orderLogs.remove(drinkButton);
+        orderLogs.revalidate();
+        orderLogs.repaint();
+
+        String[] drinkInfo = drinkButton.getText().split(" \\$");
+        
+        orderTotal -= drinkPriceMap.get(drinkInfo[0]);
+
+        System.out.println("Order total: " + orderTotal);
+
+        payButton.setText("Charge $" + orderTotal);
+
+        // splitting drinkbutton text on $
+
+        order.remove(drinkInfo[0]);
+    }
+
+    // handle adding a drink to the order list
+    private void addToOrder(String drinkName) {
+
+        orderTotal += drinkPriceMap.get(drinkName);
+
+        JButton drinkButton = new JButton(drinkName + " $" + drinkPriceMap.get(drinkName));
+        drinkButton.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            removeFromOrder(drinkButton);
+          }
+        });
+        orderLogs.add(drinkButton);
+        orderLogs.revalidate();
+        orderLogs.repaint();
+
+        System.out.println("Order total: " + orderTotal);
+
+        payButton.setText("Charge $" + orderTotal);
+
+        // adding to arraylist of drinks in order
+        order.add(drinkName);
+    }
+
+    private void completeOrder() {
+        // TODO: add employee id and customer id and order total
+
+        OrderLogic.placeOrder(1, 1, order.toArray(new String[order.size()]), orderTotal);
+        order.clear();
+        orderTotal = 0.0;
+        orderLogs.removeAll();
+        orderLogs.revalidate();
+        orderLogs.repaint();
+
+        payButton.setText("Charge $" + orderTotal);
     }
 
     //displays either the cashier view or the manager view based on combobox selection
     public static void viewSelector(boolean manager){
-      //startFrame.setVisible(false);
-      if(manager){ //go to manager view
-        //setup manager frame
-        managerFrame = new JFrame("Manager Display");
-        managerFrame.setSize(1000, 800);
-        JPanel managerPanel = new JPanel();
-        managerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        managerFrame.add(managerPanel);
-
-        JButton backToLogin = new JButton("Back to Login"); //goes back to login
-        backToLogin.addActionListener(gui);
-        managerPanel.add(backToLogin);
-
-        JButton viewInventory = new JButton("View Inventory"); //open view inventory menu
-        viewInventory.addActionListener(gui);
-        managerPanel.add(viewInventory);
-
-        JButton editPrices = new JButton("Edit Prices"); //open edit prices menu
-        editPrices.addActionListener(gui);
-        managerPanel.add(editPrices);
-
-        JButton orderStats = new JButton("Order Statistics"); //open order stats
-        orderStats.addActionListener(gui);
-        managerPanel.add(orderStats);
-
-        JButton recentOrders = new JButton("Recent Orders"); //open recent orders
-        recentOrders.addActionListener(gui);
-        managerPanel.add(recentOrders);
-
-         //switch frame
-        changeFrame(managerFrame);
-      }
-      else{ //go to cashier view
-        cashierFrame = new JFrame("Cashier Display");
+      startFrame.setVisible(false);
+      if(manager){
+        JFrame cashierFrame = new JFrame("Manager Display");
         cashierFrame.setSize(300, 100);
         cashierFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JButton backToLogin = new JButton("Back to Login");
-        backToLogin.addActionListener(gui);
+        backToLogin = new JButton("Back to Login");
+        backToLogin.addActionListener(s);
         cashierFrame.add(backToLogin);
         changeFrame(cashierFrame);
       }
+      else{
+        GUI guiInstance = new GUI();
+        JFrame cashierFrame = guiInstance.createSweetAndCreamyPage();
+        changeFrame(cashierFrame);
+      }
+    }
+
+    private static JButton StyledButton(String text) {
+      JButton button = new JButton("<html><center>" + text + "</center></html>", null);
+      button.setFont(new Font("Roboto", Font.PLAIN, 20));
+      button.setBackground(Color.WHITE);
+      button.setFocusPainted(false);
+      
+      button.setBorder(BorderFactory.createEmptyBorder());
+
+      button.setBorderPainted(false);
+      button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+      //button.setToolTipText(text); // INteresting mechanic
+
+      // Hover Mechanics
+      button.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+          button.setBackground(new Color(230, 230, 230));
+        }
+
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+          button.setBackground(Color.WHITE);
+        }
+      });
+      return button;
+    }
+
+    // FruityRefreshingPage
+    // TODO: add to the order list a remove button next to each drink
+    public JFrame createFruityRefreshingPage() {
+      JFrame fruityRefreshingFrame = new JFrame("Fruity and Refreshing");
+        fruityRefreshingFrame.setSize(1000, 800);
+        fruityRefreshingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel mainPanel = new JPanel(new BorderLayout());
+
+        //Font titleButtonFont = new Font("Roboto", Font.BOLD, 24);
+
+        // Left Nav panel
+        JPanel navPanel = new JPanel();
+        navPanel.setLayout(new BoxLayout(navPanel, BoxLayout.Y_AXIS));
+        navPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        // Drink Type Buttons
+        JButton creamyButton = StyledButton("Sweet and Creamy");
+        creamyButton.setActionCommand("Sweet and Creamy");
+        creamyButton.addActionListener(s);
+        JButton fruityButton = StyledButton("Fruity and Refreshing");
+        fruityButton.setActionCommand("Fruity and Refreshing");
+        fruityButton.addActionListener(s);
+        JButton coffeeButton = StyledButton("Coffee Flavored");
+        coffeeButton.setActionCommand("Coffee Flavored");
+        coffeeButton.addActionListener(s);
+
+        navPanel.add(creamyButton);
+        navPanel.add(fruityButton);
+        navPanel.add(coffeeButton);
+
+        navPanel.add(Box.createVerticalGlue());
+        backToLogin = new JButton("Back to Login");
+        backToLogin.addActionListener(s);
+        navPanel.add(backToLogin);
+        
+       
+        mainPanel.add(navPanel, BorderLayout.WEST);
+
+        // Content Panel for drinks
+        JPanel contentPanel = new JPanel();
+        contentPanel.setBackground(Color.WHITE);
+        contentPanel.setLayout(new GridLayout(3, 2, 20, 20));
+
+        JButton drinkButton1 = StyledButton("Taro Bubble Tea" + " $" + drinkPriceMap.get("Taro Bubble Tea"));
+        drinkButton1.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            addToOrder("Taro Bubble Tea");
+          }
+        });
+        JButton drinkButton2 = StyledButton("Tiger Mango Sago" + " $" + drinkPriceMap.get("Tiger Mango Sago"));
+        drinkButton2.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            addToOrder("Tiger Mango Sago");
+          }
+        });
+        JButton drinkButton3 = StyledButton("Passion Fruit Tea" + " $" + drinkPriceMap.get("Passion Fruit Tea"));
+        drinkButton3.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            addToOrder("Passion Fruit Tea");
+          }
+        });
+        JButton drinkButton4 = StyledButton("Jasmine Green Tea" + " $" + drinkPriceMap.get("Jasmine Green Tea"));
+        drinkButton4.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            addToOrder("Jasmine Green Tea");
+          }
+        });
+
+        contentPanel.add(drinkButton1);
+        contentPanel.add(drinkButton2);
+        contentPanel.add(drinkButton3);
+        contentPanel.add(drinkButton4);
+
+        mainPanel.add(contentPanel, BorderLayout.CENTER);
+
+        //Right Panel for orders
+
+        JPanel rightPanel = new JPanel(new BorderLayout());
+
+        JLabel orderListLabel = new JLabel("Order List");
+        orderListLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        orderListLabel.setHorizontalAlignment(JLabel.CENTER);
+        rightPanel.add(orderListLabel, BorderLayout.NORTH);
+
+          //Order Text
+        // orderLogs = new JTextArea(10, 20);
+        // orderLogs.setEditable(false);
+        orderLogs = new JPanel();
+        orderLogs.setFont(new Font("Arial", Font.PLAIN, 16));
+        orderLogs.setLayout(new BoxLayout(orderLogs, BoxLayout.Y_AXIS));
+
+        // populating orderlogs if orders already exist
+        if (order.size() > 0) {
+          for (String drink : order) {
+            JButton drinkButton = new JButton(drink + " $" + drinkPriceMap.get(drink));
+            drinkButton.addActionListener(new ActionListener() {
+              public void actionPerformed(ActionEvent e) {
+                removeFromOrder(drinkButton);
+              }
+            });
+            orderLogs.add(drinkButton);
+          }
+        }
+
+        JScrollPane orderScrollPane = new JScrollPane(orderLogs);
+        rightPanel.add(orderScrollPane, BorderLayout.CENTER);
+
+        payButton = new JButton("Charge $" + orderTotal);
+        payButton.setFont(new Font("Arial", Font.BOLD, 20));
+        payButton.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            completeOrder();
+          }
+        });
+        rightPanel.add(payButton, BorderLayout.SOUTH);
+
+        mainPanel.add(rightPanel, BorderLayout.EAST);
+
+        fruityRefreshingFrame.add(mainPanel);
+        fruityRefreshingFrame.setVisible(true);
+
+        changeFrame(fruityRefreshingFrame);
+      
+        return fruityRefreshingFrame;
+    }
+
+    // TODO: add to the order list a remove button next to each drink
+    public JFrame createSweetAndCreamyPage() {
+      JFrame sweetAndCreamyFrame = new JFrame("Sweet and Creamy");
+        sweetAndCreamyFrame.setSize(1000, 800);
+        sweetAndCreamyFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel mainPanel = new JPanel(new BorderLayout());
+
+        //Font titleButtonFont = new Font("Roboto", Font.BOLD, 24);
+
+        // Left Nav panel
+        JPanel navPanel = new JPanel();
+        navPanel.setLayout(new BoxLayout(navPanel, BoxLayout.Y_AXIS));
+        navPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        // Drink Type Buttons
+        JButton creamyButton = StyledButton("Sweet and Creamy");
+        creamyButton.setActionCommand("Sweet and Creamy");
+        creamyButton.addActionListener(s);
+        JButton fruityButton = StyledButton("Fruity and Refreshing");
+        fruityButton.setActionCommand("Fruity and Refreshing");
+        fruityButton.addActionListener(s);
+        JButton coffeeButton = StyledButton("Coffee Flavored");
+        coffeeButton.setActionCommand("Coffee Flavored");
+        coffeeButton.addActionListener(s);
+
+        navPanel.add(creamyButton);
+        navPanel.add(fruityButton);
+        navPanel.add(coffeeButton);
+
+        navPanel.add(Box.createVerticalGlue());
+        backToLogin = new JButton("Back to Login");
+        backToLogin.addActionListener(s);
+        navPanel.add(backToLogin);
+
+        mainPanel.add(navPanel, BorderLayout.WEST);
+
+        // Content Panel for drinks
+        JPanel contentPanel = new JPanel();
+        contentPanel.setBackground(Color.WHITE);
+        contentPanel.setLayout(new GridLayout(3, 2, 20, 20));
+
+        JButton drinkButton1 = StyledButton("Classic Brown Sugar Boba Milk Tea" + " $" + drinkPriceMap.get("Classic Brown Sugar Boba Milk Tea"));
+        drinkButton1.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            addToOrder("Classic Brown Sugar Boba Milk Tea");
+          }
+        });
+        JButton drinkButton2 = StyledButton("Matcha Black Sugar Boba Milk" + " $" + drinkPriceMap.get("Matcha Black Sugar Boba Milk"));
+        drinkButton2.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            addToOrder("Matcha Black Sugar Boba Milk");
+          }
+        });
+        JButton drinkButton3 = StyledButton("Red Bean Matcha Milk" + " $" + drinkPriceMap.get("Red Bean Matcha Milk"));
+        drinkButton3.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            addToOrder("Red Bean Matcha Milk");
+          }
+        });
+        JButton drinkButton4 = StyledButton("Strawberry Milk" + " $" + drinkPriceMap.get("Strawberry Milk"));
+        drinkButton4.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            addToOrder("Strawberry Milk");
+          }
+        });
+        JButton drinkButton5 = StyledButton("Golden Oolong Tea" + " $" + drinkPriceMap.get("Golden Oolong Tea"));
+        drinkButton5.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            addToOrder("Golden Oolong Tea");
+          }
+        });
+
+        contentPanel.add(drinkButton1);
+        contentPanel.add(drinkButton2);
+        contentPanel.add(drinkButton3);
+        contentPanel.add(drinkButton4);
+        contentPanel.add(drinkButton5);
+
+        mainPanel.add(contentPanel, BorderLayout.CENTER);
+
+        //Right Panel for orders
+
+        JPanel rightPanel = new JPanel(new BorderLayout());
+
+        JLabel orderListLabel = new JLabel("Order List");
+        orderListLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        orderListLabel.setHorizontalAlignment(JLabel.CENTER);
+        rightPanel.add(orderListLabel, BorderLayout.NORTH);
+
+          //Order Text
+        // orderLogs = new JTextArea(10, 20);
+        // orderLogs.setEditable(false);
+        orderLogs = new JPanel();
+        orderLogs.setFont(new Font("Arial", Font.PLAIN, 16));
+        orderLogs.setLayout(new BoxLayout(orderLogs, BoxLayout.Y_AXIS));
+
+        // populating orderlogs if orders already exist
+        if (order.size() > 0) {
+          for (String drink : order) {
+            JButton drinkButton = new JButton(drink + " $" + drinkPriceMap.get(drink));
+            drinkButton.addActionListener(new ActionListener() {
+              public void actionPerformed(ActionEvent e) {
+                removeFromOrder(drinkButton);
+              }
+            });
+            orderLogs.add(drinkButton);
+          }
+        }
+
+        JScrollPane orderScrollPane = new JScrollPane(orderLogs);
+        rightPanel.add(orderScrollPane, BorderLayout.CENTER);
+
+        payButton = new JButton("Charge $" + orderTotal);
+        payButton.setFont(new Font("Arial", Font.BOLD, 20));
+        payButton.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            completeOrder();
+          }
+        });
+        rightPanel.add(payButton, BorderLayout.SOUTH);
+
+        mainPanel.add(rightPanel, BorderLayout.EAST);
+
+        sweetAndCreamyFrame.add(mainPanel);
+        sweetAndCreamyFrame.setVisible(true);
+
+        changeFrame(sweetAndCreamyFrame);
+      
+        return sweetAndCreamyFrame;
+    }
+
+    // TODO: add to the order list a remove button next to each drinks
+    public JFrame createCoffeeFlavoredPage() {
+      JFrame coffeeFlavoredFrame = new JFrame("Coffee Flavored");
+        coffeeFlavoredFrame.setSize(1000, 800);
+        coffeeFlavoredFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel mainPanel = new JPanel(new BorderLayout());
+
+        //Font titleButtonFont = new Font("Roboto", Font.BOLD, 24);
+
+        // Left Nav panel
+        JPanel navPanel = new JPanel();
+        navPanel.setLayout(new BoxLayout(navPanel, BoxLayout.Y_AXIS));
+        navPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        // Drink Type Buttons
+        JButton creamyButton = StyledButton("Sweet and Creamy");
+        creamyButton.setActionCommand("Sweet and Creamy");
+        creamyButton.addActionListener(s);
+        JButton fruityButton = StyledButton("Fruity and Refreshing");
+        fruityButton.setActionCommand("Fruity and Refreshing");
+        fruityButton.addActionListener(s);
+        JButton coffeeButton = StyledButton("Coffee Flavored");
+        coffeeButton.setActionCommand("Coffee Flavored");
+        coffeeButton.addActionListener(s);
+
+
+        navPanel.add(creamyButton);
+        navPanel.add(fruityButton);
+        navPanel.add(coffeeButton);
+
+        navPanel.add(Box.createVerticalGlue());
+        backToLogin = new JButton("Back to Login");
+        backToLogin.addActionListener(s);
+        navPanel.add(backToLogin);
+        
+       
+        mainPanel.add(navPanel, BorderLayout.WEST);
+
+        // Content Panel for drinks
+        JPanel contentPanel = new JPanel();
+        contentPanel.setBackground(Color.WHITE);
+        contentPanel.setLayout(new GridLayout(3, 2, 20, 20));
+
+        JButton drinkButton1 = StyledButton("Black Sugar Coffee Jelly" + " $" + drinkPriceMap.get("Black Sugar Coffee Jelly"));
+        drinkButton1.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            addToOrder("Black Sugar Coffee Jelly");
+          }
+        });
+
+        contentPanel.add(drinkButton1);
+
+        mainPanel.add(contentPanel, BorderLayout.CENTER);
+
+        //Right Panel for orders
+
+        JPanel rightPanel = new JPanel(new BorderLayout());
+
+        JLabel orderListLabel = new JLabel("Order List");
+        orderListLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        orderListLabel.setHorizontalAlignment(JLabel.CENTER);
+        rightPanel.add(orderListLabel, BorderLayout.NORTH);
+
+          //Order Text
+        // orderLogs = new JTextArea(10, 20);
+        // orderLogs.setEditable(false);
+        orderLogs = new JPanel();
+        orderLogs.setFont(new Font("Arial", Font.PLAIN, 16));
+        orderLogs.setLayout(new BoxLayout(orderLogs, BoxLayout.Y_AXIS));
+
+
+        // populating orderlogs if orders already exist
+        if (order.size() > 0) {
+          for (String drink : order) {
+            JButton drinkButton = new JButton(drink + " $" + drinkPriceMap.get(drink));
+            drinkButton.addActionListener(new ActionListener() {
+              public void actionPerformed(ActionEvent e) {
+                removeFromOrder(drinkButton);
+              }
+            });
+            orderLogs.add(drinkButton);
+          }
+        }
+
+        JScrollPane orderScrollPane = new JScrollPane(orderLogs);
+        rightPanel.add(orderScrollPane, BorderLayout.CENTER);
+
+        payButton = new JButton("Charge $" + orderTotal);
+        payButton.setFont(new Font("Arial", Font.BOLD, 20));
+        payButton.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            completeOrder();
+          }
+        });
+        rightPanel.add(payButton, BorderLayout.SOUTH);
+
+        mainPanel.add(rightPanel, BorderLayout.EAST);
+
+        coffeeFlavoredFrame.add(mainPanel);
+        coffeeFlavoredFrame.setVisible(true);
+
+        changeFrame(coffeeFlavoredFrame);
+      
+        return coffeeFlavoredFrame;
     }
 }
