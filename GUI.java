@@ -15,11 +15,13 @@ public class GUI extends JFrame implements ActionListener {
     static Connection conn; //database connection
 
     static JFrame startFrame; 
-    static JFrame inventoryFrame;
-    static JFrame managerFrame;
+    static JFrame inventoryFrame; 
+    static JFrame managerFrame; //manager view menu
     static JFrame cashierFrame;
-    static JFrame recentFrame;
+    static JFrame recentFrame; //recent orders frame
+    static JFrame statsFrame;
     static JFrame currFrame; //the current framethat is being used.
+    static JTable statsTable; //stats table
     static GUI gui;
     static JPanel p; 
     static JTextArea hello; //text area for testing
@@ -212,6 +214,97 @@ public class GUI extends JFrame implements ActionListener {
         recentFrame.pack();
     }
 
+    //STATS FRAME
+    public static void setUpOrderStats(){
+        statsFrame = new JFrame("Order Statistics");
+        statsFrame.setSize(1000, 800);
+
+        JPanel titlePanel = new JPanel();
+        titlePanel.setPreferredSize(new Dimension(1000,50));
+        JLabel title = new JLabel("Order Statistics");
+        titlePanel.add(title);
+
+        JPanel menuPanel = new JPanel();
+        menuPanel.setPreferredSize(new Dimension(1000,50));
+
+        JPanel statsPanel = new JPanel();
+        statsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        statsFrame.add(titlePanel,BorderLayout.NORTH);
+        statsFrame.add(menuPanel,BorderLayout.CENTER);
+        statsFrame.add(statsPanel,BorderLayout.SOUTH);
+
+        JButton backToManager = new JButton("Back to Manager Menu"); //goes back to manager menu
+        backToManager.addActionListener(gui);
+        menuPanel.add(backToManager);
+
+        JButton today = new JButton("Daily Stats"); //shows today's stats
+        today.addActionListener(gui);
+        menuPanel.add(today);
+
+        JButton custom = new JButton("Custom Range"); //shows custom stats
+        custom.addActionListener(gui);
+        menuPanel.add(custom);
+
+
+        statsTable = dailyStats();
+        JScrollPane  scroll = new JScrollPane(statsTable);
+        statsPanel.add(scroll);
+
+        //getting the data
+        
+        statsFrame.pack();
+    }
+
+    public static JTable dailyStats(){
+      JTable table = new JTable();
+      try{
+          Statement stmt = conn.createStatement();
+          ResultSet drinkName = stmt.executeQuery("SELECT drink_name, price FROM products;");
+
+          //get column names
+          Vector<String> colNames = new Vector<>();
+          colNames.add("Drink");
+          colNames.add("Num Sold");
+          colNames.add("Sales");
+          Vector<Vector<Object>> data = new Vector<>();
+          //Each row: DRINK NAME, NUMSOLD, SALES
+
+          
+          while (drinkName.next()) { 
+              Vector<Object> row = new Vector<>();
+
+              //FILL FIRST COL
+              Object curr = drinkName.getObject(1);
+              row.add(curr);
+
+              //FILL SECOND COL
+              Statement stmt2 = conn.createStatement();
+              ResultSet numDrinks= stmt2.executeQuery("SELECT COUNT(*) AS total FROM orders WHERE '"+(String)curr+"' = ANY (order_items) AND DATE(order_timestamp) = '2025-06-01'; ");
+              numDrinks.next();
+              double units = numDrinks.getDouble(1);
+              row.add(numDrinks.getObject(1));
+
+              //FILL THIRD COL
+              double price = drinkName.getDouble(2);
+              double sales = price * units;
+              row.add((Object)sales);
+
+              data.add(row);
+      
+          }
+          DefaultTableModel model = new DefaultTableModel(data,colNames);
+          table.setModel(model);
+
+         
+          table.setPreferredScrollableViewportSize(new Dimension(800, 400)); // Adjust the width and height as needed
+        
+        } catch (Exception e){ //errors connecting to database
+          JOptionPane.showMessageDialog(null,e);
+        }
+        return table;
+
+    }
+
       //DECREAES STOCK BY 1 FOR AN INGREDIENT
     public static void updateInventory(String ingredient){
         String query = "UPDATE inventory SET stock_remaining = stock_remaining - 1 WHERE supply = " + ingredient + ";";
@@ -286,7 +379,7 @@ public class GUI extends JFrame implements ActionListener {
       startFrameSetup();
       setUpInventory();
       setUpRecentOrders();
-     
+      setUpOrderStats();
       
       //closing the connection
       // try {
@@ -320,10 +413,16 @@ public class GUI extends JFrame implements ActionListener {
           System.out.println("asdf");
         }
         if(event.equals("Order Statistics")){
-          System.out.println("asdf");
+          changeFrame(statsFrame);
         }
         if(event.equals("Recent Orders")){
           changeFrame(recentFrame);
+        }
+        if(event.equals("Daily Stats")){
+          //dailyStats()
+        }
+        if(event.equals("Custom Range")){
+          //custom range
         }
         
       
