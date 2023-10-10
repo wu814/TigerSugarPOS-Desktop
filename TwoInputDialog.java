@@ -11,7 +11,7 @@ public class TwoInputDialog extends JDialog {
     private JButton okButton;
     private TwoInputs inputs;
 
-    public TwoInputDialog(Frame parent) {
+    public TwoInputDialog(Frame parent,String label1, String label2) {
         super(parent, "Input Dialog", true);
         setLayout(new FlowLayout());
 
@@ -27,9 +27,9 @@ public class TwoInputDialog extends JDialog {
             }
         });
 
-        add(new JLabel("Enter start date: YYYY-MM-DD"));
+        add(new JLabel(label1));
         add(textField1);
-        add(new JLabel("Enter end date: YYYY-MM-DD"));
+        add(new JLabel(label2));
         add(textField2);
         add(okButton);
 

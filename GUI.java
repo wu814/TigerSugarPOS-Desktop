@@ -4,6 +4,8 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -102,6 +104,14 @@ public class GUI extends JFrame implements ActionListener {
         backToManager.addActionListener(gui);
         menuPanel.add(backToManager);
 
+        JButton add = new JButton("Add Supply Item");
+        add.addActionListener(gui);
+        menuPanel.add(add);
+
+        JButton remove = new JButton("Remove Supply Item");
+        remove.addActionListener(gui);
+        menuPanel.add(remove);
+
         JTable table = new JTable();
         JScrollPane  scroll = new JScrollPane(table);
         inventoryPanel.add(scroll);
@@ -109,7 +119,7 @@ public class GUI extends JFrame implements ActionListener {
         //getting the data
         try{
           Statement stmt = conn.createStatement();
-          ResultSet result = stmt.executeQuery("SELECT * FROM inventory;");
+          ResultSet result = stmt.executeQuery("SELECT * FROM inventory ORDER BY inventory_id;");
 
           //get column names
           int cols = result.getMetaData().getColumnCount();
@@ -130,6 +140,33 @@ public class GUI extends JFrame implements ActionListener {
           }
           DefaultTableModel model = new DefaultTableModel(data,colNames);
           table.setModel(model);
+          table.getModel().addTableModelListener(new TableModelListener(){
+
+              public void tableChanged(TableModelEvent e) {
+                if (e.getType() == TableModelEvent.UPDATE) {
+                    int row = e.getFirstRow();
+                    int column = e.getColumn();
+                    String columnName = model.getColumnName(column);
+                    Integer newValue = Integer.parseInt(model.getValueAt(row, column).toString());
+                    if(columnName.equals("stock_remaining")){
+                      row = (int)model.getValueAt(row,0);
+                    }
+
+                    // Update the corresponding database record
+                   // updateDatabase(row, columnName, newValue);
+                   try{
+                    String query = "UPDATE inventory SET " +columnName+ " = ? WHERE inventory_id = ?";
+                    PreparedStatement pStat = conn.prepareStatement(query);
+                    pStat.setInt(1,newValue);
+                    pStat.setInt(2,row);
+                    pStat.executeUpdate();
+                   }catch (Exception ex){
+                      System.out.println(ex);
+                   }
+                  }
+              }
+          });
+
         
         } catch (Exception e){ //errors connecting to database
           JOptionPane.showMessageDialog(null,e);
@@ -434,7 +471,7 @@ public class GUI extends JFrame implements ActionListener {
           dailyStats();
         }
         if(event.equals("Custom Range")){
-          TwoInputDialog dialog = new TwoInputDialog(currFrame);
+          TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter start date: YYYY-MM-DD","Enter end date: YYYY-MM-DD");
           TwoInputs inputs = dialog.showInputDialog();
           String start = inputs.input1;
           String end = inputs.input2;
@@ -444,8 +481,31 @@ public class GUI extends JFrame implements ActionListener {
           else{
             JOptionPane.showMessageDialog(null, "You have entered an invalid date.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
           }
-
-          
+        }
+        if(event.equals("Add Supply Item")){
+          try{
+            //create a statement object
+            TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter new supply","Enter amount of new stock");
+            TwoInputs inputs = dialog.showInputDialog();
+            String newSupply = inputs.input1;
+            Integer newStock = Integer.parseInt(inputs.input2);
+            Statement stmt = conn.createStatement();
+            ResultSet r = stmt.executeQuery("INSERT INTO inventory (inventory_id, supply, stock_remaining) VALUES (DEFAULT, '"+newSupply+"', "+newStock+");");
+        
+          }  catch (Exception ex){ //errors connecting to database
+            //JOptionPane.showMessageDialog(null,ex);
+          }
+          setUpInventory();
+        }
+        if(event.equals("Remove Supply Item")){
+          try{
+            Integer item = Integer.parseInt(JOptionPane.showInputDialog("Enter ID of object to be removed"));
+            Statement stmt = conn.createStatement();
+            ResultSet r = stmt.executeQuery("DELETE FROM inventory WHERE inventory_id = "+item+";");
+          }catch (Exception ex){ //errors connecting to database
+            //JOptionPane.showMessageDialog(null,ex);
+          }
+          setUpInventory();
 
         }
         
