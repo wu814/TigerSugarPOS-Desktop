@@ -33,10 +33,9 @@ public class GUI extends JFrame implements ActionListener {
     static JFrame cashierFrame;
     static JFrame recentFrame; //recent orders frame
     static JFrame statsFrame;
-    static JFrame currFrame; //the current framethat is being used.
     static JTable statsTable; //stats table
     static JFrame editorFrame;
-    static JFrame currFrame;
+    static JFrame currFrame; //the current framethat is being used.
     static JFrame prevFrame;
     static GUI gui;
     static JPanel p; 
@@ -556,10 +555,10 @@ public class GUI extends JFrame implements ActionListener {
     // if button is pressed
     public void actionPerformed(ActionEvent e)
     {
-        String s = e.getActionCommand();
+        String event = e.getActionCommand();
 
         //Employee Enter
-        if (s.equals("Enter")) {
+        if (event.equals("Enter")) {
             // caching drink prices
             drinkPriceMap = OrderLogic.fetchAllDrinkPrices();
 
@@ -649,7 +648,7 @@ public class GUI extends JFrame implements ActionListener {
         cashierFrame.setSize(300, 100);
         cashierFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         backToLogin = new JButton("Back to Login");
-        backToLogin.addActionListener(s);
+        backToLogin.addActionListener(gui);
         cashierFrame.add(backToLogin);
         changeFrame(cashierFrame);
       }
@@ -704,13 +703,13 @@ public class GUI extends JFrame implements ActionListener {
         // Drink Type Buttons
         JButton creamyButton = StyledButton("Sweet and Creamy");
         creamyButton.setActionCommand("Sweet and Creamy");
-        creamyButton.addActionListener(s);
+        creamyButton.addActionListener(gui);
         JButton fruityButton = StyledButton("Fruity and Refreshing");
         fruityButton.setActionCommand("Fruity and Refreshing");
-        fruityButton.addActionListener(s);
+        fruityButton.addActionListener(gui);
         JButton coffeeButton = StyledButton("Coffee Flavored");
         coffeeButton.setActionCommand("Coffee Flavored");
-        coffeeButton.addActionListener(s);
+        coffeeButton.addActionListener(gui);
 
         navPanel.add(creamyButton);
         navPanel.add(fruityButton);
@@ -718,7 +717,7 @@ public class GUI extends JFrame implements ActionListener {
 
         navPanel.add(Box.createVerticalGlue());
         backToLogin = new JButton("Back to Login");
-        backToLogin.addActionListener(s);
+        backToLogin.addActionListener(gui);
         navPanel.add(backToLogin);
         
        
@@ -830,13 +829,13 @@ public class GUI extends JFrame implements ActionListener {
         // Drink Type Buttons
         JButton creamyButton = StyledButton("Sweet and Creamy");
         creamyButton.setActionCommand("Sweet and Creamy");
-        creamyButton.addActionListener(s);
+        creamyButton.addActionListener(gui);
         JButton fruityButton = StyledButton("Fruity and Refreshing");
         fruityButton.setActionCommand("Fruity and Refreshing");
-        fruityButton.addActionListener(s);
+        fruityButton.addActionListener(gui);
         JButton coffeeButton = StyledButton("Coffee Flavored");
         coffeeButton.setActionCommand("Coffee Flavored");
-        coffeeButton.addActionListener(s);
+        coffeeButton.addActionListener(gui);
 
         navPanel.add(creamyButton);
         navPanel.add(fruityButton);
@@ -844,7 +843,7 @@ public class GUI extends JFrame implements ActionListener {
 
         navPanel.add(Box.createVerticalGlue());
         backToLogin = new JButton("Back to Login");
-        backToLogin.addActionListener(s);
+        backToLogin.addActionListener(gui);
         navPanel.add(backToLogin);
 
         mainPanel.add(navPanel, BorderLayout.WEST);
@@ -962,13 +961,13 @@ public class GUI extends JFrame implements ActionListener {
         // Drink Type Buttons
         JButton creamyButton = StyledButton("Sweet and Creamy");
         creamyButton.setActionCommand("Sweet and Creamy");
-        creamyButton.addActionListener(s);
+        creamyButton.addActionListener(gui);
         JButton fruityButton = StyledButton("Fruity and Refreshing");
         fruityButton.setActionCommand("Fruity and Refreshing");
-        fruityButton.addActionListener(s);
+        fruityButton.addActionListener(gui);
         JButton coffeeButton = StyledButton("Coffee Flavored");
         coffeeButton.setActionCommand("Coffee Flavored");
-        coffeeButton.addActionListener(s);
+        coffeeButton.addActionListener(gui);
 
 
         navPanel.add(creamyButton);
@@ -977,7 +976,7 @@ public class GUI extends JFrame implements ActionListener {
 
         navPanel.add(Box.createVerticalGlue());
         backToLogin = new JButton("Back to Login");
-        backToLogin.addActionListener(s);
+        backToLogin.addActionListener(gui);
         navPanel.add(backToLogin);
         
        
