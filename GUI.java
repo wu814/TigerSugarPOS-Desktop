@@ -27,6 +27,8 @@ public class GUI extends JFrame implements ActionListener {
     static JComboBox<Employee> employeeSelector; //drop down for employees, how we know to go in cashier view or  manager view
     static JButton employeeEnter;//locks in combobox entry
     static JButton backToLogin; //back button that returns to employee select
+    static JTextArea orderLogs;
+    static ArrayList<String> order = new ArrayList<String>();
 
     //establishes connection to the database, through the conn variable
     public static void connect(){
@@ -165,6 +167,14 @@ public class GUI extends JFrame implements ActionListener {
       
     }
 
+    // handle adding a drink to the order list
+    private void addToOrder(String drinkName) {
+        orderLogs.setText(orderLogs.getText() + "\n" + drinkName);
+
+        // adding to arraylist of drinks in order
+        order.add(drinkName);
+    }
+
     //displays either the cashier view or the manager view based on combobox selection
     public static void viewSelector(boolean manager){
       startFrame.setVisible(false);
@@ -253,9 +263,29 @@ public class GUI extends JFrame implements ActionListener {
         contentPanel.setLayout(new GridLayout(3, 2, 20, 20));
 
         JButton drinkButton1 = StyledButton("Taro Bubble Tea");
+        drinkButton1.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            addToOrder("Taro Bubble Tea");
+          }
+        });
         JButton drinkButton2 = StyledButton("Tiger Mango Sago");
+        drinkButton2.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            addToOrder("Tiger Mango Sago");
+          }
+        });
         JButton drinkButton3 = StyledButton("Passion Fruit Tea");
+        drinkButton3.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            addToOrder("Passion Fruit Tea");
+          }
+        });
         JButton drinkButton4 = StyledButton("Jasmine Green Tea");
+        drinkButton4.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            addToOrder("Jasmine Green Tea");
+          }
+        });
 
         contentPanel.add(drinkButton1);
         contentPanel.add(drinkButton2);
@@ -274,9 +304,17 @@ public class GUI extends JFrame implements ActionListener {
         rightPanel.add(orderListLabel, BorderLayout.NORTH);
 
           //Order Text
-        JTextArea orderLogs = new JTextArea(10, 20);
+        orderLogs = new JTextArea(10, 20);
         orderLogs.setEditable(false);
         orderLogs.setFont(new Font("Arial", Font.PLAIN, 16));
+
+        // populating orderlogs if orders already exist
+        if (order.size() > 0) {
+          for (String drink : order) {
+            orderLogs.setText(orderLogs.getText() + "\n" + drink);
+          }
+        }
+
         JScrollPane orderScrollPane = new JScrollPane(orderLogs);
         rightPanel.add(orderScrollPane, BorderLayout.CENTER);
 
@@ -336,10 +374,35 @@ public class GUI extends JFrame implements ActionListener {
         contentPanel.setLayout(new GridLayout(3, 2, 20, 20));
 
         JButton drinkButton1 = StyledButton("Classic Brown Sugar Boba Milk Tea");
+        drinkButton1.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            addToOrder("Classic Brown Sugar Boba Milk Tea");
+          }
+        });
         JButton drinkButton2 = StyledButton("Matcha Black Sugar Boba Milk");
+        drinkButton2.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            addToOrder("Matcha Black Sugar Boba Milk");
+          }
+        });
         JButton drinkButton3 = StyledButton("Red Bean Matcha Milk");
+        drinkButton3.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            addToOrder("Red Bean Matcha Milk");
+          }
+        });
         JButton drinkButton4 = StyledButton("Strawberry Milk");
+        drinkButton4.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            addToOrder("Strawberry Milk");
+          }
+        });
         JButton drinkButton5 = StyledButton("Golden Oolong Tea");
+        drinkButton5.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            addToOrder("Golden Oolong Tea");
+          }
+        });
 
         contentPanel.add(drinkButton1);
         contentPanel.add(drinkButton2);
@@ -359,9 +422,17 @@ public class GUI extends JFrame implements ActionListener {
         rightPanel.add(orderListLabel, BorderLayout.NORTH);
 
           //Order Text
-        JTextArea orderLogs = new JTextArea(10, 20);
+        orderLogs = new JTextArea(10, 20);
         orderLogs.setEditable(false);
         orderLogs.setFont(new Font("Arial", Font.PLAIN, 16));
+
+        // populating orderlogs if orders already exist
+        if (order.size() > 0) {
+          for (String drink : order) {
+            orderLogs.setText(orderLogs.getText() + "\n" + drink);
+          }
+        }
+
         JScrollPane orderScrollPane = new JScrollPane(orderLogs);
         rightPanel.add(orderScrollPane, BorderLayout.CENTER);
 
@@ -423,6 +494,11 @@ public class GUI extends JFrame implements ActionListener {
         contentPanel.setLayout(new GridLayout(3, 2, 20, 20));
 
         JButton drinkButton1 = StyledButton("Black Sugar Coffee Jelly");
+        drinkButton1.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            addToOrder("Black Sugar Coffee Jelly");
+          }
+        });
 
         contentPanel.add(drinkButton1);
 
@@ -438,9 +514,17 @@ public class GUI extends JFrame implements ActionListener {
         rightPanel.add(orderListLabel, BorderLayout.NORTH);
 
           //Order Text
-        JTextArea orderLogs = new JTextArea(10, 20);
+        orderLogs = new JTextArea(10, 20);
         orderLogs.setEditable(false);
         orderLogs.setFont(new Font("Arial", Font.PLAIN, 16));
+
+        // populating orderlogs if orders already exist
+        if (order.size() > 0) {
+          for (String drink : order) {
+            orderLogs.setText(orderLogs.getText() + "\n" + drink);
+          }
+        }
+
         JScrollPane orderScrollPane = new JScrollPane(orderLogs);
         rightPanel.add(orderScrollPane, BorderLayout.CENTER);
 
