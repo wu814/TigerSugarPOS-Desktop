@@ -489,7 +489,7 @@ public class GUI extends JFrame implements ActionListener {
         return sweetAndCreamyFrame;
     }
 
-    // TODO: add to the order list a remove button next to each drink
+    // TODO: add to the order list a remove button next to each drinks
     public JFrame createCoffeeFlavoredPage() {
       JFrame coffeeFlavoredFrame = new JFrame("Coffee Flavored");
         coffeeFlavoredFrame.setSize(1000, 800);

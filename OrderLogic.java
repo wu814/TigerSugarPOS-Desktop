@@ -15,6 +15,7 @@ public class OrderLogic {
     private static final String PASSWORD = "password";
 
     public static void placeOrder(int employeeId, int customerId, String[] orderItems, double orderTotal) {
+        // TODO: change this to the real order DB
         String sqlCommand = "INSERT INTO order_test (order_timestamp, employee_id, customer_id, order_items, order_total) VALUES (?, ?, ?, ?, ?)";
 
         try {
@@ -22,7 +23,10 @@ public class OrderLogic {
             PreparedStatement preparedStatement = conn.prepareStatement(sqlCommand);
 
             // Set parameters
+
+            // getting timestamp without millisecond
             Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+            timestamp.setNanos(0);
             preparedStatement.setTimestamp(1, timestamp);
             preparedStatement.setInt(2, employeeId);
             preparedStatement.setInt(3, customerId);
