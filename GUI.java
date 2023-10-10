@@ -27,6 +27,7 @@ public class GUI extends JFrame implements ActionListener {
     static JComboBox<Employee> employeeSelector; //drop down for employees, how we know to go in cashier view or  manager view
     static JButton employeeEnter;//locks in combobox entry
     static JButton backToLogin; //back button that returns to employee select
+    static JButton payButton;
     static JTextArea orderLogs;
     static ArrayList<String> order = new ArrayList<String>();
     static OrderLogic orderLogic = new OrderLogic();
@@ -181,6 +182,9 @@ public class GUI extends JFrame implements ActionListener {
 
         System.out.println("Order total: " + orderTotal);
 
+        payButton.setText("Charge $" + orderTotal);
+
+
         // adding to arraylist of drinks in order
         order.remove(drinkName);
     }
@@ -193,13 +197,20 @@ public class GUI extends JFrame implements ActionListener {
 
         System.out.println("Order total: " + orderTotal);
 
+        payButton.setText("Charge $" + orderTotal);
+
         // adding to arraylist of drinks in order
         order.add(drinkName);
     }
 
     private void completeOrder() {
         // TODO: add employee id and customer id and order total
+
         OrderLogic.placeOrder(1, 1, order.toArray(new String[order.size()]), orderTotal);
+        order.clear();
+        orderLogs.setText("");
+        orderTotal = 0.0;
+        payButton.setText("Charge $" + orderTotal);
     }
 
     //displays either the cashier view or the manager view based on combobox selection
@@ -346,7 +357,7 @@ public class GUI extends JFrame implements ActionListener {
         JScrollPane orderScrollPane = new JScrollPane(orderLogs);
         rightPanel.add(orderScrollPane, BorderLayout.CENTER);
 
-        JButton payButton = new JButton("Pay Now");
+        payButton = new JButton("Charge $" + orderTotal);
         payButton.setFont(new Font("Arial", Font.BOLD, 20));
         payButton.addActionListener(new ActionListener() {
           public void actionPerformed(ActionEvent e) {
@@ -470,7 +481,7 @@ public class GUI extends JFrame implements ActionListener {
         JScrollPane orderScrollPane = new JScrollPane(orderLogs);
         rightPanel.add(orderScrollPane, BorderLayout.CENTER);
 
-        JButton payButton = new JButton("Pay Now");
+        payButton = new JButton("Charge $" + orderTotal);
         payButton.setFont(new Font("Arial", Font.BOLD, 20));
         payButton.addActionListener(new ActionListener() {
           public void actionPerformed(ActionEvent e) {
@@ -568,7 +579,7 @@ public class GUI extends JFrame implements ActionListener {
         JScrollPane orderScrollPane = new JScrollPane(orderLogs);
         rightPanel.add(orderScrollPane, BorderLayout.CENTER);
 
-        JButton payButton = new JButton("Pay Now");
+        payButton = new JButton("Charge $" + orderTotal);
         payButton.setFont(new Font("Arial", Font.BOLD, 20));
         payButton.addActionListener(new ActionListener() {
           public void actionPerformed(ActionEvent e) {
