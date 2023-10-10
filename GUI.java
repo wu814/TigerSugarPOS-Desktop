@@ -269,6 +269,9 @@ public class GUI extends JFrame implements ActionListener {
           Vector<Vector<Object>> data = new Vector<>();
           //Each row: DRINK NAME, NUMSOLD, SALES
 
+          double totalUnits = 0;
+          double totalSales = 0;
+
           
           while (drinkName.next()) { 
               Vector<Object> row = new Vector<>();
@@ -282,16 +285,25 @@ public class GUI extends JFrame implements ActionListener {
               ResultSet numDrinks= stmt2.executeQuery("SELECT COUNT(*) AS total FROM orders WHERE '"+(String)curr+"' = ANY (order_items) AND DATE(order_timestamp) = '2025-06-01'; ");
               numDrinks.next();
               double units = numDrinks.getDouble(1);
+              totalUnits += units;
               row.add(numDrinks.getObject(1));
 
               //FILL THIRD COL
               double price = drinkName.getDouble(2);
               double sales = price * units;
+              totalSales += sales;
               row.add((Object)sales);
 
               data.add(row);
       
           }
+          Vector<Object> totalRow = new Vector<>();
+          totalRow.add("Total");
+          totalRow.add((int)totalUnits);
+          totalRow.add(totalSales);
+          data.add(totalRow);
+
+
           DefaultTableModel model = new DefaultTableModel(data,colNames);
           table.setModel(model);
 
@@ -419,10 +431,22 @@ public class GUI extends JFrame implements ActionListener {
           changeFrame(recentFrame);
         }
         if(event.equals("Daily Stats")){
-          //dailyStats()
+          dailyStats();
         }
         if(event.equals("Custom Range")){
-          //custom range
+          TwoInputDialog dialog = new TwoInputDialog(currFrame);
+          TwoInputs inputs = dialog.showInputDialog();
+          String start = inputs.input1;
+          String end = inputs.input2;
+          if(start != "" && end != ""){
+              System.out.println("VALID");
+          }
+          else{
+            JOptionPane.showMessageDialog(null, "You have entered an invalid date.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+          }
+
+          
+
         }
         
       
