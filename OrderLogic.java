@@ -17,11 +17,16 @@ public class OrderLogic {
     public static void placeOrder(int employeeId, int customerId, String[] orderItems, double orderTotal) {
         // TODO: change this to the real order DB
         String sqlCommand = "INSERT INTO order_test (order_timestamp, employee_id, customer_id, order_items, order_total) VALUES (?, ?, ?, ?, ?)";
+        String selectIngredients = "SELECT ingredients FROM products WHERE drink_name = ?";
+        String updateInventory = "UPDATE inventory SET stock_remaining = stock_remaining - 1 WHERE supply = ?";
         Connection conn = null;
-
 
         try {
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
+
+            // disable auto commit (for speed with large insertions)
+            conn.setAutoCommit(false);
+
             PreparedStatement preparedStatement = conn.prepareStatement(sqlCommand);
 
             // set parameters
@@ -37,22 +42,25 @@ public class OrderLogic {
 
             // execute the SQL statement
             preparedStatement.executeUpdate();
+            conn.commit();
 
             // updating inventory
-            for (String item: orderItems) {
-                // selecting ingredients for each item (it's an array)
-                String selectIngredients = "SELECT ingredients FROM products WHERE drink_name = " + "'" + item + "'";
-                Statement stmt = conn.createStatement();
-                ResultSet result = stmt.executeQuery(selectIngredients);
-                result.next();
-                String[] ingredients = (String[]) result.getArray("ingredients").getArray();
+            PreparedStatement selectStmt = conn.prepareStatement(selectIngredients);
+            PreparedStatement updateStmt = conn.prepareStatement(updateInventory);
+            for (String item : orderItems) {
+                selectStmt.setString(1, item);
+                ResultSet result = selectStmt.executeQuery();
+                if (result.next()) {
+                    String[] ingredients = (String[]) result.getArray("ingredients").getArray();
 
-                // updating inventory for each ingredient
-                for (String ingredient: ingredients) {
-                    String updateInventory = "UPDATE inventory SET stock_remaining = stock_remaining - 1 WHERE supply = " + "'" + ingredient + "'";
-                    stmt.executeUpdate(updateInventory);
+                    for (String ingredient : ingredients) {
+                        updateStmt.setString(1, ingredient);
+                        updateStmt.addBatch();
+                    }
                 }
             }
+            updateStmt.executeBatch();
+            conn.commit();
 
             System.out.println("Order added successfully!");
         } catch (SQLException e) {
