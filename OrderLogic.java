@@ -17,9 +17,11 @@ public class OrderLogic {
     public static void placeOrder(int employeeId, int customerId, String[] orderItems, double orderTotal) {
         // TODO: change this to the real order DB
         String sqlCommand = "INSERT INTO order_test (order_timestamp, employee_id, customer_id, order_items, order_total) VALUES (?, ?, ?, ?, ?)";
+        Connection conn = null;
+
 
         try {
-            Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+            conn = DriverManager.getConnection(URL, USER, PASSWORD);
             PreparedStatement preparedStatement = conn.prepareStatement(sqlCommand);
 
             // set parameters
@@ -57,15 +59,21 @@ public class OrderLogic {
             e.printStackTrace();
             System.err.println("Error adding order: " + e.getMessage());
         } finally {
-            // conn.close();
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.err.println("Error closing connection: " + e.getMessage());
+            }
         }
     }
 
     public static Map<String, Double> fetchAllDrinkPrices() {
         String sqlCommand = "SELECT drink_name, price FROM products";
+        Connection conn = null;
 
         try {
-            Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+            conn = DriverManager.getConnection(URL, USER, PASSWORD);
             Statement stmt = conn.createStatement();
 
             // send statement to DBMS
@@ -84,7 +92,12 @@ public class OrderLogic {
             System.err.println("Error fetching drink prices: " + e.getMessage());
             return null;
         } finally {
-            // conn.close();
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.err.println("Error closing connection: " + e.getMessage());
+            }
         }
     }
 }
