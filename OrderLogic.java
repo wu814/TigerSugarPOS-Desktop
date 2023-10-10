@@ -22,7 +22,7 @@ public class OrderLogic {
             Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
             PreparedStatement preparedStatement = conn.prepareStatement(sqlCommand);
 
-            // Set parameters
+            // set parameters
 
             // getting timestamp without millisecond
             Timestamp timestamp = new Timestamp(System.currentTimeMillis());
@@ -33,8 +33,24 @@ public class OrderLogic {
             preparedStatement.setArray(4, conn.createArrayOf("text", orderItems));
             preparedStatement.setDouble(5, orderTotal);
 
-            // Execute the SQL statement
+            // execute the SQL statement
             preparedStatement.executeUpdate();
+
+            // updating inventory
+            for (String item: orderItems) {
+                // selecting ingredients for each item (it's an array)
+                String selectIngredients = "SELECT ingredients FROM products WHERE drink_name = " + "'" + item + "'";
+                Statement stmt = conn.createStatement();
+                ResultSet result = stmt.executeQuery(selectIngredients);
+                result.next();
+                String[] ingredients = (String[]) result.getArray("ingredients").getArray();
+
+                // updating inventory for each ingredient
+                for (String ingredient: ingredients) {
+                    String updateInventory = "UPDATE inventory SET stock_remaining = stock_remaining - 1 WHERE supply = " + "'" + ingredient + "'";
+                    stmt.executeUpdate(updateInventory);
+                }
+            }
 
             System.out.println("Order added successfully!");
         } catch (SQLException e) {
@@ -52,10 +68,10 @@ public class OrderLogic {
             Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
             Statement stmt = conn.createStatement();
 
-            //send statement to DBMS
+            // send statement to DBMS
             ResultSet result = stmt.executeQuery(sqlCommand);
 
-            //fetch results
+            // fetch results
             Map<String, Double> drinkPrices = new HashMap<String, Double>();
             while (result.next()) {
                 drinkPrices.put(result.getString("drink_name"), result.getDouble("price"));
