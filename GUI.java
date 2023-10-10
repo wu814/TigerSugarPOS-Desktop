@@ -9,6 +9,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Dimension;
+import java.math.BigDecimal;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
@@ -47,6 +49,7 @@ public class GUI extends JFrame implements ActionListener {
     static double orderTotal = 0.0;
     static Map<String, Double> drinkPriceMap = new HashMap<String, Double>();
     static JScrollPane orderScrollPane;
+
 
     //establishes connection to the database, through the conn variable
     public static void connect(){
@@ -549,6 +552,7 @@ public class GUI extends JFrame implements ActionListener {
         if (event.equals("Enter")) {
             viewSelector(((Employee) employeeSelector.getSelectedItem()).isManager());
         }
+
         //Returns to Login from cashier page or manager menu
         if(event.equals("Back to Login")){
           changeFrame(startFrame);
