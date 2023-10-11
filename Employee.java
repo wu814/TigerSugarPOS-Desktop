@@ -24,7 +24,7 @@ public class Employee {
     /**
      * Getters and setters
      * @author Josh Hare
-     * @return name
+     * @return String name
     */
     public String getName() {
         return name;
@@ -33,7 +33,7 @@ public class Employee {
 
     /**
      * @author Josh Hare
-     * @param name
+     * @param String name
     */
     public void setName(String name) {
         this.name = name;
@@ -42,7 +42,7 @@ public class Employee {
 
     /**
      * @author Josh Hare
-     * @return position
+     * @return String position
     */
     public String getPosition() {
         return position;
@@ -51,7 +51,7 @@ public class Employee {
 
     /**
      * @author Josh Hare
-     * @param position
+     * @param String position
     */
     public void setPosition(String position) {
         this.position = position;
@@ -60,7 +60,7 @@ public class Employee {
 
     /**
      * @author Josh Hare
-     * @return wage
+     * @return double wage
     */
     public double getWage() {
         return wage;
@@ -69,7 +69,7 @@ public class Employee {
 
     /**
      * @author Josh Hare
-     * @param wage
+     * @param double wage
     */
     public void setWage(double wage) {
         this.wage = wage;
@@ -78,7 +78,7 @@ public class Employee {
 
     /**
      * @author Josh Hare
-     * @return hoursWorked
+     * @return int hoursWorked
     */
     public int getHoursWorked() {
         return hoursWorked;
@@ -87,7 +87,7 @@ public class Employee {
 
     /**
      * @author Josh Hare
-     * @param hoursWorked
+     * @param int hoursWorked
     */
     public void setHoursWorked(int hoursWorked) {
         this.hoursWorked = hoursWorked;
@@ -96,7 +96,7 @@ public class Employee {
 
     /**
      * @author Josh Hare
-     * @return boolean
+     * @return boolean isManager
     */
     public boolean isManager(){
         if(position.equals("Manager"))

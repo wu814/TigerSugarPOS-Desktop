@@ -22,6 +22,9 @@ import javax.swing.table.TableColumn;
 
 import java.util.*;
 
+/**
+ * @author Nai-Yun Wu
+ */
 public class ManagerLogic {
     // Attribute
     private static final String URL = "jdbc:postgresql://csce-315-db.engr.tamu.edu/csce315331_10g_db";
@@ -32,7 +35,6 @@ public class ManagerLogic {
 
     /**
      * Constructor
-     * @author Nai-Yun Wu
     */
     public ManagerLogic(){
         // Initialize the connection in the constructor
@@ -46,8 +48,7 @@ public class ManagerLogic {
 
 
     /**
-    * @author Nai-Yun Wu
-    * @param table the table that holds the inventory data
+    * @param table the table to hold inventory data
     */
     public void getInventory(JTable table){
         try{
@@ -103,8 +104,7 @@ public class ManagerLogic {
 
 
     /**
-    * @author Nai-Yun Wu
-    * @param table the table that holds the orders data
+    * @param table the table to hold orders data 
     */
     public void getRecentOrders(JTable table){
         // Getting the data
@@ -156,9 +156,8 @@ public class ManagerLogic {
 
 
     /**
-    * @author Nai-Yun Wu
-    * @param table the table that holds the stats
-    * @return the table after getting the stats
+    * @param table the table to hold stats data
+    * @return the table with stats data loaded
     */
     public JTable getDailyStats(JTable table){
         try{
@@ -219,9 +218,7 @@ public class ManagerLogic {
 
 
     /**
-    * @author Nai-Yun Wu
-    * @param table the table that holds the products
-    * @return the table after getting the products
+    * @param table the table to hold products
     */
     public void getMenu(JTable table){
         try{
