@@ -205,4 +205,58 @@ public class ManagerLogic {
         }
         return table;
     }
+
+    public void getMenu(JTable table){
+        try{
+          Statement stmt = conn.createStatement();
+          ResultSet result = stmt.executeQuery("SELECT * FROM products ORDER BY product_id;");
+
+          //get column names
+          int cols = result.getMetaData().getColumnCount();
+          Vector<String> colNames = new Vector<>();
+          for(int i = 1;i<=cols;i++){
+            colNames.add(result.getMetaData().getColumnName(i));
+          }
+
+          //get data
+          Vector<Vector<Object>> data = new Vector<>();
+          while (result.next()) { 
+              Vector<Object> row = new Vector<>();
+              for(int i = 1;i<=cols;i++){
+                row.add(result.getObject(i));
+              }
+              data.add(row);
+      
+          }
+          DefaultTableModel model = new DefaultTableModel(data,colNames);
+          table.setModel(model);
+          table.getModel().addTableModelListener(new TableModelListener(){
+
+              public void tableChanged(TableModelEvent e) {
+                if (e.getType() == TableModelEvent.UPDATE) {
+                    int id = e.getFirstRow();
+                    int column = e.getColumn();
+                    String columnName = model.getColumnName(column);
+                    Double newValue = Double.parseDouble(model.getValueAt(id, column).toString());
+                    if(columnName.equals("price")){
+                      id = (int)model.getValueAt(id,0);
+                    }
+                    // Update the corresponding database record
+                   try{
+                    String query = "UPDATE products SET " +columnName+ " = ? WHERE product_id = ?";
+                    PreparedStatement pStat = conn.prepareStatement(query);
+                    pStat.setBigDecimal(1,BigDecimal.valueOf(newValue));
+                    pStat.setInt(2,id);
+                    pStat.executeUpdate();
+                   }catch (Exception ex){
+                      System.out.println("HELP"+ex);
+                   }
+                 }
+              }
+            });
+
+        } catch (Exception e){ //errors connecting to database
+          JOptionPane.showMessageDialog(null,e);
+        }
+    }
 }
