@@ -20,6 +20,7 @@ public class Employee {
         this.hoursWorked = Integer.valueOf(hoursWorked);
     }
 
+
     /**
      * Getters and setters
      * @author Josh Hare
@@ -29,6 +30,7 @@ public class Employee {
         return name;
     }
 
+
     /**
      * @author Josh Hare
      * @param name
@@ -36,6 +38,7 @@ public class Employee {
     public void setName(String name) {
         this.name = name;
     }
+
 
     /**
      * @author Josh Hare
@@ -45,6 +48,7 @@ public class Employee {
         return position;
     }
 
+
     /**
      * @author Josh Hare
      * @param position
@@ -52,6 +56,7 @@ public class Employee {
     public void setPosition(String position) {
         this.position = position;
     }
+
 
     /**
      * @author Josh Hare
@@ -61,6 +66,7 @@ public class Employee {
         return wage;
     }
 
+
     /**
      * @author Josh Hare
      * @param wage
@@ -68,6 +74,7 @@ public class Employee {
     public void setWage(double wage) {
         this.wage = wage;
     }
+
 
     /**
      * @author Josh Hare
@@ -77,6 +84,7 @@ public class Employee {
         return hoursWorked;
     }
 
+
     /**
      * @author Josh Hare
      * @param hoursWorked
@@ -84,6 +92,7 @@ public class Employee {
     public void setHoursWorked(int hoursWorked) {
         this.hoursWorked = hoursWorked;
     }
+
 
     /**
      * @author Josh Hare
