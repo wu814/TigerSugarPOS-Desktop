@@ -1011,9 +1011,9 @@ public class GUI extends JFrame implements ActionListener {
     }
 
     public JFrame createSeasonalDrinksPage() {
-      JFrame coffeeFlavoredFrame = new JFrame("Coffee Flavored");
-        coffeeFlavoredFrame.setSize(1000, 800);
-        coffeeFlavoredFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      JFrame seasonalDrinksFrame = new JFrame("Seasonal Drinks");
+        seasonalDrinksFrame.setSize(1000, 800);
+        seasonalDrinksFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel mainPanel = new JPanel(new BorderLayout());
 
@@ -1056,17 +1056,6 @@ public class GUI extends JFrame implements ActionListener {
         JPanel contentPanel = new JPanel();
         contentPanel.setBackground(Color.WHITE);
         contentPanel.setLayout(new GridLayout(3, 2, 20, 20));
-
-        JButton drinkButton1 = StyledButton("Black Sugar Coffee Jelly" + " $" + drinkPriceMap.get("Black Sugar Coffee Jelly"));
-        drinkButton1.addActionListener(new ActionListener() {
-          public void actionPerformed(ActionEvent e) {
-            addToOrder("Black Sugar Coffee Jelly");
-          }
-        });
-
-        contentPanel.add(drinkButton1);
-
-        mainPanel.add(contentPanel, BorderLayout.CENTER);
 
         //Right Panel for orders
 
@@ -1112,11 +1101,11 @@ public class GUI extends JFrame implements ActionListener {
 
         mainPanel.add(rightPanel, BorderLayout.EAST);
 
-        coffeeFlavoredFrame.add(mainPanel);
-        coffeeFlavoredFrame.setVisible(true);
+        seasonalDrinksFrame.add(mainPanel);
+        seasonalDrinksFrame.setVisible(true);
 
-        changeFrame(coffeeFlavoredFrame);
+        changeFrame(seasonalDrinksFrame);
       
-        return coffeeFlavoredFrame;
+        return seasonalDrinksFrame;
     }
 }
