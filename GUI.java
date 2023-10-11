@@ -316,16 +316,7 @@ public class GUI extends JFrame implements ActionListener {
       });
       
     }
-        //updates order history
-    // public static void addOrderToDatabase(String timestamp,String employee, String customer, String[] items){
-    //     String query = "INSERT INTO orders (order_timestamp, employee_id, customer_id, order_items, order_total) VALUES (" + timestamp + ", " + employee + ", " + customerID + ", " + ARRAY['Item1', 'Item2', 'Item3'] + ", " + total + ");";
-    //     try{
-    //       Statement stmt = conn.createStatement();
-    //       stmt.executeQuery(query);
-    //     } catch (Exception e){ //errors connecting to database
-    //       JOptionPane.showMessageDialog(null,e);
-    //     }
-    // }
+  
 
     public static void main(String[] args)
     {
@@ -384,22 +375,25 @@ public class GUI extends JFrame implements ActionListener {
 
         //opens inventory page
         else if(event.equals("View Inventory")){
-          
+          setUpInventory();
           changeFrame(inventoryFrame);
         }
 
         //opens price editor
         else if(event.equals("Edit Prices")){
+          setUpMenuEditor();
           changeFrame(editorFrame);
         }
         
         //opens order stats
         else if(event.equals("Order Statistics")){
+          setUpOrderStats();
           changeFrame(statsFrame);
         }
 
         //opens recent orders
         else if(event.equals("Recent Orders")){
+          setUpRecentOrders();
           changeFrame(recentFrame);
         }
 
@@ -437,6 +431,7 @@ public class GUI extends JFrame implements ActionListener {
             //JOptionPane.showMessageDialog(null,ex);
           }
           setUpInventory();
+          changeFrame(inventoryFrame);
         }
 
         //on inventory page, removes a supply item from the database
@@ -449,6 +444,7 @@ public class GUI extends JFrame implements ActionListener {
             //JOptionPane.showMessageDialog(null,ex);
           }
           setUpInventory();
+          changeFrame(inventoryFrame);
         }
 
         //on menu editor page, adds a menu item to the database
@@ -470,11 +466,14 @@ public class GUI extends JFrame implements ActionListener {
               if(!result.next()){ //if supply is not in the inventory
                 System.out.println(ingredient);
                 Statement stmt2 = conn.createStatement();
-                ResultSet adsf = stmt2.executeQuery("INSERT INTO inventory (inventory_id, supply, stock_remaining) VALUES (DEFAULT, '"+ingredient+"', 100);");
+                try{
+                  stmt2.executeQuery("INSERT INTO inventory (inventory_id, supply, stock_remaining) VALUES (DEFAULT, '"+ingredient+"', 100);");
+                } catch(Exception ex){
+
+                }
+
               }
-
             }
-
             String[] ingredients = ings.toArray(new String[0]);
            
             String query = "INSERT INTO products (product_id, drink_name, price, ingredients) VALUES (DEFAULT, ?, ?, string_to_array(?, ', '));";
@@ -486,12 +485,13 @@ public class GUI extends JFrame implements ActionListener {
             String ing = String.join(",",ingredients);
             preparedStatement.setString(3,ing);
             preparedStatement.executeUpdate();
-            System.out.println(ing);
+            System.out.println("HERE" + ing);
         
           }  catch (Exception ex){ //errors connecting to database
             System.out.println(ex);   
            }
           setUpMenuEditor();
+          changeFrame(editorFrame);
         }
         else if(event.equals("Remove Menu Item")){
           try{
@@ -502,6 +502,7 @@ public class GUI extends JFrame implements ActionListener {
             //JOptionPane.showMessageDialog(null,ex);
           }
           setUpMenuEditor();
+          changeFrame(editorFrame);
         }
 
       
