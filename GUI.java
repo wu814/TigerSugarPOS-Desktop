@@ -654,10 +654,14 @@ public class GUI extends JFrame implements ActionListener {
         JButton coffeeButton = StyledButton("Coffee Flavored");
         coffeeButton.setActionCommand("Coffee Flavored");
         coffeeButton.addActionListener(gui);
+        JButton seasonalButton = StyledButton("Seasonal Drinks");
+        seasonalButton.setActionCommand("Seasonal Drinks");
+        seasonalButton.addActionListener(gui);
 
         navPanel.add(creamyButton);
         navPanel.add(fruityButton);
         navPanel.add(coffeeButton);
+        navPanel.add(seasonalButton);
 
         navPanel.add(Box.createVerticalGlue());
         backToLogin = new JButton("Back to Login");
@@ -780,10 +784,14 @@ public class GUI extends JFrame implements ActionListener {
         JButton coffeeButton = StyledButton("Coffee Flavored");
         coffeeButton.setActionCommand("Coffee Flavored");
         coffeeButton.addActionListener(gui);
+        JButton seasonalButton = StyledButton("Seasonal Drinks");
+        seasonalButton.setActionCommand("Seasonal Drinks");
+        seasonalButton.addActionListener(gui);
 
         navPanel.add(creamyButton);
         navPanel.add(fruityButton);
         navPanel.add(coffeeButton);
+        navPanel.add(seasonalButton);
 
         navPanel.add(Box.createVerticalGlue());
         backToLogin = new JButton("Back to Login");
@@ -912,11 +920,15 @@ public class GUI extends JFrame implements ActionListener {
         JButton coffeeButton = StyledButton("Coffee Flavored");
         coffeeButton.setActionCommand("Coffee Flavored");
         coffeeButton.addActionListener(gui);
+        JButton seasonalButton = StyledButton("Seasonal Drinks");
+        seasonalButton.setActionCommand("Seasonal Drinks");
+        seasonalButton.addActionListener(gui);
 
 
         navPanel.add(creamyButton);
         navPanel.add(fruityButton);
         navPanel.add(coffeeButton);
+        navPanel.add(seasonalButton);
 
         navPanel.add(Box.createVerticalGlue());
         backToLogin = new JButton("Back to Login");
