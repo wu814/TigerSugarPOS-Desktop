@@ -1,3 +1,6 @@
+/**
+ * @author Josh Hare
+ */
 public class Employee {
     // Attributes
     private String name;
@@ -7,11 +10,10 @@ public class Employee {
 
     /**
      * Constructor
-     * @author Josh Hare
-     * @param String name
-     * @param String position
-     * @param String wage
-     * @param String hoursWorked
+     * @param name employee's name
+     * @param position employee's position
+     * @param wage employee's wage
+     * @param hoursWorked employee's hours worked
     */
     public Employee(String name, String position, String wage, String hoursWorked) {
         this.name = name;
@@ -22,9 +24,7 @@ public class Employee {
 
 
     /**
-     * Getters and setters
-     * @author Josh Hare
-     * @return String name
+     * @return the name of the employee
     */
     public String getName() {
         return name;
@@ -32,8 +32,7 @@ public class Employee {
 
 
     /**
-     * @author Josh Hare
-     * @param String name
+     * @param name the employee's name
     */
     public void setName(String name) {
         this.name = name;
@@ -41,8 +40,7 @@ public class Employee {
 
 
     /**
-     * @author Josh Hare
-     * @return String position
+     * @return the poition of the employee
     */
     public String getPosition() {
         return position;
@@ -50,8 +48,7 @@ public class Employee {
 
 
     /**
-     * @author Josh Hare
-     * @param String position
+     * @param position the employee's position
     */
     public void setPosition(String position) {
         this.position = position;
@@ -59,8 +56,7 @@ public class Employee {
 
 
     /**
-     * @author Josh Hare
-     * @return double wage
+     * @return the wage of the employee
     */
     public double getWage() {
         return wage;
@@ -68,8 +64,7 @@ public class Employee {
 
 
     /**
-     * @author Josh Hare
-     * @param double wage
+     * @param wage the employee's wage
     */
     public void setWage(double wage) {
         this.wage = wage;
@@ -77,8 +72,7 @@ public class Employee {
 
 
     /**
-     * @author Josh Hare
-     * @return int hoursWorked
+     * @return the hours worked for the employee
     */
     public int getHoursWorked() {
         return hoursWorked;
@@ -86,8 +80,7 @@ public class Employee {
 
 
     /**
-     * @author Josh Hare
-     * @param int hoursWorked
+     * @param hoursWorked the employee's hours worked
     */
     public void setHoursWorked(int hoursWorked) {
         this.hoursWorked = hoursWorked;
@@ -95,8 +88,7 @@ public class Employee {
 
 
     /**
-     * @author Josh Hare
-     * @return boolean isManager
+     * @return a booleaning indicating if that employee is the manager
     */
     public boolean isManager(){
         if(position.equals("Manager"))
