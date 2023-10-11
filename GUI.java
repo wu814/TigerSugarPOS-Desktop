@@ -378,6 +378,10 @@ public class GUI extends JFrame implements ActionListener {
           System.out.println("CF");
           changeFrame(createCoffeeFlavoredPage());
         }
+        else if (event.equals("Seasonal Drinks")) {
+          System.out.println("SD");
+          changeFrame(createSeasonalDrinksPage());
+        }
         else if(event.equals("Back to Manager Menu")){
           changeFrame(managerFrame);
         }
@@ -897,6 +901,116 @@ public class GUI extends JFrame implements ActionListener {
 
     // TODO: add to the order list a remove button next to each drinks
     public JFrame createCoffeeFlavoredPage() {
+      JFrame coffeeFlavoredFrame = new JFrame("Coffee Flavored");
+        coffeeFlavoredFrame.setSize(1000, 800);
+        coffeeFlavoredFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel mainPanel = new JPanel(new BorderLayout());
+
+        //Font titleButtonFont = new Font("Roboto", Font.BOLD, 24);
+
+        // Left Nav panel
+        JPanel navPanel = new JPanel();
+        navPanel.setLayout(new BoxLayout(navPanel, BoxLayout.Y_AXIS));
+        navPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        // Drink Type Buttons
+        JButton creamyButton = StyledButton("Sweet and Creamy");
+        creamyButton.setActionCommand("Sweet and Creamy");
+        creamyButton.addActionListener(gui);
+        JButton fruityButton = StyledButton("Fruity and Refreshing");
+        fruityButton.setActionCommand("Fruity and Refreshing");
+        fruityButton.addActionListener(gui);
+        JButton coffeeButton = StyledButton("Coffee Flavored");
+        coffeeButton.setActionCommand("Coffee Flavored");
+        coffeeButton.addActionListener(gui);
+        JButton seasonalButton = StyledButton("Seasonal Drinks");
+        seasonalButton.setActionCommand("Seasonal Drinks");
+        seasonalButton.addActionListener(gui);
+
+
+        navPanel.add(creamyButton);
+        navPanel.add(fruityButton);
+        navPanel.add(coffeeButton);
+        navPanel.add(seasonalButton);
+
+        navPanel.add(Box.createVerticalGlue());
+        backToLogin = new JButton("Back to Login");
+        backToLogin.addActionListener(gui);
+        navPanel.add(backToLogin);
+        
+       
+        mainPanel.add(navPanel, BorderLayout.WEST);
+
+        // Content Panel for drinks
+        JPanel contentPanel = new JPanel();
+        contentPanel.setBackground(Color.WHITE);
+        contentPanel.setLayout(new GridLayout(3, 2, 20, 20));
+
+        JButton drinkButton1 = StyledButton("Black Sugar Coffee Jelly" + " $" + drinkPriceMap.get("Black Sugar Coffee Jelly"));
+        drinkButton1.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            addToOrder("Black Sugar Coffee Jelly");
+          }
+        });
+
+        contentPanel.add(drinkButton1);
+
+        mainPanel.add(contentPanel, BorderLayout.CENTER);
+
+        //Right Panel for orders
+
+        JPanel rightPanel = new JPanel(new BorderLayout());
+
+        JLabel orderListLabel = new JLabel("Order List");
+        orderListLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        orderListLabel.setHorizontalAlignment(JLabel.CENTER);
+        rightPanel.add(orderListLabel, BorderLayout.NORTH);
+
+          //Order Text
+        // orderLogs = new JTextArea(10, 20);
+        // orderLogs.setEditable(false);
+        orderLogs = new JPanel();
+        orderLogs.setFont(new Font("Arial", Font.PLAIN, 16));
+        orderLogs.setLayout(new BoxLayout(orderLogs, BoxLayout.Y_AXIS));
+
+
+        // populating orderlogs if orders already exist
+        if (order.size() > 0) {
+          for (String drink : order) {
+            JButton drinkButton = new JButton(drink + " $" + drinkPriceMap.get(drink));
+            drinkButton.addActionListener(new ActionListener() {
+              public void actionPerformed(ActionEvent e) {
+                removeFromOrder(drinkButton);
+              }
+            });
+            orderLogs.add(drinkButton);
+          }
+        }
+
+        JScrollPane orderScrollPane = new JScrollPane(orderLogs);
+        rightPanel.add(orderScrollPane, BorderLayout.CENTER);
+
+        payButton = new JButton("Charge $" + orderTotal);
+        payButton.setFont(new Font("Arial", Font.BOLD, 20));
+        payButton.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            completeOrder();
+          }
+        });
+        rightPanel.add(payButton, BorderLayout.SOUTH);
+
+        mainPanel.add(rightPanel, BorderLayout.EAST);
+
+        coffeeFlavoredFrame.add(mainPanel);
+        coffeeFlavoredFrame.setVisible(true);
+
+        changeFrame(coffeeFlavoredFrame);
+      
+        return coffeeFlavoredFrame;
+    }
+
+    public JFrame createSeasonalDrinksPage() {
       JFrame coffeeFlavoredFrame = new JFrame("Coffee Flavored");
         coffeeFlavoredFrame.setSize(1000, 800);
         coffeeFlavoredFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
