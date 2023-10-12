@@ -114,7 +114,9 @@ public class ManagerLogic {
     }
 
 
-    // Gets a table of the 10 most recent orders
+    /**
+     * Gets a table of the 10 most recent orders
+     */
     public void getRecentOrders(JTable table){
         // Getting the data
         try{

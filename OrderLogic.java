@@ -100,10 +100,10 @@ public class OrderLogic {
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
             Statement stmt = conn.createStatement();
 
-            // send statement to DBMS
+            // Send statement to DBMS
             ResultSet result = stmt.executeQuery(sqlCommand);
 
-            // fetch results
+            // Fetch results
             Map<String, Double> drinkPrices = new HashMap<String, Double>();
             while(result.next()){
                 drinkPrices.put(result.getString("drink_name"), result.getDouble("price"));
@@ -125,34 +125,34 @@ public class OrderLogic {
         }
     }
 
-    public static ArrayList<String> fetchDrinksByType(String type) {
+    public static ArrayList<String> fetchDrinksByType(String type){
         String sqlCommand = "SELECT drink_name FROM products WHERE drink_type = ?";
         Connection conn = null;
 
-        try {
+        try{
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
             PreparedStatement stmt = conn.prepareStatement(sqlCommand);
             stmt.setString(1, type);
 
-            // send statement to DBMS
+            // Send statement to DBMS
             ResultSet result = stmt.executeQuery();
 
-            // fetch results
+            // Fetch results
             ArrayList<String> drinks = new ArrayList<String>();
-            while (result.next()) {
+            while(result.next()){
                 drinks.add(result.getString("drink_name"));
             }
 
             return drinks;
 
-        } catch (SQLException e) {
+        }catch(SQLException e){
             e.printStackTrace();
             System.err.println("Error fetching drinks by type: " + e.getMessage());
             return null;
-        } finally {
-            try {
+        }finally{
+            try{
                 conn.close();
-            } catch (SQLException e) {
+            }catch(SQLException e){
                 e.printStackTrace();
                 System.err.println("Error closing connection: " + e.getMessage());
             }
