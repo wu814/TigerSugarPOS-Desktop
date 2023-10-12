@@ -1094,6 +1094,8 @@ public class GUI extends JFrame implements ActionListener {
           contentPanel.add(drinkButton);
         }
 
+        mainPanel.add(contentPanel);
+
         //Right Panel for orders
 
         JPanel rightPanel = new JPanel(new BorderLayout());
