@@ -1,3 +1,6 @@
+/**
+ * @author Josh Hare
+ */
 public class Employee {
     // Attributes
     private String name;
@@ -7,12 +10,11 @@ public class Employee {
 
     /**
      * Constructor
-     * @author Josh Hare
-     * @param String name
-     * @param String position
-     * @param String wage
-     * @param String hoursWorked
-   */
+     * @param name employee's name
+     * @param position employee's position
+     * @param wage employee's wage
+     * @param hoursWorked employee's hours worked
+    */
     public Employee(String name, String position, String wage, String hoursWorked) {
         this.name = name;
         this.position = position;
@@ -20,74 +22,73 @@ public class Employee {
         this.hoursWorked = Integer.valueOf(hoursWorked);
     }
 
+
     /**
-     * Getters and setters
-     * @author Josh Hare
-     * @return name
+     * @return the name of the employee
     */
     public String getName() {
         return name;
     }
 
+
     /**
-     * @author Josh Hare
-     * @param name
+     * @param name the employee's name
     */
     public void setName(String name) {
         this.name = name;
     }
 
+
     /**
-     * @author Josh Hare
-     * @return position
+     * @return the poition of the employee
     */
     public String getPosition() {
         return position;
     }
 
+
     /**
-     * @author Josh Hare
-     * @param position
+     * @param position the employee's position
     */
     public void setPosition(String position) {
         this.position = position;
     }
 
+
     /**
-     * @author Josh Hare
-     * @return wage
+     * @return the wage of the employee
     */
     public double getWage() {
         return wage;
     }
 
+
     /**
-     * @author Josh Hare
-     * @param wage
+     * @param wage the employee's wage
     */
     public void setWage(double wage) {
         this.wage = wage;
     }
 
+
     /**
-     * @author Josh Hare
-     * @return hoursWorked
+     * @return the hours worked for the employee
     */
     public int getHoursWorked() {
         return hoursWorked;
     }
 
+
     /**
-     * @author Josh Hare
-     * @param hoursWorked
+     * @param hoursWorked the employee's hours worked
     */
     public void setHoursWorked(int hoursWorked) {
         this.hoursWorked = hoursWorked;
     }
 
+
     /**
-     * @author Josh Hare
-     * @return boolean
+     * @return a booleaning indicating if that employee is the manager
     */
     public boolean isManager(){
         if(position.equals("Manager"))

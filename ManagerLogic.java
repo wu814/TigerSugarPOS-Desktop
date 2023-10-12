@@ -22,23 +22,34 @@ import javax.swing.table.TableColumn;
 
 import java.util.*;
 
+/**
+ * @author Nai-Yun Wu
+ */
 public class ManagerLogic {
-
+    // Attribute
     private static final String URL = "jdbc:postgresql://csce-315-db.engr.tamu.edu/csce315331_10g_db";
     private static final String USER = "csce315_910_williamwu258814";
     private static final String PASSWORD = "password";
     Connection conn = null;
 
-    public ManagerLogic() {
+
+    /**
+     * Constructor
+    */
+    public ManagerLogic(){
         // Initialize the connection in the constructor
-        try {
+        try{
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
-        } catch (SQLException e) {
+        }catch (SQLException e){
             // Handle connection initialization errors here
             e.printStackTrace();
         }
     }
 
+
+    /**
+    * @param table the table to hold inventory data
+    */
     public void getInventory(JTable table){
         try{
           //query
@@ -106,11 +117,11 @@ public class ManagerLogic {
 
     //gets a table of the 10 most recent orders
     public void getRecentOrders(JTable table){
-        //getting the data
+        // Getting the data
         try{
-          Statement stmt = conn.createStatement();
-          ResultSet result = stmt.executeQuery("SELECT * FROM orders\r\n" + //
-              "ORDER BY order_id DESC\r\n" + //
+            Statement stmt = conn.createStatement();
+            ResultSet result = stmt.executeQuery("SELECT * FROM orders\r\n" + 
+              "ORDER BY order_id DESC\r\n" +
               "LIMIT 10;");
 
           //get column names
@@ -151,10 +162,13 @@ public class ManagerLogic {
         } catch (Exception e){ //errors connecting to database
           JOptionPane.showMessageDialog(null,e);
         }
-
     }
 
-    //gets the table for daily stats
+
+    /**
+    * @param table the table to hold stats data
+    * @return the table with stats data loaded
+    */
     public JTable getDailyStats(JTable table){
         try{
           Statement stmt = conn.createStatement();
@@ -215,7 +229,9 @@ public class ManagerLogic {
         return table;
     }
 
-    //displays the menu
+    /**
+    * @param table the table to hold products
+    */
     public void getMenu(JTable table){
         try{
           Statement stmt = conn.createStatement();
