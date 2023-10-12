@@ -41,6 +41,7 @@ public class ManagerLogic {
 
     public void getInventory(JTable table){
         try{
+          //query
           Statement stmt = conn.createStatement();
           ResultSet result = stmt.executeQuery("SELECT * FROM inventory ORDER BY inventory_id;");
 
@@ -53,32 +54,37 @@ public class ManagerLogic {
 
           //get data
           Vector<Vector<Object>> data = new Vector<>();
-          while (result.next()) { //initializes employees with info from database, adds to vector
+          while (result.next()) { 
               Vector<Object> row = new Vector<>();
               for(int i = 1;i<=cols;i++){
                 row.add(result.getObject(i));
               }
-              data.add(row);
-      
+              data.add(row);   
           }
-          DefaultTableModel model = new DefaultTableModel(data,colNames);
+
+          //Table Listener
+          DefaultTableModel model = new DefaultTableModel(data,colNames){
+            public boolean isCellEditable(int row, int column) {
+              // Make the menu item column uneditable
+              return column != 1 && column != 0;
+            }
+          };
           table.setModel(model);
           table.getModel().addTableModelListener(new TableModelListener(){
 
               public void tableChanged(TableModelEvent e) {
+                //if it has been changed
                 if (e.getType() == TableModelEvent.UPDATE) {
+                    //get changed value and its location
                     int id = e.getFirstRow();
-                 //   System.out.println(id);
                     int column = e.getColumn();
                     String columnName = model.getColumnName(column);
                     Integer newValue = Integer.parseInt(model.getValueAt(id, column).toString());
                     if(columnName.equals("stock_remaining")){
                       id = (int)model.getValueAt(id,0);
                     }
-                //    System.out.println(id);
 
-                    // Update the corresponding database record
-                   // updateDatabase(row, columnName, newValue);
+                  // Update the corresponding database record
                    try{
                     String query = "UPDATE inventory SET " +columnName+ " = ? WHERE inventory_id = ?";
                     PreparedStatement pStat = conn.prepareStatement(query);
@@ -98,6 +104,7 @@ public class ManagerLogic {
         }
     }
 
+    //gets a table of the 10 most recent orders
     public void getRecentOrders(JTable table){
         //getting the data
         try{
@@ -126,6 +133,7 @@ public class ManagerLogic {
           DefaultTableModel model = new DefaultTableModel(data,colNames);
           table.setModel(model);
 
+          //table configuration
           TableColumn column = table.getColumnModel().getColumn(0);
           column.setPreferredWidth(200);
           column = table.getColumnModel().getColumn(1);
@@ -146,6 +154,7 @@ public class ManagerLogic {
 
     }
 
+    //gets the table for daily stats
     public JTable getDailyStats(JTable table){
         try{
           Statement stmt = conn.createStatement();
@@ -159,18 +168,19 @@ public class ManagerLogic {
           Vector<Vector<Object>> data = new Vector<>();
           //Each row: DRINK NAME, NUMSOLD, SALES
 
+          //track values for the total (final row)
           double totalUnits = 0;
           double totalSales = 0;
-
           
+          //loop through query
           while (drinkName.next()) { 
               Vector<Object> row = new Vector<>();
 
-              //FILL FIRST COL
+              //FILL FIRST COL (name)
               Object curr = drinkName.getObject(1);
               row.add(curr);
 
-              //FILL SECOND COL
+              //FILL SECOND COL (num sold)
               Statement stmt2 = conn.createStatement();
               ResultSet numDrinks= stmt2.executeQuery("SELECT COUNT(*) AS total FROM orders WHERE '"+(String)curr+"' = ANY (order_items) AND DATE(order_timestamp) = '2025-06-01'; ");
               numDrinks.next();
@@ -178,7 +188,7 @@ public class ManagerLogic {
               totalUnits += units;
               row.add(numDrinks.getObject(1));
 
-              //FILL THIRD COL
+              //FILL THIRD COL (sales)
               double price = drinkName.getDouble(2);
               double sales = price * units;
               totalSales += sales;
@@ -187,17 +197,16 @@ public class ManagerLogic {
               data.add(row);
       
           }
+          //add total row
           Vector<Object> totalRow = new Vector<>();
           totalRow.add("Total");
           totalRow.add((int)totalUnits);
           totalRow.add(totalSales);
           data.add(totalRow);
 
-
+          //table model setup
           DefaultTableModel model = new DefaultTableModel(data,colNames);
           table.setModel(model);
-
-         
           table.setPreferredScrollableViewportSize(new Dimension(800, 400)); // Adjust the width and height as needed
         
         } catch (Exception e){ //errors connecting to database
@@ -206,6 +215,7 @@ public class ManagerLogic {
         return table;
     }
 
+    //displays the menu
     public void getMenu(JTable table){
         try{
           Statement stmt = conn.createStatement();
@@ -228,32 +238,52 @@ public class ManagerLogic {
               data.add(row);
       
           }
-          DefaultTableModel model = new DefaultTableModel(data,colNames);
+
+          //setup table listener
+          DefaultTableModel model = new DefaultTableModel(data,colNames){
+            public boolean isCellEditable(int row, int column) {
+              // Make the menu item column uneditable
+              return column != 3 && column != 0;
+            }
+          };
           table.setModel(model);
           table.getModel().addTableModelListener(new TableModelListener(){
 
               public void tableChanged(TableModelEvent e) {
+                //if a value has been changed
                 if (e.getType() == TableModelEvent.UPDATE) {
+                    //get location and newvalue
                     int id = e.getFirstRow();
                     int column = e.getColumn();
                     String columnName = model.getColumnName(column);
-                    Double newValue = Double.parseDouble(model.getValueAt(id, column).toString());
-                    if(columnName.equals("price")){
-                      id = (int)model.getValueAt(id,0);
-                    }
+                    String query = "UPDATE products SET " +columnName+ " = ? WHERE product_id = ?";
+                    
                     // Update the corresponding database record
                    try{
-                    String query = "UPDATE products SET " +columnName+ " = ? WHERE product_id = ?";
                     PreparedStatement pStat = conn.prepareStatement(query);
-                    pStat.setBigDecimal(1,BigDecimal.valueOf(newValue));
-                    pStat.setInt(2,id);
+
+                    //define behaivor for each column
+                    if(columnName.equals("price")){
+                      Double newValue = Double.parseDouble(model.getValueAt(id, column).toString());
+                      id = (int)model.getValueAt(id,0);
+                      pStat.setBigDecimal(1,BigDecimal.valueOf(newValue));
+                      pStat.setInt(2,id);
+                    }
+                    else if(columnName.equals("drink_name") || columnName.equals("drink_type")){
+                      String newValue = (model.getValueAt(id, column).toString());
+                      id = (int)model.getValueAt(id,0);
+                      pStat.setString(1,newValue);
+                      pStat.setInt(2,id);
+                    }
+                    
+                    
                     pStat.executeUpdate();
                    }catch (Exception ex){
                       System.out.println("HELP"+ex);
                    }
                  }
               }
-            });
+           });
 
         } catch (Exception e){ //errors connecting to database
           JOptionPane.showMessageDialog(null,e);
