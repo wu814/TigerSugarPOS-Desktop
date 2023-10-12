@@ -426,69 +426,67 @@ public class GUI extends JFrame implements ActionListener{
 
         // Returns to Login from cashier page or manager menu
         if(event.equals("Back to Login")){
-        changeFrame(startFrame);
+            changeFrame(startFrame);
         }
         else if (event.equals("Fruity and Refreshing")) {
-        System.out.println("FAR");
-        changeFrame(createFruityRefreshingPage());
+            System.out.println("FAR");
+            changeFrame(createFruityRefreshingPage());
         }
         else if (event.equals("Sweet and Creamy")) {
-        System.out.println("SAC");
-        changeFrame(createSweetAndCreamyPage());
+            System.out.println("SAC");
+            changeFrame(createSweetAndCreamyPage());
         }
         else if (event.equals("Coffee Flavored")) {
-        System.out.println("CF");
-        changeFrame(createCoffeeFlavoredPage());
+            System.out.println("CF");
+            changeFrame(createCoffeeFlavoredPage());
         }
         else if (event.equals("Seasonal Drinks")) {
-        System.out.println("SD");
-        changeFrame(createSeasonalDrinksPage());
+            System.out.println("SD");
+            changeFrame(createSeasonalDrinksPage());
         }
         else if(event.equals("Back to Manager Menu")){
-        changeFrame(managerFrame);
+            changeFrame(managerFrame);
         }
         // Opens inventory page
         else if(event.equals("View Inventory")){
-        setUpInventory();
-        changeFrame(inventoryFrame);
+            setUpInventory();
+            changeFrame(inventoryFrame);
         }
-
         // Opens price editor
         else if(event.equals("Edit Menu")){
-        setUpMenuEditor();
-        changeFrame(editorFrame);
+            setUpMenuEditor();
+            changeFrame(editorFrame);
         }
         // Opens order stats
         else if(event.equals("Order Statistics")){
-        setUpOrderStats();
-        changeFrame(statsFrame);
+            setUpOrderStats();
+            changeFrame(statsFrame);
         }
         // Opens recent orders
         else if(event.equals("Recent Orders")){
-        setUpRecentOrders();
-        changeFrame(recentFrame);
+            setUpRecentOrders();
+            changeFrame(recentFrame);
         }
         // On order stats page, shows daily stats
         else if(event.equals("Daily Stats")){
-        dailyStats();
+            dailyStats();
         }
-
         // On order stats page, show stats for inputted range, input with TwoInputDialog
         //NEEDS TO BE FINISHED
         else if(event.equals("Custom Range")){
-        // Using a custom 2 input dialog, get the two inputs
-        TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter start date: YYYY-MM-DD","Enter end date: YYYY-MM-DD");
-        TwoInputs inputs = dialog.showInputDialog();
+            // Using a custom 2 input dialog, get the two inputs
+            TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter start date: YYYY-MM-DD","Enter end date: YYYY-MM-DD");
+            TwoInputs inputs = dialog.showInputDialog();
 
-        String start = inputs.input1;
-        String end = inputs.input2;
-        if(start != "" && end != ""){   //TODO: Input Validtaion
-            System.out.println("VALID");
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "You have entered an invalid date.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
-        }
-        //TODO: Call a method customRange(start, end) that table
+            String start = inputs.input1;
+            String end = inputs.input2;
+            if(start != "" && end != ""){   //TODO: Input Validtaion
+                System.out.println("VALID");
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "You have entered an invalid date.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+            }
+            //TODO: Call a method customRange(start, end) that table
         }
         // On inventory page, adds a supply item to the database
         else if(event.equals("Add Supply Item")){
@@ -718,7 +716,7 @@ public class GUI extends JFrame implements ActionListener{
                 JButton dairyNoneButton = new JButton("None");
                 dairyNoneButton.setBackground(Color.BLUE);
                 dairyNoneButton.setForeground(Color.WHITE);
-                dairyNoneButton.addActionListener(new ActionListener() {
+                dairyNoneButton.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
                         String newAttributes = "Dairy Free Alternative: None";
@@ -901,7 +899,7 @@ public class GUI extends JFrame implements ActionListener{
                 specialInstructionsTextArea.setWrapStyleWord(true);
                 specialInstructionsTextArea.setPreferredSize(new Dimension(300, 100));
 
-                // submit special instructions to put into arraylist
+                // Submit special instructions to put into arraylist
                 JButton submitSpecialInstructionsButton = new JButton("Submit Special Instructions");
                 submitSpecialInstructionsButton.setBackground(Color.BLUE);
                 submitSpecialInstructionsButton.setForeground(Color.WHITE);
@@ -970,9 +968,9 @@ public class GUI extends JFrame implements ActionListener{
 
         JButton drinkButton = new JButton(drinkName);
         drinkButton.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent e){
-            displayDrinkAttributes(buttonPanel, drinkButton);
-        }
+            public void actionPerformed(ActionEvent e){
+                displayDrinkAttributes(buttonPanel, drinkButton);
+            }
         });
 
         buttonPanel.add(drinkButton);
@@ -1093,7 +1091,7 @@ public class GUI extends JFrame implements ActionListener{
 
         JPanel mainPanel = new JPanel(new BorderLayout());
 
-        //Font titleButtonFont = new Font("Roboto", Font.BOLD, 24);
+        // Font titleButtonFont = new Font("Roboto", Font.BOLD, 24);
 
         // Left Nav panel
         JPanel navPanel = new JPanel();
@@ -1134,9 +1132,9 @@ public class GUI extends JFrame implements ActionListener{
         ArrayList<String> drinks = OrderLogic.fetchDrinksByType("Fruity and Refreshing");
         for(String drink : drinks){
             JButton drinkButton = StyledButton(drink + " $" + drinkPriceMap.get(drink));
-            drinkButton.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                addToOrder(drink);
+            drinkButton.addActionListener(new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                    addToOrder(drink);
                 }
             });
             contentPanel.add(drinkButton);
@@ -1172,10 +1170,10 @@ public class GUI extends JFrame implements ActionListener{
 
         payButton = new JButton("Charge $" + orderTotal);
         payButton.setFont(new Font("Arial", Font.BOLD, 20));
-        payButton.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e){
-            completeOrder();
-        }
+        payButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                completeOrder();
+            }
         });
         rightPanel.add(payButton, BorderLayout.SOUTH);
 
@@ -1237,11 +1235,11 @@ public class GUI extends JFrame implements ActionListener{
         contentPanel.setLayout(new GridLayout(3, 2, 20, 20));
 
         ArrayList<String> drinks = OrderLogic.fetchDrinksByType("Sweet and Creamy");
-        for (String drink : drinks) {
+        for(String drink : drinks){
             JButton drinkButton = StyledButton(drink + " $" + drinkPriceMap.get(drink));
-            drinkButton.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                addToOrder(drink);
+            drinkButton.addActionListener(new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                    addToOrder(drink);
                 }
             });
             contentPanel.add(drinkButton);
@@ -1278,8 +1276,8 @@ public class GUI extends JFrame implements ActionListener{
 
         payButton = new JButton("Charge $" + orderTotal);
         payButton.setFont(new Font("Arial", Font.BOLD, 20));
-        payButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        payButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
                 completeOrder();
             }
         });
@@ -1348,8 +1346,8 @@ public class GUI extends JFrame implements ActionListener{
         for(String drink : drinks){
             JButton drinkButton = StyledButton(drink + " $" + drinkPriceMap.get(drink));
             drinkButton.addActionListener(new ActionListener(){
-                public void actionPerformed(ActionEvent e) {
-                addToOrder(drink);
+                    public void actionPerformed(ActionEvent e) {
+                    addToOrder(drink);
                 }
             });
             contentPanel.add(drinkButton, BorderLayout.CENTER);
@@ -1372,7 +1370,6 @@ public class GUI extends JFrame implements ActionListener{
         orderLogs = new JPanel();
         orderLogs.setFont(new Font("Arial", Font.PLAIN, 16));
         orderLogs.setLayout(new BoxLayout(orderLogs, BoxLayout.Y_AXIS));
-
 
         // Populating orderlogs if orders already exist
         for(JPanel drinkButtonPanel : drinkButtonPanels){
@@ -1452,9 +1449,9 @@ public class GUI extends JFrame implements ActionListener{
         ArrayList<String> drinks = OrderLogic.fetchDrinksByType("Seasonal Drinks");
         for(String drink : drinks){
             JButton drinkButton = StyledButton(drink + " $" + drinkPriceMap.get(drink));
-            drinkButton.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                addToOrder(drink);
+            drinkButton.addActionListener(new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                    addToOrder(drink);
                 }
             });
             contentPanel.add(drinkButton, BorderLayout.CENTER);
@@ -1462,7 +1459,7 @@ public class GUI extends JFrame implements ActionListener{
 
         mainPanel.add(contentPanel, BorderLayout.CENTER);
 
-        //Right Panel for orders
+        // Right Panel for orders
 
         rightPanel = new JPanel(new BorderLayout());
 
@@ -1491,8 +1488,8 @@ public class GUI extends JFrame implements ActionListener{
 
         payButton = new JButton("Charge $" + orderTotal);
         payButton.setFont(new Font("Arial", Font.BOLD, 20));
-        payButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        payButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
                 completeOrder();
             }
         });
