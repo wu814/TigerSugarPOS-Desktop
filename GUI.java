@@ -27,22 +27,22 @@ public class GUI extends JFrame implements ActionListener {
 
     static Connection conn; // Database connection
 
-    static JFrame startFrame; 
-    static JFrame inventoryFrame; 
-    static JFrame managerFrame; // Manager view menu
-    static JFrame cashierFrame;
-    static JFrame recentFrame; // Recent orders frame
-    static JFrame statsFrame;
-    static JTable statsTable; // Stats table
-    static JFrame editorFrame;
-    static JFrame currFrame; // The current framethat is being used.
+    static JFrame startFrame; // opens on start, allows you to select an employee
+    static JFrame inventoryFrame; // inventory screen
+    static JFrame managerFrame; // manager view menu screen
+    static JFrame cashierFrame; // cashier screen
+    static JFrame recentFrame; // recent orders screen
+    static JFrame statsFrame; // order stats screen
+    static JTable statsTable; // stats table 
+    static JFrame editorFrame; // menu editor frame
+    static JFrame currFrame; // the current framethat is being used.
     static JFrame prevFrame;
     static GUI gui;
-    static JPanel p; 
-    static JTextArea hello; // Text area for testing
-    static JComboBox<Employee> employeeSelector; // Drop down for employees, how we know to go in cashier view or  manager view
-    static JButton employeeEnter;// Locks in combobox entry
-    static JButton backToLogin; // Back button that returns to employee select
+    static JTextArea hello; //text area for testing
+    static JComboBox<Employee> employeeSelector; //drop down for employees, how we know to go in cashier view or  manager view
+    static JButton employeeEnter;//locks in combobox entry
+    static JButton backToLogin; //back button that returns to employee select
+
     static JButton payButton;
     static JPanel orderLogs;
     static ArrayList<String> order = new ArrayList<String>();
@@ -83,28 +83,27 @@ public class GUI extends JFrame implements ActionListener {
 
     // Initialize variables and components necessary for the GUI
     public static void frameSetup(){
-      // Frame setup
+
+      //initiaize frame
       startFrame = new JFrame("Tiger Sugar POS");
       startFrame.setSize(1000, 800);
       startFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      // Initalize components
+
+      //initalize panel and GUI
       gui = new GUI();
-      p = new JPanel();
-      hello = new JTextArea();
-
-      startFrame.add(p);
-
-      p.add(hello);
+      JPanel startPanel = new JPanel();
+      startFrame.add(startPanel);
 
       // ComboBox for Employees
       setEmployeeComboBox();
-      p.add(employeeSelector);
+      startPanel.add(employeeSelector);
 
       // Setup enter button
       employeeEnter = new JButton("Enter"); 
       employeeEnter.addActionListener(gui);
-      
-      p.add(employeeEnter);
+      startPanel.add(employeeEnter);
+
+      //execute first frame
       currFrame = startFrame;
       currFrame.setVisible(true);
     }
@@ -115,60 +114,74 @@ public class GUI extends JFrame implements ActionListener {
         // Frame setup
         inventoryFrame = new JFrame("Inventory");
         inventoryFrame.setSize(1000, 800);
+
+        //create bottom panel (content)
         JPanel inventoryPanel = new JPanel();
         inventoryFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         inventoryFrame.add(inventoryPanel);
 
+        //create top panel (title)
         JPanel titlePanel = new JPanel();
         titlePanel.setPreferredSize(new Dimension(1000,50));
         JLabel title = new JLabel("Inventory");
         titlePanel.add(title);
 
+        //create middle panel (menu)
         JPanel menuPanel = new JPanel();
         menuPanel.setPreferredSize(new Dimension(1000,50));
 
+        //frame layout
         inventoryFrame.add(titlePanel,BorderLayout.NORTH);
         inventoryFrame.add(menuPanel,BorderLayout.CENTER);
         inventoryFrame.add(inventoryPanel,BorderLayout.SOUTH);
 
+        //create back button
         JButton backToManager = new JButton("Back to Manager Menu"); //goes back to manager menu
         backToManager.addActionListener(gui);
         menuPanel.add(backToManager);
 
+        //create add button
         JButton add = new JButton("Add Supply Item");
         add.addActionListener(gui);
         menuPanel.add(add);
 
+        //create remove button
         JButton remove = new JButton("Remove Supply Item");
         remove.addActionListener(gui);
         menuPanel.add(remove);
 
+        //create scrollable table
         JTable table = new JTable();
         JScrollPane  scroll = new JScrollPane(table);
         inventoryPanel.add(scroll);
 
-        // Getting the data
+        //filling the table with database data
         managerLogic.getInventory(table);
 
         inventoryFrame.pack();
     }
 
-
     // Create Recent Orders Frame
     public static void setUpRecentOrders(){
+        //initialize recent orderes frame
         recentFrame = new JFrame("RecentOrders");
         recentFrame.setSize(1000, 800);
 
+        //create top panel (title)
         JPanel titlePanel = new JPanel();
         titlePanel.setPreferredSize(new Dimension(1000,50));
         JLabel title = new JLabel("Recent Orders");
         titlePanel.add(title);
 
+        //create middle panel (menu)
         JPanel menuPanel = new JPanel();
         menuPanel.setPreferredSize(new Dimension(1000,50));
 
+        //create bottom panel (content)
         JPanel recentPanel = new JPanel();
         recentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        //frame layout
         recentFrame.add(titlePanel,BorderLayout.NORTH);
         recentFrame.add(menuPanel,BorderLayout.CENTER);
         recentFrame.add(recentPanel,BorderLayout.SOUTH);
@@ -182,7 +195,7 @@ public class GUI extends JFrame implements ActionListener {
         JScrollPane  scroll = new JScrollPane(table);
         recentPanel.add(scroll);
 
-        // Getting the data
+        //populate table with data from database
         managerLogic.getRecentOrders(table);
 
         recentFrame.pack();
@@ -191,36 +204,46 @@ public class GUI extends JFrame implements ActionListener {
 
     // Create Stats Frame
     public static void setUpOrderStats(){
+        //initilize frame
         statsFrame = new JFrame("Order Statistics");
         statsFrame.setSize(1000, 800);
+        statsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        //initilize top panel (title)
         JPanel titlePanel = new JPanel();
         titlePanel.setPreferredSize(new Dimension(1000,50));
         JLabel title = new JLabel("Order Statistics");
         titlePanel.add(title);
 
+        //create middle panel (menu)
         JPanel menuPanel = new JPanel();
         menuPanel.setPreferredSize(new Dimension(1000,50));
 
+        //create bottom panel (content)
         JPanel statsPanel = new JPanel();
-        statsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        //frame layout
         statsFrame.add(titlePanel,BorderLayout.NORTH);
         statsFrame.add(menuPanel,BorderLayout.CENTER);
         statsFrame.add(statsPanel,BorderLayout.SOUTH);
 
-        // Goes back to manager menu
-        JButton backToManager = new JButton("Back to Manager Menu");
+
+        //setup button that returns to manager menu
+        JButton backToManager = new JButton("Back to Manager Menu"); //goes back to manager menu
         backToManager.addActionListener(gui);
         menuPanel.add(backToManager);
-        // Shows today's stats
-        JButton today = new JButton("Daily Stats"); 
-        today.addActionListener(gui);
-        menuPanel.add(today);
-        // Shows custom stats
-        JButton custom = new JButton("Custom Range"); 
+
+        //button that displays daily stats
+        JButton daily = new JButton("Daily Stats"); //shows today's stats
+        daily.addActionListener(gui);
+        menuPanel.add(daily);
+
+        //button that displays stats over a custom range
+        JButton custom = new JButton("Custom Range"); //shows custom stats
         custom.addActionListener(gui);
         menuPanel.add(custom);
 
+        //sets up table; default is daily stats
         statsTable = dailyStats();
         JScrollPane  scroll = new JScrollPane(statsTable);
         statsPanel.add(scroll);
@@ -228,35 +251,47 @@ public class GUI extends JFrame implements ActionListener {
         statsFrame.pack();
     }
 
-
     /**
      * @return a table that contains daily stats
      */
     public static JTable dailyStats(){
       JTable table = new JTable();
-      //getting the data
+      //calculates and displays the daily drinks sold and sales
       table = managerLogic.getDailyStats(table);
       return table;
     }
 
 
-    // Create Menu Editor Frame
+    //TODO: returns table of custom range stats
+    //TODO: write a function in manager logic similar to getDailyStats that does the same over a custom range
+    public static JTable customRange(){
+      JTable table = new JTable();
+      return table;
+    }
+
+    //sets up frame formenu editor
     public static void setUpMenuEditor(){
-        // Frame setup
+
+        //initialize frame
         editorFrame = new JFrame("Menu Editor");
         editorFrame.setSize(1000, 800);
-        JPanel editorPanel = new JPanel();
         editorFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        //initilize bottom panel (content)
+        JPanel editorPanel = new JPanel();
         editorFrame.add(editorPanel);
 
+        //initialize top panel (title)
         JPanel titlePanel = new JPanel();
         titlePanel.setPreferredSize(new Dimension(1000,50));
         JLabel title = new JLabel("Menu Editor");
         titlePanel.add(title);
 
+        //initialize middle panel (menu)
         JPanel menuPanel = new JPanel();
         menuPanel.setPreferredSize(new Dimension(1000,50));
 
+        //frame layout
         editorFrame.add(titlePanel,BorderLayout.NORTH);
         editorFrame.add(menuPanel,BorderLayout.CENTER);
         editorFrame.add(editorPanel,BorderLayout.SOUTH);
@@ -266,14 +301,17 @@ public class GUI extends JFrame implements ActionListener {
         backToManager.addActionListener(gui);
         menuPanel.add(backToManager);
 
+        //set up button that adds menu item
         JButton add = new JButton("Add Menu Item");
         add.addActionListener(gui);
         menuPanel.add(add);
 
+        //set up button that removes menu item
         JButton remove = new JButton("Remove Menu Item");
         remove.addActionListener(gui);
         menuPanel.add(remove);
 
+        //setup scrollable tabel
         JTable table = new JTable();
         JScrollPane  scroll = new JScrollPane(table);
         editorPanel.add(scroll);
@@ -284,23 +322,12 @@ public class GUI extends JFrame implements ActionListener {
     }
 
 
-    /**
-     * @return the current time stamp
-     */
-    public static Timestamp getCurrentTime(){
-        return new Timestamp(System.currentTimeMillis());
-    }
-
-
-    // Create employee login box
+    //set up employee selector
     public static void setEmployeeComboBox(){
-      // Loads in the names of the employees
-      Vector<Employee> employees = new Vector<>();
-      
+      //loads in the names of the employees
+      Vector<Employee> employees = new Vector<>(); 
       try{
-        // Create a statement object
         Statement stmt = conn.createStatement();
-        // Send statement to DBMS
         ResultSet result = stmt.executeQuery("SELECT * FROM employees;");
         // Initializes employees with info from database, adds to vector
         while(result.next()){ 
@@ -329,19 +356,6 @@ public class GUI extends JFrame implements ActionListener {
         }
       });
     }
-
-
-    //updates order history
-    // public static void addOrderToDatabase(String timestamp,String employee, String customer, String[] items){
-    //     String query = "INSERT INTO orders (order_timestamp, employee_id, customer_id, order_items, order_total) VALUES (" + timestamp + ", " + employee + ", " + customerID + ", " + ARRAY['Item1', 'Item2', 'Item3'] + ", " + total + ");";
-    //     try{
-    //       Statement stmt = conn.createStatement();
-    //       stmt.executeQuery(query);
-    //     } catch (Exception e){ //errors connecting to database
-    //       JOptionPane.showMessageDialog(null,e);
-    //     }
-    // }
-
 
     /////////////////// MAIN FUNCTION ////////////////////
     public static void main(String[] args){
@@ -407,77 +421,99 @@ public class GUI extends JFrame implements ActionListener {
         }
         // Opens inventory page
         else if(event.equals("View Inventory")){
+          setUpInventory();
           changeFrame(inventoryFrame);
         }
-        // Opens price editor
-        else if(event.equals("Edit Prices")){
+
+        //opens price editor
+        else if(event.equals("Edit Menu")){
+          setUpMenuEditor();
           changeFrame(editorFrame);
         }
         // Opens order stats
         else if(event.equals("Order Statistics")){
+          setUpOrderStats();
           changeFrame(statsFrame);
         }
         // Opens recent orders
         else if(event.equals("Recent Orders")){
+          setUpRecentOrders();
           changeFrame(recentFrame);
         }
         // On order stats page, shows daily stats
         else if(event.equals("Daily Stats")){
           dailyStats();
         }
-        // On order stats page, show stats for inputted range, input with TwoInputDialog
+
+        //on order stats page, show stats for inputted range, input with TwoInputDialog
+        //NEEDS TO BE FINISHED
         else if(event.equals("Custom Range")){
+          //using a custom 2 input dialog, get the two inputs
           TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter start date: YYYY-MM-DD","Enter end date: YYYY-MM-DD");
           TwoInputs inputs = dialog.showInputDialog();
+
           String start = inputs.input1;
           String end = inputs.input2;
-          if(start != "" && end != ""){
+          if(start != "" && end != ""){   //TODO: Input Validtaion
               System.out.println("VALID");
           }
           else{
             JOptionPane.showMessageDialog(null, "You have entered an invalid date.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
           }
+          //TODO: Call a method customRange(start, end) that table
         }
         // On inventory page, adds a supply item to the database
         else if(event.equals("Add Supply Item")){
           try{
-            //create a statement object
+            //gets the inputs with the two input dialog
             TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter new supply","Enter amount of new stock");
             TwoInputs inputs = dialog.showInputDialog();
             String newSupply = inputs.input1;
             Integer newStock = Integer.parseInt(inputs.input2);
+
+            //query
             Statement stmt = conn.createStatement();
             ResultSet r = stmt.executeQuery("INSERT INTO inventory (inventory_id, supply, stock_remaining) VALUES (DEFAULT, '"+newSupply+"', "+newStock+");");
           // Errors connecting to database
           }catch (Exception ex){ 
             //JOptionPane.showMessageDialog(null,ex);
           }
+
+           //update graphics
           setUpInventory();
+          changeFrame(inventoryFrame);
         }
         //On inventory page, removes a supply item from the database
         else if(event.equals("Remove Supply Item")){
           try{
+            //gets the id of the object to remove
             Integer item = Integer.parseInt(JOptionPane.showInputDialog("Enter ID of object to be removed"));
             Statement stmt = conn.createStatement();
             ResultSet r = stmt.executeQuery("DELETE FROM inventory WHERE inventory_id = "+item+";");
           }catch (Exception ex){ //errors connecting to database
             //JOptionPane.showMessageDialog(null,ex);
           }
+
+           //update graphics
           setUpInventory();
+          changeFrame(inventoryFrame);
         }
         // On menu editor page, adds a menu item to the database
         else if(event.equals("Add Menu Item")){
           try{
-            // Create a statement object
+            //create a statement object
+            //TODO add input validation
             TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter new menu item","Enter price");
             TwoInputs inputs = dialog.showInputDialog();
             String newDrink = inputs.input1;
-            //WARNING: MUST BE between 0 and 9.99
             Double newPrice = Double.parseDouble(inputs.input2); 
             Vector<String> ings = new Vector<>();
-            // Get ingredients
+
+            //get ingredients
+            //TODO add input validation
             Integer ingredientCount = Integer.parseInt(JOptionPane.showInputDialog("How many ingredients does this drink have?"));
             for(int i = 0;i<ingredientCount;i++){
+              //for each ingredient:
               String ingredient = JOptionPane.showInputDialog("Enter an ingredient");
               ings.add(ingredient);
               Statement stmt = conn.createStatement();
@@ -485,13 +521,20 @@ public class GUI extends JFrame implements ActionListener {
               if(!result.next()){ //if supply is not in the inventory
                 System.out.println(ingredient);
                 Statement stmt2 = conn.createStatement();
-                ResultSet adsf = stmt2.executeQuery("INSERT INTO inventory (inventory_id, supply, stock_remaining) VALUES (DEFAULT, '"+ingredient+"', 100);");
+                try{ //add a new supply
+                  stmt2.executeQuery("INSERT INTO inventory (inventory_id, supply, stock_remaining) VALUES (DEFAULT, '"+ingredient+"', 100);");
+                } catch(Exception ex){ }
               }
             }
+            //TODO Add Input Validation
+            String drinkType = JOptionPane.showInputDialog("Enter drink type");
 
+
+            //convert vector to an array
             String[] ingredients = ings.toArray(new String[0]);
            
-            String query = "INSERT INTO products (product_id, drink_name, price, ingredients) VALUES (DEFAULT, ?, ?, string_to_array(?, ', '));";
+            //prep new query to insert new item onto menu
+            String query = "INSERT INTO products (product_id, drink_name, price, ingredients, drink_type) VALUES (DEFAULT, ?, ?, string_to_array(?, ', '), ?);";
 
             PreparedStatement preparedStatement = conn.prepareStatement(query);
             preparedStatement.setString(1,newDrink);
@@ -499,6 +542,7 @@ public class GUI extends JFrame implements ActionListener {
 
             String ing = String.join(",",ingredients);
             preparedStatement.setString(3,ing);
+            preparedStatement.setString(4,drinkType);
             preparedStatement.executeUpdate();
             System.out.println(ing);
           // Errors connecting to database
@@ -506,9 +550,12 @@ public class GUI extends JFrame implements ActionListener {
             System.out.println(ex);   
           }
           setUpMenuEditor();
+          changeFrame(editorFrame);
         }
+        //remove a menu item
         else if(event.equals("Remove Menu Item")){
           try{
+            //get input and execute a query
             Integer item = Integer.parseInt(JOptionPane.showInputDialog("Enter ID of object to be removed"));
             Statement stmt = conn.createStatement();
             ResultSet r = stmt.executeQuery("DELETE FROM products WHERE product_id = "+item+";");
@@ -516,7 +563,10 @@ public class GUI extends JFrame implements ActionListener {
           }catch (Exception ex){ 
             //JOptionPane.showMessageDialog(null,ex);
           }
+
+           //update graphics
           setUpMenuEditor();
+          changeFrame(editorFrame);
         }
     }
 
@@ -592,22 +642,27 @@ public class GUI extends JFrame implements ActionListener {
         managerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         managerFrame.add(managerPanel);
 
+        //setup back to login page button
         JButton backToLogin = new JButton("Back to Login"); //goes back to login
         backToLogin.addActionListener(gui);
         managerPanel.add(backToLogin);
 
+        //setup view inventory button
         JButton viewInventory = new JButton("View Inventory"); //open view inventory menu
         viewInventory.addActionListener(gui);
         managerPanel.add(viewInventory);
 
-        JButton editPrices = new JButton("Edit Prices"); //open edit prices menu
-        editPrices.addActionListener(gui);
-        managerPanel.add(editPrices);
+        //setup menu editor button
+        JButton editMenu = new JButton("Edit Menu"); //open edit prices menu
+        editMenu.addActionListener(gui);
+        managerPanel.add(editMenu);
 
+        //setup order stats button
         JButton orderStats = new JButton("Order Statistics"); //open order stats
         orderStats.addActionListener(gui);
         managerPanel.add(orderStats);
 
+        //setup recent orders button
         JButton recentOrders = new JButton("Recent Orders"); //open recent orders
         recentOrders.addActionListener(gui);
         managerPanel.add(recentOrders);

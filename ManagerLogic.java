@@ -52,60 +52,70 @@ public class ManagerLogic {
     */
     public void getInventory(JTable table){
         try{
-            Statement stmt = conn.createStatement();
-            ResultSet result = stmt.executeQuery("SELECT * FROM inventory ORDER BY inventory_id;");
+          //query
+          Statement stmt = conn.createStatement();
+          ResultSet result = stmt.executeQuery("SELECT * FROM inventory ORDER BY inventory_id;");
 
-            //get column names
-            int cols = result.getMetaData().getColumnCount();
-            Vector<String> colNames = new Vector<>();
-            for(int i = 1;i<=cols;i++){
-                colNames.add(result.getMetaData().getColumnName(i));
-            }
+          //get column names
+          int cols = result.getMetaData().getColumnCount();
+          Vector<String> colNames = new Vector<>();
+          for(int i = 1;i<=cols;i++){
+            colNames.add(result.getMetaData().getColumnName(i));
+          }
 
-            // Get data
-            Vector<Vector<Object>> data = new Vector<>();
-            // Initializes employees with info from database, adds to vector
-            while(result.next()){ 
-                Vector<Object> row = new Vector<>();
-                for(int i = 1;i<=cols;i++){
-                    row.add(result.getObject(i));
-                }
-                data.add(row);
+          //get data
+          Vector<Vector<Object>> data = new Vector<>();
+          while (result.next()) { 
+              Vector<Object> row = new Vector<>();
+              for(int i = 1;i<=cols;i++){
+                row.add(result.getObject(i));
+              }
+              data.add(row);   
+          }
+
+          //Table Listener
+          DefaultTableModel model = new DefaultTableModel(data,colNames){
+            public boolean isCellEditable(int row, int column) {
+              // Make the menu item column uneditable
+              return column != 1 && column != 0;
             }
-            DefaultTableModel model = new DefaultTableModel(data,colNames);
-            table.setModel(model);
-            table.getModel().addTableModelListener(new TableModelListener(){
-                public void tableChanged(TableModelEvent e){
-                    if(e.getType() == TableModelEvent.UPDATE){
-                        int id = e.getFirstRow();
-                        int column = e.getColumn();
-                        String columnName = model.getColumnName(column);
-                        Integer newValue = Integer.parseInt(model.getValueAt(id, column).toString());
-                        if(columnName.equals("stock_remaining")){
-                        id = (int)model.getValueAt(id,0);
-                        }
-                        try{
-                            String query = "UPDATE inventory SET " +columnName+ " = ? WHERE inventory_id = ?";
-                            PreparedStatement pStat = conn.prepareStatement(query);
-                            pStat.setInt(1,newValue);
-                            pStat.setInt(2,id);
-                            pStat.executeUpdate();
-                        }catch (Exception ex){
-                            System.out.println(ex);
-                        }
+          };
+          table.setModel(model);
+          table.getModel().addTableModelListener(new TableModelListener(){
+
+              public void tableChanged(TableModelEvent e) {
+                //if it has been changed
+                if (e.getType() == TableModelEvent.UPDATE) {
+                    //get changed value and its location
+                    int id = e.getFirstRow();
+                    int column = e.getColumn();
+                    String columnName = model.getColumnName(column);
+                    Integer newValue = Integer.parseInt(model.getValueAt(id, column).toString());
+                    if(columnName.equals("stock_remaining")){
+                      id = (int)model.getValueAt(id,0);
                     }
-                }
-            });
-        // Errors connecting to database
-        }catch(Exception e){ 
-            JOptionPane.showMessageDialog(null,e);
+
+                  // Update the corresponding database record
+                   try{
+                    String query = "UPDATE inventory SET " +columnName+ " = ? WHERE inventory_id = ?";
+                    PreparedStatement pStat = conn.prepareStatement(query);
+                    pStat.setInt(1,newValue);
+                    pStat.setInt(2,id);
+                    pStat.executeUpdate();
+                   }catch (Exception ex){
+                      System.out.println(ex);
+                   }
+                  }
+              }
+          });
+
+        
+        } catch (Exception e){ //errors connecting to database
+          JOptionPane.showMessageDialog(null,e);
         }
     }
 
-
-    /**
-    * @param table the table to hold orders data 
-    */
+    //gets a table of the 10 most recent orders
     public void getRecentOrders(JTable table){
         // Getting the data
         try{
@@ -114,43 +124,43 @@ public class ManagerLogic {
               "ORDER BY order_id DESC\r\n" +
               "LIMIT 10;");
 
-            // Get column names
-            int cols = result.getMetaData().getColumnCount();
-            Vector<String> colNames = new Vector<>();
-            for(int i = 1;i<=cols;i++){
-                colNames.add(result.getMetaData().getColumnName(i));
-            }
+          //get column names
+          int cols = result.getMetaData().getColumnCount();
+          Vector<String> colNames = new Vector<>();
+          for(int i = 1;i<=cols;i++){
+            colNames.add(result.getMetaData().getColumnName(i));
+          }
 
-            // Get data
-            Vector<Vector<Object>> data = new Vector<>();
-            // Initializes employees with info from database, adds to vector
-            while(result.next()){ 
-                Vector<Object> row = new Vector<>();
-                for(int i = 1;i<=cols;i++){
-                    row.add(result.getObject(i));
-                }
-                data.add(row);
-            }
-            DefaultTableModel model = new DefaultTableModel(data,colNames);
-            table.setModel(model);
+          //get data
+          Vector<Vector<Object>> data = new Vector<>();
+          while (result.next()) { //initializes employees with info from database, adds to vector
+              Vector<Object> row = new Vector<>();
+              for(int i = 1;i<=cols;i++){
+                row.add(result.getObject(i));
+              }
+              data.add(row);
+      
+          }
+          DefaultTableModel model = new DefaultTableModel(data,colNames);
+          table.setModel(model);
 
-            TableColumn column = table.getColumnModel().getColumn(0);
-            column.setPreferredWidth(200);
-            column = table.getColumnModel().getColumn(1);
-            column.setPreferredWidth(400);
-            column = table.getColumnModel().getColumn(2);
-            column.setPreferredWidth(200);
-            column = table.getColumnModel().getColumn(3);
-            column.setPreferredWidth(200);
-            column = table.getColumnModel().getColumn(4);
-            column.setPreferredWidth(900);
-            column = table.getColumnModel().getColumn(5);
-            column.setPreferredWidth(200);
-            // Adjust the width and height as needed
-            table.setPreferredScrollableViewportSize(new Dimension(800, 400)); 
-        // Errors connecting to database
-        }catch(Exception e){ 
-            JOptionPane.showMessageDialog(null,e);
+          //table configuration
+          TableColumn column = table.getColumnModel().getColumn(0);
+          column.setPreferredWidth(200);
+          column = table.getColumnModel().getColumn(1);
+          column.setPreferredWidth(400);
+          column = table.getColumnModel().getColumn(2);
+          column.setPreferredWidth(200);
+          column = table.getColumnModel().getColumn(3);
+          column.setPreferredWidth(200);
+          column = table.getColumnModel().getColumn(4);
+          column.setPreferredWidth(900);
+          column = table.getColumnModel().getColumn(5);
+          column.setPreferredWidth(200);
+          table.setPreferredScrollableViewportSize(new Dimension(800, 400)); // Adjust the width and height as needed
+        
+        } catch (Exception e){ //errors connecting to database
+          JOptionPane.showMessageDialog(null,e);
         }
     }
 
@@ -161,114 +171,138 @@ public class ManagerLogic {
     */
     public JTable getDailyStats(JTable table){
         try{
-            Statement stmt = conn.createStatement();
-            ResultSet drinkName = stmt.executeQuery("SELECT drink_name, price FROM products;");
+          Statement stmt = conn.createStatement();
+          ResultSet drinkName = stmt.executeQuery("SELECT drink_name, price FROM products;");
 
-            // Get column names
-            Vector<String> colNames = new Vector<>();
-            colNames.add("Drink");
-            colNames.add("Num Sold");
-            colNames.add("Sales");
-            Vector<Vector<Object>> data = new Vector<>();
-            // Each row: DRINK NAME, NUMSOLD, SALES
+          //get column names
+          Vector<String> colNames = new Vector<>();
+          colNames.add("Drink");
+          colNames.add("Num Sold");
+          colNames.add("Sales");
+          Vector<Vector<Object>> data = new Vector<>();
+          //Each row: DRINK NAME, NUMSOLD, SALES
 
-            double totalUnits = 0;
-            double totalSales = 0;
+          //track values for the total (final row)
+          double totalUnits = 0;
+          double totalSales = 0;
+          
+          //loop through query
+          while (drinkName.next()) { 
+              Vector<Object> row = new Vector<>();
 
-            
-            while(drinkName.next()){ 
-                Vector<Object> row = new Vector<>();
+              //FILL FIRST COL (name)
+              Object curr = drinkName.getObject(1);
+              row.add(curr);
 
-                // Fill first col
-                Object curr = drinkName.getObject(1);
-                row.add(curr);
+              //FILL SECOND COL (num sold)
+              Statement stmt2 = conn.createStatement();
+              ResultSet numDrinks= stmt2.executeQuery("SELECT COUNT(*) AS total FROM orders WHERE '"+(String)curr+"' = ANY (order_items) AND DATE(order_timestamp) = '2025-06-01'; ");
+              numDrinks.next();
+              double units = numDrinks.getDouble(1);
+              totalUnits += units;
+              row.add(numDrinks.getObject(1));
 
-                // FILL second col
-                Statement stmt2 = conn.createStatement();
-                ResultSet numDrinks= stmt2.executeQuery("SELECT COUNT(*) AS total FROM orders WHERE '"+(String)curr+"' = ANY (order_items) AND DATE(order_timestamp) = '2025-06-01'; ");
-                numDrinks.next();
-                double units = numDrinks.getDouble(1);
-                totalUnits += units;
-                row.add(numDrinks.getObject(1));
+              //FILL THIRD COL (sales)
+              double price = drinkName.getDouble(2);
+              double sales = price * units;
+              totalSales += sales;
+              row.add((Object)sales);
 
-                // Fill third col
-                double price = drinkName.getDouble(2);
-                double sales = price * units;
-                totalSales += sales;
-                row.add((Object)sales);
+              data.add(row);
+      
+          }
+          //add total row
+          Vector<Object> totalRow = new Vector<>();
+          totalRow.add("Total");
+          totalRow.add((int)totalUnits);
+          totalRow.add(totalSales);
+          data.add(totalRow);
 
-                data.add(row);
-            }
-            Vector<Object> totalRow = new Vector<>();
-            totalRow.add("Total");
-            totalRow.add((int)totalUnits);
-            totalRow.add(totalSales);
-            data.add(totalRow);
-
-            DefaultTableModel model = new DefaultTableModel(data,colNames);
-            table.setModel(model);
-            // Adjust the width and height as needed 
-            table.setPreferredScrollableViewportSize(new Dimension(800, 400)); 
-        // Errors connecting to database
-        }catch(Exception e){
-           JOptionPane.showMessageDialog(null,e);
+          //table model setup
+          DefaultTableModel model = new DefaultTableModel(data,colNames);
+          table.setModel(model);
+          table.setPreferredScrollableViewportSize(new Dimension(800, 400)); // Adjust the width and height as needed
+        
+        } catch (Exception e){ //errors connecting to database
+          JOptionPane.showMessageDialog(null,e);
         }
         return table;
     }
-
 
     /**
     * @param table the table to hold products
     */
     public void getMenu(JTable table){
         try{
-            Statement stmt = conn.createStatement();
-            ResultSet result = stmt.executeQuery("SELECT * FROM products ORDER BY product_id;");
+          Statement stmt = conn.createStatement();
+          ResultSet result = stmt.executeQuery("SELECT * FROM products ORDER BY product_id;");
 
-            // Get column names
-            int cols = result.getMetaData().getColumnCount();
-            Vector<String> colNames = new Vector<>();
-            for(int i = 1;i<=cols;i++){
-                colNames.add(result.getMetaData().getColumnName(i));
-            }
+          //get column names
+          int cols = result.getMetaData().getColumnCount();
+          Vector<String> colNames = new Vector<>();
+          for(int i = 1;i<=cols;i++){
+            colNames.add(result.getMetaData().getColumnName(i));
+          }
 
-            // Get data
-            Vector<Vector<Object>> data = new Vector<>();
-            while(result.next()){ 
-                Vector<Object> row = new Vector<>();
-                for(int i = 1;i<=cols;i++){
-                    row.add(result.getObject(i));
-                }
-                data.add(row);
+          //get data
+          Vector<Vector<Object>> data = new Vector<>();
+          while (result.next()) { 
+              Vector<Object> row = new Vector<>();
+              for(int i = 1;i<=cols;i++){
+                row.add(result.getObject(i));
+              }
+              data.add(row);
+      
+          }
+
+          //setup table listener
+          DefaultTableModel model = new DefaultTableModel(data,colNames){
+            public boolean isCellEditable(int row, int column) {
+              // Make the menu item column uneditable
+              return column != 3 && column != 0;
             }
-            DefaultTableModel model = new DefaultTableModel(data,colNames);
-            table.setModel(model);
-            table.getModel().addTableModelListener(new TableModelListener(){
-                public void tableChanged(TableModelEvent e){
-                    if(e.getType() == TableModelEvent.UPDATE){
-                        int id = e.getFirstRow();
-                        int column = e.getColumn();
-                        String columnName = model.getColumnName(column);
-                        Double newValue = Double.parseDouble(model.getValueAt(id, column).toString());
-                        if(columnName.equals("price")){
-                            id = (int)model.getValueAt(id,0);
-                        }
-                        // Update the corresponding database record
-                        try{
-                            String query = "UPDATE products SET " +columnName+ " = ? WHERE product_id = ?";
-                            PreparedStatement pStat = conn.prepareStatement(query);
-                            pStat.setBigDecimal(1,BigDecimal.valueOf(newValue));
-                            pStat.setInt(2,id);
-                            pStat.executeUpdate();
-                        }catch(Exception ex){
-                            System.out.println("HELP"+ex);
-                        }
+          };
+          table.setModel(model);
+          table.getModel().addTableModelListener(new TableModelListener(){
+
+              public void tableChanged(TableModelEvent e) {
+                //if a value has been changed
+                if (e.getType() == TableModelEvent.UPDATE) {
+                    //get location and newvalue
+                    int id = e.getFirstRow();
+                    int column = e.getColumn();
+                    String columnName = model.getColumnName(column);
+                    String query = "UPDATE products SET " +columnName+ " = ? WHERE product_id = ?";
+                    
+                    // Update the corresponding database record
+                   try{
+                    PreparedStatement pStat = conn.prepareStatement(query);
+
+                    //define behaivor for each column
+                    if(columnName.equals("price")){
+                      Double newValue = Double.parseDouble(model.getValueAt(id, column).toString());
+                      id = (int)model.getValueAt(id,0);
+                      pStat.setBigDecimal(1,BigDecimal.valueOf(newValue));
+                      pStat.setInt(2,id);
                     }
-                }
-            });
-        // Errors connecting to database
-        }catch(Exception e){ 
-            JOptionPane.showMessageDialog(null,e);
+                    else if(columnName.equals("drink_name") || columnName.equals("drink_type")){
+                      String newValue = (model.getValueAt(id, column).toString());
+                      id = (int)model.getValueAt(id,0);
+                      pStat.setString(1,newValue);
+                      pStat.setInt(2,id);
+                    }
+                    
+                    
+                    pStat.executeUpdate();
+                   }catch (Exception ex){
+                      System.out.println("HELP"+ex);
+                   }
+                 }
+              }
+           });
+
+        } catch (Exception e){ //errors connecting to database
+          JOptionPane.showMessageDialog(null,e);
         }
     }
 }

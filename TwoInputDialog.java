@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-
+//creates a two input dialog pop up
 public class TwoInputDialog extends JDialog {
     private JTextField textField1;
     private JTextField textField2;
