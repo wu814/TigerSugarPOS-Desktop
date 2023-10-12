@@ -63,7 +63,12 @@ public class ManagerLogic {
           }
 
           //Table Listener
-          DefaultTableModel model = new DefaultTableModel(data,colNames);
+          DefaultTableModel model = new DefaultTableModel(data,colNames){
+            public boolean isCellEditable(int row, int column) {
+              // Make the menu item column uneditable
+              return column != 1 && column != 0;
+            }
+          };
           table.setModel(model);
           table.getModel().addTableModelListener(new TableModelListener(){
 
@@ -235,7 +240,12 @@ public class ManagerLogic {
           }
 
           //setup table listener
-          DefaultTableModel model = new DefaultTableModel(data,colNames);
+          DefaultTableModel model = new DefaultTableModel(data,colNames){
+            public boolean isCellEditable(int row, int column) {
+              // Make the menu item column uneditable
+              return column != 3 && column != 0;
+            }
+          };
           table.setModel(model);
           table.getModel().addTableModelListener(new TableModelListener(){
 
@@ -246,16 +256,27 @@ public class ManagerLogic {
                     int id = e.getFirstRow();
                     int column = e.getColumn();
                     String columnName = model.getColumnName(column);
-                    Double newValue = Double.parseDouble(model.getValueAt(id, column).toString());
-                    if(columnName.equals("price")){
-                      id = (int)model.getValueAt(id,0);
-                    }
+                    String query = "UPDATE products SET " +columnName+ " = ? WHERE product_id = ?";
+                    
                     // Update the corresponding database record
                    try{
-                    String query = "UPDATE products SET " +columnName+ " = ? WHERE product_id = ?";
                     PreparedStatement pStat = conn.prepareStatement(query);
-                    pStat.setBigDecimal(1,BigDecimal.valueOf(newValue));
-                    pStat.setInt(2,id);
+
+                    //define behaivor for each column
+                    if(columnName.equals("price")){
+                      Double newValue = Double.parseDouble(model.getValueAt(id, column).toString());
+                      id = (int)model.getValueAt(id,0);
+                      pStat.setBigDecimal(1,BigDecimal.valueOf(newValue));
+                      pStat.setInt(2,id);
+                    }
+                    else if(columnName.equals("drink_name") || columnName.equals("drink_type")){
+                      String newValue = (model.getValueAt(id, column).toString());
+                      id = (int)model.getValueAt(id,0);
+                      pStat.setString(1,newValue);
+                      pStat.setInt(2,id);
+                    }
+                    
+                    
                     pStat.executeUpdate();
                    }catch (Exception ex){
                       System.out.println("HELP"+ex);

@@ -490,6 +490,7 @@ public class GUI extends JFrame implements ActionListener {
         else if(event.equals("Add Menu Item")){
           try{
             //create a statement object
+            //TODO add input validation
             TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter new menu item","Enter price");
             TwoInputs inputs = dialog.showInputDialog();
             String newDrink = inputs.input1;
@@ -497,7 +498,7 @@ public class GUI extends JFrame implements ActionListener {
             Vector<String> ings = new Vector<>();
 
             //get ingredients
-            //get number of ingredients
+            //TODO add input validation
             Integer ingredientCount = Integer.parseInt(JOptionPane.showInputDialog("How many ingredients does this drink have?"));
             for(int i = 0;i<ingredientCount;i++){
               //for each ingredient:
@@ -513,12 +514,15 @@ public class GUI extends JFrame implements ActionListener {
                 } catch(Exception ex){ }
               }
             }
+            //TODO Add Input Validation
+            String drinkType = JOptionPane.showInputDialog("Enter drink type");
+
 
             //convert vector to an array
             String[] ingredients = ings.toArray(new String[0]);
            
             //prep new query to insert new item onto menu
-            String query = "INSERT INTO products (product_id, drink_name, price, ingredients) VALUES (DEFAULT, ?, ?, string_to_array(?, ', '));";
+            String query = "INSERT INTO products (product_id, drink_name, price, ingredients, drink_type) VALUES (DEFAULT, ?, ?, string_to_array(?, ', '), ?);";
 
             PreparedStatement preparedStatement = conn.prepareStatement(query);
             preparedStatement.setString(1,newDrink);
@@ -526,6 +530,7 @@ public class GUI extends JFrame implements ActionListener {
 
             String ing = String.join(",",ingredients);
             preparedStatement.setString(3,ing);
+            preparedStatement.setString(4,drinkType);
             preparedStatement.executeUpdate();
         
           }  catch (Exception ex){ //errors connecting to database
