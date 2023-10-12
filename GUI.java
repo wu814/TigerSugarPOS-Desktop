@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import java.awt.Dimension;
 import java.awt.event.*;
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Dimension;
@@ -13,6 +14,7 @@ import java.math.BigDecimal;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
 import javax.swing.event.TableModelEvent;
@@ -45,13 +47,15 @@ public class GUI extends JFrame implements ActionListener {
 
     static JButton payButton;
     static JPanel orderLogs;
+    static JPanel rightPanel;
     static ArrayList<String> order = new ArrayList<String>();
+    static ArrayList<String> drinkAttributes = new ArrayList<String>();
     static OrderLogic orderLogic = new OrderLogic();
     static ManagerLogic managerLogic = new ManagerLogic();
     static double orderTotal = 0.0;
     static Map<String, Double> drinkPriceMap = new HashMap<String, Double>();
-    static JScrollPane orderScrollPane;
-
+    static ArrayList<JButton> drinkButtons = new ArrayList<JButton>();
+    static ArrayList<Boolean> openButtons = new ArrayList<Boolean>();
 
     // Establishes connection to the database, through the conn variable
     public static void connect(){
@@ -371,7 +375,7 @@ public class GUI extends JFrame implements ActionListener {
       
       // Closing the connection
       try{
-        // conn.close();
+        conn.close();
         //JOptionPane.showMessageDialog(null,"Connection Closed.");
       } catch(Exception e) {
        // JOptionPane.showMessageDialog(null,"Connection NOT Closed.");
@@ -574,38 +578,369 @@ public class GUI extends JFrame implements ActionListener {
     /**
      * @param drinkButton the button of the drink that is being removed from the order
      */
-    private void removeFromOrder(JButton drinkButton){
-        orderLogs.remove(drinkButton);
-        orderLogs.revalidate();
-        orderLogs.repaint();
+    private void removeFromOrder(JPanel drinkButtonPanel, JButton drinkButton) {
+        int buttonIndex = getButtonIndex(drinkButton);
 
-        // Splitting drinkbutton text on $
-        String[] drinkInfo = drinkButton.getText().split(" \\$");
-        
-        orderTotal -= drinkPriceMap.get(drinkInfo[0]);
+        if (buttonIndex != -1) {
+            orderTotal -= drinkPriceMap.get(order.get(buttonIndex));
+            System.out.println(orderTotal);
+            int orderLogIndex = orderLogs.getComponentZOrder(drinkButtonPanel);
+            orderLogs.remove(orderLogIndex);
+            orderLogs.remove(orderLogIndex);
+            order.remove(buttonIndex);
+            drinkAttributes.remove(buttonIndex);
+            drinkButtons.remove(buttonIndex);
+            openButtons.remove(buttonIndex);
 
-        System.out.println("Order total: " + orderTotal);
-
-        payButton.setText("Charge $" + orderTotal);
-
-        order.remove(drinkInfo[0]);
+            orderLogs.revalidate();
+            orderLogs.repaint();
+            payButton.setText("Pay: $" + orderTotal);
+        }
     }
 
+    private int getButtonIndex(JButton targetButton) {
+        for (int i = 0; i < drinkButtons.size(); i++) {
+            if (drinkButtons.get(i) == targetButton) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // a function to display the stats of a drink (dairy free alternative, sweetness level, ice level, cup size, special instructions)
+    private void displayDrinkAttributes(JPanel drinkButtonPanel, JButton drinkButton) {
+        // adding the attributes underneath the drinkButton
+
+        int buttonIndex = getButtonIndex(drinkButton);
+
+        if (buttonIndex != -1) {
+
+            int orderLogIndex = orderLogs.getComponentZOrder(drinkButtonPanel);
+            
+            // Toggle for displaying the attributes
+            if(openButtons.get(buttonIndex) == true) {     
+                openButtons.set(buttonIndex, false);
+                orderLogs.remove(orderLogIndex + 1);
+            } else {
+                openButtons.set(buttonIndex, true);
+                JPanel attributesPanel = new JPanel();
+                // Set the layout manager to BoxLayout with X_AXIS (horizontal) alignment
+                attributesPanel.setLayout(new BoxLayout(attributesPanel, BoxLayout.Y_AXIS));
+                // attributesPanel.setLayout(new GridLayout(6, 1));
+                
+                JPanel dairyAttribute = new JPanel();
+                dairyAttribute.setLayout(new FlowLayout(FlowLayout.LEFT));
+                JLabel dairyLabel = new JLabel(drinkAttributes.get(buttonIndex).split(", ")[0]);
+                dairyLabel.setBorder(new EmptyBorder(10, 10, 10, 10));
+                dairyAttribute.add(dairyLabel);
+
+                JButton dairyOatButton = new JButton("Oat");
+                dairyOatButton.setBackground(Color.BLUE);
+                dairyOatButton.setForeground(Color.WHITE);
+                dairyOatButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
+                        String newAttributes = "Dairy Free Alternative: Oat";
+                        for (int i = 1; i < attributes.length; i++) {
+                            newAttributes += ", " + attributes[i];
+                        }
+                        drinkAttributes.set(buttonIndex, newAttributes);
+                        dairyLabel.setText(newAttributes.split(", ")[0]);
+                    }
+                });
+
+                JButton dairySoyButton = new JButton("Soy");
+                dairySoyButton.setBackground(Color.BLUE);
+                dairySoyButton.setForeground(Color.WHITE);
+                dairySoyButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
+                        String newAttributes = "Dairy Free Alternative: Soy";
+                        for (int i = 1; i < attributes.length; i++) {
+                            newAttributes += ", " + attributes[i];
+                        }
+                        drinkAttributes.set(buttonIndex, newAttributes);
+                        dairyLabel.setText(newAttributes.split(", ")[0]);
+                    }
+                });
+
+                JButton dairyLactoseFreeButton = new JButton("Lactose Free");
+                dairyLactoseFreeButton.setBackground(Color.BLUE);
+                dairyLactoseFreeButton.setForeground(Color.WHITE);
+                dairyLactoseFreeButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
+                        String newAttributes = "Dairy Free Alternative: Lactose Free";
+                        for (int i = 1; i < attributes.length; i++) {
+                            newAttributes += ", " + attributes[i];
+                        }
+                        drinkAttributes.set(buttonIndex, newAttributes);
+                        dairyLabel.setText(newAttributes.split(", ")[0]);
+                    }
+                });
+
+                JButton dairyNoneButton = new JButton("None");
+                dairyNoneButton.setBackground(Color.BLUE);
+                dairyNoneButton.setForeground(Color.WHITE);
+                dairyNoneButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
+                        String newAttributes = "Dairy Free Alternative: None";
+                        for (int i = 1; i < attributes.length; i++) {
+                            newAttributes += ", " + attributes[i];
+                        }
+                        drinkAttributes.set(buttonIndex, newAttributes);
+                        dairyLabel.setText(newAttributes.split(", ")[0]);
+                    }
+                });
+                
+                dairyAttribute.add(dairyOatButton);
+                dairyAttribute.add(dairySoyButton);
+                dairyAttribute.add(dairyLactoseFreeButton);
+                dairyAttribute.add(dairyNoneButton);
+
+                JPanel sweetnessAttribute = new JPanel();
+                sweetnessAttribute.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+                JLabel sweetnessLabel = new JLabel(drinkAttributes.get(buttonIndex).split(", ")[1]);
+                sweetnessLabel.setBorder(new EmptyBorder(10, 10, 10, 10));
+                sweetnessAttribute.add(sweetnessLabel);
+
+                JButton sweetness50Button = new JButton("50%");
+                sweetness50Button.setBackground(Color.BLUE);
+                sweetness50Button.setForeground(Color.WHITE);
+                sweetness50Button.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
+                        String newAttributes = attributes[0] + ", Sweetness Level: 50%";
+                        for (int i = 2; i < attributes.length; i++) {
+                            newAttributes += ", " + attributes[i];
+                        }
+                        drinkAttributes.set(buttonIndex, newAttributes);
+                        sweetnessLabel.setText(newAttributes.split(", ")[1]);
+                    }
+                });
+
+                JButton sweetness100Button = new JButton("100%");
+                sweetness100Button.setBackground(Color.BLUE);
+                sweetness100Button.setForeground(Color.WHITE);
+                sweetness100Button.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
+                        String newAttributes = attributes[0] + ", Sweetness Level: 100%";
+                        for (int i = 2; i < attributes.length; i++) {
+                            newAttributes += ", " + attributes[i];
+                        }
+                        drinkAttributes.set(buttonIndex, newAttributes);
+                        sweetnessLabel.setText(newAttributes.split(", ")[1]);
+                    }
+                });
+
+                sweetnessAttribute.add(sweetness50Button);
+                sweetnessAttribute.add(sweetness100Button);
+
+                JPanel iceAttribute = new JPanel();
+                iceAttribute.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+                JLabel iceLabel = new JLabel(drinkAttributes.get(buttonIndex).split(", ")[2]);
+                iceLabel.setBorder(new EmptyBorder(10, 10, 10, 10));
+                iceAttribute.add(iceLabel);
+
+                JButton iceLessButton = new JButton("Less Ice");
+                iceLessButton.setBackground(Color.BLUE);
+                iceLessButton.setForeground(Color.WHITE);
+                iceLessButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
+                        String newAttributes = attributes[0] + ", " + attributes[1] + ", Ice Level: Less";
+                        for (int i = 3; i < attributes.length; i++) {
+                            newAttributes += ", " + attributes[i];
+                        }
+                        drinkAttributes.set(buttonIndex, newAttributes);
+                        iceLabel.setText(newAttributes.split(", ")[2]);
+                    }
+                });
+
+                JButton iceNormalButton = new JButton("Normal");
+                iceNormalButton.setBackground(Color.BLUE);
+                iceNormalButton.setForeground(Color.WHITE);
+
+                iceNormalButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
+                        String newAttributes = attributes[0] + ", " + attributes[1] + ", Ice Level: Normal";
+                        for (int i = 3; i < attributes.length; i++) {
+                            newAttributes += ", " + attributes[i];
+                        }
+                        drinkAttributes.set(buttonIndex, newAttributes);
+                        iceLabel.setText(newAttributes.split(", ")[2]);
+                    }
+                });
+
+                JButton iceNoneButton = new JButton("None");
+                iceNoneButton.setBackground(Color.BLUE);
+                iceNoneButton.setForeground(Color.WHITE);
+
+                iceNoneButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
+                        String newAttributes = attributes[0] + ", " + attributes[1] + ", Ice Level: None";
+                        for (int i = 3; i < attributes.length; i++) {
+                            newAttributes += ", " + attributes[i];
+                        }
+                        drinkAttributes.set(buttonIndex, newAttributes);
+                        iceLabel.setText(newAttributes.split(", ")[2]);
+                    }
+                });
+
+                iceAttribute.add(iceLessButton);
+                iceAttribute.add(iceNormalButton);
+                iceAttribute.add(iceNoneButton);
+
+                JPanel cupSizeAttribute = new JPanel();
+                cupSizeAttribute.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+                JLabel cupSizeLabel = new JLabel(drinkAttributes.get(buttonIndex).split(", ")[3]);
+                cupSizeLabel.setBorder(new EmptyBorder(10, 10, 10, 10));
+                cupSizeAttribute.add(cupSizeLabel);
+
+                JButton cupSizeRegularButton = new JButton("Regular");
+                cupSizeRegularButton.setBackground(Color.BLUE);
+                cupSizeRegularButton.setForeground(Color.WHITE);
+
+                cupSizeRegularButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
+                        String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", Cup Size: Regular";
+                        for (int i = 4; i < attributes.length; i++) {
+                            newAttributes += ", " + attributes[i];
+                        }
+                        drinkAttributes.set(buttonIndex, newAttributes);
+                        cupSizeLabel.setText(newAttributes.split(", ")[3]);
+                    }
+                });
+
+                JButton cupSizeRegularHot = new JButton("Regular Hot");
+                cupSizeRegularHot.setBackground(Color.BLUE);
+                cupSizeRegularHot.setForeground(Color.WHITE);
+
+                cupSizeRegularHot.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
+                        String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", Cup Size: Regular Hot";
+                        for (int i = 4; i < attributes.length; i++) {
+                            newAttributes += ", " + attributes[i];
+                        }
+                        drinkAttributes.set(buttonIndex, newAttributes);
+                        cupSizeLabel.setText(newAttributes.split(", ")[3]);
+                    }
+                });
+
+                JButton cupSizeXLButton = new JButton("XL");
+                cupSizeXLButton.setBackground(Color.BLUE);
+                cupSizeXLButton.setForeground(Color.WHITE);
+
+                cupSizeXLButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
+                        String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", Cup Size: XL";
+                        for (int i = 4; i < attributes.length; i++) {
+                            newAttributes += ", " + attributes[i];
+                        }
+                        drinkAttributes.set(buttonIndex, newAttributes);
+                        cupSizeLabel.setText(newAttributes.split(", ")[3]);
+                    }
+                });
+
+                cupSizeAttribute.add(cupSizeRegularButton);
+                cupSizeAttribute.add(cupSizeRegularHot);
+                cupSizeAttribute.add(cupSizeXLButton);
+
+                JPanel specialInstructionsPanel = new JPanel();
+                specialInstructionsPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+                JTextArea specialInstructionsTextArea = new JTextArea(drinkAttributes.get(buttonIndex).split(", ")[4]);
+                specialInstructionsTextArea.setBorder(new EmptyBorder(10, 10, 10, 10));
+                specialInstructionsTextArea.setLineWrap(true);
+                specialInstructionsTextArea.setWrapStyleWord(true);
+                specialInstructionsTextArea.setPreferredSize(new Dimension(300, 100));
+
+                // submit special instructions to put into arraylist
+                JButton submitSpecialInstructionsButton = new JButton("Submit Special Instructions");
+                submitSpecialInstructionsButton.setBackground(Color.BLUE);
+                submitSpecialInstructionsButton.setForeground(Color.WHITE);
+
+                submitSpecialInstructionsButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
+                        String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", " + attributes[3] + ", Special Instructions: " + specialInstructionsTextArea.getText();
+                        drinkAttributes.set(buttonIndex, newAttributes);
+                        specialInstructionsTextArea.setText(newAttributes.split(", ")[4]);
+                    }
+                });
+
+                specialInstructionsPanel.add(specialInstructionsTextArea);
+                specialInstructionsPanel.add(submitSpecialInstructionsButton);
+
+                // button to remove the drink entirely from the order
+                JPanel removeDrinkPanel = new JPanel();
+                removeDrinkPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+                JButton removeDrinkButton = new JButton("Remove Drink");
+                removeDrinkButton.setBackground(Color.RED);
+                removeDrinkButton.setForeground(Color.WHITE);
+
+                removeDrinkButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        removeFromOrder(drinkButtonPanel, drinkButton);
+                    }
+                });
+                
+                removeDrinkPanel.add(removeDrinkButton);
+
+
+                // Insert the JLabel right after the drinkButton
+                attributesPanel.add(dairyAttribute);
+                attributesPanel.add(sweetnessAttribute);
+                attributesPanel.add(iceAttribute);
+                attributesPanel.add(cupSizeAttribute);
+                attributesPanel.add(specialInstructionsPanel);
+                attributesPanel.add(removeDrinkPanel);
+                orderLogs.add(attributesPanel, orderLogIndex + 1);
+
+            }
+
+            // Revalidate and repaint the container
+            orderLogs.revalidate();
+            orderLogs.repaint();
+            rightPanel.revalidate();
+            rightPanel.repaint();
+        } else {
+            System.out.println("Button not found in orderLogs.");
+        }
+    }
 
     // Handle adding a drink to the order list
     /**
      * @param drinkName the name of the drink that is being added on the order
      */
     private void addToOrder(String drinkName){
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new BorderLayout());
+
         orderTotal += drinkPriceMap.get(drinkName);
 
-        JButton drinkButton = new JButton(drinkName + " $" + drinkPriceMap.get(drinkName));
+        JButton drinkButton = new JButton(drinkName);
         drinkButton.addActionListener(new ActionListener(){
           public void actionPerformed(ActionEvent e){
-            removeFromOrder(drinkButton);
+            displayDrinkAttributes(buttonPanel, drinkButton);
           }
         });
-        orderLogs.add(drinkButton);
+
+        buttonPanel.add(drinkButton);
+
+        orderLogs.add(buttonPanel, BorderLayout.WEST);
         orderLogs.revalidate();
         orderLogs.repaint();
 
@@ -615,6 +950,11 @@ public class GUI extends JFrame implements ActionListener {
 
         // Adding to arraylist of drinks in order
         order.add(drinkName);
+        drinkButtons.add(drinkButton);
+        openButtons.add(false);
+        
+        // getting default attributes
+        drinkAttributes.add("Dairy Free Alternative: None, Sweetness Level: 100%, Ice Level: Normal, Cup Size: Regular, Special Instructions: None");
     }
 
 
@@ -765,7 +1105,7 @@ public class GUI extends JFrame implements ActionListener {
 
         //Right Panel for orders
 
-        JPanel rightPanel = new JPanel(new BorderLayout());
+        rightPanel = new JPanel(new BorderLayout());
 
         JLabel orderListLabel = new JLabel("Order List");
         orderListLabel.setFont(new Font("Arial", Font.BOLD, 24));
@@ -785,10 +1125,9 @@ public class GUI extends JFrame implements ActionListener {
             JButton drinkButton = new JButton(drink + " $" + drinkPriceMap.get(drink));
             drinkButton.addActionListener(new ActionListener() {
               public void actionPerformed(ActionEvent e) {
-                removeFromOrder(drinkButton);
+                addToOrder(drink);
               }
             });
-            orderLogs.add(drinkButton);
           }
         }
 
@@ -875,7 +1214,8 @@ public class GUI extends JFrame implements ActionListener {
 
         //Right Panel for orders
 
-        JPanel rightPanel = new JPanel(new BorderLayout());
+        rightPanel = new JPanel();
+        rightPanel.setLayout(new BorderLayout());
 
         JLabel orderListLabel = new JLabel("Order List");
         orderListLabel.setFont(new Font("Arial", Font.BOLD, 24));
@@ -895,10 +1235,9 @@ public class GUI extends JFrame implements ActionListener {
             JButton drinkButton = new JButton(drink + " $" + drinkPriceMap.get(drink));
             drinkButton.addActionListener(new ActionListener() {
               public void actionPerformed(ActionEvent e) {
-                removeFromOrder(drinkButton);
+                addToOrder(drink);
               }
             });
-            orderLogs.add(drinkButton);
           }
         }
 
@@ -980,14 +1319,14 @@ public class GUI extends JFrame implements ActionListener {
               addToOrder(drink);
             }
           });
-          contentPanel.add(drinkButton);
+          contentPanel.add(drinkButton, BorderLayout.CENTER);
         }
 
         mainPanel.add(contentPanel, BorderLayout.CENTER);
 
         //Right Panel for orders
 
-        JPanel rightPanel = new JPanel(new BorderLayout());
+        rightPanel = new JPanel(new BorderLayout());
 
         JLabel orderListLabel = new JLabel("Order List");
         orderListLabel.setFont(new Font("Arial", Font.BOLD, 24));
@@ -1008,10 +1347,9 @@ public class GUI extends JFrame implements ActionListener {
             JButton drinkButton = new JButton(drink + " $" + drinkPriceMap.get(drink));
             drinkButton.addActionListener(new ActionListener() {
               public void actionPerformed(ActionEvent e) {
-                removeFromOrder(drinkButton);
+                addToOrder(drink);
               }
             });
-            orderLogs.add(drinkButton);
           }
         }
 
@@ -1091,14 +1429,14 @@ public class GUI extends JFrame implements ActionListener {
               addToOrder(drink);
             }
           });
-          contentPanel.add(drinkButton);
+          contentPanel.add(drinkButton, BorderLayout.CENTER);
         }
 
-        mainPanel.add(contentPanel);
+        mainPanel.add(contentPanel, BorderLayout.CENTER);
 
         //Right Panel for orders
 
-        JPanel rightPanel = new JPanel(new BorderLayout());
+        rightPanel = new JPanel(new BorderLayout());
 
         JLabel orderListLabel = new JLabel("Order List");
         orderListLabel.setFont(new Font("Arial", Font.BOLD, 24));
@@ -1119,10 +1457,9 @@ public class GUI extends JFrame implements ActionListener {
             JButton drinkButton = new JButton(drink + " $" + drinkPriceMap.get(drink));
             drinkButton.addActionListener(new ActionListener() {
               public void actionPerformed(ActionEvent e) {
-                removeFromOrder(drinkButton);
+                addToOrder(drink);
               }
             });
-            orderLogs.add(drinkButton);
           }
         }
 
