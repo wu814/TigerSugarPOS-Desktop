@@ -899,7 +899,7 @@ public class GUI extends JFrame implements ActionListener{
                 specialInstructionsTextArea.setWrapStyleWord(true);
                 specialInstructionsTextArea.setPreferredSize(new Dimension(300, 100));
 
-                // submit special instructions to put into arraylist
+                // Submit special instructions to put into arraylist
                 JButton submitSpecialInstructionsButton = new JButton("Submit Special Instructions");
                 submitSpecialInstructionsButton.setBackground(Color.BLUE);
                 submitSpecialInstructionsButton.setForeground(Color.WHITE);
@@ -1091,7 +1091,7 @@ public class GUI extends JFrame implements ActionListener{
 
         JPanel mainPanel = new JPanel(new BorderLayout());
 
-        //Font titleButtonFont = new Font("Roboto", Font.BOLD, 24);
+        // Font titleButtonFont = new Font("Roboto", Font.BOLD, 24);
 
         // Left Nav panel
         JPanel navPanel = new JPanel();
