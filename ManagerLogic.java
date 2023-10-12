@@ -281,16 +281,16 @@ public class ManagerLogic {
 
                             // Define behaivor for each column
                             if(columnName.equals("price")){
-                            Double newValue = Double.parseDouble(model.getValueAt(id, column).toString());
-                            id = (int)model.getValueAt(id,0);
-                            pStat.setBigDecimal(1,BigDecimal.valueOf(newValue));
-                            pStat.setInt(2,id);
+                                Double newValue = Double.parseDouble(model.getValueAt(id, column).toString());
+                                id = (int)model.getValueAt(id,0);
+                                pStat.setBigDecimal(1,BigDecimal.valueOf(newValue));
+                                pStat.setInt(2,id);
                             }
                             else if(columnName.equals("drink_name") || columnName.equals("drink_type")){
-                            String newValue = (model.getValueAt(id, column).toString());
-                            id = (int)model.getValueAt(id,0);
-                            pStat.setString(1,newValue);
-                            pStat.setInt(2,id);
+                                String newValue = (model.getValueAt(id, column).toString());
+                                id = (int)model.getValueAt(id,0);
+                                pStat.setString(1,newValue);
+                                pStat.setInt(2,id);
                             }
                             
                             

@@ -426,69 +426,67 @@ public class GUI extends JFrame implements ActionListener{
 
         // Returns to Login from cashier page or manager menu
         if(event.equals("Back to Login")){
-        changeFrame(startFrame);
+            changeFrame(startFrame);
         }
         else if (event.equals("Fruity and Refreshing")) {
-        System.out.println("FAR");
-        changeFrame(createFruityRefreshingPage());
+            System.out.println("FAR");
+            changeFrame(createFruityRefreshingPage());
         }
         else if (event.equals("Sweet and Creamy")) {
-        System.out.println("SAC");
-        changeFrame(createSweetAndCreamyPage());
+            System.out.println("SAC");
+            changeFrame(createSweetAndCreamyPage());
         }
         else if (event.equals("Coffee Flavored")) {
-        System.out.println("CF");
-        changeFrame(createCoffeeFlavoredPage());
+            System.out.println("CF");
+            changeFrame(createCoffeeFlavoredPage());
         }
         else if (event.equals("Seasonal Drinks")) {
-        System.out.println("SD");
-        changeFrame(createSeasonalDrinksPage());
+            System.out.println("SD");
+            changeFrame(createSeasonalDrinksPage());
         }
         else if(event.equals("Back to Manager Menu")){
-        changeFrame(managerFrame);
+            changeFrame(managerFrame);
         }
         // Opens inventory page
         else if(event.equals("View Inventory")){
-        setUpInventory();
-        changeFrame(inventoryFrame);
+            setUpInventory();
+            changeFrame(inventoryFrame);
         }
-
         // Opens price editor
         else if(event.equals("Edit Menu")){
-        setUpMenuEditor();
-        changeFrame(editorFrame);
+            setUpMenuEditor();
+            changeFrame(editorFrame);
         }
         // Opens order stats
         else if(event.equals("Order Statistics")){
-        setUpOrderStats();
-        changeFrame(statsFrame);
+            setUpOrderStats();
+            changeFrame(statsFrame);
         }
         // Opens recent orders
         else if(event.equals("Recent Orders")){
-        setUpRecentOrders();
-        changeFrame(recentFrame);
+            setUpRecentOrders();
+            changeFrame(recentFrame);
         }
         // On order stats page, shows daily stats
         else if(event.equals("Daily Stats")){
-        dailyStats();
+            dailyStats();
         }
-
         // On order stats page, show stats for inputted range, input with TwoInputDialog
         //NEEDS TO BE FINISHED
         else if(event.equals("Custom Range")){
-        // Using a custom 2 input dialog, get the two inputs
-        TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter start date: YYYY-MM-DD","Enter end date: YYYY-MM-DD");
-        TwoInputs inputs = dialog.showInputDialog();
+            // Using a custom 2 input dialog, get the two inputs
+            TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter start date: YYYY-MM-DD","Enter end date: YYYY-MM-DD");
+            TwoInputs inputs = dialog.showInputDialog();
 
-        String start = inputs.input1;
-        String end = inputs.input2;
-        if(start != "" && end != ""){   //TODO: Input Validtaion
-            System.out.println("VALID");
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "You have entered an invalid date.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
-        }
-        //TODO: Call a method customRange(start, end) that table
+            String start = inputs.input1;
+            String end = inputs.input2;
+            if(start != "" && end != ""){   //TODO: Input Validtaion
+                System.out.println("VALID");
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "You have entered an invalid date.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+            }
+            //TODO: Call a method customRange(start, end) that table
         }
         // On inventory page, adds a supply item to the database
         else if(event.equals("Add Supply Item")){
@@ -1373,7 +1371,6 @@ public class GUI extends JFrame implements ActionListener{
         orderLogs.setFont(new Font("Arial", Font.PLAIN, 16));
         orderLogs.setLayout(new BoxLayout(orderLogs, BoxLayout.Y_AXIS));
 
-
         // Populating orderlogs if orders already exist
         for(JPanel drinkButtonPanel : drinkButtonPanels){
             orderLogs.add(drinkButtonPanel, BorderLayout.WEST);
@@ -1462,7 +1459,7 @@ public class GUI extends JFrame implements ActionListener{
 
         mainPanel.add(contentPanel, BorderLayout.CENTER);
 
-        //Right Panel for orders
+        // Right Panel for orders
 
         rightPanel = new JPanel(new BorderLayout());
 
