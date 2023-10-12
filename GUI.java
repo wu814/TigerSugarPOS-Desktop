@@ -54,6 +54,7 @@ public class GUI extends JFrame implements ActionListener {
     static ManagerLogic managerLogic = new ManagerLogic();
     static double orderTotal = 0.0;
     static Map<String, Double> drinkPriceMap = new HashMap<String, Double>();
+    static ArrayList<JPanel> drinkButtonPanels = new ArrayList<JPanel>();
     static ArrayList<JButton> drinkButtons = new ArrayList<JButton>();
     static ArrayList<Boolean> openButtons = new ArrayList<Boolean>();
 
@@ -82,6 +83,11 @@ public class GUI extends JFrame implements ActionListener {
       prevFrame = currFrame;
       currFrame = newFrame;
       currFrame.setVisible(true);
+      // set all open buttons to false
+      for(int i = 0; i < openButtons.size(); i++) {
+        openButtons.set(i, false);
+      }
+
     }
 
 
@@ -591,6 +597,7 @@ public class GUI extends JFrame implements ActionListener {
             drinkAttributes.remove(buttonIndex);
             drinkButtons.remove(buttonIndex);
             openButtons.remove(buttonIndex);
+            drinkButtonPanels.remove(buttonIndex);
 
             orderLogs.revalidate();
             orderLogs.repaint();
@@ -618,7 +625,7 @@ public class GUI extends JFrame implements ActionListener {
             int orderLogIndex = orderLogs.getComponentZOrder(drinkButtonPanel);
             
             // Toggle for displaying the attributes
-            if(openButtons.get(buttonIndex) == true) {     
+            if(openButtons.get(buttonIndex) == true) {
                 openButtons.set(buttonIndex, false);
                 orderLogs.remove(orderLogIndex + 1);
             } else {
@@ -929,6 +936,8 @@ public class GUI extends JFrame implements ActionListener {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BorderLayout());
 
+        drinkButtonPanels.add(buttonPanel);
+
         orderTotal += drinkPriceMap.get(drinkName);
 
         JButton drinkButton = new JButton(drinkName);
@@ -1120,15 +1129,11 @@ public class GUI extends JFrame implements ActionListener {
         orderLogs.setLayout(new BoxLayout(orderLogs, BoxLayout.Y_AXIS));
 
         // populating orderlogs if orders already exist
-        if (order.size() > 0) {
-          for (String drink : order) {
-            JButton drinkButton = new JButton(drink + " $" + drinkPriceMap.get(drink));
-            drinkButton.addActionListener(new ActionListener() {
-              public void actionPerformed(ActionEvent e) {
-                addToOrder(drink);
-              }
-            });
-          }
+        for(JPanel drinkButtonPanel : drinkButtonPanels) {
+
+            orderLogs.add(drinkButtonPanel, BorderLayout.WEST);
+            orderLogs.revalidate();
+            orderLogs.repaint();
         }
 
         JScrollPane orderScrollPane = new JScrollPane(orderLogs);
@@ -1230,15 +1235,11 @@ public class GUI extends JFrame implements ActionListener {
         orderLogs.setLayout(new BoxLayout(orderLogs, BoxLayout.Y_AXIS));
 
         // populating orderlogs if orders already exist
-        if (order.size() > 0) {
-          for (String drink : order) {
-            JButton drinkButton = new JButton(drink + " $" + drinkPriceMap.get(drink));
-            drinkButton.addActionListener(new ActionListener() {
-              public void actionPerformed(ActionEvent e) {
-                addToOrder(drink);
-              }
-            });
-          }
+        for(JPanel drinkButtonPanel : drinkButtonPanels) {
+
+            orderLogs.add(drinkButtonPanel, BorderLayout.WEST);
+            orderLogs.revalidate();
+            orderLogs.repaint();
         }
 
         JScrollPane orderScrollPane = new JScrollPane(orderLogs);
@@ -1342,17 +1343,12 @@ public class GUI extends JFrame implements ActionListener {
 
 
         // populating orderlogs if orders already exist
-        if (order.size() > 0) {
-          for (String drink : order) {
-            JButton drinkButton = new JButton(drink + " $" + drinkPriceMap.get(drink));
-            drinkButton.addActionListener(new ActionListener() {
-              public void actionPerformed(ActionEvent e) {
-                addToOrder(drink);
-              }
-            });
-          }
-        }
+        for(JPanel drinkButtonPanel : drinkButtonPanels) {
 
+            orderLogs.add(drinkButtonPanel, BorderLayout.WEST);
+            orderLogs.revalidate();
+            orderLogs.repaint();
+        }
         JScrollPane orderScrollPane = new JScrollPane(orderLogs);
         rightPanel.add(orderScrollPane, BorderLayout.CENTER);
 
@@ -1452,15 +1448,11 @@ public class GUI extends JFrame implements ActionListener {
 
 
         // populating orderlogs if orders already exist
-        if (order.size() > 0) {
-          for (String drink : order) {
-            JButton drinkButton = new JButton(drink + " $" + drinkPriceMap.get(drink));
-            drinkButton.addActionListener(new ActionListener() {
-              public void actionPerformed(ActionEvent e) {
-                addToOrder(drink);
-              }
-            });
-          }
+        for(JPanel drinkButtonPanel : drinkButtonPanels) {
+
+            orderLogs.add(drinkButtonPanel, BorderLayout.WEST);
+            orderLogs.revalidate();
+            orderLogs.repaint();
         }
 
         JScrollPane orderScrollPane = new JScrollPane(orderLogs);
