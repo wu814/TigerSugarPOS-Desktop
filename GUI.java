@@ -716,7 +716,7 @@ public class GUI extends JFrame implements ActionListener{
                 JButton dairyNoneButton = new JButton("None");
                 dairyNoneButton.setBackground(Color.BLUE);
                 dairyNoneButton.setForeground(Color.WHITE);
-                dairyNoneButton.addActionListener(new ActionListener() {
+                dairyNoneButton.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
                         String newAttributes = "Dairy Free Alternative: None";
@@ -968,9 +968,9 @@ public class GUI extends JFrame implements ActionListener{
 
         JButton drinkButton = new JButton(drinkName);
         drinkButton.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent e){
-            displayDrinkAttributes(buttonPanel, drinkButton);
-        }
+            public void actionPerformed(ActionEvent e){
+                displayDrinkAttributes(buttonPanel, drinkButton);
+            }
         });
 
         buttonPanel.add(drinkButton);
@@ -1132,9 +1132,9 @@ public class GUI extends JFrame implements ActionListener{
         ArrayList<String> drinks = OrderLogic.fetchDrinksByType("Fruity and Refreshing");
         for(String drink : drinks){
             JButton drinkButton = StyledButton(drink + " $" + drinkPriceMap.get(drink));
-            drinkButton.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                addToOrder(drink);
+            drinkButton.addActionListener(new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                    addToOrder(drink);
                 }
             });
             contentPanel.add(drinkButton);
@@ -1170,10 +1170,10 @@ public class GUI extends JFrame implements ActionListener{
 
         payButton = new JButton("Charge $" + orderTotal);
         payButton.setFont(new Font("Arial", Font.BOLD, 20));
-        payButton.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e){
-            completeOrder();
-        }
+        payButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                completeOrder();
+            }
         });
         rightPanel.add(payButton, BorderLayout.SOUTH);
 
@@ -1235,11 +1235,11 @@ public class GUI extends JFrame implements ActionListener{
         contentPanel.setLayout(new GridLayout(3, 2, 20, 20));
 
         ArrayList<String> drinks = OrderLogic.fetchDrinksByType("Sweet and Creamy");
-        for (String drink : drinks) {
+        for(String drink : drinks){
             JButton drinkButton = StyledButton(drink + " $" + drinkPriceMap.get(drink));
-            drinkButton.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                addToOrder(drink);
+            drinkButton.addActionListener(new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                    addToOrder(drink);
                 }
             });
             contentPanel.add(drinkButton);
@@ -1276,8 +1276,8 @@ public class GUI extends JFrame implements ActionListener{
 
         payButton = new JButton("Charge $" + orderTotal);
         payButton.setFont(new Font("Arial", Font.BOLD, 20));
-        payButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        payButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
                 completeOrder();
             }
         });
@@ -1346,8 +1346,8 @@ public class GUI extends JFrame implements ActionListener{
         for(String drink : drinks){
             JButton drinkButton = StyledButton(drink + " $" + drinkPriceMap.get(drink));
             drinkButton.addActionListener(new ActionListener(){
-                public void actionPerformed(ActionEvent e) {
-                addToOrder(drink);
+                    public void actionPerformed(ActionEvent e) {
+                    addToOrder(drink);
                 }
             });
             contentPanel.add(drinkButton, BorderLayout.CENTER);
@@ -1449,9 +1449,9 @@ public class GUI extends JFrame implements ActionListener{
         ArrayList<String> drinks = OrderLogic.fetchDrinksByType("Seasonal Drinks");
         for(String drink : drinks){
             JButton drinkButton = StyledButton(drink + " $" + drinkPriceMap.get(drink));
-            drinkButton.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                addToOrder(drink);
+            drinkButton.addActionListener(new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                    addToOrder(drink);
                 }
             });
             contentPanel.add(drinkButton, BorderLayout.CENTER);
@@ -1488,8 +1488,8 @@ public class GUI extends JFrame implements ActionListener{
 
         payButton = new JButton("Charge $" + orderTotal);
         payButton.setFont(new Font("Arial", Font.BOLD, 20));
-        payButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        payButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
                 completeOrder();
             }
         });
