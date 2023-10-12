@@ -750,35 +750,16 @@ public class GUI extends JFrame implements ActionListener {
         contentPanel.setBackground(Color.WHITE);
         contentPanel.setLayout(new GridLayout(3, 2, 20, 20));
 
-        JButton drinkButton1 = StyledButton("Taro Bubble Tea" + " $" + drinkPriceMap.get("Taro Bubble Tea"));
-        drinkButton1.addActionListener(new ActionListener() {
-          public void actionPerformed(ActionEvent e) {
-            addToOrder("Taro Bubble Tea");
-          }
-        });
-        JButton drinkButton2 = StyledButton("Tiger Mango Sago" + " $" + drinkPriceMap.get("Tiger Mango Sago"));
-        drinkButton2.addActionListener(new ActionListener() {
-          public void actionPerformed(ActionEvent e) {
-            addToOrder("Tiger Mango Sago");
-          }
-        });
-        JButton drinkButton3 = StyledButton("Passion Fruit Tea" + " $" + drinkPriceMap.get("Passion Fruit Tea"));
-        drinkButton3.addActionListener(new ActionListener() {
-          public void actionPerformed(ActionEvent e) {
-            addToOrder("Passion Fruit Tea");
-          }
-        });
-        JButton drinkButton4 = StyledButton("Jasmine Green Tea" + " $" + drinkPriceMap.get("Jasmine Green Tea"));
-        drinkButton4.addActionListener(new ActionListener() {
-          public void actionPerformed(ActionEvent e) {
-            addToOrder("Jasmine Green Tea");
-          }
-        });
-
-        contentPanel.add(drinkButton1);
-        contentPanel.add(drinkButton2);
-        contentPanel.add(drinkButton3);
-        contentPanel.add(drinkButton4);
+        ArrayList<String> drinks = OrderLogic.fetchDrinksByType("Fruity and Refreshing");
+        for (String drink : drinks) {
+          JButton drinkButton = StyledButton(drink + " $" + drinkPriceMap.get(drink));
+          drinkButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+              addToOrder(drink);
+            }
+          });
+          contentPanel.add(drinkButton);
+        }
 
         mainPanel.add(contentPanel, BorderLayout.CENTER);
 
@@ -879,42 +860,16 @@ public class GUI extends JFrame implements ActionListener {
         contentPanel.setBackground(Color.WHITE);
         contentPanel.setLayout(new GridLayout(3, 2, 20, 20));
 
-        JButton drinkButton1 = StyledButton("Classic Brown Sugar Boba Milk Tea" + " $" + drinkPriceMap.get("Classic Brown Sugar Boba Milk Tea"));
-        drinkButton1.addActionListener(new ActionListener() {
-          public void actionPerformed(ActionEvent e) {
-            addToOrder("Classic Brown Sugar Boba Milk Tea");
-          }
-        });
-        JButton drinkButton2 = StyledButton("Matcha Black Sugar Boba Milk" + " $" + drinkPriceMap.get("Matcha Black Sugar Boba Milk"));
-        drinkButton2.addActionListener(new ActionListener() {
-          public void actionPerformed(ActionEvent e) {
-            addToOrder("Matcha Black Sugar Boba Milk");
-          }
-        });
-        JButton drinkButton3 = StyledButton("Red Bean Matcha Milk" + " $" + drinkPriceMap.get("Red Bean Matcha Milk"));
-        drinkButton3.addActionListener(new ActionListener() {
-          public void actionPerformed(ActionEvent e) {
-            addToOrder("Red Bean Matcha Milk");
-          }
-        });
-        JButton drinkButton4 = StyledButton("Strawberry Milk" + " $" + drinkPriceMap.get("Strawberry Milk"));
-        drinkButton4.addActionListener(new ActionListener() {
-          public void actionPerformed(ActionEvent e) {
-            addToOrder("Strawberry Milk");
-          }
-        });
-        JButton drinkButton5 = StyledButton("Golden Oolong Tea" + " $" + drinkPriceMap.get("Golden Oolong Tea"));
-        drinkButton5.addActionListener(new ActionListener() {
-          public void actionPerformed(ActionEvent e) {
-            addToOrder("Golden Oolong Tea");
-          }
-        });
-
-        contentPanel.add(drinkButton1);
-        contentPanel.add(drinkButton2);
-        contentPanel.add(drinkButton3);
-        contentPanel.add(drinkButton4);
-        contentPanel.add(drinkButton5);
+        ArrayList<String> drinks = OrderLogic.fetchDrinksByType("Sweet and Creamy");
+        for (String drink : drinks) {
+          JButton drinkButton = StyledButton(drink + " $" + drinkPriceMap.get(drink));
+          drinkButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+              addToOrder(drink);
+            }
+          });
+          contentPanel.add(drinkButton);
+        }
 
         mainPanel.add(contentPanel, BorderLayout.CENTER);
 
@@ -1017,14 +972,16 @@ public class GUI extends JFrame implements ActionListener {
         contentPanel.setBackground(Color.WHITE);
         contentPanel.setLayout(new GridLayout(3, 2, 20, 20));
 
-        JButton drinkButton1 = StyledButton("Black Sugar Coffee Jelly" + " $" + drinkPriceMap.get("Black Sugar Coffee Jelly"));
-        drinkButton1.addActionListener(new ActionListener() {
-          public void actionPerformed(ActionEvent e) {
-            addToOrder("Black Sugar Coffee Jelly");
-          }
-        });
-
-        contentPanel.add(drinkButton1);
+        ArrayList<String> drinks = OrderLogic.fetchDrinksByType("Coffee Flavored");
+        for (String drink : drinks) {
+          JButton drinkButton = StyledButton(drink + " $" + drinkPriceMap.get(drink));
+          drinkButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+              addToOrder(drink);
+            }
+          });
+          contentPanel.add(drinkButton);
+        }
 
         mainPanel.add(contentPanel, BorderLayout.CENTER);
 
@@ -1118,7 +1075,6 @@ public class GUI extends JFrame implements ActionListener {
         backToLogin = new JButton("Back to Login");
         backToLogin.addActionListener(gui);
         navPanel.add(backToLogin);
-        
        
         mainPanel.add(navPanel, BorderLayout.WEST);
 
@@ -1126,6 +1082,17 @@ public class GUI extends JFrame implements ActionListener {
         JPanel contentPanel = new JPanel();
         contentPanel.setBackground(Color.WHITE);
         contentPanel.setLayout(new GridLayout(3, 2, 20, 20));
+
+        ArrayList<String> drinks = OrderLogic.fetchDrinksByType("Seasonal Drinks");
+        for (String drink : drinks) {
+          JButton drinkButton = StyledButton(drink + " $" + drinkPriceMap.get(drink));
+          drinkButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+              addToOrder(drink);
+            }
+          });
+          contentPanel.add(drinkButton);
+        }
 
         //Right Panel for orders
 
