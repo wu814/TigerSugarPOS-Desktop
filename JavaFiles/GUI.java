@@ -52,6 +52,7 @@ public class GUI extends JFrame implements ActionListener{
     static JPanel rightPanel;
     static ArrayList<String> order = new ArrayList<String>();
     static ArrayList<String> drinkAttributes = new ArrayList<String>();
+    static ArrayList<String> drinkAddons = new ArrayList<String>();
     static OrderLogic orderLogic = new OrderLogic();
     static ManagerLogic managerLogic = new ManagerLogic();
     static double orderTotal = 0.0;
@@ -612,6 +613,7 @@ public class GUI extends JFrame implements ActionListener{
             orderLogs.remove(orderLogIndex);
             order.remove(buttonIndex);
             drinkAttributes.remove(buttonIndex);
+            drinkAddons.remove(buttonIndex);
             drinkButtons.remove(buttonIndex);
             openButtons.remove(buttonIndex);
             drinkButtonPanels.remove(buttonIndex);
@@ -889,7 +891,7 @@ public class GUI extends JFrame implements ActionListener{
                 cupSizeAttribute.add(cupSizeRegularButton);
                 cupSizeAttribute.add(cupSizeRegularHot);
                 cupSizeAttribute.add(cupSizeXLButton);
-
+                
                 JPanel specialInstructionsPanel = new JPanel();
                 specialInstructionsPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 
@@ -916,6 +918,104 @@ public class GUI extends JFrame implements ActionListener{
                 specialInstructionsPanel.add(specialInstructionsTextArea);
                 specialInstructionsPanel.add(submitSpecialInstructionsButton);
 
+                // Start of addons buttons
+                // Create a panel for Boba attribute
+                JPanel bobaAttribute = new JPanel();
+                bobaAttribute.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+                JLabel bobaLabel = new JLabel("Extra Boba: None");
+                bobaLabel.setBorder(new EmptyBorder(10, 10, 10, 10));
+                bobaAttribute.add(bobaLabel);
+
+                JButton addBobaButton = new JButton("Extra Boba");
+                addBobaButton.setBackground(Color.BLUE);
+                addBobaButton.setForeground(Color.WHITE);
+                addBobaButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        int buttonIndex = getButtonIndex(drinkButton);
+
+                        if (buttonIndex != -1) {
+                            // Update the Boba selection at index 0 of drinkAddons
+                            drinkAddons.set(0, "Extra Boba: Added");
+                            bobaLabel.setText("Extra Boba: Added");
+
+                            System.out.println("Updated drinkAddons: " + drinkAddons);
+                        }
+                    }
+                });
+
+                JButton removeBobaButton = new JButton("No Extra Boba");
+                removeBobaButton.setBackground(Color.BLUE);
+                removeBobaButton.setForeground(Color.WHITE);
+                removeBobaButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        // Get the index of the selected drink button
+                        int buttonIndex = getButtonIndex(drinkButton);
+
+                        if (buttonIndex != -1) {
+                            // Update the Boba selection at index 0 of drinkAddons
+                            drinkAddons.set(0, "Extra Boba: None");
+                            bobaLabel.setText("Extra Boba: None");
+
+                            System.out.println("Updated drinkAddons: " + drinkAddons);
+                        }
+                    }
+                });
+
+                bobaAttribute.add(addBobaButton);
+                bobaAttribute.add(removeBobaButton);
+
+                //Create a panel for Tiger Pearls
+                JPanel tigerPearlsAttribute = new JPanel();
+                tigerPearlsAttribute.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+                // Create a label to display the current Tiger Pearls selection
+                JLabel tigerPearlsLabel = new JLabel("Tiger Pearls: None");
+                tigerPearlsLabel.setBorder(new EmptyBorder(10, 10, 10, 10));
+                tigerPearlsAttribute.add(tigerPearlsLabel);
+
+                // Create buttons for adding and removing Tiger Pearls
+                JButton addTigerPearlsButton = new JButton("Add Tiger Pearls");
+                addTigerPearlsButton.setBackground(Color.BLUE);
+                addTigerPearlsButton.setForeground(Color.WHITE);
+                addTigerPearlsButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        int buttonIndex = getButtonIndex(drinkButton);
+
+                        if (buttonIndex != -1) {
+                            // Update the Tiger Pearls selection at index 1 of drinkAddons
+                            drinkAddons.set(1, "Tiger Pearls: Added");
+                            tigerPearlsLabel.setText("Tiger Pearls: Added");
+
+                            System.out.println("Updated drinkAddons: " + drinkAddons);
+                        }
+                    }
+                });
+
+                JButton removeTigerPearlsButton = new JButton("No Tiger Pearls");
+                removeTigerPearlsButton.setBackground(Color.BLUE);
+                removeTigerPearlsButton.setForeground(Color.WHITE);
+                removeTigerPearlsButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        // Get the index of the selected drink button
+                        int buttonIndex = getButtonIndex(drinkButton);
+
+                        if (buttonIndex != -1) {
+                            // Update the Tiger Pearls selection at index 1 of drinkAddons
+                            drinkAddons.set(1, "Tiger Pearls: None");
+                            tigerPearlsLabel.setText("Tiger Pearls: None");
+
+                            System.out.println("Updated drinkAddons: " + drinkAddons);
+                        }
+                    }
+                });
+
+                tigerPearlsAttribute.add(addTigerPearlsButton);
+                tigerPearlsAttribute.add(removeTigerPearlsButton);
+
+
+
+
                 // Button to remove the drink entirely from the order
                 JPanel removeDrinkPanel = new JPanel();
                 removeDrinkPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -938,6 +1038,8 @@ public class GUI extends JFrame implements ActionListener{
                 attributesPanel.add(iceAttribute);
                 attributesPanel.add(cupSizeAttribute);
                 attributesPanel.add(specialInstructionsPanel);
+                attributesPanel.add(bobaAttribute);
+                attributesPanel.add(tigerPearlsAttribute);
                 attributesPanel.add(removeDrinkPanel);
                 orderLogs.add(attributesPanel, orderLogIndex + 1);
             }
@@ -990,6 +1092,9 @@ public class GUI extends JFrame implements ActionListener{
         
         // Getting default attributes
         drinkAttributes.add("Dairy Free Alternative: None, Sweetness Level: 100%, Ice Level: Normal, Cup Size: Regular, Special Instructions: None");
+
+        drinkAddons.add("Extra Boba: None");
+        drinkAddons.add("Tiger Pearls: None");
     }
 
 
