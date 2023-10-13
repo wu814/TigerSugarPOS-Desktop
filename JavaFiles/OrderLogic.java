@@ -26,7 +26,7 @@ public class OrderLogic {
      * @param orderTotal the total of the order
      */
 
-    public static void placeOrder(int employeeId, int customerId, String[] orderItems, double orderTotal){
+    public static void placeOrder(int employeeId, int customerId, String[] orderItems, double orderTotal, String[] orderAttributes, String[] orderAddons){
         // TODO: change this to the real order DB
         String sqlCommand = "INSERT INTO order_test (order_timestamp, employee_id, customer_id, order_items, order_total) VALUES (?, ?, ?, ?, ?)";
         String selectIngredients = "SELECT ingredients FROM products WHERE drink_name = ?";
@@ -51,6 +51,8 @@ public class OrderLogic {
             preparedStatement.setInt(3, customerId);
             preparedStatement.setArray(4, conn.createArrayOf("text", orderItems));
             preparedStatement.setDouble(5, orderTotal);
+            preparedStatement.setArray(6, conn.createArrayOf("text", orderAttributes));
+            preparedStatement.setArray(7, conn.createArrayOf("text", orderAddons));
 
             // Execute the SQL statement
             preparedStatement.executeUpdate();

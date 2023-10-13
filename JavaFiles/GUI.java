@@ -1332,7 +1332,10 @@ public class GUI extends JFrame implements ActionListener{
     private void completeOrder(){
         // TODO: add employee id and customer id and order total
 
-        OrderLogic.placeOrder(1, 1, order.toArray(new String[order.size()]), orderTotal);
+        String[] orderAttributes = {};
+        String[] orderAddons = {};
+
+        OrderLogic.placeOrder(1, 1, order.toArray(new String[order.size()]), orderTotal, orderAttributes, orderAddons);
         order.clear();
         orderTotal = 0.0;
         orderLogs.removeAll();
