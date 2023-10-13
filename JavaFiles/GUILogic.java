@@ -22,6 +22,9 @@ import javax.swing.table.TableColumn;
 
 import java.util.*;
 
+/**
+ * @author Nai-Yun Wu
+ */
 public class GUILogic{
     // Attribute
     private static final String URL = "jdbc:postgresql://csce-315-db.engr.tamu.edu/csce315331_10g_db";

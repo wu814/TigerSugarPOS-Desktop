@@ -376,7 +376,7 @@ public class ManagerLogic{
             ResultSet r = stmt.executeQuery("DELETE FROM products WHERE product_id = "+item+";");
         // Errors connecting to database
         }catch (Exception ex){ 
-            //JOptionPane.showMessageDialog(null,ex);
+            JOptionPane.showMessageDialog(null,ex);
         }
     }
 
@@ -398,7 +398,7 @@ public class ManagerLogic{
             ResultSet r = stmt.executeQuery("INSERT INTO inventory (inventory_id, supply, stock_remaining) VALUES (DEFAULT, '"+newSupply+"', "+newStock+");");
         // Errors connecting to database
         }catch (Exception ex){ 
-            //JOptionPane.showMessageDialog(null,ex);
+            JOptionPane.showMessageDialog(null,ex);
         }
     }
 
@@ -414,7 +414,7 @@ public class ManagerLogic{
             ResultSet r = stmt.executeQuery("DELETE FROM inventory WHERE inventory_id = "+item+";");
         // Errors connecting to database
         }catch (Exception ex){ 
-            //JOptionPane.showMessageDialog(null,ex);
+            JOptionPane.showMessageDialog(null,ex);
         }
     }
 }
