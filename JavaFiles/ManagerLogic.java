@@ -25,7 +25,7 @@ import java.util.*;
 /**
  * @author Nai-Yun Wu
  */
-public class ManagerLogic {
+public class ManagerLogic{
     // Attribute
     private static final String URL = "jdbc:postgresql://csce-315-db.engr.tamu.edu/csce315331_10g_db";
     private static final String USER = "csce315_910_williamwu258814";
@@ -404,7 +404,7 @@ public class ManagerLogic {
 
 
     /**
-     * remove a supply item from data base
+     * remove a supply item from database
      */
     public static void removeSupplyItem(){
         try{

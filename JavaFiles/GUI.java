@@ -54,6 +54,7 @@ public class GUI extends JFrame implements ActionListener{
     static ArrayList<String> drinkAttributes = new ArrayList<String>();
     static OrderLogic orderLogic = new OrderLogic();
     static ManagerLogic managerLogic = new ManagerLogic();
+    static GUILogic guiLogic = new GUILogic();
     static double orderTotal = 0.0;
     static Map<String, Double> drinkPriceMap = new HashMap<String, Double>();
     static ArrayList<JPanel> drinkButtonPanels = new ArrayList<JPanel>();
@@ -353,26 +354,11 @@ public class GUI extends JFrame implements ActionListener{
     public static void setEmployeeComboBox(){
         // Loads in the names of the employees
         Vector<Employee> employees = new Vector<>(); 
-        try{
-            Statement stmt = conn.createStatement();
-            ResultSet result = stmt.executeQuery("SELECT * FROM employees;");
-            // Initializes employees with info from database, adds to vector
-            while(result.next()){ 
-                employees.add(new Employee(
-                result.getString("first_name"),
-                result.getString("position"),
-                result.getString("wage"),
-                result.getString("hours_worked")
-                ));
-            }
-        // Errors connecting to database
-        }catch(Exception e){ 
-            JOptionPane.showMessageDialog(null,e);
-        }
+        guiLogic.loadEmployees(employees);
         employeeSelector = new JComboBox<Employee>(employees);
 
         // Configures combobox options to be the employee names
-        employeeSelector.setRenderer(new DefaultListCellRenderer() {
+        employeeSelector.setRenderer(new DefaultListCellRenderer(){
             @Override
             public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
                 if (value instanceof Employee) {
