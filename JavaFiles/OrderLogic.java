@@ -112,6 +112,10 @@ public class OrderLogic {
                     String[] ingreds = (String[]) result.getArray("ingredients").getArray();
 
                     for (String ingredient : ingreds) {
+                        if(inventoryCounts.get(ingredient) == 0) {
+                            outOfStock.add(ingredient);
+                            continue;
+                        }
                         updateStmt.setString(1, ingredient);
                         updateStmt.addBatch();
                     }
