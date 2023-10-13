@@ -387,23 +387,16 @@ public class GUI extends JFrame implements ActionListener{
 
     /////////////////// MAIN FUNCTION ////////////////////
     public static void main(String[] args){
-    // Connect to Database
-    connect();
+        // Connect to Database
+        connect();
 
-    // Setup Frame
-    frameSetup();
-    setUpInventory();
-    setUpRecentOrders();
-    setUpOrderStats();
-    setUpMenuEditor();
+        // Setup Frame
+        frameSetup();
+        setUpInventory();
+        setUpRecentOrders();
+        setUpOrderStats();
+        setUpMenuEditor();
     
-    // Closing the connection
-    try{
-        conn.close();
-        //JOptionPane.showMessageDialog(null,"Connection Closed.");
-    } catch(Exception e) {
-    // JOptionPane.showMessageDialog(null,"Connection NOT Closed.");
-    }
     }
     ////////////////////////////////////////////////////////
 
