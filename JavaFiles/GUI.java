@@ -669,7 +669,7 @@ public class GUI extends JFrame implements ActionListener{
                 dairyOatButton.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
-                        String newAttributes = "Dairy Free Alternative: Oat";
+                        String newAttributes = "Dairy Free Alternative: Oat Milk";
                         for (int i = 1; i < attributes.length; i++) {
                             newAttributes += ", " + attributes[i];
                         }
@@ -684,7 +684,7 @@ public class GUI extends JFrame implements ActionListener{
                 dairySoyButton.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
-                        String newAttributes = "Dairy Free Alternative: Soy";
+                        String newAttributes = "Dairy Free Alternative: Soy Milk";
                         for(int i = 1; i < attributes.length; i++){
                             newAttributes += ", " + attributes[i];
                         }
@@ -699,7 +699,7 @@ public class GUI extends JFrame implements ActionListener{
                 dairyLactoseFreeButton.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
-                        String newAttributes = "Dairy Free Alternative: Lactose Free";
+                        String newAttributes = "Dairy Free Alternative: Lactose Free Milk";
                         for(int i = 1; i < attributes.length; i++){
                             newAttributes += ", " + attributes[i];
                         }
@@ -1297,13 +1297,29 @@ public class GUI extends JFrame implements ActionListener{
     private void completeOrder(){
         // TODO: add employee id and customer id and order total
 
-        OrderLogic.placeOrder(1, 1, order.toArray(new String[order.size()]), orderTotal, drinkAttributes.toArray(new String[drinkAttributes.size()], drinkAddons.toArray(new String[drinkAddons.size()]));
-        order.clear();
-        orderTotal = 0.0;
-        orderLogs.removeAll();
+        ArrayList<String> outOfStock = OrderLogic.placeOrder(1, 1, order.toArray(new String[order.size()]), orderTotal, drinkAttributes.toArray(new String[drinkAttributes.size()]), drinkAddons.toArray(new String[drinkAddons.size()]));
+        
+        if(outOfStock.size() > 0){
+            String outOfStockString = "";
+            for(int i = 0; i < outOfStock.size(); i++){
+                outOfStockString += outOfStock.get(i) + "\n";
+            }
+            JOptionPane.showMessageDialog(null, "The following items are out of stock:\n" + outOfStockString);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Order placed successfully!");
+            order.clear();
+            orderLogs.removeAll();
+            drinkButtonPanels.clear();
+            drinkButtons.clear();
+            openButtons.clear();
+            drinkAttributes.clear();
+            drinkAddons.clear();
+            orderTotal = 0.0;
+        }
+
         orderLogs.revalidate();
         orderLogs.repaint();
-
         payButton.setText("Charge $" + orderTotal);
     }
 
