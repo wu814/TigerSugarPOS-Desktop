@@ -55,6 +55,7 @@ public class GUI extends JFrame implements ActionListener{
     static ArrayList<String> drinkAddons = new ArrayList<String>();
     static OrderLogic orderLogic = new OrderLogic();
     static ManagerLogic managerLogic = new ManagerLogic();
+    static GUILogic guiLogic = new GUILogic();
     static double orderTotal = 0.0;
     static Map<String, Double> drinkPriceMap = new HashMap<String, Double>();
     static ArrayList<JPanel> drinkButtonPanels = new ArrayList<JPanel>();
@@ -100,28 +101,28 @@ public class GUI extends JFrame implements ActionListener{
      * Initialize variables and components necessary for the GUI
      */
     public static void frameSetup(){
-    // Initiaize frame
-    startFrame = new JFrame("Tiger Sugar POS");
-    startFrame.setSize(1000, 800);
-    startFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // Initiaize frame
+        startFrame = new JFrame("Tiger Sugar POS");
+        startFrame.setSize(1000, 800);
+        startFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    // Initalize panel and GUI
-    gui = new GUI();
-    JPanel startPanel = new JPanel();
-    startFrame.add(startPanel);
+        // Initalize panel and GUI
+        gui = new GUI();
+        JPanel startPanel = new JPanel();
+        startFrame.add(startPanel);
 
-    // ComboBox for Employees
-    setEmployeeComboBox();
-    startPanel.add(employeeSelector);
+        // ComboBox for Employees
+        setEmployeeComboBox();
+        startPanel.add(employeeSelector);
 
-    // Setup enter button
-    employeeEnter = new JButton("Enter"); 
-    employeeEnter.addActionListener(gui);
-    startPanel.add(employeeEnter);
+        // Setup enter button
+        employeeEnter = new JButton("Enter"); 
+        employeeEnter.addActionListener(gui);
+        startPanel.add(employeeEnter);
 
-    // Execute first frame
-    currFrame = startFrame;
-    currFrame.setVisible(true);
+        // Execute first frame
+        currFrame = startFrame;
+        currFrame.setVisible(true);
     }
 
 
@@ -354,26 +355,11 @@ public class GUI extends JFrame implements ActionListener{
     public static void setEmployeeComboBox(){
         // Loads in the names of the employees
         Vector<Employee> employees = new Vector<>(); 
-        try{
-            Statement stmt = conn.createStatement();
-            ResultSet result = stmt.executeQuery("SELECT * FROM employees;");
-            // Initializes employees with info from database, adds to vector
-            while(result.next()){ 
-                employees.add(new Employee(
-                result.getString("first_name"),
-                result.getString("position"),
-                result.getString("wage"),
-                result.getString("hours_worked")
-                ));
-            }
-        // Errors connecting to database
-        }catch(Exception e){ 
-            JOptionPane.showMessageDialog(null,e);
-        }
+        guiLogic.loadEmployees(employees);
         employeeSelector = new JComboBox<Employee>(employees);
 
         // Configures combobox options to be the employee names
-        employeeSelector.setRenderer(new DefaultListCellRenderer() {
+        employeeSelector.setRenderer(new DefaultListCellRenderer(){
             @Override
             public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
                 if (value instanceof Employee) {
@@ -484,107 +470,27 @@ public class GUI extends JFrame implements ActionListener{
         }
         // On inventory page, adds a supply item to the database
         else if(event.equals("Add Supply Item")){
-            try{
-                // Gets the inputs with the two input dialog
-                TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter new supply","Enter amount of new stock");
-                TwoInputs inputs = dialog.showInputDialog();
-                String newSupply = inputs.input1;
-                Integer newStock = Integer.parseInt(inputs.input2);
-
-                // Query
-                Statement stmt = conn.createStatement();
-                ResultSet r = stmt.executeQuery("INSERT INTO inventory (inventory_id, supply, stock_remaining) VALUES (DEFAULT, '"+newSupply+"', "+newStock+");");
-            // Errors connecting to database
-            }catch (Exception ex){ 
-                //JOptionPane.showMessageDialog(null,ex);
-            }
+            managerLogic.addSupplyItem(currFrame);
             // Update graphics
             setUpInventory();
             changeFrame(inventoryFrame);
         }
         //On inventory page, removes a supply item from the database
         else if(event.equals("Remove Supply Item")){
-            try{
-                // Gets the id of the object to remove
-                Integer item = Integer.parseInt(JOptionPane.showInputDialog("Enter ID of object to be removed"));
-                Statement stmt = conn.createStatement();
-                ResultSet r = stmt.executeQuery("DELETE FROM inventory WHERE inventory_id = "+item+";");
-            // Errors connecting to database
-            }catch (Exception ex){ 
-                //JOptionPane.showMessageDialog(null,ex);
-            }
-
+            managerLogic.removeSupplyItem();
             // Update graphics
             setUpInventory();
             changeFrame(inventoryFrame);
         }
         // On menu editor page, adds a menu item to the database
         else if(event.equals("Add Menu Item")){
-            try{
-                // Create a statement object
-                //TODO add input validation
-                TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter new menu item","Enter price");
-                TwoInputs inputs = dialog.showInputDialog();
-                String newDrink = inputs.input1;
-                Double newPrice = Double.parseDouble(inputs.input2); 
-                Vector<String> ings = new Vector<>();
-
-                // Get ingredients
-                //TODO add input validation
-                Integer ingredientCount = Integer.parseInt(JOptionPane.showInputDialog("How many ingredients does this drink have?"));
-                for(int i = 0;i<ingredientCount;i++){
-                    // For each ingredient:
-                    String ingredient = JOptionPane.showInputDialog("Enter an ingredient");
-                    ings.add(ingredient);
-                    Statement stmt = conn.createStatement();
-                    ResultSet result = stmt.executeQuery("SELECT * FROM inventory WHERE supply = '"+ingredient+"';");
-                    // If supply is not in the inventory
-                    if(!result.next()){ 
-                        System.out.println(ingredient);
-                        Statement stmt2 = conn.createStatement();
-                        //add a new supply
-                        try{ 
-                            stmt2.executeQuery("INSERT INTO inventory (inventory_id, supply, stock_remaining) VALUES (DEFAULT, '"+ingredient+"', 100);");
-                        }catch(Exception ex){ }
-                    }
-                }
-                //TODO Add Input Validation
-                String drinkType = JOptionPane.showInputDialog("Enter drink type");
-
-                // Convert vector to an array
-                String[] ingredients = ings.toArray(new String[0]);
-            
-                //prep new query to insert new item onto menu
-                String query = "INSERT INTO products (product_id, drink_name, price, ingredients, drink_type) VALUES (DEFAULT, ?, ?, string_to_array(?, ', '), ?);";
-
-                PreparedStatement preparedStatement = conn.prepareStatement(query);
-                preparedStatement.setString(1,newDrink);
-                preparedStatement.setDouble(2,newPrice);
-
-                String ing = String.join(",",ingredients);
-                preparedStatement.setString(3,ing);
-                preparedStatement.setString(4,drinkType);
-                preparedStatement.executeUpdate();
-                System.out.println(ing);
-            // Errors connecting to database
-            }catch(Exception ex){ 
-                System.out.println(ex);   
-            }
+            managerLogic.addMenuItem(currFrame);
             setUpMenuEditor();
             changeFrame(editorFrame);
         }
         // Remove a menu item
         else if(event.equals("Remove Menu Item")){
-            try{
-                // Get input and execute a query
-                Integer item = Integer.parseInt(JOptionPane.showInputDialog("Enter ID of object to be removed"));
-                Statement stmt = conn.createStatement();
-                ResultSet r = stmt.executeQuery("DELETE FROM products WHERE product_id = "+item+";");
-            // Errors connecting to database
-            }catch (Exception ex){ 
-                //JOptionPane.showMessageDialog(null,ex);
-            }
-
+            managerLogic.removeMenuItem();
             // Update graphics
             setUpMenuEditor();
             changeFrame(editorFrame);

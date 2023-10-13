@@ -25,12 +25,12 @@ import java.util.*;
 /**
  * @author Nai-Yun Wu
  */
-public class ManagerLogic {
+public class ManagerLogic{
     // Attribute
     private static final String URL = "jdbc:postgresql://csce-315-db.engr.tamu.edu/csce315331_10g_db";
     private static final String USER = "csce315_910_williamwu258814";
     private static final String PASSWORD = "password";
-    Connection conn = null;
+    private static Connection conn = null;
 
 
     /**
@@ -50,7 +50,7 @@ public class ManagerLogic {
     /**
     * @param table the table to hold inventory data
     */
-    public void getInventory(JTable table){
+    public static void getInventory(JTable table){
         try{
             // Query
             Statement stmt = conn.createStatement();
@@ -117,7 +117,7 @@ public class ManagerLogic {
     /**
      * Gets a table of the 10 most recent orders
      */
-    public void getRecentOrders(JTable table){
+    public static void getRecentOrders(JTable table){
         // Getting the data
         try{
             Statement stmt = conn.createStatement();
@@ -171,7 +171,7 @@ public class ManagerLogic {
     * @param table the table to hold stats data
     * @return the table with stats data loaded
     */
-    public JTable getDailyStats(JTable table){
+    public static JTable getDailyStats(JTable table){
         try{
             Statement stmt = conn.createStatement();
             ResultSet drinkName = stmt.executeQuery("SELECT drink_name, price FROM products;");
@@ -235,7 +235,7 @@ public class ManagerLogic {
     /**
     * @param table the table to hold products
     */
-    public void getMenu(JTable table){
+    public static void getMenu(JTable table){
         try{
             Statement stmt = conn.createStatement();
             ResultSet result = stmt.executeQuery("SELECT * FROM products ORDER BY product_id;");
@@ -304,6 +304,117 @@ public class ManagerLogic {
         // Errors connecting to database
         }catch(Exception e){ 
             JOptionPane.showMessageDialog(null,e);
+        }
+    }
+
+
+    /**
+     * @param currFrame the frame of the pop out window
+     */
+    public static void addMenuItem(JFrame currFrame){
+        try{
+            // Create a statement object
+            //TODO add input validation
+            TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter new menu item","Enter price");
+            TwoInputs inputs = dialog.showInputDialog();
+            String newDrink = inputs.input1;
+            Double newPrice = Double.parseDouble(inputs.input2); 
+            Vector<String> ings = new Vector<>();
+
+            // Get ingredients
+            //TODO add input validation
+            Integer ingredientCount = Integer.parseInt(JOptionPane.showInputDialog("How many ingredients does this drink have?"));
+            for(int i = 0;i<ingredientCount;i++){
+                // For each ingredient:
+                String ingredient = JOptionPane.showInputDialog("Enter an ingredient");
+                ings.add(ingredient);
+                Statement stmt = conn.createStatement();
+                ResultSet result = stmt.executeQuery("SELECT * FROM inventory WHERE supply = '"+ingredient+"';");
+                // If supply is not in the inventory
+                if(!result.next()){ 
+                    System.out.println(ingredient);
+                    Statement stmt2 = conn.createStatement();
+                    //add a new supply
+                    try{ 
+                        stmt2.executeQuery("INSERT INTO inventory (inventory_id, supply, stock_remaining) VALUES (DEFAULT, '"+ingredient+"', 100);");
+                    }catch(Exception ex){ }
+                }
+            }
+            //TODO Add Input Validation
+            String drinkType = JOptionPane.showInputDialog("Enter drink type");
+
+            // Convert vector to an array
+            String[] ingredients = ings.toArray(new String[0]);
+        
+            //prep new query to insert new item onto menu
+            String query = "INSERT INTO products (product_id, drink_name, price, ingredients, drink_type) VALUES (DEFAULT, ?, ?, string_to_array(?, ', '), ?);";
+
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
+            preparedStatement.setString(1,newDrink);
+            preparedStatement.setDouble(2,newPrice);
+
+            String ing = String.join(",",ingredients);
+            preparedStatement.setString(3,ing);
+            preparedStatement.setString(4,drinkType);
+            preparedStatement.executeUpdate();
+            System.out.println(ing);
+        // Errors connecting to database
+        }catch(Exception ex){ 
+            System.out.println(ex);   
+        }
+    }
+
+
+    /**
+     * remove an product from the menu
+     */
+    public static void removeMenuItem(){
+        try{
+            // Get input and execute a query
+            Integer item = Integer.parseInt(JOptionPane.showInputDialog("Enter ID of object to be removed"));
+            Statement stmt = conn.createStatement();
+            ResultSet r = stmt.executeQuery("DELETE FROM products WHERE product_id = "+item+";");
+        // Errors connecting to database
+        }catch (Exception ex){ 
+            JOptionPane.showMessageDialog(null,ex);
+        }
+    }
+
+
+    /**
+     * add supply item to database
+     * @param currFrame the frame of the pop out window
+     */
+    public static void addSupplyItem(JFrame currFrame){
+        try{
+            // Gets the inputs with the two input dialog
+            TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter new supply","Enter amount of new stock");
+            TwoInputs inputs = dialog.showInputDialog();
+            String newSupply = inputs.input1;
+            Integer newStock = Integer.parseInt(inputs.input2);
+
+            // Query
+            Statement stmt = conn.createStatement();
+            ResultSet r = stmt.executeQuery("INSERT INTO inventory (inventory_id, supply, stock_remaining) VALUES (DEFAULT, '"+newSupply+"', "+newStock+");");
+        // Errors connecting to database
+        }catch (Exception ex){ 
+            JOptionPane.showMessageDialog(null,ex);
+        }
+    }
+
+
+    /**
+     * remove a supply item from database
+     */
+    public static void removeSupplyItem(){
+        try{
+            // Gets the id of the object to remove
+            Integer item = Integer.parseInt(JOptionPane.showInputDialog("Enter ID of object to be removed"));
+            Statement stmt = conn.createStatement();
+            ResultSet r = stmt.executeQuery("DELETE FROM inventory WHERE inventory_id = "+item+";");
+        // Errors connecting to database
+        }catch (Exception ex){ 
+            JOptionPane.showMessageDialog(null,ex);
         }
     }
 }
