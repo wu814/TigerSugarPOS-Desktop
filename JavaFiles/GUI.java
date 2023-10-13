@@ -933,15 +933,13 @@ public class GUI extends JFrame implements ActionListener{
                 addBobaButton.setForeground(Color.WHITE);
                 addBobaButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        int buttonIndex = getButtonIndex(drinkButton);
-
-                        if (buttonIndex != -1) {
-                            // Update the Boba selection at index 0 of drinkAddons
-                            drinkAddons.set(0, "Extra Boba: Added");
-                            bobaLabel.setText("Extra Boba: Added");
-
-                            System.out.println("Updated drinkAddons: " + drinkAddons);
+                        String[] attributes = drinkAddons.get(buttonIndex).split(", ");
+                        String newAttributes = "Extra Boba: Added";
+                        for (int i = 1; i < attributes.length; i++) {
+                            newAttributes += ", " + attributes[i];
                         }
+                        drinkAddons.set(buttonIndex, newAttributes);
+                        bobaLabel.setText(newAttributes.split(", ")[0]);
                     }
                 });
 
@@ -950,16 +948,13 @@ public class GUI extends JFrame implements ActionListener{
                 removeBobaButton.setForeground(Color.WHITE);
                 removeBobaButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        // Get the index of the selected drink button
-                        int buttonIndex = getButtonIndex(drinkButton);
-
-                        if (buttonIndex != -1) {
-                            // Update the Boba selection at index 0 of drinkAddons
-                            drinkAddons.set(0, "Extra Boba: None");
-                            bobaLabel.setText("Extra Boba: None");
-
-                            System.out.println("Updated drinkAddons: " + drinkAddons);
+                        String[] attributes = drinkAddons.get(buttonIndex).split(", ");
+                        String newAttributes = "Extra Boba: None";
+                        for (int i = 1; i < attributes.length; i++) {
+                            newAttributes += ", " + attributes[i];
                         }
+                        drinkAddons.set(buttonIndex, newAttributes);
+                        bobaLabel.setText(newAttributes.split(", ")[0]);
                     }
                 });
 
@@ -981,15 +976,13 @@ public class GUI extends JFrame implements ActionListener{
                 addTigerPearlsButton.setForeground(Color.WHITE);
                 addTigerPearlsButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        int buttonIndex = getButtonIndex(drinkButton);
-
-                        if (buttonIndex != -1) {
-                            // Update the Tiger Pearls selection at index 1 of drinkAddons
-                            drinkAddons.set(1, "Tiger Pearls: Added");
-                            tigerPearlsLabel.setText("Tiger Pearls: Added");
-
-                            System.out.println("Updated drinkAddons: " + drinkAddons);
+                        String[] attributes = drinkAddons.get(buttonIndex).split(", ");
+                        String newAttributes = attributes[0] + ", Tiger Pearls: Added";
+                        for(int i = 2; i < attributes.length; i++){
+                            newAttributes += ", " + attributes[i];
                         }
+                        drinkAddons.set(buttonIndex, newAttributes);
+                        tigerPearlsLabel.setText(newAttributes.split(", ")[1]);
                     }
                 });
 
@@ -998,16 +991,13 @@ public class GUI extends JFrame implements ActionListener{
                 removeTigerPearlsButton.setForeground(Color.WHITE);
                 removeTigerPearlsButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        // Get the index of the selected drink button
-                        int buttonIndex = getButtonIndex(drinkButton);
-
-                        if (buttonIndex != -1) {
-                            // Update the Tiger Pearls selection at index 1 of drinkAddons
-                            drinkAddons.set(1, "Tiger Pearls: None");
-                            tigerPearlsLabel.setText("Tiger Pearls: None");
-
-                            System.out.println("Updated drinkAddons: " + drinkAddons);
+                        String[] attributes = drinkAddons.get(buttonIndex).split(", ");
+                        String newAttributes = attributes[0] + ", Tiger Pearls: None";
+                        for(int i = 2; i < attributes.length; i++){
+                            newAttributes += ", " + attributes[i];
                         }
+                        drinkAddons.set(buttonIndex, newAttributes);
+                        tigerPearlsLabel.setText(newAttributes.split(", ")[1]);
                     }
                 });
 
@@ -1027,14 +1017,13 @@ public class GUI extends JFrame implements ActionListener{
                 addCreamMousseButton.setForeground(Color.WHITE);
                 addCreamMousseButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        int buttonIndex = getButtonIndex(drinkButton);
-
-                        if (buttonIndex != -1) {
-                            drinkAddons.set(2, "Cream Mousse: Added");
-                            creamMousseLabel.setText("Cream Mousse: Added");
-
-                            System.out.println("Updated drinkAddons: " + drinkAddons);
+                        String[] attributes = drinkAddons.get(buttonIndex).split(", ");
+                        String newAttributes = attributes[0] + ", " + attributes[1] + ", Cream Mousse: Added";
+                        for(int i = 3; i < attributes.length; i++){
+                            newAttributes += ", " + attributes[i];
                         }
+                        drinkAddons.set(buttonIndex, newAttributes);
+                        creamMousseLabel.setText(newAttributes.split(", ")[2]);
                     }
                 });
 
@@ -1043,14 +1032,13 @@ public class GUI extends JFrame implements ActionListener{
                 removeCreamMousseButton.setForeground(Color.WHITE);
                 removeCreamMousseButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        int buttonIndex = getButtonIndex(drinkButton);
-
-                        if (buttonIndex != -1) {
-                            drinkAddons.set(2, "Cream Mousse: None");
-                            creamMousseLabel.setText("Cream Mousse: None");
-
-                            System.out.println("Updated drinkAddons: " + drinkAddons);
+                        String[] attributes = drinkAddons.get(buttonIndex).split(", ");
+                        String newAttributes = attributes[0] + ", " + attributes[1] + ", Cream Mousse: None";
+                        for(int i = 3; i < attributes.length; i++){
+                            newAttributes += ", " + attributes[i];
                         }
+                        drinkAddons.set(buttonIndex, newAttributes);
+                        creamMousseLabel.setText(newAttributes.split(", ")[2]);
                     }
                 });
 
@@ -1070,14 +1058,13 @@ public class GUI extends JFrame implements ActionListener{
                 addTaroButton.setForeground(Color.WHITE);
                 addTaroButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        int buttonIndex = getButtonIndex(drinkButton);
-
-                        if (buttonIndex != -1) {
-                            drinkAddons.set(3, "Taro: Added");
-                            taroLabel.setText("Taro: Added");
-
-                            System.out.println("Updated drinkAddons: " + drinkAddons);
+                        String[] attributes = drinkAddons.get(buttonIndex).split(", ");
+                        String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] +", Taro: Added";
+                        for(int i = 4; i < attributes.length; i++){
+                            newAttributes += ", " + attributes[i];
                         }
+                        drinkAddons.set(buttonIndex, newAttributes);
+                        taroLabel.setText(newAttributes.split(", ")[3]);
                     }
                 });
 
@@ -1086,14 +1073,13 @@ public class GUI extends JFrame implements ActionListener{
                 removeTaroButton.setForeground(Color.WHITE);
                 removeTaroButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        int buttonIndex = getButtonIndex(drinkButton);
-
-                        if (buttonIndex != -1) {
-                            drinkAddons.set(3, "Taro: None");
-                            taroLabel.setText("Taro: None");
-
-                            System.out.println("Updated drinkAddons: " + drinkAddons);
+                        String[] attributes = drinkAddons.get(buttonIndex).split(", ");
+                        String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] +", Taro: None";
+                        for(int i = 4; i < attributes.length; i++){
+                            newAttributes += ", " + attributes[i];
                         }
+                        drinkAddons.set(buttonIndex, newAttributes);
+                        taroLabel.setText(newAttributes.split(", ")[3]);
                     }
                 });
 
@@ -1113,14 +1099,13 @@ public class GUI extends JFrame implements ActionListener{
                 addRedBeanButton.setForeground(Color.WHITE);
                 addRedBeanButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        int buttonIndex = getButtonIndex(drinkButton);
-
-                        if (buttonIndex != -1) {
-                            drinkAddons.set(4, "Red Bean: Added");
-                            redBeanLabel.setText("Red Bean: Added");
-
-                            System.out.println("Updated drinkAddons: " + drinkAddons);
+                        String[] attributes = drinkAddons.get(buttonIndex).split(", ");
+                        String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", " + attributes[3] + ", Red Bean: Added";
+                        for(int i = 5; i < attributes.length; i++){
+                            newAttributes += ", " + attributes[i];
                         }
+                        drinkAddons.set(buttonIndex, newAttributes);
+                        redBeanLabel.setText(newAttributes.split(", ")[4]);
                     }
                 });
 
@@ -1129,14 +1114,13 @@ public class GUI extends JFrame implements ActionListener{
                 removeRedBeanButton.setForeground(Color.WHITE);
                 removeRedBeanButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        int buttonIndex = getButtonIndex(drinkButton);
-
-                        if (buttonIndex != -1) {
-                            drinkAddons.set(4, "Red Bean: None");
-                            redBeanLabel.setText("Red Bean: None");
-
-                            System.out.println("Updated drinkAddons: " + drinkAddons);
+                        String[] attributes = drinkAddons.get(buttonIndex).split(", ");
+                        String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", " + attributes[3] + ", Red Bean: None";
+                        for(int i = 5; i < attributes.length; i++){
+                            newAttributes += ", " + attributes[i];
                         }
+                        drinkAddons.set(buttonIndex, newAttributes);
+                        redBeanLabel.setText(newAttributes.split(", ")[4]);
                     }
                 });
 
@@ -1156,14 +1140,13 @@ public class GUI extends JFrame implements ActionListener{
                 addPuddingButton.setForeground(Color.WHITE);
                 addPuddingButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        int buttonIndex = getButtonIndex(drinkButton);
-
-                        if (buttonIndex != -1) {
-                            drinkAddons.set(5, "Pudding: Added");
-                            puddingLabel.setText("Pudding: Added");
-
-                            System.out.println("Updated drinkAddons: " + drinkAddons);
+                        String[] attributes = drinkAddons.get(buttonIndex).split(", ");
+                        String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", " + attributes[3] + ", " + attributes[4] + ", Pudding: Added";
+                        for(int i = 6; i < attributes.length; i++){
+                            newAttributes += ", " + attributes[i];
                         }
+                        drinkAddons.set(buttonIndex, newAttributes);
+                        puddingLabel.setText(newAttributes.split(", ")[5]);
                     }
                 });
 
@@ -1172,15 +1155,13 @@ public class GUI extends JFrame implements ActionListener{
                 removePuddingButton.setForeground(Color.WHITE);
                 removePuddingButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        // Get the index of the selected drink button
-                        int buttonIndex = getButtonIndex(drinkButton);
-
-                        if (buttonIndex != -1) {
-                            drinkAddons.set(5, "Pudding: None");
-                            puddingLabel.setText("Pudding: None");
-
-                            System.out.println("Updated drinkAddons: " + drinkAddons);
+                        String[] attributes = drinkAddons.get(buttonIndex).split(", ");
+                        String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", " + attributes[3] + ", " + attributes[4] + ", Pudding: None";
+                        for(int i = 6; i < attributes.length; i++){
+                            newAttributes += ", " + attributes[i];
                         }
+                        drinkAddons.set(buttonIndex, newAttributes);
+                        puddingLabel.setText(newAttributes.split(", ")[5]);
                     }
                 });
 
@@ -1200,14 +1181,13 @@ public class GUI extends JFrame implements ActionListener{
                 addMochiButton.setForeground(Color.WHITE);
                 addMochiButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        int buttonIndex = getButtonIndex(drinkButton);
-
-                        if (buttonIndex != -1) {
-                            drinkAddons.set(6, "Mochi: Added");
-                            mochiLabel.setText("Mochi: Added");
-
-                            System.out.println("Updated drinkAddons: " + drinkAddons);
+                        String[] attributes = drinkAddons.get(buttonIndex).split(", ");
+                        String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", " + attributes[3] + ", " + attributes[4] + ", " + attributes[5] + ", Mochi: Added";
+                        for(int i = 7; i < attributes.length; i++){
+                            newAttributes += ", " + attributes[i];
                         }
+                        drinkAddons.set(buttonIndex, newAttributes);
+                        mochiLabel.setText(newAttributes.split(", ")[6]);
                     }
                 });
 
@@ -1216,15 +1196,13 @@ public class GUI extends JFrame implements ActionListener{
                 removeMochiButton.setForeground(Color.WHITE);
                 removeMochiButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        // Get the index of the selected drink button
-                        int buttonIndex = getButtonIndex(drinkButton);
-
-                        if (buttonIndex != -1) {
-                            drinkAddons.set(6, "Mochi: None");
-                            mochiLabel.setText("Mochi: None");
-
-                            System.out.println("Updated drinkAddons: " + drinkAddons);
+                        String[] attributes = drinkAddons.get(buttonIndex).split(", ");
+                        String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", " + attributes[3] + ", " + attributes[4] + ", " + attributes[5] + ", Mochi: None";
+                        for(int i = 7; i < attributes.length; i++){
+                            newAttributes += ", " + attributes[i];
                         }
+                        drinkAddons.set(buttonIndex, newAttributes);
+                        mochiLabel.setText(newAttributes.split(", ")[6]);
                     }
                 });
 
@@ -1319,13 +1297,7 @@ public class GUI extends JFrame implements ActionListener{
         // Getting default attributes
         drinkAttributes.add("Dairy Free Alternative: None, Sweetness Level: 100%, Ice Level: Normal, Cup Size: Regular, Special Instructions: None");
 
-        drinkAddons.add("Extra Boba: None");
-        drinkAddons.add("Tiger Pearls: None");
-        drinkAddons.add("Cream Mousse: None");
-        drinkAddons.add("Taro: None");
-        drinkAddons.add("Red Bean: None");
-        drinkAddons.add("Pudding: None");
-        drinkAddons.add("Mochi: None");
+        drinkAddons.add("Extra Boba: None, Tiger Pearls: None, Cream Mousse: None, Taro: None, Red Bean: None, Pudding: None, Mochi: None");
     }
 
 
