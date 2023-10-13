@@ -920,6 +920,7 @@ public class GUI extends JFrame implements ActionListener{
 
                 // Start of addons buttons
                 // Create a panel for Boba attribute
+
                 JPanel bobaAttribute = new JPanel();
                 bobaAttribute.setLayout(new FlowLayout(FlowLayout.LEFT));
 
@@ -927,7 +928,7 @@ public class GUI extends JFrame implements ActionListener{
                 bobaLabel.setBorder(new EmptyBorder(10, 10, 10, 10));
                 bobaAttribute.add(bobaLabel);
 
-                JButton addBobaButton = new JButton("Extra Boba");
+                JButton addBobaButton = new JButton("+");
                 addBobaButton.setBackground(Color.BLUE);
                 addBobaButton.setForeground(Color.WHITE);
                 addBobaButton.addActionListener(new ActionListener() {
@@ -944,7 +945,7 @@ public class GUI extends JFrame implements ActionListener{
                     }
                 });
 
-                JButton removeBobaButton = new JButton("No Extra Boba");
+                JButton removeBobaButton = new JButton("-");
                 removeBobaButton.setBackground(Color.BLUE);
                 removeBobaButton.setForeground(Color.WHITE);
                 removeBobaButton.addActionListener(new ActionListener() {
@@ -975,7 +976,7 @@ public class GUI extends JFrame implements ActionListener{
                 tigerPearlsAttribute.add(tigerPearlsLabel);
 
                 // Create buttons for adding and removing Tiger Pearls
-                JButton addTigerPearlsButton = new JButton("Add Tiger Pearls");
+                JButton addTigerPearlsButton = new JButton("+");
                 addTigerPearlsButton.setBackground(Color.BLUE);
                 addTigerPearlsButton.setForeground(Color.WHITE);
                 addTigerPearlsButton.addActionListener(new ActionListener() {
@@ -992,7 +993,7 @@ public class GUI extends JFrame implements ActionListener{
                     }
                 });
 
-                JButton removeTigerPearlsButton = new JButton("No Tiger Pearls");
+                JButton removeTigerPearlsButton = new JButton("-");
                 removeTigerPearlsButton.setBackground(Color.BLUE);
                 removeTigerPearlsButton.setForeground(Color.WHITE);
                 removeTigerPearlsButton.addActionListener(new ActionListener() {
@@ -1013,8 +1014,225 @@ public class GUI extends JFrame implements ActionListener{
                 tigerPearlsAttribute.add(addTigerPearlsButton);
                 tigerPearlsAttribute.add(removeTigerPearlsButton);
 
+                // Create a panel for Cream Mousse
+                JPanel creamMousseAttribute = new JPanel();
+                creamMousseAttribute.setLayout(new FlowLayout(FlowLayout.LEFT));
 
+                JLabel creamMousseLabel = new JLabel("Cream Mousse: None");
+                creamMousseLabel.setBorder(new EmptyBorder(10, 10, 10, 10));
+                creamMousseAttribute.add(creamMousseLabel);
 
+                JButton addCreamMousseButton = new JButton("+");
+                addCreamMousseButton.setBackground(Color.BLUE);
+                addCreamMousseButton.setForeground(Color.WHITE);
+                addCreamMousseButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        int buttonIndex = getButtonIndex(drinkButton);
+
+                        if (buttonIndex != -1) {
+                            drinkAddons.set(2, "Cream Mousse: Added");
+                            creamMousseLabel.setText("Cream Mousse: Added");
+
+                            System.out.println("Updated drinkAddons: " + drinkAddons);
+                        }
+                    }
+                });
+
+                JButton removeCreamMousseButton = new JButton("-");
+                removeCreamMousseButton.setBackground(Color.BLUE);
+                removeCreamMousseButton.setForeground(Color.WHITE);
+                removeCreamMousseButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        int buttonIndex = getButtonIndex(drinkButton);
+
+                        if (buttonIndex != -1) {
+                            drinkAddons.set(2, "Cream Mousse: None");
+                            creamMousseLabel.setText("Cream Mousse: None");
+
+                            System.out.println("Updated drinkAddons: " + drinkAddons);
+                        }
+                    }
+                });
+
+                creamMousseAttribute.add(addCreamMousseButton);
+                creamMousseAttribute.add(removeCreamMousseButton);
+
+                // Create a panel for Taro
+                JPanel taroAttribute = new JPanel();
+                taroAttribute.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+                JLabel taroLabel = new JLabel("Taro: None");
+                taroLabel.setBorder(new EmptyBorder(10, 10, 10, 10));
+                taroAttribute.add(taroLabel);
+
+                JButton addTaroButton = new JButton("+");
+                addTaroButton.setBackground(Color.BLUE);
+                addTaroButton.setForeground(Color.WHITE);
+                addTaroButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        int buttonIndex = getButtonIndex(drinkButton);
+
+                        if (buttonIndex != -1) {
+                            drinkAddons.set(3, "Taro: Added");
+                            taroLabel.setText("Taro: Added");
+
+                            System.out.println("Updated drinkAddons: " + drinkAddons);
+                        }
+                    }
+                });
+
+                JButton removeTaroButton = new JButton("-");
+                removeTaroButton.setBackground(Color.BLUE);
+                removeTaroButton.setForeground(Color.WHITE);
+                removeTaroButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        int buttonIndex = getButtonIndex(drinkButton);
+
+                        if (buttonIndex != -1) {
+                            drinkAddons.set(3, "Taro: None");
+                            taroLabel.setText("Taro: None");
+
+                            System.out.println("Updated drinkAddons: " + drinkAddons);
+                        }
+                    }
+                });
+
+                taroAttribute.add(addTaroButton);
+                taroAttribute.add(removeTaroButton);
+
+                // Create a panel for Red Bean
+                JPanel redBeanAttribute = new JPanel();
+                redBeanAttribute.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+                JLabel redBeanLabel = new JLabel("Red Bean: None");
+                redBeanLabel.setBorder(new EmptyBorder(10, 10, 10, 10));
+                redBeanAttribute.add(redBeanLabel);
+
+                JButton addRedBeanButton = new JButton("+");
+                addRedBeanButton.setBackground(Color.BLUE);
+                addRedBeanButton.setForeground(Color.WHITE);
+                addRedBeanButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        int buttonIndex = getButtonIndex(drinkButton);
+
+                        if (buttonIndex != -1) {
+                            drinkAddons.set(4, "Red Bean: Added");
+                            redBeanLabel.setText("Red Bean: Added");
+
+                            System.out.println("Updated drinkAddons: " + drinkAddons);
+                        }
+                    }
+                });
+
+                JButton removeRedBeanButton = new JButton("-");
+                removeRedBeanButton.setBackground(Color.BLUE);
+                removeRedBeanButton.setForeground(Color.WHITE);
+                removeRedBeanButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        int buttonIndex = getButtonIndex(drinkButton);
+
+                        if (buttonIndex != -1) {
+                            drinkAddons.set(4, "Red Bean: None");
+                            redBeanLabel.setText("Red Bean: None");
+
+                            System.out.println("Updated drinkAddons: " + drinkAddons);
+                        }
+                    }
+                });
+
+                redBeanAttribute.add(addRedBeanButton);
+                redBeanAttribute.add(removeRedBeanButton);
+
+                // Create a panel for Pudding
+                JPanel puddingAttribute = new JPanel();
+                puddingAttribute.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+                JLabel puddingLabel = new JLabel("Pudding: None");
+                puddingLabel.setBorder(new EmptyBorder(10, 10, 10, 10));
+                puddingAttribute.add(puddingLabel);
+
+                JButton addPuddingButton = new JButton("+");
+                addPuddingButton.setBackground(Color.BLUE);
+                addPuddingButton.setForeground(Color.WHITE);
+                addPuddingButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        int buttonIndex = getButtonIndex(drinkButton);
+
+                        if (buttonIndex != -1) {
+                            drinkAddons.set(5, "Pudding: Added");
+                            puddingLabel.setText("Pudding: Added");
+
+                            System.out.println("Updated drinkAddons: " + drinkAddons);
+                        }
+                    }
+                });
+
+                JButton removePuddingButton = new JButton("-");
+                removePuddingButton.setBackground(Color.BLUE);
+                removePuddingButton.setForeground(Color.WHITE);
+                removePuddingButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        // Get the index of the selected drink button
+                        int buttonIndex = getButtonIndex(drinkButton);
+
+                        if (buttonIndex != -1) {
+                            drinkAddons.set(5, "Pudding: None");
+                            puddingLabel.setText("Pudding: None");
+
+                            System.out.println("Updated drinkAddons: " + drinkAddons);
+                        }
+                    }
+                });
+
+                puddingAttribute.add(addPuddingButton);
+                puddingAttribute.add(removePuddingButton);
+
+                // Create a panel for Mochi
+                JPanel mochiAttribute = new JPanel();
+                mochiAttribute.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+                JLabel mochiLabel = new JLabel("Mochi: None");
+                mochiLabel.setBorder(new EmptyBorder(10, 10, 10, 10));
+                mochiAttribute.add(mochiLabel);
+
+                JButton addMochiButton = new JButton("+");
+                addMochiButton.setBackground(Color.BLUE);
+                addMochiButton.setForeground(Color.WHITE);
+                addMochiButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        int buttonIndex = getButtonIndex(drinkButton);
+
+                        if (buttonIndex != -1) {
+                            drinkAddons.set(6, "Mochi: Added");
+                            mochiLabel.setText("Mochi: Added");
+
+                            System.out.println("Updated drinkAddons: " + drinkAddons);
+                        }
+                    }
+                });
+
+                JButton removeMochiButton = new JButton("-");
+                removeMochiButton.setBackground(Color.BLUE);
+                removeMochiButton.setForeground(Color.WHITE);
+                removeMochiButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        // Get the index of the selected drink button
+                        int buttonIndex = getButtonIndex(drinkButton);
+
+                        if (buttonIndex != -1) {
+                            drinkAddons.set(6, "Mochi: None");
+                            mochiLabel.setText("Mochi: None");
+
+                            System.out.println("Updated drinkAddons: " + drinkAddons);
+                        }
+                    }
+                });
+
+                mochiAttribute.add(addMochiButton);
+                mochiAttribute.add(removeMochiButton);
+
+                attributesPanel.add(bobaAttribute);
+                attributesPanel.add(tigerPearlsAttribute);
 
                 // Button to remove the drink entirely from the order
                 JPanel removeDrinkPanel = new JPanel();
@@ -1032,14 +1250,22 @@ public class GUI extends JFrame implements ActionListener{
                 
                 removeDrinkPanel.add(removeDrinkButton);
 
-                // Insert the JLabel right after the drinkButton
+                JPanel addonsPanel = new JPanel();
+                addonsPanel.setLayout(new GridLayout(4, 2));
+                addonsPanel.add(bobaAttribute);
+                addonsPanel.add(tigerPearlsAttribute);
+                addonsPanel.add(creamMousseAttribute);
+                addonsPanel.add(taroAttribute);
+                addonsPanel.add(redBeanAttribute);
+                addonsPanel.add(puddingAttribute);
+                addonsPanel.add(mochiAttribute);
+
                 attributesPanel.add(dairyAttribute);
                 attributesPanel.add(sweetnessAttribute);
                 attributesPanel.add(iceAttribute);
                 attributesPanel.add(cupSizeAttribute);
                 attributesPanel.add(specialInstructionsPanel);
-                attributesPanel.add(bobaAttribute);
-                attributesPanel.add(tigerPearlsAttribute);
+                attributesPanel.add(addonsPanel);
                 attributesPanel.add(removeDrinkPanel);
                 orderLogs.add(attributesPanel, orderLogIndex + 1);
             }
@@ -1095,6 +1321,11 @@ public class GUI extends JFrame implements ActionListener{
 
         drinkAddons.add("Extra Boba: None");
         drinkAddons.add("Tiger Pearls: None");
+        drinkAddons.add("Cream Mousse: None");
+        drinkAddons.add("Taro: None");
+        drinkAddons.add("Red Bean: None");
+        drinkAddons.add("Pudding: None");
+        drinkAddons.add("Mochi: None");
     }
 
 
