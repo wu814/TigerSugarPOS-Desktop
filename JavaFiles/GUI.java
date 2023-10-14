@@ -213,7 +213,9 @@ public class GUI extends JFrame implements ActionListener{
         excessReportPanel.add(scroll);
 
         // Filling the table with database data
-        //managerLogic.getExcessReport(table);
+        Timestamp timestamp = Timestamp.valueOf("2023-04-10 10:30:00");
+
+        managerLogic.getExcessReport(table, timestamp);
 
         excessReportFrame.pack();
     }

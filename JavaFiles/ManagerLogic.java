@@ -23,7 +23,7 @@ import javax.swing.table.TableColumn;
 import java.util.*;
 
 /**
- * @author Nai-Yun Wu, Josh Hare
+ * @author Nai-Yun Wu, Josh Hare, Doby Lanete
  */
 public class ManagerLogic{
     // Attribute
@@ -540,5 +540,10 @@ public class ManagerLogic{
             JOptionPane.showMessageDialog(null,e);
         }
     }
+
+    public static void getExcessReport(JTable table, Timestamp timestamp){
+        
+    }
+    
 
 }

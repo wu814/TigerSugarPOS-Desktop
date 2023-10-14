@@ -34,6 +34,47 @@ public class OrderLogic {
         String updateInventory = "UPDATE inventory SET stock_remaining = stock_remaining - 1 WHERE supply = ?";
         Connection conn = null;
         ArrayList<String> outOfStock = new ArrayList<String>();
+        Map<String, Object> inventoryHistoryData = new HashMap<>();
+
+        
+        inventoryHistoryData.put("order_timestamp", null);
+        inventoryHistoryData.put("Sago", 0);
+        inventoryHistoryData.put("Cups (XL)", 0);
+        inventoryHistoryData.put("Cups (Regular Hot)", 0);
+        inventoryHistoryData.put("Grass Jelly", 0);
+        inventoryHistoryData.put("Crystal Jelly", 0);
+        inventoryHistoryData.put("Mango Milk Cream", 0);
+        inventoryHistoryData.put("Black Sugars", 0);
+        inventoryHistoryData.put("Aloe Vera Bits", 0);
+        inventoryHistoryData.put("Straws (Jumbo)", 0);
+        inventoryHistoryData.put("Brown Sugar", 0);
+        inventoryHistoryData.put("Black Sugar", 0);
+        inventoryHistoryData.put("Lids (Dome)", 0);
+        inventoryHistoryData.put("Strawberry Milk Cream", 0);
+        inventoryHistoryData.put("Condiment Station Supplies", 0);
+        inventoryHistoryData.put("Matcha", 0);
+        inventoryHistoryData.put("Fresh Milk", 0);
+        inventoryHistoryData.put("Tapioca Pearls (Boba)", 0);
+        inventoryHistoryData.put("Tiger Pearls", 0);
+        inventoryHistoryData.put("Cream Mousse", 0);
+        inventoryHistoryData.put("Taro", 0);
+        inventoryHistoryData.put("Red Beans", 0);
+        inventoryHistoryData.put("Pudding", 0);
+        inventoryHistoryData.put("Mochi", 0);
+        inventoryHistoryData.put("Jasmine Green Tea Leaves", 0);
+        inventoryHistoryData.put("Passion Fruit Tea Leaves", 0);
+        inventoryHistoryData.put("Lychee Jelly", 0);
+        inventoryHistoryData.put("Oat Milk", 0);
+        inventoryHistoryData.put("Strawberry Mango", 0);
+        inventoryHistoryData.put("Oolong Tea Leaves", 0);
+        inventoryHistoryData.put("Straws (Regular)", 0);
+        inventoryHistoryData.put("Lids (Flat)", 0);
+        inventoryHistoryData.put("Napkins (Regular)", 0);
+        inventoryHistoryData.put("To-Go Bags (Small)", 0);
+        inventoryHistoryData.put("Cups (Regular)", 0);
+
+        
+
 
         try{
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
@@ -89,10 +130,10 @@ public class OrderLogic {
                 }
             }
 
-            // printing out each one of the ingredients and the amount of each one
-            // for(Map.Entry<String, String> entry: ingredients.entrySet()) {
-            //     System.out.println(entry.getKey() + " " + entry.getValue());
-            // }
+            //printing out each one of the ingredients and the amount of each one
+            for(Map.Entry<String, String> entry: ingredients.entrySet()) {
+                System.out.println(entry.getKey() + " " + entry.getValue());
+            }
 
             // fetching all inventory items and their stock remaining and storing it in a hashmap
             String fetchInventory = "SELECT supply, stock_remaining FROM inventory";
@@ -116,10 +157,18 @@ public class OrderLogic {
                             outOfStock.add(ingredient);
                             continue;
                         }
+                        int currentHistoryCount = (int) inventoryHistoryData.get(ingredient);
+                        inventoryHistoryData.put(ingredient, currentHistoryCount + 1);
+
+                        
+
                         updateStmt.setString(1, ingredient);
                         updateStmt.addBatch();
                     }
                 }
+            }
+            for (Map.Entry<String, Object> entry : inventoryHistoryData.entrySet()) {
+                System.out.println(entry.getKey() + ", Value: " + entry.getValue());
             }
 
             // decrementing for each hashmap ingredient
@@ -246,6 +295,7 @@ public class OrderLogic {
                 System.err.println("Error closing connection: " + e.getMessage());
             }
         }
+        
         return outOfStock;
     }
 
