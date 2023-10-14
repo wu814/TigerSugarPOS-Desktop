@@ -167,7 +167,7 @@ public class GUI extends JFrame implements ActionListener{
         restockReportPanel.add(scroll);
 
         // Filling the table with database data
-        managerLogic.getInventory(table);
+        managerLogic.getRestockReport(table);
 
         restockReportFrame.pack();
     }

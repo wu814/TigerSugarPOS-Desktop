@@ -427,16 +427,37 @@ public class ManagerLogic{
         // Getting the data
         try{
             Statement stmt = conn.createStatement();
-            ResultSet result = stmt.executeQuery("SELECT supply, stock_remaining, minimum_stock FROM inventory
-                WHERE stock_remaining < minimum_stock;");
+            ResultSet result = stmt.executeQuery("SELECT supply, stock_remaining, minimum_stock FROM inventory\r\n" +
+                "WHERE stock_remaining < minimum_stock;");
 
             // Get column names
             Vector<String> colNames = new Vector<>();
-            colNames.add("Supplu");
+            colNames.add("Supply");
             colNames.add("Stock Remaining");
             colNames.add("Minimum Stock");
+            // Get column names
+            int cols = result.getMetaData().getColumnCount();
+
             Vector<Vector<Object>> data = new Vector<>();
             
+            while(result.next()){ 
+                Vector<Object> row = new Vector<>();
+                for(int i = 1;i<=cols;i++){
+                    row.add(result.getObject(i));
+                }
+                data.add(row);   
+            }
+
+            // Table Listener
+            DefaultTableModel model = new DefaultTableModel(data,colNames){
+                public boolean isCellEditable(int row, int column){
+                // Make the menu item column uneditable
+                return column != 1 && column != 0;
+                }
+            };
+            table.setModel(model);
+        }catch(Exception e){ 
+            JOptionPane.showMessageDialog(null,e);
         }
     }
 
