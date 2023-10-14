@@ -122,8 +122,8 @@ public class ManagerLogic{
         try{
             Statement stmt = conn.createStatement();
             ResultSet result = stmt.executeQuery("SELECT * FROM orders\r\n" + 
-              "ORDER BY order_id DESC\r\n" +
-              "LIMIT 10;");
+                "ORDER BY order_id DESC\r\n" +
+                "LIMIT 10;");
 
             // Get column names
             int cols = result.getMetaData().getColumnCount();
@@ -366,7 +366,7 @@ public class ManagerLogic{
 
 
     /**
-     * remove an product from the menu
+     * Remove an product from the menu
      */
     public static void removeMenuItem(){
         try{
@@ -382,7 +382,7 @@ public class ManagerLogic{
 
 
     /**
-     * add supply item to database
+     * Add supply item to database
      * @param currFrame the frame of the pop out window
      */
     public static void addSupplyItem(JFrame currFrame){
@@ -404,7 +404,7 @@ public class ManagerLogic{
 
 
     /**
-     * remove a supply item from database
+     * Remove a supply item from database
      */
     public static void removeSupplyItem(){
         try{
@@ -417,4 +417,48 @@ public class ManagerLogic{
             JOptionPane.showMessageDialog(null,ex);
         }
     }
+
+
+    /**
+     * Load the restock report to the table
+     * @param table the table holding the restock report
+     */
+    public static void getRestockReport(JTable table){
+        // Getting the data
+        try{
+            Statement stmt = conn.createStatement();
+            ResultSet result = stmt.executeQuery("SELECT supply, stock_remaining, minimum_stock FROM inventory\r\n" +
+                "WHERE stock_remaining < minimum_stock;");
+
+            // Get column names
+            Vector<String> colNames = new Vector<>();
+            colNames.add("Supply");
+            colNames.add("Stock Remaining");
+            colNames.add("Minimum Stock");
+            // Get column names
+            int cols = result.getMetaData().getColumnCount();
+
+            Vector<Vector<Object>> data = new Vector<>();
+            
+            while(result.next()){ 
+                Vector<Object> row = new Vector<>();
+                for(int i = 1;i<=cols;i++){
+                    row.add(result.getObject(i));
+                }
+                data.add(row);   
+            }
+
+            // Table Listener
+            DefaultTableModel model = new DefaultTableModel(data,colNames){
+                public boolean isCellEditable(int row, int column){
+                // Make the menu item column uneditable
+                return column != 1 && column != 0;
+                }
+            };
+            table.setModel(model);
+        }catch(Exception e){ 
+            JOptionPane.showMessageDialog(null,e);
+        }
+    }
+
 }
