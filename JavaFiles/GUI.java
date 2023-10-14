@@ -593,7 +593,8 @@ public class GUI extends JFrame implements ActionListener{
 
             orderLogs.revalidate();
             orderLogs.repaint();
-            payButton.setText("Pay: $" + orderTotal);
+            String formattedOrderTotal = String.format("%.2f", orderTotal);
+            payButton.setText("Pay: $" + formattedOrderTotal);
         }
     }
 
@@ -1258,9 +1259,10 @@ public class GUI extends JFrame implements ActionListener{
         orderLogs.revalidate();
         orderLogs.repaint();
 
-        System.out.println("Order total: " + orderTotal);
+        String formattedOrderTotal = String.format("%.2f", orderTotal);
+        System.out.println("Order total: " + formattedOrderTotal);
 
-        payButton.setText("Charge $" + orderTotal);
+        payButton.setText("Charge $" + formattedOrderTotal);
 
         // Adding to arraylist of drinks in order
         order.add(drinkName);
@@ -1300,7 +1302,8 @@ public class GUI extends JFrame implements ActionListener{
 
         orderLogs.revalidate();
         orderLogs.repaint();
-        payButton.setText("Charge $" + orderTotal);
+        String formattedOrderTotal = String.format("%.2f", orderTotal);
+        payButton.setText("Charge $" + formattedOrderTotal);
     }
 
 
@@ -1428,7 +1431,7 @@ public class GUI extends JFrame implements ActionListener{
 
         ArrayList<String> drinks = OrderLogic.fetchDrinksByType("Fruity and Refreshing");
         for(String drink : drinks){
-            JButton drinkButton = StyledButton(drink + " $" + drinkPriceMap.get(drink));
+            JButton drinkButton = StyledButton(drink + " $" + String.format("%.2f", drinkPriceMap.get(drink)));
             drinkButton.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                     addToOrder(drink);
@@ -1465,7 +1468,8 @@ public class GUI extends JFrame implements ActionListener{
         JScrollPane orderScrollPane = new JScrollPane(orderLogs);
         rightPanel.add(orderScrollPane, BorderLayout.CENTER);
 
-        payButton = new JButton("Charge $" + orderTotal);
+        String formattedOrderTotal = String.format("%.2f", orderTotal);
+        payButton = new JButton("Charge $" + formattedOrderTotal);
         payButton.setFont(new Font("Arial", Font.BOLD, 20));
         payButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
@@ -1533,7 +1537,7 @@ public class GUI extends JFrame implements ActionListener{
 
         ArrayList<String> drinks = OrderLogic.fetchDrinksByType("Sweet and Creamy");
         for(String drink : drinks){
-            JButton drinkButton = StyledButton(drink + " $" + drinkPriceMap.get(drink));
+            JButton drinkButton = StyledButton(drink + " $" + String.format("%.2f", drinkPriceMap.get(drink)));
             drinkButton.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                     addToOrder(drink);
@@ -1571,7 +1575,8 @@ public class GUI extends JFrame implements ActionListener{
         JScrollPane orderScrollPane = new JScrollPane(orderLogs);
         rightPanel.add(orderScrollPane, BorderLayout.CENTER);
 
-        payButton = new JButton("Charge $" + orderTotal);
+        String formattedOrderTotal = String.format("%.2f", orderTotal);
+        payButton = new JButton("Charge $" + formattedOrderTotal);
         payButton.setFont(new Font("Arial", Font.BOLD, 20));
         payButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
@@ -1641,7 +1646,7 @@ public class GUI extends JFrame implements ActionListener{
 
         ArrayList<String> drinks = OrderLogic.fetchDrinksByType("Coffee Flavored");
         for(String drink : drinks){
-            JButton drinkButton = StyledButton(drink + " $" + drinkPriceMap.get(drink));
+            JButton drinkButton = StyledButton(drink + " $" + String.format("%.2f", drinkPriceMap.get(drink)));
             drinkButton.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent e) {
                     addToOrder(drink);
@@ -1677,7 +1682,8 @@ public class GUI extends JFrame implements ActionListener{
         JScrollPane orderScrollPane = new JScrollPane(orderLogs);
         rightPanel.add(orderScrollPane, BorderLayout.CENTER);
 
-        payButton = new JButton("Charge $" + orderTotal);
+        String formattedOrderTotal = String.format("%.2f", orderTotal);
+        payButton = new JButton("Charge $" + formattedOrderTotal);
         payButton.setFont(new Font("Arial", Font.BOLD, 20));
         payButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
@@ -1745,7 +1751,7 @@ public class GUI extends JFrame implements ActionListener{
 
         ArrayList<String> drinks = OrderLogic.fetchDrinksByType("Seasonal Drinks");
         for(String drink : drinks){
-            JButton drinkButton = StyledButton(drink + " $" + drinkPriceMap.get(drink));
+            JButton drinkButton = StyledButton(drink + " $" + String.format("%.2f", drinkPriceMap.get(drink)));
             drinkButton.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                     addToOrder(drink);
@@ -1783,7 +1789,8 @@ public class GUI extends JFrame implements ActionListener{
         JScrollPane orderScrollPane = new JScrollPane(orderLogs);
         rightPanel.add(orderScrollPane, BorderLayout.CENTER);
 
-        payButton = new JButton("Charge $" + orderTotal);
+        String formattedOrderTotal = String.format("%.2f", orderTotal);
+        payButton = new JButton("Charge $" + formattedOrderTotal);
         payButton.setFont(new Font("Arial", Font.BOLD, 20));
         payButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
