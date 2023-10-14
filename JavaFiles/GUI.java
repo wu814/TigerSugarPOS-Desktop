@@ -255,10 +255,10 @@ public class GUI extends JFrame implements ActionListener{
         // Create restock report button
         JButton restockReport = new JButton("View Restock Report"); 
         restockReport.addActionListener(gui);
-        menuPanel.add(restockReport); 
+        menuPanel.add(restockReport);
 
         // Create excess report button
-        JButton excessReport = new JButton("View Excess Report"); 
+        JButton excessReport = new JButton("View Excess Report");
         restockReport.addActionListener(gui);
         menuPanel.add(excessReport);
 
@@ -541,6 +541,11 @@ public class GUI extends JFrame implements ActionListener{
             setUpInventory();
             changeFrame(inventoryFrame);
         }
+        //Opens excess report
+        else if(event.equals("View Inventory")){
+            setUpInventory();
+            changeFrame(inventoryFrame);
+        }
         // Opens price editor
         else if(event.equals("Edit Menu")){
             setUpMenuEditor();
@@ -591,6 +596,11 @@ public class GUI extends JFrame implements ActionListener{
             // Update graphics
             setUpRestockReport();
             changeFrame(restockReportFrame);
+        }
+        // On inventory page, view the excess report
+        else if(event.equals("View Excess Report")){
+            setUpExcessReport();
+            changeFrame(excessReportFrame);
         }
         // On inventory page, adds a supply item to the database
         else if(event.equals("Add Supply Item")){
