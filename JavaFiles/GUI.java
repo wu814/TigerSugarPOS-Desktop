@@ -207,14 +207,13 @@ public class GUI extends JFrame implements ActionListener{
         backToManager.addActionListener(gui);
         menuPanel.add(backToManager);
 
-
         // Create scrollable table
         JTable table = new JTable();
         JScrollPane  scroll = new JScrollPane(table);
-        excessReportFrame.add(scroll);
+        excessReportPanel.add(scroll);
 
         // Filling the table with database data
-        managerLogic.getRestockReport(table);
+        //managerLogic.getExcessReport(table);
 
         excessReportFrame.pack();
     }
