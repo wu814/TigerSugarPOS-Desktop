@@ -33,6 +33,7 @@ public class GUI extends JFrame implements ActionListener{
 
     static JFrame startFrame; // Opens on start, allows you to select an employee
     static JFrame inventoryFrame; // Inventory screen
+    static JFrame restockReportFrame; // Restock Report screen
     static JFrame managerFrame; // Manager view menu screen
     static JFrame cashierFrame; // Cashier screen
     static JFrame recentFrame; // Recent orders screen
@@ -127,6 +128,52 @@ public class GUI extends JFrame implements ActionListener{
 
 
     /**
+     * Creates the restock report and reads in from database
+     */
+    public static void setUpRestockReport(){
+        // Frame setup
+        restockReportFrame = new JFrame("Restock Report");
+        restockReportFrame.setSize(1000, 800);
+
+        // Create bottom panel (content)
+        JPanel restockReportPanel = new JPanel();
+        restockReportFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        restockReportFrame.add(restockReportPanel);
+
+        // Create top panel (title)
+        JPanel titlePanel = new JPanel();
+        titlePanel.setPreferredSize(new Dimension(1000,50));
+        JLabel title = new JLabel("Restock Report");
+        titlePanel.add(title);
+
+        // Create middle panel (menu)
+        JPanel menuPanel = new JPanel();
+        menuPanel.setPreferredSize(new Dimension(1000,50));
+
+        // Frame layout
+        restockReportFrame.add(titlePanel,BorderLayout.NORTH);
+        restockReportFrame.add(menuPanel,BorderLayout.CENTER);
+        restockReportFrame.add(restockReportPanel,BorderLayout.SOUTH);
+
+        // Create back button
+        JButton backToManager = new JButton("Back to Manager Menu"); 
+        backToManager.addActionListener(gui);
+        menuPanel.add(backToManager);
+
+
+        // Create scrollable table
+        JTable table = new JTable();
+        JScrollPane  scroll = new JScrollPane(table);
+        restockReportPanel.add(scroll);
+
+        // Filling the table with database data
+        managerLogic.getInventory(table);
+
+        restockReportFrame.pack();
+    }
+
+
+    /**
      * Creates the inventory frame and reads in from database
      */
     public static void setUpInventory(){
@@ -158,6 +205,11 @@ public class GUI extends JFrame implements ActionListener{
         JButton backToManager = new JButton("Back to Manager Menu"); 
         backToManager.addActionListener(gui);
         menuPanel.add(backToManager);
+
+        // Create restock report button
+        JButton restockReport = new JButton("View Restock Report"); 
+        restockReport.addActionListener(gui);
+        menuPanel.add(restockReport); 
 
         // Create add button
         JButton add = new JButton("Add Supply Item");
@@ -432,6 +484,11 @@ public class GUI extends JFrame implements ActionListener{
             setUpInventory();
             changeFrame(inventoryFrame);
         }
+        // Opens restock report
+        else if(event.equals("View Inventory")){
+            setUpInventory();
+            changeFrame(inventoryFrame);
+        }
         // Opens price editor
         else if(event.equals("Edit Menu")){
             setUpMenuEditor();
@@ -467,6 +524,13 @@ public class GUI extends JFrame implements ActionListener{
                 JOptionPane.showMessageDialog(null, "You have entered an invalid date.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
             }
             //TODO: Call a method customRange(start, end) that table
+        }
+        // On inventory page, view the restock report
+        else if(event.equals("View Restock Report")){
+            //managerLogic.addSupplyItem(currFrame);
+            // Update graphics
+            setUpRestockReport();
+            changeFrame(restockReportFrame);
         }
         // On inventory page, adds a supply item to the database
         else if(event.equals("Add Supply Item")){
