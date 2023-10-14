@@ -157,8 +157,8 @@ public class OrderLogic {
                             outOfStock.add(ingredient);
                             continue;
                         }
-                        int currentHistoryCount = (int) inventoryHistoryData.get(ingredient);
-                        inventoryHistoryData.put(ingredient, currentHistoryCount + 1);
+                        // int currentHistoryCount = (int) inventoryHistoryData.get(ingredient);
+                        // inventoryHistoryData.put(ingredient, currentHistoryCount + 1);
 
                         
 
@@ -167,9 +167,7 @@ public class OrderLogic {
                     }
                 }
             }
-            for (Map.Entry<String, Object> entry : inventoryHistoryData.entrySet()) {
-                System.out.println(entry.getKey() + ", Value: " + entry.getValue());
-            }
+            
 
             // decrementing for each hashmap ingredient
             for(Map.Entry<String, String> entry: ingredients.entrySet()) {
@@ -180,6 +178,8 @@ public class OrderLogic {
                             outOfStock.add("Fresh Milk");
                             continue;
                         }
+                        int currentHistoryCount = (int) inventoryHistoryData.get("Fresh Milk");
+                        inventoryHistoryData.put("Fresh Milk", currentHistoryCount + 1);
                         updateStmt.setString(1, "Fresh Milk");
                         updateStmt.addBatch();
                     } else {
@@ -192,6 +192,8 @@ public class OrderLogic {
                         outOfStock.add(cup_name);
                         continue;
                     }
+                    int currentHistoryCount = (int) inventoryHistoryData.get(cup_name);
+                    inventoryHistoryData.put(cup_name, currentHistoryCount + 1);
                     updateStmt.setString(1, cup_name); 
                     updateStmt.addBatch();
                     continue;
@@ -259,6 +261,10 @@ public class OrderLogic {
                     updateStmt.addBatch();
                     continue;
                 }
+            }
+
+            for (Map.Entry<String, Object> entry : inventoryHistoryData.entrySet()) {
+                System.out.println(entry.getKey() + ", Value: " + entry.getValue());
             }
 
             // if arraylist is empty, we can go, otherwise, we return the arraylist 
