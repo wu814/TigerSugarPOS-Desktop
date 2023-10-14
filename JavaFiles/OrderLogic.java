@@ -198,54 +198,62 @@ public class OrderLogic {
                     updateStmt.addBatch();
                     continue;
                 } else if(entry.getKey().equals("Extra Boba")) {
-                    if(entry.getValue().equals("Added")) { // New Added conditional
+                    if(entry.getValue().equals("Added")) {
                         String boba_name = "Tapioca Pearls (Boba)";
-                        if(inventoryCounts.get(boba_name) == 0) { // If out of stock, add to out of stock list.
+                        if(inventoryCounts.get(boba_name) == 0) {
                             outOfStock.add(boba_name);
                             continue;
                         } else {
-                            int currentHistoryCount = (int) inventoryHistoryData.get(boba_name); // My new hashmap
+                            int currentHistoryCount = (int) inventoryHistoryData.get(boba_name);
                             inventoryHistoryData.put(boba_name, currentHistoryCount + 1);
                             updateStmt.setString(1, boba_name);
                             updateStmt.addBatch();
                         }
                     }
                 } else if(entry.getKey().equals("Tiger Pearls")) {
-                    String boba_name = "Tiger Pearls";
-                    if(inventoryCounts.get(boba_name) == 0 && entry.getValue().equals("Added")) {
-                        outOfStock.add(boba_name);
-                        continue;
+                    String pearl_name = "Tiger Pearls";
+                    if (entry.getValue().equals("Added")) {
+                        if (inventoryCounts.get(pearl_name) == 0) {
+                            outOfStock.add(pearl_name);
+                            continue;
+                        } else {
+                            int currentHistoryCount = (int) inventoryHistoryData.get(pearl_name);
+                            inventoryHistoryData.put(pearl_name, currentHistoryCount + 1);
+                            updateStmt.setString(1, pearl_name);
+                            updateStmt.addBatch();
+                        }
                     }
-                    updateStmt.setString(1, boba_name);
-                    updateStmt.addBatch();
-                    continue;
                 } else if(entry.getKey().equals("Cream Mousse")) {
                     String cream_name = "Cream Mousse";
-                    if(inventoryCounts.get(cream_name) == 0 && entry.getValue().equals("Added")) {
-                        outOfStock.add(cream_name);
-                        continue;
+                    if (entry.getValue().equals("Added")) {
+                        if (inventoryCounts.get(cream_name) == 0) {
+                            outOfStock.add(cream_name);
+                            continue;
+                        } else {
+                            int currentHistoryCount = (int) inventoryHistoryData.get(cream_name);
+                            inventoryHistoryData.put(cream_name, currentHistoryCount + 1);
+                            updateStmt.setString(1, cream_name);
+                            updateStmt.addBatch();
+                        }
                     }
-                    updateStmt.setString(1, cream_name);
-                    updateStmt.addBatch();
-                    continue;
                 } else if(entry.getKey().equals("Taro")) {
                     String taro_name = "Taro";
-                    if(inventoryCounts.get(taro_name) == 0 && entry.getValue().equals("Added")) {
-                        outOfStock.add(taro_name);
-                        continue;
+                    if (entry.getValue().equals("Added")) { // New Added conditional
+                        if (inventoryCounts.get(taro_name) == 0) { // If out of stock, add to out of stock list.
+                            outOfStock.add(taro_name);
+                        }
+                        updateStmt.setString(1, taro_name);
+                        updateStmt.addBatch();
                     }
-                    updateStmt.setString(1, taro_name);
-                    updateStmt.addBatch();
-                    continue;
                 } else if(entry.getKey().equals("Red Bean")) {
                     String redbean_name = "Red Beans";
-                    if(inventoryCounts.get(redbean_name) == 0 && entry.getValue().equals("Added")) {
-                        outOfStock.add(redbean_name);
-                        continue;
+                    if (entry.getValue().equals("Added")) { // New Added conditional
+                        if (inventoryCounts.get(redbean_name) == 0) { // If out of stock, add to out of stock list.
+                            outOfStock.add(redbean_name);
+                        }
+                        updateStmt.setString(1, redbean_name);
+                        updateStmt.addBatch();
                     }
-                    updateStmt.setString(1, redbean_name);
-                    updateStmt.addBatch();
-                    continue;
                 } else if(entry.getKey().equals("Pudding")) {
                     String pudding_name = "Pudding";
                     if(inventoryCounts.get(pudding_name) == 0 && entry.getValue().equals("Added")) {
