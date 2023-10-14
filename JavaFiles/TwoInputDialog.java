@@ -15,8 +15,8 @@ public class TwoInputDialog extends JDialog {
         super(parent, "Input Dialog", true);
         setLayout(new FlowLayout());
 
-        textField1 = new JTextField(20);
-        textField2 = new JTextField(20);
+        textField1 = new JTextField(10);
+        textField2 = new JTextField(10);
         okButton = new JButton("OK");
 
         okButton.addActionListener(new ActionListener() {
