@@ -190,7 +190,7 @@ public class GUI extends JFrame implements ActionListener{
         // Create top panel (title)
         JPanel titlePanel = new JPanel();
         titlePanel.setPreferredSize(new Dimension(1000,50));
-        JLabel title = new JLabel("Restock Report");
+        JLabel title = new JLabel("Excess Report");
         titlePanel.add(title);
 
         // Create middle panel (menu)
@@ -259,7 +259,7 @@ public class GUI extends JFrame implements ActionListener{
 
         // Create excess report button
         JButton excessReport = new JButton("View Excess Report");
-        restockReport.addActionListener(gui);
+        excessReport.addActionListener(gui);
         menuPanel.add(excessReport);
 
         // Create add button
