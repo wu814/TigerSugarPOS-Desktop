@@ -25,7 +25,7 @@ import javax.swing.table.TableColumn;
 import java.util.*;
 
 /**
- * @author Chris Vu
+ * @author Chris Vu, Josh Hare
  */
 public class GUI extends JFrame implements ActionListener{
 

@@ -23,7 +23,7 @@ import javax.swing.table.TableColumn;
 import java.util.*;
 
 /**
- * @author Nai-Yun Wu
+ * @author Nai-Yun Wu, Josh Hare
  */
 public class ManagerLogic{
     // Attribute
@@ -90,7 +90,7 @@ public class ManagerLogic{
                         int column = e.getColumn();
                         String columnName = model.getColumnName(column);
                         Integer newValue = Integer.parseInt(model.getValueAt(id, column).toString());
-                        if(columnName.equals("stock_remaining")){
+                        if(columnName.equals("stock_remaining") || columnName.equals("minimum_stock")){
                             id = (int)model.getValueAt(id,0);
                         }
 
@@ -173,6 +173,7 @@ public class ManagerLogic{
     */
     public static JTable getDailyStats(JTable table){
         try{
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
             Statement stmt = conn.createStatement();
             ResultSet drinkName = stmt.executeQuery("SELECT drink_name, price FROM products;");
 
@@ -198,7 +199,7 @@ public class ManagerLogic{
 
                 // Fill second column (num sold)
                 Statement stmt2 = conn.createStatement();
-                ResultSet numDrinks= stmt2.executeQuery("SELECT COUNT(*) AS total FROM orders WHERE '"+(String)curr+"' = ANY (order_items) AND DATE(order_timestamp) = '2025-06-01'; ");
+                ResultSet numDrinks= stmt2.executeQuery("SELECT COUNT(*) AS total FROM orders WHERE '"+(String)curr+"' = ANY (order_items) AND DATE(order_timestamp) = '"+timestamp+"'; ");
                 numDrinks.next();
                 double units = numDrinks.getDouble(1);
                 totalUnits += units;
