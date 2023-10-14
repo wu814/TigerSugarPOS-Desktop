@@ -35,10 +35,11 @@ public class GUI extends JFrame implements ActionListener{
     static JFrame inventoryFrame; // Inventory screen
     static JFrame restockReportFrame; // Restock Report screen
     static JFrame managerFrame; // Manager view menu screen
-    static JFrame cashierFrame; // Cashier screen
+    static JFrame cashierFrame; // Cashier screenF
     static JFrame recentFrame; // Recent orders screen
     static JFrame statsFrame; // Order stats screen
     static JTable statsTable; // Stats table 
+    static String currRange; //current display on order stats
     static JFrame editorFrame; // Menu editor frame
     static JFrame currFrame; // The current framethat is being used.
     static JFrame prevFrame;
@@ -318,6 +319,8 @@ public class GUI extends JFrame implements ActionListener{
         JButton custom = new JButton("Custom Range"); 
         custom.addActionListener(gui);
         menuPanel.add(custom);
+        JTextArea cRange = new JTextArea(currRange);
+        menuPanel.add(cRange);
 
         // Sets up table; default is daily stats
         JScrollPane  scroll = new JScrollPane(statsTable);
@@ -496,6 +499,7 @@ public class GUI extends JFrame implements ActionListener{
         // Opens order stats
         else if(event.equals("Order Statistics")){
             statsTable = dailyStats();
+            currRange = "Today";
             setUpOrderStats();
             changeFrame(statsFrame);
         }
@@ -507,6 +511,7 @@ public class GUI extends JFrame implements ActionListener{
         // On order stats page, shows daily stats
         else if(event.equals("Daily Stats")){
             statsTable = dailyStats();
+            currRange = "Today";
             setUpOrderStats();
             changeFrame(statsFrame);
         }
@@ -526,6 +531,7 @@ public class GUI extends JFrame implements ActionListener{
                 JOptionPane.showMessageDialog(null, "You have entered an invalid date.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
             }
             statsTable = customRange(start,end);
+            currRange = start + " to " + end;
             setUpOrderStats();
             changeFrame(statsFrame);
         }
