@@ -157,8 +157,8 @@ public class OrderLogic {
                             outOfStock.add(ingredient);
                             continue;
                         }
-                        // int currentHistoryCount = (int) inventoryHistoryData.get(ingredient);
-                        // inventoryHistoryData.put(ingredient, currentHistoryCount + 1);
+                         int currentHistoryCount = (int) inventoryHistoryData.get(ingredient);
+                         inventoryHistoryData.put(ingredient, currentHistoryCount + 1);
 
                         
 
@@ -198,14 +198,18 @@ public class OrderLogic {
                     updateStmt.addBatch();
                     continue;
                 } else if(entry.getKey().equals("Extra Boba")) {
-                    String boba_name = "Tapioca Pearls (Boba)";
-                    if(inventoryCounts.get(boba_name) == 0 && entry.getValue().equals("Added")) {
-                        outOfStock.add(boba_name);
-                        continue;
+                    if(entry.getValue().equals("Added")) { // New Added conditional
+                        String boba_name = "Tapioca Pearls (Boba)";
+                        if(inventoryCounts.get(boba_name) == 0) { // If out of stock, add to out of stock list.
+                            outOfStock.add(boba_name);
+                            continue;
+                        } else {
+                            int currentHistoryCount = (int) inventoryHistoryData.get(boba_name); // My new hashmap
+                            inventoryHistoryData.put(boba_name, currentHistoryCount + 1);
+                            updateStmt.setString(1, boba_name);
+                            updateStmt.addBatch();
+                        }
                     }
-                    updateStmt.setString(1, boba_name);
-                    updateStmt.addBatch();
-                    continue;
                 } else if(entry.getKey().equals("Tiger Pearls")) {
                     String boba_name = "Tiger Pearls";
                     if(inventoryCounts.get(boba_name) == 0 && entry.getValue().equals("Added")) {
