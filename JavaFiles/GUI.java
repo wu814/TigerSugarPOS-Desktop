@@ -34,6 +34,7 @@ public class GUI extends JFrame implements ActionListener{
     static JFrame startFrame; // Opens on start, allows you to select an employee
     static JFrame inventoryFrame; // Inventory screen
     static JFrame restockReportFrame; // Restock Report screen
+    static JFrame excessReportFrame; // Excess Report screen
     static JFrame managerFrame; // Manager view menu screen
     static JFrame cashierFrame; // Cashier screenF
     static JFrame recentFrame; // Recent orders screen
@@ -173,6 +174,50 @@ public class GUI extends JFrame implements ActionListener{
         restockReportFrame.pack();
     }
 
+    /**
+     * Creates the excess report and reads in from database
+     */
+    public static void setUpExcessReport(){
+        // Frame setup
+        excessReportFrame = new JFrame("Excess Report");
+        excessReportFrame.setSize(1000, 800);
+
+        // Create bottom panel (content)
+        JPanel excessReportPanel = new JPanel();
+        excessReportFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        excessReportFrame.add(excessReportPanel);
+
+        // Create top panel (title)
+        JPanel titlePanel = new JPanel();
+        titlePanel.setPreferredSize(new Dimension(1000,50));
+        JLabel title = new JLabel("Restock Report");
+        titlePanel.add(title);
+
+        // Create middle panel (menu)
+        JPanel menuPanel = new JPanel();
+        menuPanel.setPreferredSize(new Dimension(1000,50));
+
+        // Frame layout
+        excessReportFrame.add(titlePanel,BorderLayout.NORTH);
+        excessReportFrame.add(menuPanel,BorderLayout.CENTER);
+        excessReportFrame.add(excessReportPanel,BorderLayout.SOUTH);
+
+        // Create back button
+        JButton backToManager = new JButton("Back to Manager Menu"); 
+        backToManager.addActionListener(gui);
+        menuPanel.add(backToManager);
+
+
+        // Create scrollable table
+        JTable table = new JTable();
+        JScrollPane  scroll = new JScrollPane(table);
+        excessReportFrame.add(scroll);
+
+        // Filling the table with database data
+        managerLogic.getRestockReport(table);
+
+        excessReportFrame.pack();
+    }
 
     /**
      * Creates the inventory frame and reads in from database
@@ -211,6 +256,11 @@ public class GUI extends JFrame implements ActionListener{
         JButton restockReport = new JButton("View Restock Report"); 
         restockReport.addActionListener(gui);
         menuPanel.add(restockReport); 
+
+        // Create excess report button
+        JButton excessReport = new JButton("View Excess Report"); 
+        restockReport.addActionListener(gui);
+        menuPanel.add(excessReport);
 
         // Create add button
         JButton add = new JButton("Add Supply Item");
