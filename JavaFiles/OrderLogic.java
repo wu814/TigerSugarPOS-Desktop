@@ -242,36 +242,46 @@ public class OrderLogic {
                         if (inventoryCounts.get(taro_name) == 0) { // If out of stock, add to out of stock list.
                             outOfStock.add(taro_name);
                         }
+                        int currentHistoryCount = (int) inventoryHistoryData.get(taro_name);
+                        inventoryHistoryData.put(taro_name, currentHistoryCount + 1);
                         updateStmt.setString(1, taro_name);
                         updateStmt.addBatch();
                     }
                 } else if(entry.getKey().equals("Red Bean")) {
                     String redbean_name = "Red Beans";
-                    if (entry.getValue().equals("Added")) { // New Added conditional
-                        if (inventoryCounts.get(redbean_name) == 0) { // If out of stock, add to out of stock list.
+                    if (entry.getValue().equals("Added")) {
+                        if (inventoryCounts.get(redbean_name) == 0) {
                             outOfStock.add(redbean_name);
                         }
+                        int currentHistoryCount = (int) inventoryHistoryData.get(redbean_name);
+                        inventoryHistoryData.put(redbean_name, currentHistoryCount + 1);
                         updateStmt.setString(1, redbean_name);
                         updateStmt.addBatch();
                     }
                 } else if(entry.getKey().equals("Pudding")) {
                     String pudding_name = "Pudding";
-                    if(inventoryCounts.get(pudding_name) == 0 && entry.getValue().equals("Added")) {
-                        outOfStock.add(pudding_name);
-                        continue;
+                    if (entry.getValue().equals("Added")) {
+                        if (inventoryCounts.get(pudding_name) == 0) {
+                            outOfStock.add(pudding_name);
+                        }
+                        
+                        int currentHistoryCount = (int) inventoryHistoryData.get(pudding_name);
+                        inventoryHistoryData.put(pudding_name, currentHistoryCount + 1);
+                        updateStmt.setString(1, pudding_name);
+                        updateStmt.addBatch();
                     }
-                    updateStmt.setString(1, pudding_name);
-                    updateStmt.addBatch();
-                    continue;
+
                 } else if(entry.getKey().equals("Mochi")) {
                     String mochi_name = "Mochi";
-                    if(inventoryCounts.get(mochi_name) == 0 && entry.getValue().equals("Added")) {
-                        outOfStock.add(mochi_name);
-                        continue;
+                    if (entry.getValue().equals("Added")) { // New Added conditional
+                        if (inventoryCounts.get(mochi_name) == 0) { // If out of stock, add to out of stock list.
+                            outOfStock.add(mochi_name);
+                        }
+                        int currentHistoryCount = (int) inventoryHistoryData.get(mochi_name);
+                        inventoryHistoryData.put(mochi_name, currentHistoryCount + 1);
+                        updateStmt.setString(1, mochi_name);
+                        updateStmt.addBatch();
                     }
-                    updateStmt.setString(1, "Mochi");
-                    updateStmt.addBatch();
-                    continue;
                 }
             }
 
