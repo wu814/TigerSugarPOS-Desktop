@@ -19,17 +19,17 @@ drink_prices = {
 # Total sales target for the year
 total_sales_target = 1000000  # Might be unused
 
-start_date = datetime(2024, 6, 1, 0, 0)  # Start date with hour component
+start_date = datetime(2023, 6, 1, 0, 0)  # Start date with hour component
 
-end_date = datetime(2025, 6, 1, 0, 0)  # End date with hour component
+end_date = datetime(2024, 6, 1, 0, 0)  # End date with hour component
 
 # Initialize total sales variable
 total_sales = 0
 
-drinkMaxSales = 6
+drinkMaxSales = 7
 
 # Initialize CSV file
-with open("sales_data.csv", mode="w", newline="") as file:
+with open("C:/Users/arnel/OneDrive/Documents/GitHub/project-2-910_10g/csvFiles/sales_data.csv", mode="w", newline="") as file:
     writer = csv.writer(file)
     writer.writerow(["Year", "Month", "Day", "Hour", "Week", "Drink", "Number of Drinks Sold", "Sales ($)"])
 
@@ -47,7 +47,7 @@ with open("sales_data.csv", mode="w", newline="") as file:
                 max_sales = min(drinkMaxSales, drinkMaxSales)  # Maximum sales for the hour per drink
 
                 # Check for day exceptions (8/21/2024 and 1/16/2025)
-                if current_date.date() == datetime(2024, 8, 21).date() or current_date.date() == datetime(2025, 1, 16).date():
+                if current_date.date() == datetime(2023, 8, 21).date() or current_date.date() == datetime(202, 1, 16).date():
                     num_sold = random.randint(5, max_sales * 5)  # Higher sales on exceptions
                 else:
                     num_sold = random.randint(1, max_sales)  # Random number of drinks sold (1 to max_sales)
