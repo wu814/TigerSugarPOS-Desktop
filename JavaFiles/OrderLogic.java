@@ -131,9 +131,9 @@ public class OrderLogic {
             }
 
             //printing out each one of the ingredients and the amount of each one
-            for(Map.Entry<String, String> entry: ingredients.entrySet()) {
-                System.out.println(entry.getKey() + " " + entry.getValue());
-            }
+            // for(Map.Entry<String, String> entry: ingredients.entrySet()) {
+            //     System.out.println(entry.getKey() + " " + entry.getValue());
+            // }
 
             // fetching all inventory items and their stock remaining and storing it in a hashmap
             String fetchInventory = "SELECT supply, stock_remaining FROM inventory";
@@ -159,8 +159,6 @@ public class OrderLogic {
                         }
                          int currentHistoryCount = (int) inventoryHistoryData.get(ingredient);
                          inventoryHistoryData.put(ingredient, currentHistoryCount + 1);
-
-                        
 
                         updateStmt.setString(1, ingredient);
                         updateStmt.addBatch();
@@ -285,9 +283,7 @@ public class OrderLogic {
                 }
             }
 
-            for (Map.Entry<String, Object> entry : inventoryHistoryData.entrySet()) {
-                System.out.println(entry.getKey() + ", Value: " + entry.getValue());
-            }
+            
 
             // if arraylist is empty, we can go, otherwise, we return the arraylist 
             if(outOfStock.size() != 0) {
@@ -296,6 +292,7 @@ public class OrderLogic {
 
             // Getting timestamp without millisecond
             Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+            inventoryHistoryData.put("order_timestamp", timestamp);
             timestamp.setNanos(0);
             preparedStatement.setTimestamp(1, timestamp);
             preparedStatement.setInt(2, employeeId);
@@ -305,11 +302,61 @@ public class OrderLogic {
             preparedStatement.setArray(6, conn.createArrayOf("text", orderAttributes));
             preparedStatement.setArray(7, conn.createArrayOf("text", orderAddons));
 
+            String inventorySQL = "INSERT INTO inventory_history (order_timestamp, Sago, Cups_XL, Cups_Regular_Hot, Grass_Jelly, Crystal_Jelly, Mango_Milk_Cream, " +
+                "Black_Sugars, Aloe_Vera_Bits, Straws_Jumbo, Brown_Sugar, Black_Sugar, Lids_Dome, Strawberry_Milk_Cream, " +
+                "Condiment_Station_Supplies, Matcha, Fresh_Milk, Tapioca_Pearls_Boba, Tiger_Pearls, Cream_Mousse, Taro, " +
+                "Red_Beans, Pudding, Mochi, Jasmine_Green_Tea_Leaves, Passion_Fruit_Tea_Leaves, Lychee_Jelly, Oat_Milk, " +
+                "Strawberry_Mango, Oolong_Tea_Leaves, Straws_Regular, Lids_Flat, Napkins_Regular, To_Go_Bags_Small, " +
+                "Cups_Regular) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            PreparedStatement preparedStatement2 = conn.prepareStatement(inventorySQL);
+            timestamp = (Timestamp) inventoryHistoryData.get("order_timestamp");
+            preparedStatement2.setTimestamp(1, timestamp);
+            preparedStatement2.setInt(2, (int) inventoryHistoryData.get("Sago"));
+            preparedStatement2.setInt(3, (int) inventoryHistoryData.get("Cups (XL)"));
+            preparedStatement2.setInt(4, (int) inventoryHistoryData.get("Cups (Regular Hot)"));
+            preparedStatement2.setInt(5, (int) inventoryHistoryData.get("Grass Jelly"));
+            preparedStatement2.setInt(6, (int) inventoryHistoryData.get("Crystal Jelly"));
+            preparedStatement2.setInt(7, (int) inventoryHistoryData.get("Mango Milk Cream"));
+            preparedStatement2.setInt(8, (int) inventoryHistoryData.get("Black Sugars"));
+            preparedStatement2.setInt(9, (int) inventoryHistoryData.get("Aloe Vera Bits"));
+            preparedStatement2.setInt(10, (int) inventoryHistoryData.get("Straws (Jumbo)"));
+            preparedStatement2.setInt(11, (int) inventoryHistoryData.get("Brown Sugar"));
+            preparedStatement2.setInt(12, (int) inventoryHistoryData.get("Black Sugar"));
+            preparedStatement2.setInt(13, (int) inventoryHistoryData.get("Lids (Dome)"));
+            preparedStatement2.setInt(14, (int) inventoryHistoryData.get("Strawberry Milk Cream"));
+            preparedStatement2.setInt(15, (int) inventoryHistoryData.get("Condiment Station Supplies"));
+            preparedStatement2.setInt(16, (int) inventoryHistoryData.get("Matcha"));
+            preparedStatement2.setInt(17, (int) inventoryHistoryData.get("Fresh Milk"));
+            preparedStatement2.setInt(18, (int) inventoryHistoryData.get("Tapioca Pearls (Boba)"));
+            preparedStatement2.setInt(19, (int) inventoryHistoryData.get("Tiger Pearls"));
+            preparedStatement2.setInt(20, (int) inventoryHistoryData.get("Cream Mousse"));
+            preparedStatement2.setInt(21, (int) inventoryHistoryData.get("Taro"));
+            preparedStatement2.setInt(22, (int) inventoryHistoryData.get("Red Beans"));
+            preparedStatement2.setInt(23, (int) inventoryHistoryData.get("Pudding"));
+            preparedStatement2.setInt(24, (int) inventoryHistoryData.get("Mochi"));
+            preparedStatement2.setInt(25, (int) inventoryHistoryData.get("Jasmine Green Tea Leaves"));
+            preparedStatement2.setInt(26, (int) inventoryHistoryData.get("Passion Fruit Tea Leaves"));
+            preparedStatement2.setInt(27, (int) inventoryHistoryData.get("Lychee Jelly"));
+            preparedStatement2.setInt(28, (int) inventoryHistoryData.get("Oat Milk"));
+            preparedStatement2.setInt(29, (int) inventoryHistoryData.get("Strawberry Mango"));
+            preparedStatement2.setInt(30, (int) inventoryHistoryData.get("Oolong Tea Leaves"));
+            preparedStatement2.setInt(31, (int) inventoryHistoryData.get("Straws (Regular)"));
+            preparedStatement2.setInt(32, (int) inventoryHistoryData.get("Lids (Flat)"));
+            preparedStatement2.setInt(33, (int) inventoryHistoryData.get("Napkins (Regular)"));
+            preparedStatement2.setInt(34, (int) inventoryHistoryData.get("To-Go Bags (Small)"));
+            preparedStatement2.setInt(35, (int) inventoryHistoryData.get("Cups (Regular)"));
+
             // Execute the SQL statement
             preparedStatement.executeUpdate();
+            preparedStatement2.executeUpdate();
             updateStmt.executeBatch();
             conn.commit();
 
+            for (Map.Entry<String, Object> entry : inventoryHistoryData.entrySet()) {
+                System.out.println(entry.getKey() + ", Value: " + entry.getValue());
+            }
             System.out.println("Order added successfully!");
             return outOfStock;
         }catch(SQLException e){
@@ -324,6 +371,8 @@ public class OrderLogic {
             }
         }
         
+
+
         return outOfStock;
     }
 
