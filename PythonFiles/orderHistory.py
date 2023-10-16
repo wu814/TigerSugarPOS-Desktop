@@ -47,7 +47,7 @@ with open("C:/Users/arnel/OneDrive/Documents/GitHub/project-2-910_10g/csvFiles/s
                 max_sales = min(drinkMaxSales, drinkMaxSales)  # Maximum sales for the hour per drink
 
                 # Check for day exceptions (8/21/2024 and 1/16/2025)
-                if current_date.date() == datetime(2023, 8, 21).date() or current_date.date() == datetime(202, 1, 16).date():
+                if current_date.date() == datetime(2023, 8, 21).date() or current_date.date() == datetime(2024, 1, 16).date():
                     num_sold = random.randint(5, max_sales * 5)  # Higher sales on exceptions
                 else:
                     num_sold = random.randint(1, max_sales)  # Random number of drinks sold (1 to max_sales)
