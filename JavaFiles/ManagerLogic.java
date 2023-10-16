@@ -417,8 +417,15 @@ public class ManagerLogic{
             TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter new menu item","Enter price");
             TwoInputs inputs = dialog.showInputDialog();
             String newDrink = inputs.input1;
-            Double newPrice = Double.parseDouble(inputs.input2); 
+            try{
+                Double newPrice = Double.parseDouble(inputs.input2); 
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "You have entered an invalid price.\nTry Again.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
             Vector<String> ings = new Vector<>();
+            Double newPrice = Double.parseDouble(inputs.input2); 
 
             // Get ingredients
             //TODO add input validation
