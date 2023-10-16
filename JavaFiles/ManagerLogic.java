@@ -428,14 +428,19 @@ public class ManagerLogic{
             Double newPrice = Double.parseDouble(inputs.input2); 
 
             // Get ingredients
+            String input = JOptionPane.showInputDialog("How many ingredients does this drink have?");
             try{
-                 Integer ingredientCount = Integer.parseInt(JOptionPane.showInputDialog("How many ingredients does this drink have?"));
+                 Integer ingredientCount = Integer.parseInt(input);
+                 if(ingredientCount <=0){
+                    JOptionPane.showMessageDialog(null, "A drink must have at least 1 ingredient.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+                    return;
+                 }
             }
             catch(Exception e){
-                JOptionPane.showMessageDialog(null, "You have entered an invalid ingredient.\nTry Again.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "You have entered an invalid amount of ingredients.\nTry Again.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
-            Integer ingredientCount = Integer.parseInt(JOptionPane.showInputDialog("How many ingredients does this drink have?"));
+            Integer ingredientCount = Integer.parseInt(input);
             for(int i = 0;i<ingredientCount;i++){
                 // For each ingredient:
                 String ingredient = JOptionPane.showInputDialog("Enter an ingredient");
