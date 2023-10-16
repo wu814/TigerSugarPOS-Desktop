@@ -417,6 +417,15 @@ public class ManagerLogic{
             TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter new menu item","Enter price");
             TwoInputs inputs = dialog.showInputDialog();
             String newDrink = inputs.input1;
+            Statement stmt0 = conn.createStatement();
+            ResultSet result0 = stmt0.executeQuery("SELECT * FROM products WHERE drink_name = '"+newDrink+"';");
+                // If supply is not in the inventory
+            if(result0.next()){ 
+                JOptionPane.showMessageDialog(null,"A drink by the same name is already on the menu");
+                return;
+            }
+
+
             try{
                 Double newPrice = Double.parseDouble(inputs.input2); 
             }
