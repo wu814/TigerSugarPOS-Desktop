@@ -40,7 +40,7 @@ public class ManagerLogic{
         // Initialize the connection in the constructor
         try{
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
-        }catch (SQLException e){
+        }catch(SQLException e){
             // Handle connection initialization errors here
             e.printStackTrace();
         }
@@ -134,6 +134,7 @@ public class ManagerLogic{
 
             // Get data
             Vector<Vector<Object>> data = new Vector<>();
+
             // Initializes employees with info from database, adds to vector
             while(result.next()){ 
                 Vector<Object> row = new Vector<>();
@@ -238,11 +239,7 @@ public class ManagerLogic{
     */
     public static JTable getCustomRange(JTable table, String start, String end){
         try{
-            //generate list of all dates to look at
-            
-
-
-
+            // Generate list of all dates to look at
             Statement stmt = conn.createStatement();
             ResultSet drinkName = stmt.executeQuery("SELECT drink_name, price FROM products;");
 
@@ -280,7 +277,6 @@ public class ManagerLogic{
                     totalUnits += units;
                     row.add(numDrinks.getObject(1));
                 }
-
                 // Fill third column (sales)
                 double price = drinkName.getDouble(2);
                 double sales = price * units;
@@ -289,7 +285,6 @@ public class ManagerLogic{
 
                 data.add(row);
                 System.out.println(totalUnits);
-
             }
             // Add total row
             Vector<Object> totalRow = new Vector<>();
@@ -373,9 +368,8 @@ public class ManagerLogic{
                                 pStat.setInt(2,id);
                             }
                             
-                            
                             pStat.executeUpdate();
-                        }catch (Exception ex){
+                        }catch(Exception ex){
                             System.out.println("HELP"+ex);
                         }
                     }
@@ -394,7 +388,7 @@ public class ManagerLogic{
     public static void addMenuItem(JFrame currFrame){
         try{
             // Create a statement object
-            //TODO add input validation
+            // TODO add input validation
             TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter new menu item","Enter price");
             TwoInputs inputs = dialog.showInputDialog();
             String newDrink = inputs.input1;
@@ -402,7 +396,7 @@ public class ManagerLogic{
             Vector<String> ings = new Vector<>();
 
             // Get ingredients
-            //TODO add input validation
+            // TODO add input validation
             Integer ingredientCount = Integer.parseInt(JOptionPane.showInputDialog("How many ingredients does this drink have?"));
             for(int i = 0;i<ingredientCount;i++){
                 // For each ingredient:
@@ -414,10 +408,10 @@ public class ManagerLogic{
                 if(!result.next()){ 
                     System.out.println(ingredient);
                     Statement stmt2 = conn.createStatement();
-                    //add a new supply
+                    // Add a new supply
                     try{ 
                         stmt2.executeQuery("INSERT INTO inventory (inventory_id, supply, stock_remaining) VALUES (DEFAULT, '"+ingredient+"', 100);");
-                    }catch(Exception ex){ }
+                    }catch(Exception ex){}
                 }
             }
             //TODO Add Input Validation
@@ -426,7 +420,7 @@ public class ManagerLogic{
             // Convert vector to an array
             String[] ingredients = ings.toArray(new String[0]);
         
-            //prep new query to insert new item onto menu
+            // Prep new query to insert new item onto menu
             String query = "INSERT INTO products (product_id, drink_name, price, ingredients, drink_type) VALUES (DEFAULT, ?, ?, ?, ?);";
 
             PreparedStatement preparedStatement = conn.prepareStatement(query);
@@ -453,7 +447,7 @@ public class ManagerLogic{
             Statement stmt = conn.createStatement();
             ResultSet r = stmt.executeQuery("DELETE FROM products WHERE product_id = "+item+";");
         // Errors connecting to database
-        }catch (Exception ex){ 
+        }catch(Exception ex){ 
             JOptionPane.showMessageDialog(null,ex);
         }
     }
@@ -475,7 +469,7 @@ public class ManagerLogic{
             Statement stmt = conn.createStatement();
             ResultSet r = stmt.executeQuery("INSERT INTO inventory (inventory_id, supply, stock_remaining) VALUES (DEFAULT, '"+newSupply+"', "+newStock+");");
         // Errors connecting to database
-        }catch (Exception ex){ 
+        }catch(Exception ex){ 
             JOptionPane.showMessageDialog(null,ex);
         }
     }
@@ -491,7 +485,7 @@ public class ManagerLogic{
             Statement stmt = conn.createStatement();
             ResultSet r = stmt.executeQuery("DELETE FROM inventory WHERE inventory_id = "+item+";");
         // Errors connecting to database
-        }catch (Exception ex){ 
+        }catch(Exception ex){ 
             JOptionPane.showMessageDialog(null,ex);
         }
     }
