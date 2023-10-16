@@ -540,8 +540,11 @@ public class ManagerLogic{
     }
 
     public static void getExcessReport(JTable table, Timestamp timestamp){
-        
+        try{
+            
+        }catch(Exception e){ 
+            JOptionPane.showMessageDialog(null,e);
+        }
+        return table;
     }
-    
-
 }
