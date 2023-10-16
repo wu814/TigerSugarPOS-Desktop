@@ -491,11 +491,19 @@ public class ManagerLogic{
             }
             Integer item = Integer.parseInt(input);
 
+            Statement stmt0 = conn.createStatement();
+            ResultSet result = stmt0.executeQuery("SELECT * FROM products WHERE product_id = '"+item+"';");
+                // If supply is not in the inventory
+            if(!result.next()){ 
+                JOptionPane.showMessageDialog(null,"Product not found in database.");
+                return;
+            }
+
             Statement stmt = conn.createStatement();
             ResultSet r = stmt.executeQuery("DELETE FROM products WHERE product_id = "+item+";");
         // Errors connecting to database
         }catch (Exception ex){ 
-            JOptionPane.showMessageDialog(null,"ID not found in database.\n Try Again.");
+        
         }
     }
 
@@ -560,7 +568,7 @@ public class ManagerLogic{
             ResultSet result = stmt0.executeQuery("SELECT * FROM inventory WHERE inventory_id = '"+item+"';");
                 // If supply is not in the inventory
             if(!result.next()){ 
-                JOptionPane.showMessageDialog(null,"Supply Not Found");
+                JOptionPane.showMessageDialog(null,"Supply not found in database.");
                 return;
             }
 
