@@ -14,7 +14,8 @@ import java.math.BigDecimal;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
-
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
@@ -117,7 +118,7 @@ public class ManagerLogic{
     /**
      * Gets a table of the 10 most recent orders
      */
-    public static void getRecentOrders(JTable table){
+    public static void getRecentOrders(JTable table, JTextArea textArea){
         // Getting the data
         try{
             Statement stmt = conn.createStatement();
@@ -134,16 +135,30 @@ public class ManagerLogic{
 
             // Get data
             Vector<Vector<Object>> data = new Vector<>();
-            // Initializes employees with info from database, adds to vector
+            // Put info into rows for the table
             while(result.next()){ 
                 Vector<Object> row = new Vector<>();
                 for(int i = 1;i<=cols;i++){
                     row.add(result.getObject(i));
+                    
                 }
                 data.add(row);
             }
             DefaultTableModel model = new DefaultTableModel(data,colNames);
             table.setModel(model);
+            table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
+                    int selectedRow = table.getSelectedRow();
+                    int selectedColumn = table.getSelectedColumn();
+                    if (selectedRow >= 0 && selectedColumn >= 0) {
+                        Object selectedValue = table.getValueAt(selectedRow, selectedColumn);
+                        textArea.setText(selectedValue.toString());
+                    }
+                }
+            }
+        });
 
             // Table configuration
             TableColumn column = table.getColumnModel().getColumn(0);

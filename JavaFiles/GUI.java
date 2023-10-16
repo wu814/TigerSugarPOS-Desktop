@@ -49,6 +49,7 @@ public class GUI extends JFrame implements ActionListener{
     static JComboBox<Employee> employeeSelector; // Drop down for employees, how we know to go in cashier view or  manager view
     static JButton employeeEnter;// Locks in combobox entry
     static JButton backToLogin; // Back button that returns to employee select
+    static JTextArea textArea; //for recent orders
 
     static JButton payButton;
     static JPanel orderLogs;
@@ -315,14 +316,20 @@ public class GUI extends JFrame implements ActionListener{
         // Goes back to manager menu
         JButton backToManager = new JButton("Back to Manager Menu"); 
         backToManager.addActionListener(gui);
-        menuPanel.add(backToManager);
+        titlePanel.add(backToManager);
 
         JTable table = new JTable();
         JScrollPane  scroll = new JScrollPane(table);
         recentPanel.add(scroll);
 
+        textArea = new JTextArea(50,100);
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
+        textArea.setFont(new Font("Arial", Font.PLAIN, 6));
+        menuPanel.add(textArea);
+
         // Populate table with data from database
-        managerLogic.getRecentOrders(table);
+        managerLogic.getRecentOrders(table,textArea);
 
         recentFrame.pack();
     }
