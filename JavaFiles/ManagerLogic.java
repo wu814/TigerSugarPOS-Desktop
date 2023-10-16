@@ -483,7 +483,7 @@ public class ManagerLogic{
         try{
             // Get input and execute a query
             try{
-            Integer item = Integer.parseInt(input);
+                Integer item = Integer.parseInt(input);
             }
             catch(Exception e){
                 JOptionPane.showMessageDialog(null,"Invalid ID.\n Try Again.");
@@ -544,14 +544,30 @@ public class ManagerLogic{
      * Remove a supply item from database
      */
     public static void removeSupplyItem(){
+        String input = JOptionPane.showInputDialog("Enter ID of object to be removed");
         try{
             // Gets the id of the object to remove
-            Integer item = Integer.parseInt(JOptionPane.showInputDialog("Enter ID of object to be removed"));
+            try{
+                Integer item = Integer.parseInt(input);
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null,"Invalid ID.\n Try Again.");
+                return;
+            }
+            Integer item = Integer.parseInt(input);
+
+            Statement stmt0 = conn.createStatement();
+            ResultSet result = stmt0.executeQuery("SELECT * FROM inventory WHERE inventory_id = '"+item+"';");
+                // If supply is not in the inventory
+            if(!result.next()){ 
+                JOptionPane.showMessageDialog(null,"Supply Not Found");
+                return;
+            }
+
             Statement stmt = conn.createStatement();
-            ResultSet r = stmt.executeQuery("DELETE FROM inventory WHERE inventory_id = "+item+";");
+            stmt.executeQuery("DELETE FROM inventory WHERE inventory_id = "+item+";");
         // Errors connecting to database
-        }catch (Exception ex){ 
-          //  JOptionPane.showMessageDialog(null,ex);
+        }catch (SQLException ex){ 
         }
     }
 
