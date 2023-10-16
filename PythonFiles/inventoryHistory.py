@@ -161,6 +161,7 @@ def parse_attributes(input_string):
     return dairy_free_alternative, cup_size # Updated return statement
 
 def parse_addons(addons_str):
+    print(addons_str)
     # Split the addons string into individual options
     addons_options = addons_str.strip('{}').split('", ')
 
@@ -178,6 +179,7 @@ def parse_addons(addons_str):
         for key, value in data.items():
             if value.strip() == "Added":
                 if key in addons_inventory:
+                    print(key)
                     addons_inventory[key] += 1
 
     return addons_inventory
@@ -198,10 +200,8 @@ with open('../csvFiles/orders_test.csv', mode='r') as orders_file:
         used_inventory = {item: 0 for item in inventory}
 
         # Parse the drink attributes
-        
         segments_attributes = drink_attributes_str.split('", ')
-        segments_addons = drink_addons_str.split('", ')
-
+        
         for index, attribute_str in enumerate(segments_attributes):
             attribute_str += '"'
             
@@ -232,13 +232,26 @@ with open('../csvFiles/orders_test.csv', mode='r') as orders_file:
                 used_inventory['Cups (XL)'] += 1
             elif cup_size.lower().strip() == 'regular hot':
                 used_inventory['Cups (Regular Hot)'] += 1
+        
+        segments_addons = drink_addons_str.split('", ')
+        # print(segments_addons)
+        # print(len(segments_addons))
+        for index, addons_str in enumerate(segments_addons):
+            # addons_str += '"'
+            print(addons_str)
+            if index == 0:
+                addons_str = addons_str[2:-1]
+            else:
+                addons_str = addons_str[1:-1]
+            addons_str = addons_str[0:-1]
+            # Inside the main loop where you process each order row, after parsing drink_addons_str
+            addons_inventory = parse_addons(addons_str)
+            # print(addons_inventory.items())
 
-        # Inside the main loop where you process each order row, after parsing drink_addons_str
-        addons_inventory = parse_addons(drink_addons_str)
-
-        # Update used_inventory with the addons_inventory
-        for item, quantity in addons_inventory.items():
-            used_inventory[item] += quantity
+            # Update used_inventory with the addons_inventory
+            for item, quantity in addons_inventory.items():
+                # print(quantity)
+                used_inventory[item] += quantity
 
         # print(used_inventory)
         for item in order_items:
@@ -262,7 +275,7 @@ with open('../csvFiles/orders_test.csv', mode='r') as orders_file:
         #         print(f"{item}: {quantity}")
 
         # Print the used inventory for this timestamp
-        if (counter == 4):
+        if (counter == 2):
             break
 # Write the updated inventory history to 'inventory_history.csv' file
 with open('../csvFiles/inventory_history.csv', mode='w', newline='') as history_file:
@@ -275,9 +288,9 @@ with open('../csvFiles/inventory_history.csv', mode='w', newline='') as history_
         row_data.update(inventory_data)
         writer.writerow(row_data)
 
-print(f"Timestamp: {timestamp_str}")
-for item, quantity in used_inventory.items():
-    if quantity > 0:
-        print(f"{item}: {quantity}")
+# print(f"Timestamp: {timestamp_str}")
+# for item, quantity in used_inventory.items():
+#     if quantity > 0:
+#         print(f"{item}: {quantity}")
 
 print("Inventory history updated and saved to 'inventory_history.csv'.")
