@@ -24,7 +24,7 @@ total_sales = 0
 drink_sales_range = (8, 35)
 
 # Define options for drink attributes and addons
-dairy_free_alternatives = ["None", "Oat", "Soy", "Lactose Free"]
+dairy_free_alternatives = ["None", "Oat Milk", "Soy Milk", "Lactose Free Milk"]
 sweetness_levels = ["50%", "100%"]
 ice_levels = ["Less Ice", "Normal", "None"]
 cup_sizes = ["Regular", "Regular Hot", "XL"]
