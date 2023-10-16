@@ -157,10 +157,30 @@ def parse_attributes(input_string):
     # Retrieve values for the specified keys
     dairy_free_alternative = data.get('Dairy Free Alternative', 'Not specified')
     cup_size = data.get('Cup Size', 'Not specified')
-    drink_addons = data.get('Drink Addons', 'None')  # New line to get drink addons
 
-    return dairy_free_alternative, cup_size, drink_addons  # Updated return statement
+    return dairy_free_alternative, cup_size # Updated return statement
 
+def parse_addons(addons_str):
+    # Split the addons string into individual options
+    addons_options = addons_str.strip('{}').split('", ')
+
+    # Initialize a dictionary to store the addons and their quantities
+    addons_inventory = {item: 0 for item in inventory}
+
+    for option in addons_options:
+        # Split each option into key-value pairs
+        pairs = [pair.strip() for pair in option.split(',')]
+        
+        # Create a dictionary from the key-value pairs
+        data = dict(pair.split(':') for pair in pairs)
+
+        # Iterate through the data and update addons_inventory based on "Added" values
+        for key, value in data.items():
+            if value.strip() == "Added":
+                if key in addons_inventory:
+                    addons_inventory[key] += 1
+
+    return addons_inventory
 
 with open('../csvFiles/orders_test.csv', mode='r') as orders_file:
     reader = csv.reader(orders_file)
@@ -181,6 +201,7 @@ with open('../csvFiles/orders_test.csv', mode='r') as orders_file:
         
         segments_attributes = drink_attributes_str.split('", ')
         segments_addons = drink_addons_str.split('", ')
+
         for index, attribute_str in enumerate(segments_attributes):
             attribute_str += '"'
             
@@ -191,12 +212,9 @@ with open('../csvFiles/orders_test.csv', mode='r') as orders_file:
             else:
                 attribute_str = attribute_str[1:-1]
             
-
             parsed_attributes = parse_attributes(attribute_str)
-            parsed_addons = parse_attributes(segments_addons[index])
-            
             # Determine which ingredients to use based on attributes
-            dairy_alternative, cup_size, drink_addons  = parsed_attributes[0], parsed_attributes[1], parsed_addons
+            dairy_alternative, cup_size  = parsed_attributes[0], parsed_attributes[1]
 
             if dairy_alternative.lower().strip() == 'none':
                 used_inventory['Fresh Milk'] += 1
@@ -215,7 +233,13 @@ with open('../csvFiles/orders_test.csv', mode='r') as orders_file:
             elif cup_size.lower().strip() == 'regular hot':
                 used_inventory['Cups (Regular Hot)'] += 1
 
-            var = attribute_str
+        # Inside the main loop where you process each order row, after parsing drink_addons_str
+        addons_inventory = parse_addons(drink_addons_str)
+
+        # Update used_inventory with the addons_inventory
+        for item, quantity in addons_inventory.items():
+            used_inventory[item] += quantity
+
         # print(used_inventory)
         for item in order_items:
             # Check if the item is in the drink_to_inventory mapping
@@ -232,10 +256,14 @@ with open('../csvFiles/orders_test.csv', mode='r') as orders_file:
         if timestamp_key not in inventory_history:
             inventory_history[timestamp_key] = used_inventory
 
+        # print(f"Timestamp: {timestamp_str}")
+        # for item, quantity in used_inventory.items():
+        #     if quantity > 0:
+        #         print(f"{item}: {quantity}")
 
         # Print the used inventory for this timestamp
-        # if (counter == 4):
-        #     break
+        if (counter == 4):
+            break
 # Write the updated inventory history to 'inventory_history.csv' file
 with open('../csvFiles/inventory_history.csv', mode='w', newline='') as history_file:
     fieldnames = ["order_timestamp"] + list(inventory.keys())
@@ -247,9 +275,9 @@ with open('../csvFiles/inventory_history.csv', mode='w', newline='') as history_
         row_data.update(inventory_data)
         writer.writerow(row_data)
 
-# print(f"Timestamp: {timestamp_str}")
-# for item, quantity in used_inventory.items():
-#     if quantity > 0:
-#         print(f"{item}: {quantity}")
+print(f"Timestamp: {timestamp_str}")
+for item, quantity in used_inventory.items():
+    if quantity > 0:
+        print(f"{item}: {quantity}")
 
 print("Inventory history updated and saved to 'inventory_history.csv'.")
