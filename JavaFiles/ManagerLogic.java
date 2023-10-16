@@ -158,6 +158,10 @@ public class ManagerLogic{
             column.setPreferredWidth(900);
             column = table.getColumnModel().getColumn(5);
             column.setPreferredWidth(200);
+            column = table.getColumnModel().getColumn(6);
+            column.setPreferredWidth(800);
+            column = table.getColumnModel().getColumn(7);
+            column.setPreferredWidth(800);
             // Adjust the width and height as needed
             table.setPreferredScrollableViewportSize(new Dimension(800, 400)); 
         // Errors connecting to database
