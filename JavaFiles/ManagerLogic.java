@@ -360,7 +360,7 @@ public class ManagerLogic{
             DefaultTableModel model = new DefaultTableModel(data,colNames){
                 public boolean isCellEditable(int row, int column) {
                 // Make the menu item column uneditable
-                return column != 3 && column != 0;
+                return column != 3 && column != 0 && column != 4;
                 }
             };
             table.setModel(model);
@@ -400,6 +400,17 @@ public class ManagerLogic{
                     }
                 }
             });
+            TableColumn column = table.getColumnModel().getColumn(0);
+            column.setPreferredWidth(125);
+            column = table.getColumnModel().getColumn(1);
+            column.setPreferredWidth(400);
+            column = table.getColumnModel().getColumn(2);
+            column.setPreferredWidth(100);
+            column = table.getColumnModel().getColumn(3);
+            column.setPreferredWidth(800);
+            column = table.getColumnModel().getColumn(4);
+            column.setPreferredWidth(300);
+            table.setPreferredScrollableViewportSize(new Dimension(800, 400));
         // Errors connecting to database
         }catch(Exception e){ 
             JOptionPane.showMessageDialog(null,e);
