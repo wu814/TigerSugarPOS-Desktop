@@ -134,19 +134,6 @@ drink_to_inventory = {
 # Create a dictionary to store the updated inventory history
 inventory_history = {}
 
-# def parse_attributes(input_string):
-#     # Split the string into key-value pairs
-#     pairs = [pair.strip() for pair in input_string.split(',')]
-
-#     # Create a dictionary from the key-value pairs
-#     data = dict(pair.split(':') for pair in pairs)
-
-#     # Retrieve values for the specified keys
-#     dairy_free_alternative = data.get('Dairy Free Alternative', 'Not specified')
-#     cup_size = data.get('Cup Size', 'Not specified')
-
-#     return dairy_free_alternative, cup_size
-
 def parse_attributes(input_string):
     # Split the string into key-value pairs
     pairs = [pair.strip() for pair in input_string.split(',')]
@@ -178,8 +165,9 @@ def parse_addons(addons_str):
         # Iterate through the data and update addons_inventory based on "Added" values
         for key, value in data.items():
             if value.strip() == "Added":
+                print(key.strip() + " wants to be added")
                 if key in addons_inventory:
-                    print(key)
+                    print(key.strip() + " was added")
                     addons_inventory[key] += 1
 
     return addons_inventory
