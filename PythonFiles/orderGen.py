@@ -118,7 +118,7 @@ with open("C:/Users/arnel/OneDrive/Documents/GitHub/project-2-910_10g/csvFiles/o
                         customer = random.randint(1, 20)
 
                         # Write a row for each drink sold with a unique orderID
-                        writer.writerow([current_date, employee, customer, drinks, sales, drink_attributes_str, drink_addons_str])
+                        writer.writerow([current_date, employee, customer, drinks, sales, "{" + drink_attributes_str + "}", "{" + drink_addons_str + "}"])
 
                     else:
                         break
