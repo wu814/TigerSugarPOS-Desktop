@@ -125,7 +125,7 @@ public class ManagerLogic{
         // Getting the data
         try{
             Statement stmt = conn.createStatement();
-            ResultSet result = stmt.executeQuery("SELECT * FROM orders" + "ORDER BY order_id DESC" + "LIMIT 10;");
+            ResultSet result = stmt.executeQuery("SELECT * FROM orders ORDER BY order_id DESC LIMIT 10;");
 
             // Get column names
             int cols = result.getMetaData().getColumnCount();
