@@ -1,4 +1,6 @@
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Cursor;
@@ -587,16 +589,19 @@ public class GUI extends JFrame implements ActionListener{
 
             String start = inputs.input1;
             String end = inputs.input2;
-            if(start != "" && end != ""){   //TODO: Input Validtaion
-                System.out.println("VALID");
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                Timestamp timestamp = new Timestamp(dateFormat.parse(start).getTime());
+                statsTable = customRange(start,end);
+                currRange = start + " to " + end;
+                setUpOrderStats();
+                changeFrame(statsFrame);
+                
+            } catch (ParseException | IllegalArgumentException exe) {
+                JOptionPane.showMessageDialog(null, "You have entered an invalid date.\nTry Again.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
             }
-            else{
-                JOptionPane.showMessageDialog(null, "You have entered an invalid date.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
-            }
-            statsTable = customRange(start,end);
-            currRange = start + " to " + end;
-            setUpOrderStats();
-            changeFrame(statsFrame);
+            
+            
         }
         // On inventory page, view the restock report
         else if(event.equals("View Restock Report")){

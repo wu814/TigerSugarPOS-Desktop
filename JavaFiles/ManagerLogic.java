@@ -324,7 +324,7 @@ public class ManagerLogic{
             table.setPreferredScrollableViewportSize(new Dimension(800, 400)); 
         // Errors connecting to database
         }catch(Exception e){ 
-            JOptionPane.showMessageDialog(null,e);
+            JOptionPane.showMessageDialog(null,"You have entered an invalid date.\n     Try Again.");
         }
         return table;
     }
