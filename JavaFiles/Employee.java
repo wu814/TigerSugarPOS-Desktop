@@ -24,6 +24,7 @@ public class Employee {
 
 
     /**
+     * Getter function for name
      * @return the name of the employee
     */
     public String getName() {
@@ -32,7 +33,9 @@ public class Employee {
 
 
     /**
+     * Setter function for name
      * @param name the employee's name
+     * @return
     */
     public void setName(String name) {
         this.name = name;
@@ -40,6 +43,7 @@ public class Employee {
 
 
     /**
+     * Getter function for position
      * @return the poition of the employee
     */
     public String getPosition() {
@@ -48,7 +52,9 @@ public class Employee {
 
 
     /**
+     * Setter fucntion for position
      * @param position the employee's position
+     * @return 
     */
     public void setPosition(String position) {
         this.position = position;
@@ -56,6 +62,7 @@ public class Employee {
 
 
     /**
+     * Getter function for wage
      * @return the wage of the employee
     */
     public double getWage() {
@@ -64,7 +71,9 @@ public class Employee {
 
 
     /**
+     * Setter function for wage
      * @param wage the employee's wage
+     * @return
     */
     public void setWage(double wage) {
         this.wage = wage;
@@ -72,6 +81,7 @@ public class Employee {
 
 
     /**
+     * Getter function for hours worked
      * @return the hours worked for the employee
     */
     public int getHoursWorked() {
@@ -80,7 +90,9 @@ public class Employee {
 
 
     /**
+     * Setter function for hours worked
      * @param hoursWorked the employee's hours worked
+     * @return
     */
     public void setHoursWorked(int hoursWorked) {
         this.hoursWorked = hoursWorked;
@@ -88,6 +100,7 @@ public class Employee {
 
 
     /**
+     * See if an employee is the manager
      * @return a booleaning indicating if that employee is the manager
     */
     public boolean isManager(){
