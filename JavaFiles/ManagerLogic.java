@@ -586,8 +586,10 @@ public class ManagerLogic{
             HashMap<String, Integer> inventoryMap = new HashMap<>();
             /**
              * create hashmap of current inventory item to its current stock
-             * calculate 10% of each item's current inventory
-             * create 2nd hashmap with each inventory item
+             * loop through query to add each item's amount that sold in the timeframe to the current stock hashmap (now we have the total)
+             * create 2nd hashmap with each inventory item going to what 10% of its current stock would be (you need to round up)
+             * if an item in the query is less than this number from the 2nd hashmap, then append it to a vector
+             * display this in the GUI
             */
 
         }catch(Exception e){ 
