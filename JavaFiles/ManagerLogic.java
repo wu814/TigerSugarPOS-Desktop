@@ -10,17 +10,15 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Dimension;
 import java.math.BigDecimal;
-
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
-
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-
 import java.util.*;
+
 
 /**
  * @author Nai-Yun Wu, Josh Hare, Doby Lanete
@@ -40,7 +38,7 @@ public class ManagerLogic{
         // Initialize the connection in the constructor
         try{
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
-        }catch (SQLException e){
+        }catch(SQLException e){
             // Handle connection initialization errors here
             e.printStackTrace();
         }
@@ -48,7 +46,9 @@ public class ManagerLogic{
 
 
     /**
+    * Loads the inventory data from database to a table
     * @param table the table to hold inventory data
+    * @return
     */
     public static void getInventory(JTable table){
         try{
@@ -76,8 +76,8 @@ public class ManagerLogic{
             // Table Listener
             DefaultTableModel model = new DefaultTableModel(data,colNames){
                 public boolean isCellEditable(int row, int column){
-                // Make the menu item column uneditable
-                return column != 1 && column != 0;
+                    // Make the menu item column uneditable
+                    return column != 1 && column != 0;
                 }
             };
             table.setModel(model);
@@ -116,14 +116,14 @@ public class ManagerLogic{
 
     /**
      * Gets a table of the 10 most recent orders
+     * @param table the table to hold recent orders
+     * @return
      */
     public static void getRecentOrders(JTable table){
         // Getting the data
         try{
             Statement stmt = conn.createStatement();
-            ResultSet result = stmt.executeQuery("SELECT * FROM orders\r\n" + 
-                "ORDER BY order_id DESC\r\n" +
-                "LIMIT 10;");
+            ResultSet result = stmt.executeQuery("SELECT * FROM orders" + "ORDER BY order_id DESC" + "LIMIT 10;");
 
             // Get column names
             int cols = result.getMetaData().getColumnCount();
@@ -134,6 +134,7 @@ public class ManagerLogic{
 
             // Get data
             Vector<Vector<Object>> data = new Vector<>();
+
             // Initializes employees with info from database, adds to vector
             while(result.next()){ 
                 Vector<Object> row = new Vector<>();
@@ -168,6 +169,7 @@ public class ManagerLogic{
     
 
     /**
+    * Loads the sales data from database to a table
     * @param table the table to hold stats data
     * @return the table with stats data loaded
     */
@@ -233,16 +235,13 @@ public class ManagerLogic{
     }
 
     /**
+    * Get the data within the specified range of time
     * @param table the table to hold stats data
     * @return the table with stats data loaded
     */
     public static JTable getCustomRange(JTable table, String start, String end){
         try{
-            //generate list of all dates to look at
-            
-
-
-
+            // Generate list of all dates to look at
             Statement stmt = conn.createStatement();
             ResultSet drinkName = stmt.executeQuery("SELECT drink_name, price FROM products;");
 
@@ -280,7 +279,6 @@ public class ManagerLogic{
                     totalUnits += units;
                     row.add(numDrinks.getObject(1));
                 }
-
                 // Fill third column (sales)
                 double price = drinkName.getDouble(2);
                 double sales = price * units;
@@ -289,7 +287,6 @@ public class ManagerLogic{
 
                 data.add(row);
                 System.out.println(totalUnits);
-
             }
             // Add total row
             Vector<Object> totalRow = new Vector<>();
@@ -313,7 +310,9 @@ public class ManagerLogic{
 
 
     /**
+    * Loads the products data from database to a table
     * @param table the table to hold products
+    * @return 
     */
     public static void getMenu(JTable table){
         try{
@@ -340,8 +339,8 @@ public class ManagerLogic{
             // Setup table listener
             DefaultTableModel model = new DefaultTableModel(data,colNames){
                 public boolean isCellEditable(int row, int column) {
-                // Make the menu item column uneditable
-                return column != 3 && column != 0;
+                    // Make the menu item column uneditable
+                    return column != 3 && column != 0;
                 }
             };
             table.setModel(model);
@@ -373,9 +372,8 @@ public class ManagerLogic{
                                 pStat.setInt(2,id);
                             }
                             
-                            
                             pStat.executeUpdate();
-                        }catch (Exception ex){
+                        }catch(Exception ex){
                             System.out.println("HELP"+ex);
                         }
                     }
@@ -389,12 +387,13 @@ public class ManagerLogic{
 
 
     /**
+     * Add a new item to menu
      * @param currFrame the frame of the pop out window
+     * @return 
      */
     public static void addMenuItem(JFrame currFrame){
         try{
             // Create a statement object
-            //TODO add input validation
             TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter new menu item","Enter price");
             TwoInputs inputs = dialog.showInputDialog();
             String newDrink = inputs.input1;
@@ -402,7 +401,6 @@ public class ManagerLogic{
             Vector<String> ings = new Vector<>();
 
             // Get ingredients
-            //TODO add input validation
             Integer ingredientCount = Integer.parseInt(JOptionPane.showInputDialog("How many ingredients does this drink have?"));
             for(int i = 0;i<ingredientCount;i++){
                 // For each ingredient:
@@ -414,19 +412,18 @@ public class ManagerLogic{
                 if(!result.next()){ 
                     System.out.println(ingredient);
                     Statement stmt2 = conn.createStatement();
-                    //add a new supply
+                    // Add a new supply
                     try{ 
                         stmt2.executeQuery("INSERT INTO inventory (inventory_id, supply, stock_remaining) VALUES (DEFAULT, '"+ingredient+"', 100);");
-                    }catch(Exception ex){ }
+                    }catch(Exception ex){}
                 }
             }
-            //TODO Add Input Validation
             String drinkType = JOptionPane.showInputDialog("Enter drink type");
 
             // Convert vector to an array
             String[] ingredients = ings.toArray(new String[0]);
         
-            //prep new query to insert new item onto menu
+            // Prep new query to insert new item onto menu
             String query = "INSERT INTO products (product_id, drink_name, price, ingredients, drink_type) VALUES (DEFAULT, ?, ?, ?, ?);";
 
             PreparedStatement preparedStatement = conn.prepareStatement(query);
@@ -445,6 +442,7 @@ public class ManagerLogic{
 
     /**
      * Remove an product from the menu
+     * @return
      */
     public static void removeMenuItem(){
         try{
@@ -453,7 +451,7 @@ public class ManagerLogic{
             Statement stmt = conn.createStatement();
             ResultSet r = stmt.executeQuery("DELETE FROM products WHERE product_id = "+item+";");
         // Errors connecting to database
-        }catch (Exception ex){ 
+        }catch(Exception ex){ 
             JOptionPane.showMessageDialog(null,ex);
         }
     }
@@ -462,6 +460,7 @@ public class ManagerLogic{
     /**
      * Add supply item to database
      * @param currFrame the frame of the pop out window
+     * @return
      */
     public static void addSupplyItem(JFrame currFrame){
         try{
@@ -475,7 +474,7 @@ public class ManagerLogic{
             Statement stmt = conn.createStatement();
             ResultSet r = stmt.executeQuery("INSERT INTO inventory (inventory_id, supply, stock_remaining) VALUES (DEFAULT, '"+newSupply+"', "+newStock+");");
         // Errors connecting to database
-        }catch (Exception ex){ 
+        }catch(Exception ex){ 
             JOptionPane.showMessageDialog(null,ex);
         }
     }
@@ -483,6 +482,7 @@ public class ManagerLogic{
 
     /**
      * Remove a supply item from database
+     * @return
      */
     public static void removeSupplyItem(){
         try{
@@ -491,7 +491,7 @@ public class ManagerLogic{
             Statement stmt = conn.createStatement();
             ResultSet r = stmt.executeQuery("DELETE FROM inventory WHERE inventory_id = "+item+";");
         // Errors connecting to database
-        }catch (Exception ex){ 
+        }catch(Exception ex){ 
             JOptionPane.showMessageDialog(null,ex);
         }
     }
@@ -500,6 +500,7 @@ public class ManagerLogic{
     /**
      * Load the restock report to the table
      * @param table the table holding the restock report
+     * @return
      */
     public static void getRestockReport(JTable table){
         // Getting the data
