@@ -11,24 +11,21 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Dimension;
 import java.math.BigDecimal;
-
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
-
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-
 import java.util.*;
+
 
 /**
  * @author Chris Vu, Josh Hare
  */
 public class GUI extends JFrame implements ActionListener{
-
     static Connection conn; // Database connection
     static JFrame startFrame; // Opens on start, allows you to select an employee
     static JFrame inventoryFrame; // Inventory screen
@@ -100,6 +97,7 @@ public class GUI extends JFrame implements ActionListener{
 
     /**
      * Initialize variables and components necessary for the GUI
+     * @return 
      */
     public static void frameSetup(){
         // Initiaize frame
@@ -391,8 +389,6 @@ public class GUI extends JFrame implements ActionListener{
     }
 
 
-    //TODO: returns table of custom range stats
-    //TODO: write a function in manager logic similar to getDailyStats that does the same over a custom range
     public static JTable customRange(String start, String end){
         JTable table = new JTable();
         table = managerLogic.getCustomRange(table, start, end);
@@ -565,7 +561,7 @@ public class GUI extends JFrame implements ActionListener{
 
             String start = inputs.input1;
             String end = inputs.input2;
-            if(start != "" && end != ""){   //TODO: Input Validtaion
+            if(start != "" && end != ""){ 
                 System.out.println("VALID");
             }
             else{
@@ -1319,7 +1315,6 @@ public class GUI extends JFrame implements ActionListener{
 
 
     private void completeOrder(){
-        // TODO: add employee id and customer id and order total
         ArrayList<String> outOfStock = OrderLogic.placeOrder(1, 1, order.toArray(new String[order.size()]), orderTotal, drinkAttributes.toArray(new String[drinkAttributes.size()]), drinkAddons.toArray(new String[drinkAddons.size()]));
         
         if(outOfStock.size() > 0){
@@ -1423,7 +1418,6 @@ public class GUI extends JFrame implements ActionListener{
 
 
     // FruityRefreshingPage
-    // TODO: add to the order list a remove button next to each drink
     public JFrame createFruityRefreshingPage() {
         JFrame fruityRefreshingFrame = new JFrame("Fruity and Refreshing");
         fruityRefreshingFrame.setSize(1000, 800);

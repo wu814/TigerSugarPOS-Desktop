@@ -10,17 +10,15 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Dimension;
 import java.math.BigDecimal;
-
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
-
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-
 import java.util.*;
+
 
 /**
  * @author Nai-Yun Wu
@@ -48,8 +46,9 @@ public class GUILogic{
 
 
     /**
-     * loads the employees from database to a vector
+     * Loads the employees from database to a vector
      * @param employees the vector where we load the data to 
+     * @return
      */
     public static void loadEmployees(Vector<Employee> employees){
         try{
