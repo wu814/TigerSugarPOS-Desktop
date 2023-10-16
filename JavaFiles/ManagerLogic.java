@@ -510,6 +510,16 @@ public class ManagerLogic{
             TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter new supply","Enter amount of new stock");
             TwoInputs inputs = dialog.showInputDialog();
             String newSupply = inputs.input1;
+
+            try{
+                Integer newStock = Integer.parseInt(inputs.input2);
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null,"Invalid Stock Amount.\n Try Again.");
+                return;
+            }
+
+
             Integer newStock = Integer.parseInt(inputs.input2);
 
             // Query
@@ -517,7 +527,7 @@ public class ManagerLogic{
             ResultSet r = stmt.executeQuery("INSERT INTO inventory (inventory_id, supply, stock_remaining) VALUES (DEFAULT, '"+newSupply+"', "+newStock+");");
         // Errors connecting to database
         }catch (Exception ex){ 
-            JOptionPane.showMessageDialog(null,ex);
+           // JOptionPane.showMessageDialog(null,ex);
         }
     }
 
