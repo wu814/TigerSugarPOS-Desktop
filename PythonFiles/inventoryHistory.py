@@ -148,7 +148,7 @@ def parse_attributes(input_string):
     return dairy_free_alternative, cup_size # Updated return statement
 
 def parse_addons(addons_str):
-    print(addons_str)
+    # print(addons_str)
     # Split the addons string into individual options
     addons_options = addons_str.strip('{}').split('", ')
 
@@ -165,10 +165,16 @@ def parse_addons(addons_str):
         # Iterate through the data and update addons_inventory based on "Added" values
         for key, value in data.items():
             if value.strip() == "Added":
-                print(key.strip() + " wants to be added")
+                # print(key.strip() + " wants to be added")
                 if key in addons_inventory:
-                    print(key.strip() + " was added")
+                    # print(key.strip() + " was added")
                     addons_inventory[key] += 1
+                elif key.strip() == "Red Bean":
+                    # print(key.strip() + " was added")
+                    addons_inventory["Red Beans"] += 1
+                elif key.strip() == "Extra Boba":
+                    # print(key.strip() + " was added")
+                    addons_inventory["Tapioca Pearls (Boba)"] += 1
 
     return addons_inventory
 
@@ -226,7 +232,7 @@ with open('../csvFiles/orders_test.csv', mode='r') as orders_file:
         # print(len(segments_addons))
         for index, addons_str in enumerate(segments_addons):
             # addons_str += '"'
-            print(addons_str)
+            # print(addons_str)
             if index == 0:
                 addons_str = addons_str[2:-1]
             else:
@@ -257,14 +263,14 @@ with open('../csvFiles/orders_test.csv', mode='r') as orders_file:
         if timestamp_key not in inventory_history:
             inventory_history[timestamp_key] = used_inventory
 
-        # print(f"Timestamp: {timestamp_str}")
-        # for item, quantity in used_inventory.items():
-        #     if quantity > 0:
-        #         print(f"{item}: {quantity}")
+"""         print(f"Timestamp: {timestamp_str}")
+        for item, quantity in used_inventory.items():
+            if quantity > 0:
+                print(f"{item}: {quantity}")
 
         # Print the used inventory for this timestamp
-        if (counter == 2):
-            break
+        if (counter == 1):
+            break """
 # Write the updated inventory history to 'inventory_history.csv' file
 with open('../csvFiles/inventory_history.csv', mode='w', newline='') as history_file:
     fieldnames = ["order_timestamp"] + list(inventory.keys())
