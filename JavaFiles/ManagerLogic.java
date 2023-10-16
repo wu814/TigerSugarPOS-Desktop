@@ -511,6 +511,14 @@ public class ManagerLogic{
             TwoInputs inputs = dialog.showInputDialog();
             String newSupply = inputs.input1;
 
+            Statement stmt0 = conn.createStatement();
+            ResultSet result = stmt0.executeQuery("SELECT * FROM inventory WHERE supply = '"+newSupply+"';");
+                // If supply is not in the inventory
+            if(result.next()){ 
+                JOptionPane.showMessageDialog(null,"Supply Already Exists in Inventory");
+                return;
+            }
+
             try{
                 Integer newStock = Integer.parseInt(inputs.input2);
             }
@@ -543,7 +551,7 @@ public class ManagerLogic{
             ResultSet r = stmt.executeQuery("DELETE FROM inventory WHERE inventory_id = "+item+";");
         // Errors connecting to database
         }catch (Exception ex){ 
-            JOptionPane.showMessageDialog(null,ex);
+          //  JOptionPane.showMessageDialog(null,ex);
         }
     }
 
