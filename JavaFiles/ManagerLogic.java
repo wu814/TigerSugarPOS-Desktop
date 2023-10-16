@@ -582,9 +582,16 @@ public class ManagerLogic{
                                                         SUM(lactose_free_milk) AS Lactose_Free_Milk_Count
                                                     FROM inventory_history
                                                     WHERE order_timestamp BETWEEN " + timestamp + " AND " + currTimestamp + ";");
+
+            HashMap<String, Integer> inventoryMap = new HashMap<>();
+            /**
+             * create hashmap of current inventory item to its current stock
+             * calculate 10% of each item's current inventory
+             * create 2nd hashmap with each inventory item
+            */
+
         }catch(Exception e){ 
             JOptionPane.showMessageDialog(null,e);
         }
-        return table;
     }
 }
