@@ -427,17 +427,15 @@ public class ManagerLogic{
             String[] ingredients = ings.toArray(new String[0]);
         
             //prep new query to insert new item onto menu
-            String query = "INSERT INTO products (product_id, drink_name, price, ingredients, drink_type) VALUES (DEFAULT, ?, ?, string_to_array(?, ', '), ?);";
+            String query = "INSERT INTO products (product_id, drink_name, price, ingredients, drink_type) VALUES (DEFAULT, ?, ?, ?, ?);";
 
             PreparedStatement preparedStatement = conn.prepareStatement(query);
             preparedStatement.setString(1,newDrink);
             preparedStatement.setDouble(2,newPrice);
 
-            String ing = String.join(",",ingredients);
-            preparedStatement.setString(3,ing);
+            preparedStatement.setArray(3,conn.createArrayOf("text",ingredients));
             preparedStatement.setString(4,drinkType);
             preparedStatement.executeUpdate();
-            System.out.println(ing);
         // Errors connecting to database
         }catch(Exception ex){ 
             System.out.println(ex);   
