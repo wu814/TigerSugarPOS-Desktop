@@ -428,7 +428,6 @@ public class ManagerLogic{
             Double newPrice = Double.parseDouble(inputs.input2); 
 
             // Get ingredients
-            //TODO add input validation
             try{
                  Integer ingredientCount = Integer.parseInt(JOptionPane.showInputDialog("How many ingredients does this drink have?"));
             }
@@ -480,14 +479,23 @@ public class ManagerLogic{
      * Remove an product from the menu
      */
     public static void removeMenuItem(){
+        String input = JOptionPane.showInputDialog("Enter ID of object to be removed");
         try{
             // Get input and execute a query
-            Integer item = Integer.parseInt(JOptionPane.showInputDialog("Enter ID of object to be removed"));
+            try{
+            Integer item = Integer.parseInt(input);
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null,"Invalid ID.\n Try Again.");
+                return;
+            }
+            Integer item = Integer.parseInt(input);
+
             Statement stmt = conn.createStatement();
             ResultSet r = stmt.executeQuery("DELETE FROM products WHERE product_id = "+item+";");
         // Errors connecting to database
         }catch (Exception ex){ 
-            JOptionPane.showMessageDialog(null,ex);
+            JOptionPane.showMessageDialog(null,"ID not found in database.\n Try Again.");
         }
     }
 
