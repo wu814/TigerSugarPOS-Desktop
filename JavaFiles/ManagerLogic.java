@@ -429,6 +429,13 @@ public class ManagerLogic{
 
             // Get ingredients
             //TODO add input validation
+            try{
+                 Integer ingredientCount = Integer.parseInt(JOptionPane.showInputDialog("How many ingredients does this drink have?"));
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "You have entered an invalid ingredient.\nTry Again.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
             Integer ingredientCount = Integer.parseInt(JOptionPane.showInputDialog("How many ingredients does this drink have?"));
             for(int i = 0;i<ingredientCount;i++){
                 // For each ingredient:
