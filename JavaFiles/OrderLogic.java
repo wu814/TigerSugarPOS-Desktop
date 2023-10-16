@@ -14,28 +14,27 @@ import java.util.ArrayList;
  * @author Chris Vu
  */
 public class OrderLogic {
-
     // Attributes
     private static final String URL = "jdbc:postgresql://csce-315-db.engr.tamu.edu/csce315331_10g_db";
     private static final String USER = "csce315_910_christophervu03";
     private static final String PASSWORD = "password";
 
     /**
+     * Sending the order to the database for record
      * @param employeeId the employee who took the order
      * @param customerId the customer who placed the order
      * @param orderItems the items purchased
      * @param orderTotal the total of the order
+     * @return
      */
 
     public static ArrayList<String> placeOrder(int employeeId, int customerId, String[] orderItems, double orderTotal, String[] orderAttributes, String[] orderAddons){
-        // TODO: change this to the real order DB
         String sqlCommand = "INSERT INTO orders (order_timestamp, employee_id, customer_id, order_items, order_total, drink_attributes, drink_addons) VALUES (?, ?, ?, ?, ?, ?, ?)";
         String selectIngredients = "SELECT ingredients FROM products WHERE drink_name = ?";
         String updateInventory = "UPDATE inventory SET stock_remaining = stock_remaining - 1 WHERE supply = ?";
         Connection conn = null;
         ArrayList<String> outOfStock = new ArrayList<String>();
         Map<String, Object> inventoryHistoryData = new HashMap<>();
-
         
         inventoryHistoryData.put("order_timestamp", null);
         inventoryHistoryData.put("Sago", 0);
@@ -73,9 +72,6 @@ public class OrderLogic {
         inventoryHistoryData.put("To-Go Bags (Small)", 0);
         inventoryHistoryData.put("Cups (Regular)", 0);
 
-        
-
-
         try{
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
 
@@ -86,93 +82,82 @@ public class OrderLogic {
             PreparedStatement selectStmt = conn.prepareStatement(selectIngredients);
             PreparedStatement updateStmt = conn.prepareStatement(updateInventory);
 
-            // creating HashMap of all the ingredients we're going to use
+            // Creating HashMap of all the ingredients we're going to use
             Map<String, String> ingredients = new LinkedHashMap<String, String>();
 
-            // adding the order items in orderAttributes to my hashmap
-            for(String attribute: orderAttributes) {
-                // split each attribute on comma
+            // Adding the order items in orderAttributes to my hashmap
+            for(String attribute: orderAttributes){
+                // Split each attribute on comma
                 String[] individualAttribute = attribute.split(",");
                 boolean first = true;
 
-                for(String ingredient: individualAttribute) {
-
-                    // split each ingredient on colon
+                for(String ingredient: individualAttribute){
+                    // Split each ingredient on colon
                     String[] individualIngredient = ingredient.split(": ");
-
-                    if(first) {
+                    if(first){
                         first = false;
-                    } else {
+                    }
+                    else{
                         individualIngredient[0] = individualIngredient[0].substring(1);
                     }
-                    // trimming off first character of individualIngredient[0]
-
+                    // Trimming off first character of individualIngredient[0]
                     ingredients.put(individualIngredient[0], individualIngredient[1]);
                 }
             }
 
-            // now doing same for addons
-            for(String addon: orderAddons) {
-                // split each addon on comma
+            // Now doing same for add ons
+            for(String addon: orderAddons){
+                // Split each addon on comma
                 String[] individualAddon = addon.split(",");
                 boolean first = true;
 
-                for(String ingredient: individualAddon) {
-                    // split each ingredient on colon
+                for(String ingredient: individualAddon){
+                    // Split each ingredient on colon
                     String[] individualIngredient = ingredient.split(": ");
-
-                    if(first) {
+                    if(first){
                         first = false;
-                    } else {
+                    }
+                    else{
                         individualIngredient[0] = individualIngredient[0].substring(1);
                     }
                     ingredients.put(individualIngredient[0], individualIngredient[1]);
                 }
             }
 
-            //printing out each one of the ingredients and the amount of each one
-            // for(Map.Entry<String, String> entry: ingredients.entrySet()) {
-            //     System.out.println(entry.getKey() + " " + entry.getValue());
-            // }
-
-            // fetching all inventory items and their stock remaining and storing it in a hashmap
+            // Fetching all inventory items and their stock remaining and storing it in a hashmap
             String fetchInventory = "SELECT supply, stock_remaining FROM inventory";
             Statement fetchStmt = conn.createStatement();
             ResultSet inventoryResult = fetchStmt.executeQuery(fetchInventory);
             conn.commit();
             Map<String, Integer> inventoryCounts = new HashMap<String, Integer>();
-            while(inventoryResult.next()) {
+            while(inventoryResult.next()){
                 inventoryCounts.put(inventoryResult.getString("supply"), inventoryResult.getInt("stock_remaining"));
             }
 
-            // decrementing for each base ingredient of the drink
-            for (String item : orderItems) {
+            // Decrementing for each base ingredient of the drink
+            for(String item : orderItems){
                 selectStmt.setString(1, item);
                 ResultSet result = selectStmt.executeQuery();
-                if (result.next()) {
+                if(result.next()){
                     String[] ingreds = (String[]) result.getArray("ingredients").getArray();
-
-                    for (String ingredient : ingreds) {
-                        if(inventoryCounts.get(ingredient) == 0) {
+                    for(String ingredient : ingreds){
+                        if(inventoryCounts.get(ingredient) == 0){
                             outOfStock.add(ingredient);
                             continue;
                         }
-                         int currentHistoryCount = (int) inventoryHistoryData.get(ingredient);
-                         inventoryHistoryData.put(ingredient, currentHistoryCount + 1);
-
+                        int currentHistoryCount = (int) inventoryHistoryData.get(ingredient);
+                        inventoryHistoryData.put(ingredient, currentHistoryCount + 1);
                         updateStmt.setString(1, ingredient);
                         updateStmt.addBatch();
                     }
                 }
             }
             
-
-            // decrementing for each hashmap ingredient
-            for(Map.Entry<String, String> entry: ingredients.entrySet()) {
-
-                if(entry.getKey().equals("Dairy Free Alternative")) {
-                    if(entry.getValue().equals("None")) {
-                        if(inventoryCounts.get("Fresh Milk") == 0) {
+            // Decrementing for each hashmap ingredient
+            for(Map.Entry<String, String> entry: ingredients.entrySet()){
+                if(entry.getKey().equals("Dairy Free Alternative")){
+                    if(entry.getValue().equals("None")){
+                        if(inventoryCounts.get("Fresh Milk") == 0){
                             outOfStock.add("Fresh Milk");
                             continue;
                         }
@@ -180,13 +165,15 @@ public class OrderLogic {
                         inventoryHistoryData.put("Fresh Milk", currentHistoryCount + 1);
                         updateStmt.setString(1, "Fresh Milk");
                         updateStmt.addBatch();
-                    } else {
+                    }
+                    else{
                         updateStmt.setString(1, entry.getValue());
                         updateStmt.addBatch();
                     }
-                } else if(entry.getKey().equals("Cup Size")) {
+                }
+                else if(entry.getKey().equals("Cup Size")){
                     String cup_name = "Cups (" + entry.getValue() + ")";
-                    if(inventoryCounts.get(cup_name) == 0) {
+                    if(inventoryCounts.get(cup_name) == 0){
                         outOfStock.add(cup_name);
                         continue;
                     }
@@ -195,49 +182,57 @@ public class OrderLogic {
                     updateStmt.setString(1, cup_name); 
                     updateStmt.addBatch();
                     continue;
-                } else if(entry.getKey().equals("Extra Boba")) {
-                    if(entry.getValue().equals("Added")) {
+                }
+                else if(entry.getKey().equals("Extra Boba")){
+                    if(entry.getValue().equals("Added")){
                         String boba_name = "Tapioca Pearls (Boba)";
-                        if(inventoryCounts.get(boba_name) == 0) {
+                        if(inventoryCounts.get(boba_name) == 0){
                             outOfStock.add(boba_name);
                             continue;
-                        } else {
+                        } 
+                        else{
                             int currentHistoryCount = (int) inventoryHistoryData.get(boba_name);
                             inventoryHistoryData.put(boba_name, currentHistoryCount + 1);
                             updateStmt.setString(1, boba_name);
                             updateStmt.addBatch();
                         }
                     }
-                } else if(entry.getKey().equals("Tiger Pearls")) {
+                }
+                else if(entry.getKey().equals("Tiger Pearls")){
                     String pearl_name = "Tiger Pearls";
-                    if (entry.getValue().equals("Added")) {
-                        if (inventoryCounts.get(pearl_name) == 0) {
+                    if(entry.getValue().equals("Added")){
+                        if(inventoryCounts.get(pearl_name) == 0){
                             outOfStock.add(pearl_name);
                             continue;
-                        } else {
+                        } 
+                        else{
                             int currentHistoryCount = (int) inventoryHistoryData.get(pearl_name);
                             inventoryHistoryData.put(pearl_name, currentHistoryCount + 1);
                             updateStmt.setString(1, pearl_name);
                             updateStmt.addBatch();
                         }
                     }
-                } else if(entry.getKey().equals("Cream Mousse")) {
+                }
+                else if(entry.getKey().equals("Cream Mousse")){
                     String cream_name = "Cream Mousse";
-                    if (entry.getValue().equals("Added")) {
-                        if (inventoryCounts.get(cream_name) == 0) {
+                    if(entry.getValue().equals("Added")){
+                        if(inventoryCounts.get(cream_name) == 0){
                             outOfStock.add(cream_name);
                             continue;
-                        } else {
+                        }
+                        else{
                             int currentHistoryCount = (int) inventoryHistoryData.get(cream_name);
                             inventoryHistoryData.put(cream_name, currentHistoryCount + 1);
                             updateStmt.setString(1, cream_name);
                             updateStmt.addBatch();
                         }
                     }
-                } else if(entry.getKey().equals("Taro")) {
+                }
+                else if(entry.getKey().equals("Taro")){
                     String taro_name = "Taro";
-                    if (entry.getValue().equals("Added")) { // New Added conditional
-                        if (inventoryCounts.get(taro_name) == 0) { // If out of stock, add to out of stock list.
+                    if(entry.getValue().equals("Added")){ 
+                        // If out of stock, add to out of stock list.
+                        if(inventoryCounts.get(taro_name) == 0){ 
                             outOfStock.add(taro_name);
                         }
                         int currentHistoryCount = (int) inventoryHistoryData.get(taro_name);
@@ -245,10 +240,11 @@ public class OrderLogic {
                         updateStmt.setString(1, taro_name);
                         updateStmt.addBatch();
                     }
-                } else if(entry.getKey().equals("Red Bean")) {
+                } 
+                else if(entry.getKey().equals("Red Bean")){
                     String redbean_name = "Red Beans";
-                    if (entry.getValue().equals("Added")) {
-                        if (inventoryCounts.get(redbean_name) == 0) {
+                    if(entry.getValue().equals("Added")){
+                        if(inventoryCounts.get(redbean_name) == 0){
                             outOfStock.add(redbean_name);
                         }
                         int currentHistoryCount = (int) inventoryHistoryData.get(redbean_name);
@@ -256,23 +252,23 @@ public class OrderLogic {
                         updateStmt.setString(1, redbean_name);
                         updateStmt.addBatch();
                     }
-                } else if(entry.getKey().equals("Pudding")) {
+                } 
+                else if(entry.getKey().equals("Pudding")){
                     String pudding_name = "Pudding";
-                    if (entry.getValue().equals("Added")) {
-                        if (inventoryCounts.get(pudding_name) == 0) {
+                    if (entry.getValue().equals("Added")){
+                        if(inventoryCounts.get(pudding_name) == 0){
                             outOfStock.add(pudding_name);
                         }
-                        
                         int currentHistoryCount = (int) inventoryHistoryData.get(pudding_name);
                         inventoryHistoryData.put(pudding_name, currentHistoryCount + 1);
                         updateStmt.setString(1, pudding_name);
                         updateStmt.addBatch();
                     }
-
-                } else if(entry.getKey().equals("Mochi")) {
+                } 
+                else if(entry.getKey().equals("Mochi")){
                     String mochi_name = "Mochi";
-                    if (entry.getValue().equals("Added")) { // New Added conditional
-                        if (inventoryCounts.get(mochi_name) == 0) { // If out of stock, add to out of stock list.
+                    if(entry.getValue().equals("Added")){ 
+                        if(inventoryCounts.get(mochi_name) == 0){ 
                             outOfStock.add(mochi_name);
                         }
                         int currentHistoryCount = (int) inventoryHistoryData.get(mochi_name);
@@ -282,11 +278,8 @@ public class OrderLogic {
                     }
                 }
             }
-
-            
-
-            // if arraylist is empty, we can go, otherwise, we return the arraylist 
-            if(outOfStock.size() != 0) {
+            // If arraylist is empty, we can go, otherwise, we return the arraylist 
+            if(outOfStock.size() != 0){
                 return outOfStock;
             }
 
@@ -354,7 +347,7 @@ public class OrderLogic {
             updateStmt.executeBatch();
             conn.commit();
 
-            for (Map.Entry<String, Object> entry : inventoryHistoryData.entrySet()) {
+            for(Map.Entry<String, Object> entry : inventoryHistoryData.entrySet()){
                 System.out.println(entry.getKey() + ", Value: " + entry.getValue());
             }
             System.out.println("Order added successfully!");
@@ -370,14 +363,12 @@ public class OrderLogic {
                 System.err.println("Error closing connection: " + e.getMessage());
             }
         }
-        
-
-
         return outOfStock;
     }
 
 
     /**
+     * Creates a (drink, price) map by loading it from database
      * @return a map the maps the drinks to their corresponding prices
      */
     public static Map<String, Double> fetchAllDrinkPrices(){
@@ -396,9 +387,7 @@ public class OrderLogic {
             while(result.next()){
                 drinkPrices.put(result.getString("drink_name"), result.getDouble("price"));
             }
-
             return drinkPrices;
-
         }catch(SQLException e){
             e.printStackTrace();
             System.err.println("Error fetching drink prices: " + e.getMessage());
@@ -413,10 +402,15 @@ public class OrderLogic {
         }
     }
 
+
+    /**
+     * Loading a certain type of drink to a array list
+     * @param type the type of the drink
+     * @return the array list with the drinks loaded from database
+     */
     public static ArrayList<String> fetchDrinksByType(String type){
         String sqlCommand = "SELECT drink_name FROM products WHERE drink_type = ?";
         Connection conn = null;
-
         try{
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
             PreparedStatement stmt = conn.prepareStatement(sqlCommand);
@@ -430,9 +424,7 @@ public class OrderLogic {
             while(result.next()){
                 drinks.add(result.getString("drink_name"));
             }
-
             return drinks;
-
         }catch(SQLException e){
             e.printStackTrace();
             System.err.println("Error fetching drinks by type: " + e.getMessage());

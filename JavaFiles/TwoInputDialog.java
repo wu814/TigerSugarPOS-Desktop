@@ -4,14 +4,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-//creates a two input dialog pop up
-public class TwoInputDialog extends JDialog {
+/**
+ * @author Josh Hare
+ */
+public class TwoInputDialog extends JDialog{
+    // Attributes
     private JTextField textField1;
     private JTextField textField2;
     private JButton okButton;
     private TwoInputs inputs;
 
-    public TwoInputDialog(Frame parent,String label1, String label2) {
+
+    /**
+     * Constructor
+     */
+    public TwoInputDialog(Frame parent,String label1, String label2){
         super(parent, "Input Dialog", true);
         setLayout(new FlowLayout());
 
@@ -19,9 +26,9 @@ public class TwoInputDialog extends JDialog {
         textField2 = new JTextField(10);
         okButton = new JButton("OK");
 
-        okButton.addActionListener(new ActionListener() {
+        okButton.addActionListener(new ActionListener(){
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
                 inputs = new TwoInputs(textField1.getText(), textField2.getText());
                 dispose();
             }
@@ -37,17 +44,33 @@ public class TwoInputDialog extends JDialog {
         setLocationRelativeTo(parent);
     }
 
-    public TwoInputs showInputDialog() {
+
+    /**
+     * Showing the input dialog
+     * @return the input dialog
+     */
+    public TwoInputs showInputDialog(){
         setVisible(true);
         return inputs;
     }
 }
 
-class TwoInputs {
+
+/**
+ * @author Josh Hare
+ */
+class TwoInputs{
+    // Attributes
     public String input1;
     public String input2;
 
-    public TwoInputs(String input1, String input2) {
+
+    /**
+     * Constructor
+     * @param input1 the first input
+     * @param input2 the second input
+     */
+    public TwoInputs(String input1, String input2){
         this.input1 = input1;
         this.input2 = input2;
     }
