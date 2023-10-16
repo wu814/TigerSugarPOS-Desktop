@@ -1,4 +1,6 @@
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Cursor;
@@ -46,6 +48,7 @@ public class GUI extends JFrame implements ActionListener{
     static JComboBox<Employee> employeeSelector; // Drop down for employees, how we know to go in cashier view or  manager view
     static JButton employeeEnter;// Locks in combobox entry
     static JButton backToLogin; // Back button that returns to employee select
+    static JTextArea textArea; //for recent orders
     static JButton payButton;
     static JPanel orderLogs;
     static JPanel rightPanel;
@@ -343,14 +346,20 @@ public class GUI extends JFrame implements ActionListener{
         // Goes back to manager menu
         JButton backToManager = new JButton("Back to Manager Menu"); 
         backToManager.addActionListener(gui);
-        menuPanel.add(backToManager);
+        titlePanel.add(backToManager);
 
         JTable table = new JTable();
         JScrollPane  scroll = new JScrollPane(table);
         recentPanel.add(scroll);
 
+        textArea = new JTextArea(50,100);
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
+        textArea.setFont(new Font("Arial", Font.PLAIN, 6));
+        menuPanel.add(textArea);
+
         // Populate table with data from database
-        managerLogic.getRecentOrders(table);
+        managerLogic.getRecentOrders(table,textArea);
 
         recentFrame.pack();
     }
@@ -591,16 +600,19 @@ public class GUI extends JFrame implements ActionListener{
 
             String start = inputs.input1;
             String end = inputs.input2;
-            if(start != "" && end != ""){ 
-                System.out.println("VALID");
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                Timestamp timestamp = new Timestamp(dateFormat.parse(start).getTime());
+                statsTable = customRange(start,end);
+                currRange = start + " to " + end;
+                setUpOrderStats();
+                changeFrame(statsFrame);
+                
+            } catch (ParseException | IllegalArgumentException exe) {
+                JOptionPane.showMessageDialog(null, "You have entered an invalid date.\nTry Again.", "ERROR", JOptionPane.INFORMATION_MESSAGE);            
             }
-            else{
-                JOptionPane.showMessageDialog(null, "You have entered an invalid date.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
-            }
-            statsTable = customRange(start,end);
-            currRange = start + " to " + end;
-            setUpOrderStats();
-            changeFrame(statsFrame);
+            
+            
         }
         // On inventory page, view the restock report
         else if(event.equals("View Restock Report")){

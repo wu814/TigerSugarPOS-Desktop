@@ -13,6 +13,8 @@ import java.math.BigDecimal;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
@@ -119,7 +121,7 @@ public class ManagerLogic{
      * @param table the table to hold recent orders
      * @return
      */
-    public static void getRecentOrders(JTable table){
+    public static void getRecentOrders(JTable table, JTextArea textArea){
         // Getting the data
         try{
             Statement stmt = conn.createStatement();
@@ -140,11 +142,25 @@ public class ManagerLogic{
                 Vector<Object> row = new Vector<>();
                 for(int i = 1;i<=cols;i++){
                     row.add(result.getObject(i));
+                    
                 }
                 data.add(row);
             }
             DefaultTableModel model = new DefaultTableModel(data,colNames);
             table.setModel(model);
+            table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
+                    int selectedRow = table.getSelectedRow();
+                    int selectedColumn = table.getSelectedColumn();
+                    if (selectedRow >= 0 && selectedColumn >= 0) {
+                        Object selectedValue = table.getValueAt(selectedRow, selectedColumn);
+                        textArea.setText(selectedValue.toString());
+                    }
+                }
+            }
+        });
 
             // Table configuration
             TableColumn column = table.getColumnModel().getColumn(0);
@@ -159,6 +175,10 @@ public class ManagerLogic{
             column.setPreferredWidth(900);
             column = table.getColumnModel().getColumn(5);
             column.setPreferredWidth(200);
+            column = table.getColumnModel().getColumn(6);
+            column.setPreferredWidth(800);
+            column = table.getColumnModel().getColumn(7);
+            column.setPreferredWidth(800);
             // Adjust the width and height as needed
             table.setPreferredScrollableViewportSize(new Dimension(800, 400)); 
         // Errors connecting to database
@@ -302,7 +322,7 @@ public class ManagerLogic{
             table.setPreferredScrollableViewportSize(new Dimension(800, 400)); 
         // Errors connecting to database
         }catch(Exception e){ 
-            JOptionPane.showMessageDialog(null,e);
+            JOptionPane.showMessageDialog(null,"You have entered an invalid date.\n     Try Again.");
         }
         return table;
     }
@@ -340,7 +360,8 @@ public class ManagerLogic{
             DefaultTableModel model = new DefaultTableModel(data,colNames){
                 public boolean isCellEditable(int row, int column) {
                     // Make the menu item column uneditable
-                    return column != 3 && column != 0;
+                    return column != 3 && column != 0 && column != 4;
+
                 }
             };
             table.setModel(model);
@@ -379,6 +400,17 @@ public class ManagerLogic{
                     }
                 }
             });
+            TableColumn column = table.getColumnModel().getColumn(0);
+            column.setPreferredWidth(125);
+            column = table.getColumnModel().getColumn(1);
+            column.setPreferredWidth(400);
+            column = table.getColumnModel().getColumn(2);
+            column.setPreferredWidth(100);
+            column = table.getColumnModel().getColumn(3);
+            column.setPreferredWidth(800);
+            column = table.getColumnModel().getColumn(4);
+            column.setPreferredWidth(300);
+            table.setPreferredScrollableViewportSize(new Dimension(800, 400));
         // Errors connecting to database
         }catch(Exception e){ 
             JOptionPane.showMessageDialog(null,e);
@@ -397,11 +429,40 @@ public class ManagerLogic{
             TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter new menu item","Enter price");
             TwoInputs inputs = dialog.showInputDialog();
             String newDrink = inputs.input1;
-            Double newPrice = Double.parseDouble(inputs.input2); 
+            Statement stmt0 = conn.createStatement();
+            ResultSet result0 = stmt0.executeQuery("SELECT * FROM products WHERE drink_name = '"+newDrink+"';");
+                // If supply is not in the inventory
+            if(result0.next()){ 
+                JOptionPane.showMessageDialog(null,"A drink by the same name is already on the menu");
+                return;
+            }
+
+
+            try{
+                Double newPrice = Double.parseDouble(inputs.input2); 
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "You have entered an invalid price.\nTry Again.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
             Vector<String> ings = new Vector<>();
+            Double newPrice = Double.parseDouble(inputs.input2); 
 
             // Get ingredients
-            Integer ingredientCount = Integer.parseInt(JOptionPane.showInputDialog("How many ingredients does this drink have?"));
+            String input = JOptionPane.showInputDialog("How many ingredients does this drink have?");
+            try{
+                 Integer ingredientCount = Integer.parseInt(input);
+                 if(ingredientCount <=0){
+                    JOptionPane.showMessageDialog(null, "A drink must have at least 1 ingredient.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+                    return;
+                 }
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "You have entered an invalid amount of ingredients.\nTry Again.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+            Integer ingredientCount = Integer.parseInt(input);
+
             for(int i = 0;i<ingredientCount;i++){
                 // For each ingredient:
                 String ingredient = JOptionPane.showInputDialog("Enter an ingredient");
@@ -418,7 +479,12 @@ public class ManagerLogic{
                     }catch(Exception ex){}
                 }
             }
+
             String drinkType = JOptionPane.showInputDialog("Enter drink type");
+            if(!drinkType.equals("Seasonal Drinks") && !drinkType.equals("Sweet and Creamy") && !drinkType.equals("Fruity and Refreshing") && !drinkType.equals( "Coffee Flavored")){
+                JOptionPane.showMessageDialog(null, "Drink type must be one of the following:\nFruity and Refreshing\nSweet and Creamy\nCoffee Flavored\nSeasonal Drinks", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
 
             // Convert vector to an array
             String[] ingredients = ings.toArray(new String[0]);
@@ -445,15 +511,30 @@ public class ManagerLogic{
      * @return
      */
     public static void removeMenuItem(){
+        String input = JOptionPane.showInputDialog("Enter ID of object to be removed");
         try{
             // Get input and execute a query
-            Integer item = Integer.parseInt(JOptionPane.showInputDialog("Enter ID of object to be removed"));
+            try{
+                Integer item = Integer.parseInt(input);
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null,"Invalid ID.\n Try Again.");
+                return;
+            }
+            Integer item = Integer.parseInt(input);
+
+            Statement stmt0 = conn.createStatement();
+            ResultSet result = stmt0.executeQuery("SELECT * FROM products WHERE product_id = '"+item+"';");
+                // If supply is not in the inventory
+            if(!result.next()){ 
+                JOptionPane.showMessageDialog(null,"Product not found in database.");
+                return;
+            }
+
             Statement stmt = conn.createStatement();
             ResultSet r = stmt.executeQuery("DELETE FROM products WHERE product_id = "+item+";");
         // Errors connecting to database
-        }catch(Exception ex){ 
-            JOptionPane.showMessageDialog(null,ex);
-        }
+        }catch (Exception ex){ }
     }
 
 
@@ -468,14 +549,33 @@ public class ManagerLogic{
             TwoInputDialog dialog = new TwoInputDialog(currFrame,"Enter new supply","Enter amount of new stock");
             TwoInputs inputs = dialog.showInputDialog();
             String newSupply = inputs.input1;
+
+            Statement stmt0 = conn.createStatement();
+            ResultSet result = stmt0.executeQuery("SELECT * FROM inventory WHERE supply = '"+newSupply+"';");
+                // If supply is not in the inventory
+            if(result.next()){ 
+                JOptionPane.showMessageDialog(null,"Supply Already Exists in Inventory");
+                return;
+            }
+
+            try{
+                Integer newStock = Integer.parseInt(inputs.input2);
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null,"Invalid Stock Amount.\n Try Again.");
+                return;
+            }
+
+
             Integer newStock = Integer.parseInt(inputs.input2);
 
             // Query
             Statement stmt = conn.createStatement();
-            ResultSet r = stmt.executeQuery("INSERT INTO inventory (inventory_id, supply, stock_remaining) VALUES (DEFAULT, '"+newSupply+"', "+newStock+");");
+            ResultSet r = stmt.executeQuery("INSERT INTO inventory (inventory_id, supply, stock_remaining,minimum_stock) VALUES (DEFAULT, '"+newSupply+"', "+newStock+",100);");
         // Errors connecting to database
-        }catch(Exception ex){ 
-            JOptionPane.showMessageDialog(null,ex);
+        }catch (Exception ex){ 
+           // JOptionPane.showMessageDialog(null,ex);
+       
         }
     }
 
@@ -485,14 +585,31 @@ public class ManagerLogic{
      * @return
      */
     public static void removeSupplyItem(){
+        String input = JOptionPane.showInputDialog("Enter ID of object to be removed");
         try{
             // Gets the id of the object to remove
-            Integer item = Integer.parseInt(JOptionPane.showInputDialog("Enter ID of object to be removed"));
+            try{
+                Integer item = Integer.parseInt(input);
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null,"Invalid ID.\n Try Again.");
+                return;
+            }
+            Integer item = Integer.parseInt(input);
+
+            Statement stmt0 = conn.createStatement();
+            ResultSet result = stmt0.executeQuery("SELECT * FROM inventory WHERE inventory_id = '"+item+"';");
+                // If supply is not in the inventory
+            if(!result.next()){ 
+                JOptionPane.showMessageDialog(null,"Supply not found in database.");
+                return;
+            }
+
             Statement stmt = conn.createStatement();
-            ResultSet r = stmt.executeQuery("DELETE FROM inventory WHERE inventory_id = "+item+";");
+            stmt.executeQuery("DELETE FROM inventory WHERE inventory_id = "+item+";");
         // Errors connecting to database
-        }catch(Exception ex){ 
-            JOptionPane.showMessageDialog(null,ex);
+        }catch (SQLException ex){ 
+
         }
     }
 
