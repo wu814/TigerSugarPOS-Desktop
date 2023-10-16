@@ -26,6 +26,7 @@ import java.util.*;
  * @author Chris Vu, Josh Hare
  */
 public class GUI extends JFrame implements ActionListener{
+    // Attributes
     static Connection conn; // Database connection
     static JFrame startFrame; // Opens on start, allows you to select an employee
     static JFrame inventoryFrame; // Inventory screen

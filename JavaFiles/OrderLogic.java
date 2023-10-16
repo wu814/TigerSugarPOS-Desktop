@@ -14,7 +14,6 @@ import java.util.ArrayList;
  * @author Chris Vu
  */
 public class OrderLogic {
-
     // Attributes
     private static final String URL = "jdbc:postgresql://csce-315-db.engr.tamu.edu/csce315331_10g_db";
     private static final String USER = "csce315_910_christophervu03";
