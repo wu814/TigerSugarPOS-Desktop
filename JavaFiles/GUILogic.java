@@ -40,7 +40,7 @@ public class GUILogic{
         // Initialize the connection in the constructor
         try{
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
-        }catch (SQLException e){
+        }catch(SQLException e){
             // Handle connection initialization errors here
             e.printStackTrace();
         }
