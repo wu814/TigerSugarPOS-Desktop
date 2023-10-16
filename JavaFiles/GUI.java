@@ -64,6 +64,7 @@ public class GUI extends JFrame implements ActionListener{
     static ArrayList<JPanel> drinkButtonPanels = new ArrayList<JPanel>();
     static ArrayList<JButton> drinkButtons = new ArrayList<JButton>();
     static ArrayList<Boolean> openButtons = new ArrayList<Boolean>();
+    static Timestamp timestamp = Timestamp.valueOf("2023-04-10 10:30:00");
     
 
     /**
@@ -207,13 +208,41 @@ public class GUI extends JFrame implements ActionListener{
         backToManager.addActionListener(gui);
         menuPanel.add(backToManager);
 
+        JTextField timestampField = new JTextField("YYYY-MM-DD HH:MM:SS");
+        menuPanel.add(timestampField);
+
+        JButton updateTimestampButton = new JButton("Update Timestamp");
+        menuPanel.add(updateTimestampButton);
+
+        updateTimestampButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Get the new timestamp value from the text field
+                String newTimestampStr = timestampField.getText();
+        
+                try {
+                    // Parse the user input into a Timestamp object
+                    Timestamp newTimestamp = Timestamp.valueOf(newTimestampStr);
+        
+                    // Update the timestamp variable with the new value
+                    timestamp = newTimestamp;
+                    System.out.println("New Time: " + timestamp);
+        
+                    // You can optionally update the table or perform other actions here
+                } catch (IllegalArgumentException ex) {
+                    // Handle invalid input gracefully, e.g., show an error message
+                    JOptionPane.showMessageDialog(excessReportFrame, "Invalid timestamp format. Please use yyyy-MM-dd HH:mm:ss", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
         // Create scrollable table
         JTable table = new JTable();
         JScrollPane  scroll = new JScrollPane(table);
         excessReportPanel.add(scroll);
 
         // Filling the table with database data
-        Timestamp timestamp = Timestamp.valueOf("2023-04-10 10:30:00");
+        
 
         managerLogic.getExcessReport(table, timestamp);
 
