@@ -1307,7 +1307,7 @@ public class GUI extends JFrame implements ActionListener{
 
         orderTotal += drinkPriceMap.get(drinkName);
 
-        JButton drinkButton = new JButton(drinkName);
+        JButton drinkButton = new JButton(drinkName + " ($" + String.format("%.2f", drinkPriceMap.get(drinkName)) + ")");
         drinkButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 displayDrinkAttributes(buttonPanel, drinkButton);
