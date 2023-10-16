@@ -466,8 +466,12 @@ public class ManagerLogic{
                     }catch(Exception ex){ }
                 }
             }
-            //TODO Add Input Validation
+          
             String drinkType = JOptionPane.showInputDialog("Enter drink type");
+            if(!drinkType.equals("Seasonal Drinks") && !drinkType.equals("Sweet and Creamy") && !drinkType.equals("Fruity and Refreshing") && !drinkType.equals( "Coffee Flavored")){
+                JOptionPane.showMessageDialog(null, "Drink type must be one of the following:\nFruity and Refreshing\nSweet and Creamy\nCoffee Flavored\nSeasonal Drinks", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
 
             // Convert vector to an array
             String[] ingredients = ings.toArray(new String[0]);
