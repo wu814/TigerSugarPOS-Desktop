@@ -532,7 +532,7 @@ public class ManagerLogic{
 
             // Query
             Statement stmt = conn.createStatement();
-            ResultSet r = stmt.executeQuery("INSERT INTO inventory (inventory_id, supply, stock_remaining) VALUES (DEFAULT, '"+newSupply+"', "+newStock+");");
+            ResultSet r = stmt.executeQuery("INSERT INTO inventory (inventory_id, supply, stock_remaining,minimum_stock) VALUES (DEFAULT, '"+newSupply+"', "+newStock+",100);");
         // Errors connecting to database
         }catch (Exception ex){ 
            // JOptionPane.showMessageDialog(null,ex);
