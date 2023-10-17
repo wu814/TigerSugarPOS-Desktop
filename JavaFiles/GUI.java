@@ -1901,7 +1901,10 @@ public class GUI extends JFrame implements ActionListener{
         return sweetAndCreamyFrame;
     }
 
-
+    /**
+     * Coffee flavored page
+     * @return
+     */
     public JFrame createCoffeeFlavoredPage() {
         JFrame coffeeFlavoredFrame = new JFrame("Coffee Flavored");
         coffeeFlavoredFrame.setSize(1000, 800);
@@ -1949,7 +1952,13 @@ public class GUI extends JFrame implements ActionListener{
         for(String drink : drinks){
             JButton drinkButton = StyledButton(drink + " $" + String.format("%.2f", drinkPriceMap.get(drink)));
             drinkButton.addActionListener(new ActionListener(){
-                    public void actionPerformed(ActionEvent e) {
+                
+                /**
+                 * Action listener for adding to order
+                 * @param e
+                 * @return
+                 */
+                public void actionPerformed(ActionEvent e) {
                     addToOrder(drink);
                 }
             });
@@ -1985,6 +1994,12 @@ public class GUI extends JFrame implements ActionListener{
         payButton = new JButton("Charge $" + formattedOrderTotal);
         payButton.setFont(new Font("Arial", Font.BOLD, 20));
         payButton.addActionListener(new ActionListener(){
+
+            /**
+             * Action listener for completing the order
+             * @param e
+             * @return
+             */
             public void actionPerformed(ActionEvent e){
                 completeOrder();
             }
