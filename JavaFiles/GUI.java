@@ -212,6 +212,11 @@ public class GUI extends JFrame implements ActionListener{
         backToManager.addActionListener(gui);
         menuPanel.add(backToManager);
 
+        // Create scrollable table
+        JTable table = new JTable();
+        JScrollPane  scroll = new JScrollPane(table);
+        excessReportPanel.add(scroll);
+
         JTextField timestampField = new JTextField("YYYY-MM-DD HH:MM:SS");
         menuPanel.add(timestampField);
 
@@ -235,6 +240,8 @@ public class GUI extends JFrame implements ActionListener{
                     // Update the timestamp variable with the new value
                     timestamp = newTimestamp;
                     System.out.println("New Time: " + timestamp);
+                    // Getting the data
+                    managerLogic.getExcessReport(table, timestamp);
         
                     // You can optionally update the table or perform other actions here
                 } catch (IllegalArgumentException ex) {
@@ -244,16 +251,12 @@ public class GUI extends JFrame implements ActionListener{
             }
         });
 
-        // Create scrollable table
-        JTable table = new JTable();
-        JScrollPane  scroll = new JScrollPane(table);
-        excessReportPanel.add(scroll);
+        
 
         // Filling the table with database data
         
 
-        // Getting the data
-        managerLogic.getExcessReport(table, timestamp);
+        
 
         excessReportFrame.pack();
     }
