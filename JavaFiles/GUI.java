@@ -261,6 +261,7 @@ public class GUI extends JFrame implements ActionListener{
 
     /**
      * Creates the inventory frame and reads in from database
+     * @return
      */
     public static void setUpInventory(){
         // Frame setup
@@ -326,6 +327,7 @@ public class GUI extends JFrame implements ActionListener{
 
     /**
      * Create Recent Orders Frame
+     * @return
      */
     public static void setUpRecentOrders(){
         // Initialize recent orderes frame
@@ -375,6 +377,7 @@ public class GUI extends JFrame implements ActionListener{
 
     /**
      * Create Stats Frame
+     * @return
      */
     public static void setUpOrderStats(){
         // Initilize frame
@@ -426,6 +429,7 @@ public class GUI extends JFrame implements ActionListener{
 
 
     /**
+     * Creates a table that contains daily stats
      * @return a table that contains daily stats
      */
     public static JTable dailyStats(){
@@ -435,7 +439,12 @@ public class GUI extends JFrame implements ActionListener{
         return table;
     }
 
-
+    /**
+     * Creates a table that contains a custom range between start and end
+     * @param start
+     * @param end
+     * @return a table that contains a custom range between start and end
+     */
     public static JTable customRange(String start, String end){
         JTable table = new JTable();
         table = managerLogic.getCustomRange(table, start, end);
@@ -444,7 +453,8 @@ public class GUI extends JFrame implements ActionListener{
 
 
     /**
-     * Sets up frame formenu editor
+     * Sets up frame for menu editor
+     * @return
      */
     public static void setUpMenuEditor(){
         // Initialize frame
@@ -500,6 +510,7 @@ public class GUI extends JFrame implements ActionListener{
 
     /**
      * Set up employee selector
+     * @return
      */ 
     public static void setEmployeeComboBox(){
         // Loads in the names of the employees
@@ -525,6 +536,7 @@ public class GUI extends JFrame implements ActionListener{
     /**
      * Perform certain actions when a button is pressed
      * @param e the event occurred
+     * @return
      */
     public void actionPerformed(ActionEvent e){
         String event = e.getActionCommand();
@@ -618,9 +630,7 @@ public class GUI extends JFrame implements ActionListener{
                 
             } catch (ParseException | IllegalArgumentException exe) {
                 JOptionPane.showMessageDialog(null, "You have entered an invalid date.\nTry Again.", "ERROR", JOptionPane.INFORMATION_MESSAGE);            
-            }
-            
-            
+            } 
         }
         // On inventory page, view the restock report
         else if(event.equals("View Restock Report")){
@@ -666,7 +676,9 @@ public class GUI extends JFrame implements ActionListener{
 
 
     /**
+     * Logic to remove from order
      * @param drinkButton the button of the drink that is being removed from the order
+     * @return
      */
     private void removeFromOrder(JPanel drinkButtonPanel, JButton drinkButton){
         int buttonIndex = getButtonIndex(drinkButton);
@@ -691,7 +703,9 @@ public class GUI extends JFrame implements ActionListener{
 
 
     /**
-     * @param targetButton 
+     * Finds the button's index
+     * @param targetButton
+     * @return the button's index
      */
     private int getButtonIndex(JButton targetButton){
         for (int i = 0; i < drinkButtons.size(); i++){
