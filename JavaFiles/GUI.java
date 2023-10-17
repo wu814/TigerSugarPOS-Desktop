@@ -25,7 +25,7 @@ import java.util.*;
 
 
 /**
- * @author Chris Vu, Josh Hare, Doby Lanete
+ * @author Chris Vu, Josh Hare, Doby Lanete, Tyson Long
  */
 public class GUI extends JFrame implements ActionListener{
     // Attributes
@@ -34,6 +34,7 @@ public class GUI extends JFrame implements ActionListener{
     static JFrame inventoryFrame; // Inventory screen
     static JFrame restockReportFrame; // Restock Report screen
     static JFrame excessReportFrame; // Excess Report screen
+    static JFrame salesTogetherFrame; // What Sales Together screen
     static JFrame managerFrame; // Manager view menu screen
     static JFrame cashierFrame; // Cashier screenF
     static JFrame recentFrame; // Recent orders screen
@@ -68,6 +69,7 @@ public class GUI extends JFrame implements ActionListener{
 
     /**
      * Establishes connection to the database, through the conn variable
+     * @return
      */
     public static void connect(){
         conn = null;
@@ -87,6 +89,7 @@ public class GUI extends JFrame implements ActionListener{
     /**
      * Change frame to a new frame, use when switching menus
      * @param newFrame the incoming new frame
+     * @return
      */
     public static void changeFrame(JFrame newFrame){
         currFrame.setVisible(false);
@@ -102,7 +105,7 @@ public class GUI extends JFrame implements ActionListener{
 
     /**
      * Initialize variables and components necessary for the GUI
-     * @return 
+     * @return
      */
     public static void frameSetup(){
         // Initiaize frame
@@ -132,6 +135,7 @@ public class GUI extends JFrame implements ActionListener{
 
     /**
      * Creates the restock report and reads in from database
+     * @return
      */
     public static void setUpRestockReport(){
         // Frame setup
@@ -177,6 +181,7 @@ public class GUI extends JFrame implements ActionListener{
 
     /**
      * Creates the excess report and reads in from database
+     * @return
      */
     public static void setUpExcessReport(){
         // Frame setup
@@ -220,6 +225,10 @@ public class GUI extends JFrame implements ActionListener{
         menuPanel.add(updateTimestampButton);
 
         updateTimestampButton.addActionListener(new ActionListener() {
+            /**
+             * Updates the timestamp
+             * @return
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Get the new timestamp value from the text field
@@ -253,9 +262,90 @@ public class GUI extends JFrame implements ActionListener{
         excessReportFrame.pack();
     }
 
+    public static void setUpWhatSalesTogether() {
+        // Frame setup
+        salesTogetherFrame = new JFrame("What Sales Together");
+        salesTogetherFrame.setSize(1000, 800);
+
+        // Create bottom panel (content)
+        JPanel salesTogetherPanel = new JPanel();
+        salesTogetherFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        salesTogetherFrame.add(salesTogetherPanel);
+
+        // Create top panel (title)
+        JPanel titlePanel = new JPanel();
+        titlePanel.setPreferredSize(new Dimension(1000,50));
+        JLabel title = new JLabel("What Sales Together");
+        titlePanel.add(title);
+
+        // Create middle panel (menu)
+        JPanel menuPanel = new JPanel();
+        menuPanel.setPreferredSize(new Dimension(1000,50));
+
+        // Frame layout
+        salesTogetherFrame.add(titlePanel,BorderLayout.NORTH);
+        salesTogetherFrame.add(menuPanel,BorderLayout.CENTER);
+        salesTogetherFrame.add(salesTogetherPanel,BorderLayout.SOUTH);
+
+        // Create back button
+        JButton backToManager = new JButton("Back to Manager Menu"); 
+        backToManager.addActionListener(gui);
+        menuPanel.add(backToManager);
+
+        // Create scrollable table
+        JTable table = new JTable();
+        JScrollPane  scroll = new JScrollPane(table);
+        salesTogetherPanel.add(scroll);
+
+        // Filling the table with database data
+        
+        // getting two text fields to get timestamp
+        JTextField startTimestampField = new JTextField("YYYY-MM-DD HH:MM:SS");
+        menuPanel.add(startTimestampField);
+
+        JTextField endTimestampField = new JTextField("YYYY-MM-DD HH:MM:SS");
+        menuPanel.add(endTimestampField);
+
+        JButton submitTimestampsButton = new JButton("Submit Timestamps");
+        menuPanel.add(submitTimestampsButton);
+
+        submitTimestampsButton.addActionListener(new ActionListener() {
+            /**
+             * Updates the timestamp
+             * @return
+             */
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Get the new timestamp value from the text field
+                String startTimestampStr = startTimestampField.getText();
+                String endTimestampStr = endTimestampField.getText();
+        
+                try {
+                    // Parse the user input into a Timestamp object
+                    Timestamp startTimestamp = Timestamp.valueOf(startTimestampStr);
+                    Timestamp endTimestamp = Timestamp.valueOf(endTimestampStr);
+
+                    // Getting the data
+                    managerLogic.getWhatSalesTogether(table, startTimestamp, endTimestamp);
+        
+                    // You can optionally update the table or perform other actions here
+                } catch (IllegalArgumentException ex) {
+                    // Handle invalid input gracefully, e.g., show an error message
+                    JOptionPane.showMessageDialog(excessReportFrame, "Invalid timestamp format. Please use yyyy-MM-dd HH:mm:ss", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
+        
+
+
+        salesTogetherFrame.pack();
+    }
+
 
     /**
      * Creates the inventory frame and reads in from database
+     * @return
      */
     public static void setUpInventory(){
         // Frame setup
@@ -321,6 +411,7 @@ public class GUI extends JFrame implements ActionListener{
 
     /**
      * Create Recent Orders Frame
+     * @return
      */
     public static void setUpRecentOrders(){
         // Initialize recent orderes frame
@@ -370,6 +461,7 @@ public class GUI extends JFrame implements ActionListener{
 
     /**
      * Create Stats Frame
+     * @return
      */
     public static void setUpOrderStats(){
         // Initilize frame
@@ -405,6 +497,11 @@ public class GUI extends JFrame implements ActionListener{
         daily.addActionListener(gui);
         menuPanel.add(daily);
 
+        // Button that displays what pairs of items sells together in the same order
+        JButton whatSalesTogether = new JButton("What Sales Together");
+        whatSalesTogether.addActionListener(gui);
+        menuPanel.add(whatSalesTogether);
+
         // Button that displays stats over a custom range
         JButton custom = new JButton("Custom Range"); 
         custom.addActionListener(gui);
@@ -421,6 +518,7 @@ public class GUI extends JFrame implements ActionListener{
 
 
     /**
+     * Creates a table that contains daily stats
      * @return a table that contains daily stats
      */
     public static JTable dailyStats(){
@@ -430,7 +528,12 @@ public class GUI extends JFrame implements ActionListener{
         return table;
     }
 
-
+    /**
+     * Creates a table that contains a custom range between start and end
+     * @param start
+     * @param end
+     * @return a table that contains a custom range between start and end
+     */
     public static JTable customRange(String start, String end){
         JTable table = new JTable();
         table = managerLogic.getCustomRange(table, start, end);
@@ -439,7 +542,8 @@ public class GUI extends JFrame implements ActionListener{
 
 
     /**
-     * Sets up frame formenu editor
+     * Sets up frame for menu editor
+     * @return
      */
     public static void setUpMenuEditor(){
         // Initialize frame
@@ -495,6 +599,7 @@ public class GUI extends JFrame implements ActionListener{
 
     /**
      * Set up employee selector
+     * @return
      */ 
     public static void setEmployeeComboBox(){
         // Loads in the names of the employees
@@ -520,6 +625,7 @@ public class GUI extends JFrame implements ActionListener{
     /**
      * Perform certain actions when a button is pressed
      * @param e the event occurred
+     * @return
      */
     public void actionPerformed(ActionEvent e){
         String event = e.getActionCommand();
@@ -613,9 +719,12 @@ public class GUI extends JFrame implements ActionListener{
                 
             } catch (ParseException | IllegalArgumentException exe) {
                 JOptionPane.showMessageDialog(null, "You have entered an invalid date.\nTry Again.", "ERROR", JOptionPane.INFORMATION_MESSAGE);            
-            }
-            
-            
+            } 
+        }
+        // On order stats page, show what sales together
+        else if(event.equals("What Sales Together")) {
+            setUpWhatSalesTogether();
+            changeFrame(salesTogetherFrame);
         }
         // On inventory page, view the restock report
         else if(event.equals("View Restock Report")){
@@ -661,7 +770,9 @@ public class GUI extends JFrame implements ActionListener{
 
 
     /**
+     * Logic to remove from order
      * @param drinkButton the button of the drink that is being removed from the order
+     * @return
      */
     private void removeFromOrder(JPanel drinkButtonPanel, JButton drinkButton){
         int buttonIndex = getButtonIndex(drinkButton);
@@ -686,7 +797,9 @@ public class GUI extends JFrame implements ActionListener{
 
 
     /**
-     * @param targetButton 
+     * Finds the button's index
+     * @param targetButton
+     * @return the button's index
      */
     private int getButtonIndex(JButton targetButton){
         for (int i = 0; i < drinkButtons.size(); i++){
@@ -699,9 +812,10 @@ public class GUI extends JFrame implements ActionListener{
 
 
     /**
-     * a function to display the stats of a drink (dairy free alternative, sweetness level, ice level, cup size, special instructions)
+     * A function to display the stats of a drink (dairy free alternative, sweetness level, ice level, cup size, special instructions)
      * @param drinkButtonPanel
      * @param drinkButton
+     * @return
      */
     private void displayDrinkAttributes(JPanel drinkButtonPanel, JButton drinkButton){
         // Adding the attributes underneath the drinkButton
@@ -731,6 +845,12 @@ public class GUI extends JFrame implements ActionListener{
                 dairyOatButton.setBackground(Color.BLUE);
                 dairyOatButton.setForeground(Color.WHITE);
                 dairyOatButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for adding attributes for oat milk
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
                         String newAttributes = "Dairy Free Alternative: Oat Milk";
@@ -746,6 +866,12 @@ public class GUI extends JFrame implements ActionListener{
                 dairySoyButton.setBackground(Color.BLUE);
                 dairySoyButton.setForeground(Color.WHITE);
                 dairySoyButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for adding attributes for soy milk
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
                         String newAttributes = "Dairy Free Alternative: Soy Milk";
@@ -761,6 +887,12 @@ public class GUI extends JFrame implements ActionListener{
                 dairyLactoseFreeButton.setBackground(Color.BLUE);
                 dairyLactoseFreeButton.setForeground(Color.WHITE);
                 dairyLactoseFreeButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for adding attributes for lactose free milk
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
                         String newAttributes = "Dairy Free Alternative: Lactose Free Milk";
@@ -776,6 +908,12 @@ public class GUI extends JFrame implements ActionListener{
                 dairyNoneButton.setBackground(Color.BLUE);
                 dairyNoneButton.setForeground(Color.WHITE);
                 dairyNoneButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for adding attributes for none
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
                         String newAttributes = "Dairy Free Alternative: None";
@@ -803,6 +941,12 @@ public class GUI extends JFrame implements ActionListener{
                 sweetness50Button.setBackground(Color.BLUE);
                 sweetness50Button.setForeground(Color.WHITE);
                 sweetness50Button.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for modifying the sweetness level to 50%
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", Sweetness Level: 50%";
@@ -818,6 +962,12 @@ public class GUI extends JFrame implements ActionListener{
                 sweetness100Button.setBackground(Color.BLUE);
                 sweetness100Button.setForeground(Color.WHITE);
                 sweetness100Button.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for modifying the sweetness level to 100%
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", Sweetness Level: 100%";
@@ -843,6 +993,12 @@ public class GUI extends JFrame implements ActionListener{
                 iceLessButton.setBackground(Color.BLUE);
                 iceLessButton.setForeground(Color.WHITE);
                 iceLessButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for modifying the ice level to less
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", Ice Level: Less";
@@ -859,6 +1015,12 @@ public class GUI extends JFrame implements ActionListener{
                 iceNormalButton.setForeground(Color.WHITE);
 
                 iceNormalButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for modifying the ice level to normal
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", Ice Level: Normal";
@@ -875,6 +1037,12 @@ public class GUI extends JFrame implements ActionListener{
                 iceNoneButton.setForeground(Color.WHITE);
 
                 iceNoneButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for modifying the ice level to none
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", Ice Level: None";
@@ -902,6 +1070,12 @@ public class GUI extends JFrame implements ActionListener{
                 cupSizeRegularButton.setForeground(Color.WHITE);
 
                 cupSizeRegularButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for modifying the cup size to regular
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", Cup Size: Regular";
@@ -918,6 +1092,12 @@ public class GUI extends JFrame implements ActionListener{
                 cupSizeRegularHot.setForeground(Color.WHITE);
 
                 cupSizeRegularHot.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for modifying the cup size to regular hot
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", Cup Size: Regular Hot";
@@ -934,6 +1114,12 @@ public class GUI extends JFrame implements ActionListener{
                 cupSizeXLButton.setForeground(Color.WHITE);
 
                 cupSizeXLButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for modifying the cup size to XL
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e) {
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", Cup Size: XL";
@@ -964,6 +1150,12 @@ public class GUI extends JFrame implements ActionListener{
                 submitSpecialInstructionsButton.setForeground(Color.WHITE);
 
                 submitSpecialInstructionsButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for adding special instructions
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", " + attributes[3] + ", Special Instructions: " + specialInstructionsTextArea.getText();
@@ -989,6 +1181,12 @@ public class GUI extends JFrame implements ActionListener{
                 addBobaButton.setBackground(Color.BLUE);
                 addBobaButton.setForeground(Color.WHITE);
                 addBobaButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for adding boba
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAddons.get(buttonIndex).split(", ");
                         String newAttributes = "Extra Boba: Added";
@@ -1004,6 +1202,12 @@ public class GUI extends JFrame implements ActionListener{
                 removeBobaButton.setBackground(Color.BLUE);
                 removeBobaButton.setForeground(Color.WHITE);
                 removeBobaButton.addActionListener(new ActionListener() {
+
+                    /**
+                     * Action listener for having no boba
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e) {
                         String[] attributes = drinkAddons.get(buttonIndex).split(", ");
                         String newAttributes = "Extra Boba: None";
@@ -1032,6 +1236,12 @@ public class GUI extends JFrame implements ActionListener{
                 addTigerPearlsButton.setBackground(Color.BLUE);
                 addTigerPearlsButton.setForeground(Color.WHITE);
                 addTigerPearlsButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for adding tiger pearls
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAddons.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", Tiger Pearls: Added";
@@ -1047,6 +1257,12 @@ public class GUI extends JFrame implements ActionListener{
                 removeTigerPearlsButton.setBackground(Color.BLUE);
                 removeTigerPearlsButton.setForeground(Color.WHITE);
                 removeTigerPearlsButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for having no tiger pearls
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAddons.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", Tiger Pearls: None";
@@ -1073,6 +1289,12 @@ public class GUI extends JFrame implements ActionListener{
                 addCreamMousseButton.setBackground(Color.BLUE);
                 addCreamMousseButton.setForeground(Color.WHITE);
                 addCreamMousseButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for adding cream mousse
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAddons.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", Cream Mousse: Added";
@@ -1088,6 +1310,12 @@ public class GUI extends JFrame implements ActionListener{
                 removeCreamMousseButton.setBackground(Color.BLUE);
                 removeCreamMousseButton.setForeground(Color.WHITE);
                 removeCreamMousseButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for having no cream mousse
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAddons.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", Cream Mousse: None";
@@ -1114,6 +1342,12 @@ public class GUI extends JFrame implements ActionListener{
                 addTaroButton.setBackground(Color.BLUE);
                 addTaroButton.setForeground(Color.WHITE);
                 addTaroButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for adding taro
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAddons.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] +", Taro: Added";
@@ -1129,6 +1363,12 @@ public class GUI extends JFrame implements ActionListener{
                 removeTaroButton.setBackground(Color.BLUE);
                 removeTaroButton.setForeground(Color.WHITE);
                 removeTaroButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for having no taro
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAddons.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] +", Taro: None";
@@ -1155,6 +1395,12 @@ public class GUI extends JFrame implements ActionListener{
                 addRedBeanButton.setBackground(Color.BLUE);
                 addRedBeanButton.setForeground(Color.WHITE);
                 addRedBeanButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for adding red beans
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAddons.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", " + attributes[3] + ", Red Bean: Added";
@@ -1171,6 +1417,12 @@ public class GUI extends JFrame implements ActionListener{
                 removeRedBeanButton.setForeground(Color.WHITE);
                 removeRedBeanButton.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent e){
+
+                        /**
+                         * Action listener for having no red beans
+                         * @param e
+                         * @return
+                         */
                         String[] attributes = drinkAddons.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", " + attributes[3] + ", Red Bean: None";
                         for(int i = 5; i < attributes.length; i++){
@@ -1196,6 +1448,12 @@ public class GUI extends JFrame implements ActionListener{
                 addPuddingButton.setBackground(Color.BLUE);
                 addPuddingButton.setForeground(Color.WHITE);
                 addPuddingButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for adding pudding
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e) {
                         String[] attributes = drinkAddons.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", " + attributes[3] + ", " + attributes[4] + ", Pudding: Added";
@@ -1212,6 +1470,12 @@ public class GUI extends JFrame implements ActionListener{
                 removePuddingButton.setForeground(Color.WHITE);
                 removePuddingButton.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent e){
+
+                        /**
+                         * Action listener for having no pudding
+                         * @param e
+                         * @return
+                         */
                         String[] attributes = drinkAddons.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", " + attributes[3] + ", " + attributes[4] + ", Pudding: None";
                         for(int i = 6; i < attributes.length; i++){
@@ -1237,6 +1501,12 @@ public class GUI extends JFrame implements ActionListener{
                 addMochiButton.setBackground(Color.BLUE);
                 addMochiButton.setForeground(Color.WHITE);
                 addMochiButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for adding mochi
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAddons.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", " + attributes[3] + ", " + attributes[4] + ", " + attributes[5] + ", Mochi: Added";
@@ -1252,6 +1522,12 @@ public class GUI extends JFrame implements ActionListener{
                 removeMochiButton.setBackground(Color.BLUE);
                 removeMochiButton.setForeground(Color.WHITE);
                 removeMochiButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for having no mochi
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e) {
                         String[] attributes = drinkAddons.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", " + attributes[3] + ", " + attributes[4] + ", " + attributes[5] + ", Mochi: None";
@@ -1278,6 +1554,12 @@ public class GUI extends JFrame implements ActionListener{
                 removeDrinkButton.setForeground(Color.WHITE);
 
                 removeDrinkButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for removing drink from order
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         removeFromOrder(drinkButtonPanel, drinkButton);
                     }
@@ -1320,6 +1602,7 @@ public class GUI extends JFrame implements ActionListener{
     /**
      * Handle adding a drink to the order list
      * @param drinkName the name of the drink that is being added on the order
+     * @return
      */
     private void addToOrder(String drinkName){
         JPanel buttonPanel = new JPanel();
@@ -1330,7 +1613,14 @@ public class GUI extends JFrame implements ActionListener{
         orderTotal += drinkPriceMap.get(drinkName);
 
         JButton drinkButton = new JButton(drinkName + " ($" + String.format("%.2f", drinkPriceMap.get(drinkName)) + ")");
+
         drinkButton.addActionListener(new ActionListener(){
+
+            /**
+             * Action listener for displaying drink attributes
+             * @param e
+             * @return
+             */
             public void actionPerformed(ActionEvent e){
                 displayDrinkAttributes(buttonPanel, drinkButton);
             }
@@ -1358,7 +1648,10 @@ public class GUI extends JFrame implements ActionListener{
         drinkAddons.add("Extra Boba: None, Tiger Pearls: None, Cream Mousse: None, Taro: None, Red Bean: None, Pudding: None, Mochi: None");
     }
 
-
+    /**
+     * Logic for when completing the order
+     * @return
+     */
     private void completeOrder(){
         ArrayList<String> outOfStock = OrderLogic.placeOrder(1, 1, order.toArray(new String[order.size()]), orderTotal, drinkAttributes.toArray(new String[drinkAttributes.size()]), drinkAddons.toArray(new String[drinkAddons.size()]));
         
@@ -1390,6 +1683,8 @@ public class GUI extends JFrame implements ActionListener{
 
     /**
      * Displays either the cashier view or the manager view based on combobox selection
+     * @param manager
+     * @return
      */
     public static void viewSelector(boolean manager){
         startFrame.setVisible(false);
@@ -1437,7 +1732,11 @@ public class GUI extends JFrame implements ActionListener{
         }
     }
 
-
+    /**
+     * Function for styling button
+     * @param text
+     * @return the styled button
+     */
     private static JButton StyledButton(String text){
         JButton button = new JButton("<html><center>" + text + "</center></html>", null);
         button.setFont(new Font("Roboto", Font.PLAIN, 20));
@@ -1461,8 +1760,10 @@ public class GUI extends JFrame implements ActionListener{
         return button;
     }
 
-
-    // FruityRefreshingPage
+    /**
+     * Fruity and refreshing page
+     * @return JFrame of the fruity and refreshing page
+     */
     public JFrame createFruityRefreshingPage() {
         JFrame fruityRefreshingFrame = new JFrame("Fruity and Refreshing");
         fruityRefreshingFrame.setSize(1000, 800);
@@ -1512,7 +1813,13 @@ public class GUI extends JFrame implements ActionListener{
         for(String drink : drinks){
             JButton drinkButton = StyledButton(drink + " $" + String.format("%.2f", drinkPriceMap.get(drink)));
             drinkButton.addActionListener(new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
+
+                /**
+                 * Action listener for adding drink to order
+                 * @param e
+                 * @return
+                 */
+                public void actionPerformed(ActionEvent e){
                     addToOrder(drink);
                 }
             });
@@ -1549,6 +1856,12 @@ public class GUI extends JFrame implements ActionListener{
         payButton = new JButton("Charge $" + formattedOrderTotal);
         payButton.setFont(new Font("Arial", Font.BOLD, 20));
         payButton.addActionListener(new ActionListener(){
+
+            /**
+             * Action listener for completing the order
+             * @param e
+             * @return
+             */
             public void actionPerformed(ActionEvent e){
                 completeOrder();
             }
@@ -1565,7 +1878,10 @@ public class GUI extends JFrame implements ActionListener{
         return fruityRefreshingFrame;
     }
 
-
+    /**
+     * Sweet and creamy page
+     * @return JFrame of the sweet and creamy page
+     */
     public JFrame createSweetAndCreamyPage() {
         JFrame sweetAndCreamyFrame = new JFrame("Sweet and Creamy");
         sweetAndCreamyFrame.setSize(1000, 800);
@@ -1613,7 +1929,13 @@ public class GUI extends JFrame implements ActionListener{
         for(String drink : drinks){
             JButton drinkButton = StyledButton(drink + " $" + String.format("%.2f", drinkPriceMap.get(drink)));
             drinkButton.addActionListener(new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
+                
+                /**
+                 * Action listener for adding drink to order
+                 * @param e
+                 * @return
+                 */
+                public void actionPerformed(ActionEvent e){
                     addToOrder(drink);
                 }
             });
@@ -1651,6 +1973,12 @@ public class GUI extends JFrame implements ActionListener{
         payButton = new JButton("Charge $" + formattedOrderTotal);
         payButton.setFont(new Font("Arial", Font.BOLD, 20));
         payButton.addActionListener(new ActionListener(){
+
+            /**
+             * Action listener for completing the order
+             * @param e
+             * @return
+             */
             public void actionPerformed(ActionEvent e){
                 completeOrder();
             }
@@ -1667,7 +1995,10 @@ public class GUI extends JFrame implements ActionListener{
         return sweetAndCreamyFrame;
     }
 
-
+    /**
+     * Coffee flavored page
+     * @return JFrame of the coffee flavored page
+     */
     public JFrame createCoffeeFlavoredPage() {
         JFrame coffeeFlavoredFrame = new JFrame("Coffee Flavored");
         coffeeFlavoredFrame.setSize(1000, 800);
@@ -1715,7 +2046,13 @@ public class GUI extends JFrame implements ActionListener{
         for(String drink : drinks){
             JButton drinkButton = StyledButton(drink + " $" + String.format("%.2f", drinkPriceMap.get(drink)));
             drinkButton.addActionListener(new ActionListener(){
-                    public void actionPerformed(ActionEvent e) {
+                
+                /**
+                 * Action listener for adding to order
+                 * @param e
+                 * @return
+                 */
+                public void actionPerformed(ActionEvent e) {
                     addToOrder(drink);
                 }
             });
@@ -1751,6 +2088,12 @@ public class GUI extends JFrame implements ActionListener{
         payButton = new JButton("Charge $" + formattedOrderTotal);
         payButton.setFont(new Font("Arial", Font.BOLD, 20));
         payButton.addActionListener(new ActionListener(){
+
+            /**
+             * Action listener for completing the order
+             * @param e
+             * @return
+             */
             public void actionPerformed(ActionEvent e){
                 completeOrder();
             }
@@ -1767,7 +2110,10 @@ public class GUI extends JFrame implements ActionListener{
         return coffeeFlavoredFrame;
     }
 
-
+    /**
+     * Seasonal drinks page
+     * @return JFrame of the seasonal drinks page
+     */
     public JFrame createSeasonalDrinksPage(){
         JFrame seasonalDrinksFrame = new JFrame("Seasonal Drinks");
         seasonalDrinksFrame.setSize(1000, 800);
@@ -1815,7 +2161,13 @@ public class GUI extends JFrame implements ActionListener{
         for(String drink : drinks){
             JButton drinkButton = StyledButton(drink + " $" + String.format("%.2f", drinkPriceMap.get(drink)));
             drinkButton.addActionListener(new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
+                
+                /**
+                 * Action listener for adding to order
+                 * @param e
+                 * @return
+                 */
+                public void actionPerformed(ActionEvent e){
                     addToOrder(drink);
                 }
             });
@@ -1852,6 +2204,12 @@ public class GUI extends JFrame implements ActionListener{
         payButton = new JButton("Charge $" + formattedOrderTotal);
         payButton.setFont(new Font("Arial", Font.BOLD, 20));
         payButton.addActionListener(new ActionListener(){
+
+            /**
+             * Action listener for completing the order
+             * @param e
+             * @return
+             */
             public void actionPerformed(ActionEvent e){
                 completeOrder();
             }
@@ -1868,8 +2226,11 @@ public class GUI extends JFrame implements ActionListener{
         return seasonalDrinksFrame;
     } 
     
-    
-    /////////////////// MAIN FUNCTION ////////////////////
+    /**
+     * Main function
+     * @param args
+     * @return
+     */
     public static void main(String[] args){
         // Connect to Database
         connect();
@@ -1879,7 +2240,5 @@ public class GUI extends JFrame implements ActionListener{
         setUpInventory();
         setUpRecentOrders();
         setUpMenuEditor();
-    
     }
-    ////////////////////////////////////////////////////////
 }

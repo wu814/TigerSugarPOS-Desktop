@@ -775,4 +775,57 @@ public class ManagerLogic{
             JOptionPane.showMessageDialog(null, e);
         }
     }
+
+    public static void getWhatSalesTogether(JTable table, Timestamp beginTimestamp, Timestamp endTimestamp) {
+        String whatSalesTogetherQuery = "WITH OrderItems AS (\n" +
+            "   SELECT DISTINCT\n" +
+            "       unnest(order_items) AS item,\n" +
+            "       order_timestamp\n" +
+            "   FROM orders WHERE order_timestamp BETWEEN ? AND ?\n" +
+            ")\n" +
+            "SELECT\n" +
+            "   a.item AS item1,\n" +
+            "   b.item AS item2,\n" +
+            "   COUNT(*) AS frequency\n" +
+            "FROM\n" +
+            "   OrderItems a\n" +
+            "JOIN\n" +
+            "   OrderItems b ON a.order_timestamp = b.order_timestamp AND a.item < b.item\n" +
+            "GROUP BY\n" +
+            "   item1, item2\n" +
+            "ORDER BY\n" +
+            "   frequency DESC\n";
+        
+        try (PreparedStatement preparedStatement = conn.prepareStatement(whatSalesTogetherQuery)) {
+            // Set the parameters
+            preparedStatement.setTimestamp(1, beginTimestamp);
+            preparedStatement.setTimestamp(2, endTimestamp);
+
+            // Execute the query
+            ResultSet resultSet = preparedStatement.executeQuery();
+            DefaultTableModel tableModel = new DefaultTableModel();
+            tableModel.addColumn("Item 1");
+            tableModel.addColumn("Item 2");
+            tableModel.addColumn("Frequency");
+
+            // Process the result set
+            while (resultSet.next()) {
+                String item1 = resultSet.getString("item1");
+                String item2 = resultSet.getString("item2");
+                int frequency = resultSet.getInt("frequency");
+
+                Object[] rowData = new Object[]{
+                    item1, item2, frequency
+                };
+
+                tableModel.addRow(rowData);
+            }
+
+            table.setModel(tableModel);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+
+    }
 }
