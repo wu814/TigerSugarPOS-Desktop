@@ -656,62 +656,112 @@ public class ManagerLogic{
             JOptionPane.showMessageDialog(null,e);
         }
     }
-
+    
     public static void getExcessReport(JTable table, Timestamp timestamp){
-        try{
+        System.out.println("Excess Rans");
+        try {
+
+
             Timestamp currTimestamp = new Timestamp(System.currentTimeMillis());
             Statement stmt = conn.createStatement();
-            ResultSet drinkName = stmt.executeQuery("SELECT
-                                                        SUM(sago) AS Sago_Count,
-                                                        SUM(cups_xl) AS XL_Cups_Count,
-                                                        SUM(cups_regular_hot) AS Regular_Hot_Cups_Count,
-                                                        SUM(grass_jelly) AS Grass_Jelly_Count,
-                                                        SUM(crystal_jelly) AS Crystal_Jelly_Count,
-                                                        SUM(mango_milk_cream) AS Mango_Milk_Cream_Count,
-                                                        SUM(black_sugars) AS Black_Sugars_Count,
-                                                        SUM(aloe_vera_bits) AS Aloe_Vera_Bits_Count,
-                                                        SUM(straws_jumbo) AS Jumbo_Straws_Count,
-                                                        SUM(brown_sugar) AS Brown_Sugar_Count,
-                                                        SUM(black_sugar) AS Black_Sugar_Count,
-                                                        SUM(lids_dome) AS Dome_Lids_Count,
-                                                        SUM(strawberry_milk_cream) AS Strawberry_Milk_Cream_Count,
-                                                        SUM(condiment_station_supplies) AS Condiment_Station_Count,
-                                                        SUM(matcha) AS Matcha_Count,
-                                                        SUM(fresh_milk) AS Fresh_Milk_Count,
-                                                        SUM(tapioca_pearls_boba) AS Tapioca_Pearls_Count,
-                                                        SUM(tiger_pearls) AS Tiger_Pearls_Count,
-                                                        SUM(cream_mousse) AS Cream_Mousse_Count,
-                                                        SUM(taro) AS Taro_Count,
-                                                        SUM(red_beans) AS Red_Beans_Count,
-                                                        SUM(pudding) AS Pudding_Count,
-                                                        SUM(mochi) AS Mochi_Count,
-                                                        SUM(jasmine_green_tea_leaves) AS Jasmine_Green_Tea_Leaves_Count,
-                                                        SUM(passion_fruit_tea_leaves) AS Passion_Fruit_Tea_Leaves_Count,
-                                                        SUM(lychee_jelly) AS Lychee_Jelly_Count,
-                                                        SUM(oat_milk) AS Oat_Milk_Count,
-                                                        SUM(strawberry_mango) AS Strawberry_Mango_Count,
-                                                        SUM(oolong_tea_leaves) AS Oolong_Tea_Leaves_Count,
-                                                        SUM(straws_regular) AS Regular_Straws_Count,
-                                                        SUM(lids_flat) AS Flat_Lids_Count,
-                                                        SUM(napkins_regular) AS Regular_Napkins_Count,
-                                                        SUM(to_go_bags_small) AS Small_To_Go_Bags_Count,
-                                                        SUM(cups_regular) AS Regular_Cups_Count,
-                                                        SUM(soy_milk) AS Soy_Milk_Count,
-                                                        SUM(lactose_free_milk) AS Lactose_Free_Milk_Count
-                                                    FROM inventory_history
-                                                    WHERE order_timestamp BETWEEN " + timestamp + " AND " + currTimestamp + ";");
+            String sqlQuery = "SELECT " +
+                "SUM(sago) AS Sago_Count, " +
+                "SUM(cups_xl) AS XL_Cups_Count, " +
+                "SUM(cups_regular_hot) AS Regular_Hot_Cups_Count, " +
+                "SUM(grass_jelly) AS Grass_Jelly_Count, " +
+                "SUM(crystal_jelly) AS Crystal_Jelly_Count, " +
+                "SUM(mango_milk_cream) AS Mango_Milk_Cream_Count, " +
+                "SUM(black_sugars) AS Black_Sugars_Count, " +
+                "SUM(aloe_vera_bits) AS Aloe_Vera_Bits_Count, " +
+                "SUM(straws_jumbo) AS Jumbo_Straws_Count, " +
+                "SUM(brown_sugar) AS Brown_Sugar_Count, " +
+                "SUM(black_sugar) AS Black_Sugar_Count, " +
+                "SUM(lids_dome) AS Dome_Lids_Count, " +
+                "SUM(strawberry_milk_cream) AS Strawberry_Milk_Cream_Count, " +
+                "SUM(condiment_station_supplies) AS Condiment_Station_Count, " +
+                "SUM(matcha) AS Matcha_Count, " +
+                "SUM(fresh_milk) AS Fresh_Milk_Count, " +
+                "SUM(tapioca_pearls_boba) AS Tapioca_Pearls_Count, " +
+                "SUM(tiger_pearls) AS Tiger_Pearls_Count, " +
+                "SUM(cream_mousse) AS Cream_Mousse_Count, " +
+                "SUM(taro) AS Taro_Count, " +
+                "SUM(red_beans) AS Red_Beans_Count, " +
+                "SUM(pudding) AS Pudding_Count, " +
+                "SUM(mochi) AS Mochi_Count, " +
+                "SUM(jasmine_green_tea_leaves) AS Jasmine_Green_Tea_Leaves_Count, " +
+                "SUM(passion_fruit_tea_leaves) AS Passion_Fruit_Tea_Leaves_Count, " +
+                "SUM(lychee_jelly) AS Lychee_Jelly_Count, " +
+                "SUM(oat_milk) AS Oat_Milk_Count, " +
+                "SUM(strawberry_mango) AS Strawberry_Mango_Count, " +
+                "SUM(oolong_tea_leaves) AS Oolong_Tea_Leaves_Count, " +
+                "SUM(straws_regular) AS Regular_Straws_Count, " +
+                "SUM(lids_flat) AS Flat_Lids_Count, " +
+                "SUM(napkins_regular) AS Regular_Napkins_Count, " +
+                "SUM(to_go_bags_small) AS Small_To_Go_Bags_Count, " +
+                "SUM(cups_regular) AS Regular_Cups_Count, " +
+                "SUM(soy_milk) AS Soy_Milk_Count, " +
+                "SUM(lactose_free_milk) AS Lactose_Free_Milk_Count " +
+                "FROM inventory_history " +
+                "WHERE order_timestamp BETWEEN '" + timestamp + "' AND '" + currTimestamp + "'";
 
-            HashMap<String, Integer> inventoryMap = new HashMap<>();
-            /**
-             * create hashmap of current inventory item to its current stock
-             * loop through query to add each item's amount that sold in the timeframe to the current stock hashmap (now we have the total)
-             * create 2nd hashmap with each inventory item going to what 10% of its current stock would be (you need to round up)
-             * if an item in the query is less than this number from the 2nd hashmap, then append it to a vector
-             * display this in the GUI
-            */
+                // Vector<String> colNames = new Vector<>();
+                // colNames.add("Inventory_item");
+                // colNames.add("Stock Amount");
 
-        }catch(Exception e){ 
-            JOptionPane.showMessageDialog(null,e);
+            DefaultTableModel tableModel = new DefaultTableModel();
+            tableModel.addColumn("Inventory_item");
+            tableModel.addColumn("Amount");
+
+            ResultSet resultSet = stmt.executeQuery(sqlQuery);
+
+            while (resultSet.next()) {
+                Object[] rowData = new Object[]{
+                    "Sago", resultSet.getString("Sago_Count"),
+                    "XL Cups", resultSet.getString("XL_Cups_Count"),
+                    "Regular Hot Cups", resultSet.getString("Regular_Hot_Cups_Count"),
+                    "Grass Jelly", resultSet.getString("Grass_Jelly_Count"),
+                    "Crystal Jelly", resultSet.getString("Crystal_Jelly_Count"),
+                    "Mango Milk Cream", resultSet.getString("Mango_Milk_Cream_Count"),
+                    "Black Sugars", resultSet.getString("Black_Sugars_Count"),
+                    "Aloe Vera Bits", resultSet.getString("Aloe_Vera_Bits_Count"),
+                    "Jumbo Straws", resultSet.getString("Jumbo_Straws_Count"),
+                    "Brown Sugar", resultSet.getString("Brown_Sugar_Count"),
+                    "Black Sugar", resultSet.getString("Black_Sugar_Count"),
+                    "Dome Lids", resultSet.getString("Dome_Lids_Count"),
+                    "Strawberry Milk Cream", resultSet.getString("Strawberry_Milk_Cream_Count"),
+                    "Condiment Station Supplies", resultSet.getString("Condiment_Station_Count"),
+                    "Matcha", resultSet.getString("Matcha_Count"),
+                    "Fresh Milk", resultSet.getString("Fresh_Milk_Count"),
+                    "Tapioca Pearls Boba", resultSet.getString("Tapioca_Pearls_Count"),
+                    "Tiger Pearls", resultSet.getString("Tiger_Pearls_Count"),
+                    "Cream Mousse", resultSet.getString("Cream_Mousse_Count"),
+                    "Taro", resultSet.getString("Taro_Count"),
+                    "Red Beans", resultSet.getString("Red_Beans_Count"),
+                    "Pudding", resultSet.getString("Pudding_Count"),
+                    "Mochi", resultSet.getString("Mochi_Count"),
+                    "Jasmine Green Tea Leaves", resultSet.getString("Jasmine_Green_Tea_Leaves_Count"),
+                    "Passion Fruit Tea Leaves", resultSet.getString("Passion_Fruit_Tea_Leaves_Count"),
+                    "Lychee Jelly", resultSet.getString("Lychee_Jelly_Count"),
+                    "Oat Milk", resultSet.getString("Oat_Milk_Count"),
+                    "Strawberry Mango", resultSet.getString("Strawberry_Mango_Count"),
+                    "Oolong Tea Leaves", resultSet.getString("Oolong_Tea_Leaves_Count"),
+                    "Regular Straws", resultSet.getString("Regular_Straws_Count"),
+                    "Flat Lids", resultSet.getString("Flat_Lids_Count"),
+                    "Regular Napkins", resultSet.getString("Regular_Napkins_Count"),
+                    "Small To Go Bags", resultSet.getString("Small_To_Go_Bags_Count"),
+                    "Regular Cups", resultSet.getString("Regular_Cups_Count"),
+                    "Soy Milk", resultSet.getString("Soy_Milk_Count"),
+                    "Lactose-Free Milk", resultSet.getString("Lactose_Free_Milk_Count")
+                };
+                tableModel.addRow(rowData);
+                
+            }
+            table.setModel(tableModel);
+
+            stmt.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
         }
     }
+
 }
