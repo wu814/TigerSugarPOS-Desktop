@@ -34,6 +34,7 @@ public class GUI extends JFrame implements ActionListener{
     static JFrame inventoryFrame; // Inventory screen
     static JFrame restockReportFrame; // Restock Report screen
     static JFrame excessReportFrame; // Excess Report screen
+    static JFrame salesTogetherFrame; // What Sales Together screen
     static JFrame managerFrame; // Manager view menu screen
     static JFrame cashierFrame; // Cashier screenF
     static JFrame recentFrame; // Recent orders screen
@@ -261,6 +262,86 @@ public class GUI extends JFrame implements ActionListener{
         excessReportFrame.pack();
     }
 
+    public static void setUpWhatSalesTogether() {
+        // Frame setup
+        salesTogetherFrame = new JFrame("What Sales Together");
+        salesTogetherFrame.setSize(1000, 800);
+
+        // Create bottom panel (content)
+        JPanel salesTogetherPanel = new JPanel();
+        salesTogetherFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        salesTogetherFrame.add(salesTogetherPanel);
+
+        // Create top panel (title)
+        JPanel titlePanel = new JPanel();
+        titlePanel.setPreferredSize(new Dimension(1000,50));
+        JLabel title = new JLabel("What Sales Together");
+        titlePanel.add(title);
+
+        // Create middle panel (menu)
+        JPanel menuPanel = new JPanel();
+        menuPanel.setPreferredSize(new Dimension(1000,50));
+
+        // Frame layout
+        salesTogetherFrame.add(titlePanel,BorderLayout.NORTH);
+        salesTogetherFrame.add(menuPanel,BorderLayout.CENTER);
+        salesTogetherFrame.add(salesTogetherPanel,BorderLayout.SOUTH);
+
+        // Create back button
+        JButton backToManager = new JButton("Back to Manager Menu"); 
+        backToManager.addActionListener(gui);
+        menuPanel.add(backToManager);
+
+        // Create scrollable table
+        JTable table = new JTable();
+        JScrollPane  scroll = new JScrollPane(table);
+        salesTogetherPanel.add(scroll);
+
+        // Filling the table with database data
+        
+        // getting two text fields to get timestamp
+        JTextField startTimestampField = new JTextField("YYYY-MM-DD HH:MM:SS");
+        menuPanel.add(startTimestampField);
+
+        JTextField endTimestampField = new JTextField("YYYY-MM-DD HH:MM:SS");
+        menuPanel.add(endTimestampField);
+
+        JButton submitTimestampsButton = new JButton("Submit Timestamps");
+        menuPanel.add(submitTimestampsButton);
+
+        submitTimestampsButton.addActionListener(new ActionListener() {
+            /**
+             * Updates the timestamp
+             * @return
+             */
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Get the new timestamp value from the text field
+                String startTimestampStr = startTimestampField.getText();
+                String endTimestampStr = endTimestampField.getText();
+        
+                try {
+                    // Parse the user input into a Timestamp object
+                    Timestamp startTimestamp = Timestamp.valueOf(startTimestampStr);
+                    Timestamp endTimestamp = Timestamp.valueOf(endTimestampStr);
+
+                    // Getting the data
+                    managerLogic.getWhatSalesTogether(table, startTimestamp, endTimestamp);
+        
+                    // You can optionally update the table or perform other actions here
+                } catch (IllegalArgumentException ex) {
+                    // Handle invalid input gracefully, e.g., show an error message
+                    JOptionPane.showMessageDialog(excessReportFrame, "Invalid timestamp format. Please use yyyy-MM-dd HH:mm:ss", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
+        
+
+
+        salesTogetherFrame.pack();
+    }
+
 
     /**
      * Creates the inventory frame and reads in from database
@@ -415,6 +496,11 @@ public class GUI extends JFrame implements ActionListener{
         JButton daily = new JButton("Daily Stats"); 
         daily.addActionListener(gui);
         menuPanel.add(daily);
+
+        // Button that displays what pairs of items sells together in the same order
+        JButton whatSalesTogether = new JButton("What Sales Together");
+        whatSalesTogether.addActionListener(gui);
+        menuPanel.add(whatSalesTogether);
 
         // Button that displays stats over a custom range
         JButton custom = new JButton("Custom Range"); 
@@ -634,6 +720,11 @@ public class GUI extends JFrame implements ActionListener{
             } catch (ParseException | IllegalArgumentException exe) {
                 JOptionPane.showMessageDialog(null, "You have entered an invalid date.\nTry Again.", "ERROR", JOptionPane.INFORMATION_MESSAGE);            
             } 
+        }
+        // On order stats page, show what sales together
+        else if(event.equals("What Sales Together")) {
+            setUpWhatSalesTogether();
+            changeFrame(salesTogetherFrame);
         }
         // On inventory page, view the restock report
         else if(event.equals("View Restock Report")){
