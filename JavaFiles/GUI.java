@@ -25,7 +25,7 @@ import java.util.*;
 
 
 /**
- * @author Chris Vu, Josh Hare
+ * @author Chris Vu, Josh Hare, Doby Lanete
  */
 public class GUI extends JFrame implements ActionListener{
     // Attributes

@@ -666,44 +666,44 @@ public class ManagerLogic{
             Statement stmt = conn.createStatement();
             Statement stmt2 = conn.createStatement();
             String sqlHistoryQuery = "SELECT " +
-        "SUM(sago) AS sago_count, " +
-        "SUM(cups_xl) AS cups_xl_count, " +
-        "SUM(cups_regular_hot) AS cups_regular_hot_count, " +
-        "SUM(grass_jelly) AS grass_jelly_count, " +
-        "SUM(crystal_jelly) AS crystal_jelly_count, " +
-        "SUM(mango_milk_cream) AS mango_milk_cream_count, " +
-        "SUM(black_sugars) AS black_sugars_count, " +
-        "SUM(aloe_vera_bits) AS aloe_vera_bits_count, " +
-        "SUM(straws_jumbo) AS straws_jumbo_count, " +
-        "SUM(brown_sugar) AS brown_sugar_count, " +
-        "SUM(black_sugar) AS black_sugar_count, " +
-        "SUM(lids_dome) AS lids_dome_count, " +
-        "SUM(strawberry_milk_cream) AS strawberry_milk_cream_count, " +
-        "SUM(condiment_station_supplies) AS condiment_station_supplies_count, " +
-        "SUM(matcha) AS matcha_count, " +
-        "SUM(fresh_milk) AS fresh_milk_count, " +
-        "SUM(tapioca_pearls_boba) AS tapioca_pearls_boba_count, " +
-        "SUM(tiger_pearls) AS tiger_pearls_count, " +
-        "SUM(cream_mousse) AS cream_mousse_count, " +
-        "SUM(taro) AS taro_count, " +
-        "SUM(red_beans) AS red_beans_count, " +
-        "SUM(pudding) AS pudding_count, " +
-        "SUM(mochi) AS mochi_count, " +
-        "SUM(jasmine_green_tea_leaves) AS jasmine_green_tea_leaves_count, " +
-        "SUM(passion_fruit_tea_leaves) AS passion_fruit_tea_leaves_count, " +
-        "SUM(lychee_jelly) AS lychee_jelly_count, " +
-        "SUM(oat_milk) AS oat_milk_count, " +
-        "SUM(strawberry_mango) AS strawberry_mango_count, " +
-        "SUM(oolong_tea_leaves) AS oolong_tea_leaves_count, " +
-        "SUM(straws_regular) AS straws_regular_count, " +
-        "SUM(lids_flat) AS lids_flat_count, " +
-        "SUM(napkins_regular) AS napkins_regular_count, " +
-        "SUM(to_go_bags_small) AS to_go_bags_small_count, " +
-        "SUM(cups_regular) AS cups_regular_count, " +
-        "SUM(soy_milk) AS soy_milk_count, " +
-        "SUM(lactose_free_milk) AS lactose_free_milk_count " +
-        "FROM inventory_history " +
-        "WHERE order_timestamp BETWEEN '" + timestamp + "' AND '" + currTimestamp + "'";
+                "SUM(sago) AS sago_count, " +
+                "SUM(cups_xl) AS cups_xl_count, " +
+                "SUM(cups_regular_hot) AS cups_regular_hot_count, " +
+                "SUM(grass_jelly) AS grass_jelly_count, " +
+                "SUM(crystal_jelly) AS crystal_jelly_count, " +
+                "SUM(mango_milk_cream) AS mango_milk_cream_count, " +
+                "SUM(black_sugars) AS black_sugars_count, " +
+                "SUM(aloe_vera_bits) AS aloe_vera_bits_count, " +
+                "SUM(straws_jumbo) AS straws_jumbo_count, " +
+                "SUM(brown_sugar) AS brown_sugar_count, " +
+                "SUM(black_sugar) AS black_sugar_count, " +
+                "SUM(lids_dome) AS lids_dome_count, " +
+                "SUM(strawberry_milk_cream) AS strawberry_milk_cream_count, " +
+                "SUM(condiment_station_supplies) AS condiment_station_supplies_count, " +
+                "SUM(matcha) AS matcha_count, " +
+                "SUM(fresh_milk) AS fresh_milk_count, " +
+                "SUM(tapioca_pearls_boba) AS tapioca_pearls_boba_count, " +
+                "SUM(tiger_pearls) AS tiger_pearls_count, " +
+                "SUM(cream_mousse) AS cream_mousse_count, " +
+                "SUM(taro) AS taro_count, " +
+                "SUM(red_beans) AS red_beans_count, " +
+                "SUM(pudding) AS pudding_count, " +
+                "SUM(mochi) AS mochi_count, " +
+                "SUM(jasmine_green_tea_leaves) AS jasmine_green_tea_leaves_count, " +
+                "SUM(passion_fruit_tea_leaves) AS passion_fruit_tea_leaves_count, " +
+                "SUM(lychee_jelly) AS lychee_jelly_count, " +
+                "SUM(oat_milk) AS oat_milk_count, " +
+                "SUM(strawberry_mango) AS strawberry_mango_count, " +
+                "SUM(oolong_tea_leaves) AS oolong_tea_leaves_count, " +
+                "SUM(straws_regular) AS straws_regular_count, " +
+                "SUM(lids_flat) AS lids_flat_count, " +
+                "SUM(napkins_regular) AS napkins_regular_count, " +
+                "SUM(to_go_bags_small) AS to_go_bags_small_count, " +
+                "SUM(cups_regular) AS cups_regular_count, " +
+                "SUM(soy_milk) AS soy_milk_count, " +
+                "SUM(lactose_free_milk) AS lactose_free_milk_count " +
+                "FROM inventory_history " +
+                "WHERE order_timestamp BETWEEN '" + timestamp + "' AND '" + currTimestamp + "'";
 
 
             String sqlInventoryQuery = "SELECT supply, stock_remaining FROM inventory";
@@ -712,44 +712,58 @@ public class ManagerLogic{
             DefaultTableModel tableModel = new DefaultTableModel();
             tableModel.addColumn("Inventory_item");
             tableModel.addColumn("Amount");
-            tableModel.addColumn("Inventory Amount");
+            tableModel.addColumn("Inventory Amount at Date");
 
             ResultSet resultHistorySet = stmt.executeQuery(sqlHistoryQuery);
             ResultSet inventoryResultSet = stmt2.executeQuery(sqlInventoryQuery);
 
+            Map<String, Integer> inventoryMap = new HashMap<>();
+            
+            while (inventoryResultSet.next()) {
+                String supply = inventoryResultSet.getString("supply").replace(" ", "").replace("_", "").replace(")", "").replace("(", "").replace("-", "").toLowerCase();
+                int stockRemaining = inventoryResultSet.getInt("stock_remaining");
+                
+                // Put the data into the HashMap
+                inventoryMap.put(supply, stockRemaining);
+            }
+
+
             String[] itemNames = {
-                "Sago", "XL_Cups", "Regular_Hot_Cups", "Grass_Jelly", "Crystal_Jelly",
-                "Mango_Milk_Cream", "Black_Sugars", "Aloe_Vera_Bits", "Jumbo_Straws",
-                "Brown_Sugar", "Black_Sugar", "Dome_Lids", "Strawberry_Milk_Cream",
-                "Condiment_Station_Supplies", "Matcha", "Fresh_Milk", "Tapioca_Pearls_Boba",
-                "Tiger_Pearls", "Cream_Mousse", "Taro", "Red_Beans", "Pudding", "Mochi",
-                "Jasmine_Green_Tea_Leaves", "Passion_Fruit_Tea_Leaves", "Lychee_Jelly",
-                "Oat_Milk", "Strawberry_Mango", "Oolong_Tea_Leaves", "Regular_Straws",
-                "Flat_Lids", "Regular_Napkins", "Small_To_Go_Bags", "Regular_Cups",
-                "Soy_Milk", "Lactose_Free_Milk"
+                "sago", "cups_xl", "cups_regular_hot", "grass_jelly", "crystal_jelly",
+                "mango_milk_cream", "black_sugars", "aloe_vera_bits", "straws_jumbo",
+                "brown_sugar", "black_sugar", "lids_dome", "strawberry_milk_cream",
+                "condiment_station_supplies", "matcha", "fresh_milk", "tapioca_pearls_boba",
+                "tiger_pearls", "cream_mousse", "taro", "red_beans", "pudding", "mochi",
+                "jasmine_green_tea_leaves", "passion_fruit_tea_leaves", "lychee_jelly",
+                "oat_milk", "strawberry_mango", "oolong_tea_leaves", "straws_regular",
+                "lids_flat", "napkins_regular", "to_go_bags_small", "cups_regular",
+                "soy_milk", "lactose_free_milk"
             };
-            // while (inventoryResultSet.next()) {
-            //     // Retrieve data from the current row
-            //     String supply = inventoryResultSet.getString("supply"); // Assuming supply is an integer
-            //     int stockRemaining = inventoryResultSet.getInt("stock_remaining"); // Assuming stock_remaining is an integer
-                
-            //     // Now you can work with the retrieved data
-            //     System.out.println("Supply: " + supply);
-            //     System.out.println("Stock Remaining: " + stockRemaining);
-                
-            //     // You can perform any processing or store the data as needed
-            // }
+            
 
             while (resultHistorySet.next()){
                 for (String itemName : itemNames) {
                     inventoryResultSet.next();
                     Object[] rowData = new Object[3]; // Create a new rowData array for each row
                     rowData[0] = itemName;
-                    rowData[1] = resultHistorySet.getString(itemName + "_Count");
-                    if (rowData[0].equals(inventoryResultSet.getString("supply"))) {
-                        rowData[2] = inventoryResultSet.getString("stock_remaining");
+                    if (resultHistorySet.getString(itemName + "_count") == null) {
+                        rowData[1] = 0;
+                    } else {
+                        rowData[1] = resultHistorySet.getString(itemName + "_count");
                     }
-                    tableModel.addRow(rowData);
+                    
+                    String data1 = itemName.replace(" ", "").replace("_", "").replace(")", "").replace("(", "").replace("-", "").toLowerCase();
+                    rowData[2] = inventoryMap.get(data1) + Integer.parseInt(rowData[1].toString());
+                    if (Integer.parseInt(rowData[1].toString()) == Integer.parseInt(rowData[2].toString())) {
+                        System.out.println(rowData[0] + " is out of stock");
+                    } else if (Double.parseDouble(rowData[1].toString()) / Double.parseDouble(rowData[2].toString()) <= 0.1) {
+                        System.out.println(rowData[0] + " had excess = " + (Double.parseDouble(rowData[1].toString()) / Double.parseDouble(rowData[2].toString())));
+                        tableModel.addRow(rowData);
+                    } else {
+                        System.out.println(rowData[0] + " was used and there was not much excess = " + (Double.parseDouble(rowData[1].toString()) / Double.parseDouble(rowData[2].toString())));
+                        //tableModel.addRow(rowData);
+                    }
+                    
                 }
             }
             
@@ -761,5 +775,4 @@ public class ManagerLogic{
             JOptionPane.showMessageDialog(null, e);
         }
     }
-
 }
