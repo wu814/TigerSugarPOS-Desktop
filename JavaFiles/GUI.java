@@ -1508,6 +1508,7 @@ public class GUI extends JFrame implements ActionListener{
     /**
      * Handle adding a drink to the order list
      * @param drinkName the name of the drink that is being added on the order
+     * @return
      */
     private void addToOrder(String drinkName){
         JPanel buttonPanel = new JPanel();
@@ -1518,7 +1519,14 @@ public class GUI extends JFrame implements ActionListener{
         orderTotal += drinkPriceMap.get(drinkName);
 
         JButton drinkButton = new JButton(drinkName + " ($" + String.format("%.2f", drinkPriceMap.get(drinkName)) + ")");
+
         drinkButton.addActionListener(new ActionListener(){
+
+            /**
+             * Action listener for displaying drink attributes
+             * @param e
+             * @return
+             */
             public void actionPerformed(ActionEvent e){
                 displayDrinkAttributes(buttonPanel, drinkButton);
             }
@@ -1546,7 +1554,10 @@ public class GUI extends JFrame implements ActionListener{
         drinkAddons.add("Extra Boba: None, Tiger Pearls: None, Cream Mousse: None, Taro: None, Red Bean: None, Pudding: None, Mochi: None");
     }
 
-
+    /**
+     * Logic for when completing the order
+     * @return
+     */
     private void completeOrder(){
         ArrayList<String> outOfStock = OrderLogic.placeOrder(1, 1, order.toArray(new String[order.size()]), orderTotal, drinkAttributes.toArray(new String[drinkAttributes.size()]), drinkAddons.toArray(new String[drinkAddons.size()]));
         
@@ -1578,6 +1589,8 @@ public class GUI extends JFrame implements ActionListener{
 
     /**
      * Displays either the cashier view or the manager view based on combobox selection
+     * @param manager
+     * @return
      */
     public static void viewSelector(boolean manager){
         startFrame.setVisible(false);
@@ -1625,7 +1638,11 @@ public class GUI extends JFrame implements ActionListener{
         }
     }
 
-
+    /**
+     * Function for styling button
+     * @param text
+     * @return the styled button
+     */
     private static JButton StyledButton(String text){
         JButton button = new JButton("<html><center>" + text + "</center></html>", null);
         button.setFont(new Font("Roboto", Font.PLAIN, 20));
