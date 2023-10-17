@@ -426,7 +426,7 @@ public class GUI extends JFrame implements ActionListener{
 
         // Create middle panel (menu)
         JPanel menuPanel = new JPanel();
-        menuPanel.setPreferredSize(new Dimension(1000,50));
+      //  menuPanel.setPreferredSize(new Dimension(1000,50));
 
         // Create bottom panel (content)
         JPanel recentPanel = new JPanel();
@@ -446,10 +446,10 @@ public class GUI extends JFrame implements ActionListener{
         JScrollPane  scroll = new JScrollPane(table);
         recentPanel.add(scroll);
 
-        textArea = new JTextArea(50,100);
+        textArea = new JTextArea(100,70);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
-        textArea.setFont(new Font("Arial", Font.PLAIN, 6));
+        textArea.setFont(new Font("Arial", Font.PLAIN, 15));
         menuPanel.add(textArea);
 
         // Populate table with data from database
