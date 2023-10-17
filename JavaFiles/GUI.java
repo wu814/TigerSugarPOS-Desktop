@@ -2132,6 +2132,11 @@ public class GUI extends JFrame implements ActionListener{
         return seasonalDrinksFrame;
     } 
     
+    /**
+     * Main function
+     * @param args
+     * @return
+     */
     public static void main(String[] args){
         // Connect to Database
         connect();
@@ -2141,6 +2146,5 @@ public class GUI extends JFrame implements ActionListener{
         setUpInventory();
         setUpRecentOrders();
         setUpMenuEditor();
-    
     }
 }
