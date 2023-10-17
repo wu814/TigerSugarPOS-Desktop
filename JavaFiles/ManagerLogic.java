@@ -678,10 +678,10 @@ public class ManagerLogic{
                 "SUM(black_sugar) AS Black_Sugar_Count, " +
                 "SUM(lids_dome) AS Dome_Lids_Count, " +
                 "SUM(strawberry_milk_cream) AS Strawberry_Milk_Cream_Count, " +
-                "SUM(condiment_station_supplies) AS Condiment_Station_Count, " +
+                "SUM(condiment_station_supplies) AS Condiment_Station_Supplies_Count, " +
                 "SUM(matcha) AS Matcha_Count, " +
                 "SUM(fresh_milk) AS Fresh_Milk_Count, " +
-                "SUM(tapioca_pearls_boba) AS Tapioca_Pearls_Count, " +
+                "SUM(tapioca_pearls_boba) AS Tapioca_Pearls_Boba_Count, " +
                 "SUM(tiger_pearls) AS Tiger_Pearls_Count, " +
                 "SUM(cream_mousse) AS Cream_Mousse_Count, " +
                 "SUM(taro) AS Taro_Count, " +
@@ -714,48 +714,28 @@ public class ManagerLogic{
 
             ResultSet resultSet = stmt.executeQuery(sqlQuery);
 
+            String[] itemNames = {
+                "Sago", "XL_Cups", "Regular_Hot_Cups", "Grass_Jelly", "Crystal_Jelly",
+                "Mango_Milk_Cream", "Black_Sugars", "Aloe_Vera_Bits", "Jumbo_Straws",
+                "Brown_Sugar", "Black_Sugar", "Dome_Lids", "Strawberry_Milk_Cream",
+                "Condiment_Station_Supplies", "Matcha", "Fresh_Milk", "Tapioca_Pearls_Boba",
+                "Tiger_Pearls", "Cream_Mousse", "Taro", "Red_Beans", "Pudding", "Mochi",
+                "Jasmine_Green_Tea_Leaves", "Passion_Fruit_Tea_Leaves", "Lychee_Jelly",
+                "Oat_Milk", "Strawberry_Mango", "Oolong_Tea_Leaves", "Regular_Straws",
+                "Flat_Lids", "Regular_Napkins", "Small_To_Go_Bags", "Regular_Cups",
+                "Soy_Milk", "Lactose_Free_Milk"
+            };
+            
+
             while (resultSet.next()) {
-                Object[] rowData = new Object[]{
-                    "Sago", resultSet.getString("Sago_Count"),
-                    "XL Cups", resultSet.getString("XL_Cups_Count"),
-                    "Regular Hot Cups", resultSet.getString("Regular_Hot_Cups_Count"),
-                    "Grass Jelly", resultSet.getString("Grass_Jelly_Count"),
-                    "Crystal Jelly", resultSet.getString("Crystal_Jelly_Count"),
-                    "Mango Milk Cream", resultSet.getString("Mango_Milk_Cream_Count"),
-                    "Black Sugars", resultSet.getString("Black_Sugars_Count"),
-                    "Aloe Vera Bits", resultSet.getString("Aloe_Vera_Bits_Count"),
-                    "Jumbo Straws", resultSet.getString("Jumbo_Straws_Count"),
-                    "Brown Sugar", resultSet.getString("Brown_Sugar_Count"),
-                    "Black Sugar", resultSet.getString("Black_Sugar_Count"),
-                    "Dome Lids", resultSet.getString("Dome_Lids_Count"),
-                    "Strawberry Milk Cream", resultSet.getString("Strawberry_Milk_Cream_Count"),
-                    "Condiment Station Supplies", resultSet.getString("Condiment_Station_Count"),
-                    "Matcha", resultSet.getString("Matcha_Count"),
-                    "Fresh Milk", resultSet.getString("Fresh_Milk_Count"),
-                    "Tapioca Pearls Boba", resultSet.getString("Tapioca_Pearls_Count"),
-                    "Tiger Pearls", resultSet.getString("Tiger_Pearls_Count"),
-                    "Cream Mousse", resultSet.getString("Cream_Mousse_Count"),
-                    "Taro", resultSet.getString("Taro_Count"),
-                    "Red Beans", resultSet.getString("Red_Beans_Count"),
-                    "Pudding", resultSet.getString("Pudding_Count"),
-                    "Mochi", resultSet.getString("Mochi_Count"),
-                    "Jasmine Green Tea Leaves", resultSet.getString("Jasmine_Green_Tea_Leaves_Count"),
-                    "Passion Fruit Tea Leaves", resultSet.getString("Passion_Fruit_Tea_Leaves_Count"),
-                    "Lychee Jelly", resultSet.getString("Lychee_Jelly_Count"),
-                    "Oat Milk", resultSet.getString("Oat_Milk_Count"),
-                    "Strawberry Mango", resultSet.getString("Strawberry_Mango_Count"),
-                    "Oolong Tea Leaves", resultSet.getString("Oolong_Tea_Leaves_Count"),
-                    "Regular Straws", resultSet.getString("Regular_Straws_Count"),
-                    "Flat Lids", resultSet.getString("Flat_Lids_Count"),
-                    "Regular Napkins", resultSet.getString("Regular_Napkins_Count"),
-                    "Small To Go Bags", resultSet.getString("Small_To_Go_Bags_Count"),
-                    "Regular Cups", resultSet.getString("Regular_Cups_Count"),
-                    "Soy Milk", resultSet.getString("Soy_Milk_Count"),
-                    "Lactose-Free Milk", resultSet.getString("Lactose_Free_Milk_Count")
-                };
-                tableModel.addRow(rowData);
-                
+                for (String itemName : itemNames) {
+                    Object[] rowData = new Object[2]; // Create a new rowData array for each row
+                    rowData[0] = itemName;
+                    rowData[1] = resultSet.getString(itemName + "_Count");
+                    tableModel.addRow(rowData);
+                }
             }
+                        
             table.setModel(tableModel);
 
             stmt.close();
