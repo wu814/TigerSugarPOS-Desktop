@@ -718,9 +718,10 @@ public class GUI extends JFrame implements ActionListener{
 
 
     /**
-     * a function to display the stats of a drink (dairy free alternative, sweetness level, ice level, cup size, special instructions)
+     * A function to display the stats of a drink (dairy free alternative, sweetness level, ice level, cup size, special instructions)
      * @param drinkButtonPanel
      * @param drinkButton
+     * @return
      */
     private void displayDrinkAttributes(JPanel drinkButtonPanel, JButton drinkButton){
         // Adding the attributes underneath the drinkButton
@@ -750,6 +751,12 @@ public class GUI extends JFrame implements ActionListener{
                 dairyOatButton.setBackground(Color.BLUE);
                 dairyOatButton.setForeground(Color.WHITE);
                 dairyOatButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for adding attributes for oat milk
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
                         String newAttributes = "Dairy Free Alternative: Oat Milk";
@@ -765,6 +772,12 @@ public class GUI extends JFrame implements ActionListener{
                 dairySoyButton.setBackground(Color.BLUE);
                 dairySoyButton.setForeground(Color.WHITE);
                 dairySoyButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for adding attributes for soy milk
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
                         String newAttributes = "Dairy Free Alternative: Soy Milk";
@@ -780,6 +793,12 @@ public class GUI extends JFrame implements ActionListener{
                 dairyLactoseFreeButton.setBackground(Color.BLUE);
                 dairyLactoseFreeButton.setForeground(Color.WHITE);
                 dairyLactoseFreeButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for adding attributes for lactose free milk
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
                         String newAttributes = "Dairy Free Alternative: Lactose Free Milk";
@@ -795,6 +814,12 @@ public class GUI extends JFrame implements ActionListener{
                 dairyNoneButton.setBackground(Color.BLUE);
                 dairyNoneButton.setForeground(Color.WHITE);
                 dairyNoneButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for adding attributes for none
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
                         String newAttributes = "Dairy Free Alternative: None";
@@ -822,6 +847,12 @@ public class GUI extends JFrame implements ActionListener{
                 sweetness50Button.setBackground(Color.BLUE);
                 sweetness50Button.setForeground(Color.WHITE);
                 sweetness50Button.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for modifying the sweetness level to 50%
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", Sweetness Level: 50%";
@@ -837,6 +868,12 @@ public class GUI extends JFrame implements ActionListener{
                 sweetness100Button.setBackground(Color.BLUE);
                 sweetness100Button.setForeground(Color.WHITE);
                 sweetness100Button.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for modifying the sweetness level to 100%
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", Sweetness Level: 100%";
@@ -862,6 +899,12 @@ public class GUI extends JFrame implements ActionListener{
                 iceLessButton.setBackground(Color.BLUE);
                 iceLessButton.setForeground(Color.WHITE);
                 iceLessButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for modifying the ice level to less
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", Ice Level: Less";
@@ -878,6 +921,12 @@ public class GUI extends JFrame implements ActionListener{
                 iceNormalButton.setForeground(Color.WHITE);
 
                 iceNormalButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for modifying the ice level to normal
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", Ice Level: Normal";
@@ -894,6 +943,12 @@ public class GUI extends JFrame implements ActionListener{
                 iceNoneButton.setForeground(Color.WHITE);
 
                 iceNoneButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for modifying the ice level to none
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", Ice Level: None";
@@ -921,6 +976,12 @@ public class GUI extends JFrame implements ActionListener{
                 cupSizeRegularButton.setForeground(Color.WHITE);
 
                 cupSizeRegularButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for modifying the cup size to regular
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", Cup Size: Regular";
@@ -937,6 +998,12 @@ public class GUI extends JFrame implements ActionListener{
                 cupSizeRegularHot.setForeground(Color.WHITE);
 
                 cupSizeRegularHot.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for modifying the cup size to regular hot
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", Cup Size: Regular Hot";
@@ -953,6 +1020,12 @@ public class GUI extends JFrame implements ActionListener{
                 cupSizeXLButton.setForeground(Color.WHITE);
 
                 cupSizeXLButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for modifying the cup size to XL
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e) {
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", Cup Size: XL";
@@ -983,6 +1056,12 @@ public class GUI extends JFrame implements ActionListener{
                 submitSpecialInstructionsButton.setForeground(Color.WHITE);
 
                 submitSpecialInstructionsButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for adding special instructions
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAttributes.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", " + attributes[3] + ", Special Instructions: " + specialInstructionsTextArea.getText();
@@ -1008,6 +1087,12 @@ public class GUI extends JFrame implements ActionListener{
                 addBobaButton.setBackground(Color.BLUE);
                 addBobaButton.setForeground(Color.WHITE);
                 addBobaButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for adding boba
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAddons.get(buttonIndex).split(", ");
                         String newAttributes = "Extra Boba: Added";
@@ -1023,6 +1108,12 @@ public class GUI extends JFrame implements ActionListener{
                 removeBobaButton.setBackground(Color.BLUE);
                 removeBobaButton.setForeground(Color.WHITE);
                 removeBobaButton.addActionListener(new ActionListener() {
+
+                    /**
+                     * Action listener for having no boba
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e) {
                         String[] attributes = drinkAddons.get(buttonIndex).split(", ");
                         String newAttributes = "Extra Boba: None";
@@ -1051,6 +1142,12 @@ public class GUI extends JFrame implements ActionListener{
                 addTigerPearlsButton.setBackground(Color.BLUE);
                 addTigerPearlsButton.setForeground(Color.WHITE);
                 addTigerPearlsButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for adding tiger pearls
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAddons.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", Tiger Pearls: Added";
@@ -1066,6 +1163,12 @@ public class GUI extends JFrame implements ActionListener{
                 removeTigerPearlsButton.setBackground(Color.BLUE);
                 removeTigerPearlsButton.setForeground(Color.WHITE);
                 removeTigerPearlsButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for having no tiger pearls
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAddons.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", Tiger Pearls: None";
@@ -1092,6 +1195,12 @@ public class GUI extends JFrame implements ActionListener{
                 addCreamMousseButton.setBackground(Color.BLUE);
                 addCreamMousseButton.setForeground(Color.WHITE);
                 addCreamMousseButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for adding cream mousse
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAddons.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", Cream Mousse: Added";
@@ -1107,6 +1216,12 @@ public class GUI extends JFrame implements ActionListener{
                 removeCreamMousseButton.setBackground(Color.BLUE);
                 removeCreamMousseButton.setForeground(Color.WHITE);
                 removeCreamMousseButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for having no cream mousse
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAddons.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", Cream Mousse: None";
@@ -1133,6 +1248,12 @@ public class GUI extends JFrame implements ActionListener{
                 addTaroButton.setBackground(Color.BLUE);
                 addTaroButton.setForeground(Color.WHITE);
                 addTaroButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for adding taro
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAddons.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] +", Taro: Added";
@@ -1148,6 +1269,12 @@ public class GUI extends JFrame implements ActionListener{
                 removeTaroButton.setBackground(Color.BLUE);
                 removeTaroButton.setForeground(Color.WHITE);
                 removeTaroButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for having no taro
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAddons.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] +", Taro: None";
@@ -1174,6 +1301,12 @@ public class GUI extends JFrame implements ActionListener{
                 addRedBeanButton.setBackground(Color.BLUE);
                 addRedBeanButton.setForeground(Color.WHITE);
                 addRedBeanButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for adding red beans
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAddons.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", " + attributes[3] + ", Red Bean: Added";
@@ -1190,6 +1323,12 @@ public class GUI extends JFrame implements ActionListener{
                 removeRedBeanButton.setForeground(Color.WHITE);
                 removeRedBeanButton.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent e){
+
+                        /**
+                         * Action listener for having no red beans
+                         * @param e
+                         * @return
+                         */
                         String[] attributes = drinkAddons.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", " + attributes[3] + ", Red Bean: None";
                         for(int i = 5; i < attributes.length; i++){
@@ -1215,6 +1354,12 @@ public class GUI extends JFrame implements ActionListener{
                 addPuddingButton.setBackground(Color.BLUE);
                 addPuddingButton.setForeground(Color.WHITE);
                 addPuddingButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for adding pudding
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e) {
                         String[] attributes = drinkAddons.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", " + attributes[3] + ", " + attributes[4] + ", Pudding: Added";
@@ -1231,6 +1376,12 @@ public class GUI extends JFrame implements ActionListener{
                 removePuddingButton.setForeground(Color.WHITE);
                 removePuddingButton.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent e){
+
+                        /**
+                         * Action listener for having no pudding
+                         * @param e
+                         * @return
+                         */
                         String[] attributes = drinkAddons.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", " + attributes[3] + ", " + attributes[4] + ", Pudding: None";
                         for(int i = 6; i < attributes.length; i++){
@@ -1256,6 +1407,12 @@ public class GUI extends JFrame implements ActionListener{
                 addMochiButton.setBackground(Color.BLUE);
                 addMochiButton.setForeground(Color.WHITE);
                 addMochiButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for adding mochi
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         String[] attributes = drinkAddons.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", " + attributes[3] + ", " + attributes[4] + ", " + attributes[5] + ", Mochi: Added";
@@ -1271,6 +1428,12 @@ public class GUI extends JFrame implements ActionListener{
                 removeMochiButton.setBackground(Color.BLUE);
                 removeMochiButton.setForeground(Color.WHITE);
                 removeMochiButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for having no mochi
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e) {
                         String[] attributes = drinkAddons.get(buttonIndex).split(", ");
                         String newAttributes = attributes[0] + ", " + attributes[1] + ", " + attributes[2] + ", " + attributes[3] + ", " + attributes[4] + ", " + attributes[5] + ", Mochi: None";
@@ -1297,6 +1460,12 @@ public class GUI extends JFrame implements ActionListener{
                 removeDrinkButton.setForeground(Color.WHITE);
 
                 removeDrinkButton.addActionListener(new ActionListener(){
+
+                    /**
+                     * Action listener for removing drink from order
+                     * @param e
+                     * @return
+                     */
                     public void actionPerformed(ActionEvent e){
                         removeFromOrder(drinkButtonPanel, drinkButton);
                     }
