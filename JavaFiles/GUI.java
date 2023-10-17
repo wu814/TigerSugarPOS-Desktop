@@ -25,7 +25,7 @@ import java.util.*;
 
 
 /**
- * @author Chris Vu, Josh Hare
+ * @author Chris Vu, Josh Hare, Tyson Long
  */
 public class GUI extends JFrame implements ActionListener{
     // Attributes
@@ -68,6 +68,7 @@ public class GUI extends JFrame implements ActionListener{
 
     /**
      * Establishes connection to the database, through the conn variable
+     * @return
      */
     public static void connect(){
         conn = null;
@@ -87,6 +88,7 @@ public class GUI extends JFrame implements ActionListener{
     /**
      * Change frame to a new frame, use when switching menus
      * @param newFrame the incoming new frame
+     * @return
      */
     public static void changeFrame(JFrame newFrame){
         currFrame.setVisible(false);
@@ -102,7 +104,7 @@ public class GUI extends JFrame implements ActionListener{
 
     /**
      * Initialize variables and components necessary for the GUI
-     * @return 
+     * @return
      */
     public static void frameSetup(){
         // Initiaize frame
@@ -132,6 +134,7 @@ public class GUI extends JFrame implements ActionListener{
 
     /**
      * Creates the restock report and reads in from database
+     * @return
      */
     public static void setUpRestockReport(){
         // Frame setup
@@ -177,6 +180,7 @@ public class GUI extends JFrame implements ActionListener{
 
     /**
      * Creates the excess report and reads in from database
+     * @return
      */
     public static void setUpExcessReport(){
         // Frame setup
@@ -215,6 +219,10 @@ public class GUI extends JFrame implements ActionListener{
         menuPanel.add(updateTimestampButton);
 
         updateTimestampButton.addActionListener(new ActionListener() {
+            /**
+             * Updates the timestamp
+             * @return
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Get the new timestamp value from the text field
