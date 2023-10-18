@@ -36,41 +36,41 @@ public class OrderLogic {
         ArrayList<String> outOfStock = new ArrayList<String>();
         Map<String, Object> inventoryHistoryData = new HashMap<>();
         
-        inventoryHistoryData.put("order_timestamp", null);
-        inventoryHistoryData.put("Sago", 0);
-        inventoryHistoryData.put("Cups (XL)", 0);
-        inventoryHistoryData.put("Cups (Regular Hot)", 0);
-        inventoryHistoryData.put("Grass Jelly", 0);
-        inventoryHistoryData.put("Crystal Jelly", 0);
-        inventoryHistoryData.put("Mango Milk Cream", 0);
-        inventoryHistoryData.put("Black Sugars", 0);
-        inventoryHistoryData.put("Aloe Vera Bits", 0);
-        inventoryHistoryData.put("Straws (Jumbo)", 0);
-        inventoryHistoryData.put("Brown Sugar", 0);
-        inventoryHistoryData.put("Black Sugar", 0);
-        inventoryHistoryData.put("Lids (Dome)", 0);
-        inventoryHistoryData.put("Strawberry Milk Cream", 0);
-        inventoryHistoryData.put("Condiment Station Supplies", 0);
-        inventoryHistoryData.put("Matcha", 0);
-        inventoryHistoryData.put("Fresh Milk", 0);
-        inventoryHistoryData.put("Tapioca Pearls (Boba)", 0);
-        inventoryHistoryData.put("Tiger Pearls", 0);
-        inventoryHistoryData.put("Cream Mousse", 0);
-        inventoryHistoryData.put("Taro", 0);
-        inventoryHistoryData.put("Red Beans", 0);
-        inventoryHistoryData.put("Pudding", 0);
-        inventoryHistoryData.put("Mochi", 0);
-        inventoryHistoryData.put("Jasmine Green Tea Leaves", 0);
-        inventoryHistoryData.put("Passion Fruit Tea Leaves", 0);
-        inventoryHistoryData.put("Lychee Jelly", 0);
-        inventoryHistoryData.put("Oat Milk", 0);
-        inventoryHistoryData.put("Strawberry Mango", 0);
-        inventoryHistoryData.put("Oolong Tea Leaves", 0);
-        inventoryHistoryData.put("Straws (Regular)", 0);
-        inventoryHistoryData.put("Lids (Flat)", 0);
-        inventoryHistoryData.put("Napkins (Regular)", 0);
-        inventoryHistoryData.put("To-Go Bags (Small)", 0);
-        inventoryHistoryData.put("Cups (Regular)", 0);
+        // inventoryHistoryData.put("order_timestamp", null);
+        // inventoryHistoryData.put("Sago", 0);
+        // inventoryHistoryData.put("Cups (XL)", 0);
+        // inventoryHistoryData.put("Cups (Regular Hot)", 0);
+        // inventoryHistoryData.put("Grass Jelly", 0);
+        // inventoryHistoryData.put("Crystal Jelly", 0);
+        // inventoryHistoryData.put("Mango Milk Cream", 0);
+        // inventoryHistoryData.put("Black Sugars", 0);
+        // inventoryHistoryData.put("Aloe Vera Bits", 0);
+        // inventoryHistoryData.put("Straws (Jumbo)", 0);
+        // inventoryHistoryData.put("Brown Sugar", 0);
+        // inventoryHistoryData.put("Black Sugar", 0);
+        // inventoryHistoryData.put("Lids (Dome)", 0);
+        // inventoryHistoryData.put("Strawberry Milk Cream", 0);
+        // inventoryHistoryData.put("Condiment Station Supplies", 0);
+        // inventoryHistoryData.put("Matcha", 0);
+        // inventoryHistoryData.put("Fresh Milk", 0);
+        // inventoryHistoryData.put("Tapioca Pearls (Boba)", 0);
+        // inventoryHistoryData.put("Tiger Pearls", 0);
+        // inventoryHistoryData.put("Cream Mousse", 0);
+        // inventoryHistoryData.put("Taro", 0);
+        // inventoryHistoryData.put("Red Beans", 0);
+        // inventoryHistoryData.put("Pudding", 0);
+        // inventoryHistoryData.put("Mochi", 0);
+        // inventoryHistoryData.put("Jasmine Green Tea Leaves", 0);
+        // inventoryHistoryData.put("Passion Fruit Tea Leaves", 0);
+        // inventoryHistoryData.put("Lychee Jelly", 0);
+        // inventoryHistoryData.put("Oat Milk", 0);
+        // inventoryHistoryData.put("Strawberry Mango", 0);
+        // inventoryHistoryData.put("Oolong Tea Leaves", 0);
+        // inventoryHistoryData.put("Straws (Regular)", 0);
+        // inventoryHistoryData.put("Lids (Flat)", 0);
+        // inventoryHistoryData.put("Napkins (Regular)", 0);
+        // inventoryHistoryData.put("To-Go Bags (Small)", 0);
+        // inventoryHistoryData.put("Cups (Regular)", 0);
 
         try{
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
@@ -145,7 +145,7 @@ public class OrderLogic {
                             outOfStock.add(ingredient);
                             continue;
                         }
-                        int currentHistoryCount = (int) inventoryHistoryData.get(ingredient);
+                        int currentHistoryCount = (int) inventoryHistoryData.getOrDefault(ingredient, 0);
                         inventoryHistoryData.put(ingredient, currentHistoryCount + 1);
                         updateStmt.setString(1, ingredient);
                         updateStmt.addBatch();
@@ -161,7 +161,7 @@ public class OrderLogic {
                             outOfStock.add("Fresh Milk");
                             continue;
                         }
-                        int currentHistoryCount = (int) inventoryHistoryData.get("Fresh Milk");
+                        int currentHistoryCount = (int) inventoryHistoryData.getOrDefault("Fresh Milk", 0);
                         inventoryHistoryData.put("Fresh Milk", currentHistoryCount + 1);
                         updateStmt.setString(1, "Fresh Milk");
                         updateStmt.addBatch();
@@ -177,7 +177,7 @@ public class OrderLogic {
                         outOfStock.add(cup_name);
                         continue;
                     }
-                    int currentHistoryCount = (int) inventoryHistoryData.get(cup_name);
+                    int currentHistoryCount = (int) inventoryHistoryData.getOrDefault(cup_name, 0);
                     inventoryHistoryData.put(cup_name, currentHistoryCount + 1);
                     updateStmt.setString(1, cup_name); 
                     updateStmt.addBatch();
@@ -191,7 +191,7 @@ public class OrderLogic {
                             continue;
                         } 
                         else{
-                            int currentHistoryCount = (int) inventoryHistoryData.get(boba_name);
+                            int currentHistoryCount = (int) inventoryHistoryData.getOrDefault(boba_name, 0);
                             inventoryHistoryData.put(boba_name, currentHistoryCount + 1);
                             updateStmt.setString(1, boba_name);
                             updateStmt.addBatch();
@@ -235,7 +235,7 @@ public class OrderLogic {
                         if(inventoryCounts.get(taro_name) == 0){ 
                             outOfStock.add(taro_name);
                         }
-                        int currentHistoryCount = (int) inventoryHistoryData.get(taro_name);
+                        int currentHistoryCount = (int) inventoryHistoryData.getOrDefault(taro_name, 0);
                         inventoryHistoryData.put(taro_name, currentHistoryCount + 1);
                         updateStmt.setString(1, taro_name);
                         updateStmt.addBatch();
@@ -247,7 +247,7 @@ public class OrderLogic {
                         if(inventoryCounts.get(redbean_name) == 0){
                             outOfStock.add(redbean_name);
                         }
-                        int currentHistoryCount = (int) inventoryHistoryData.get(redbean_name);
+                        int currentHistoryCount = (int) inventoryHistoryData.getOrDefault(redbean_name, 0);
                         inventoryHistoryData.put(redbean_name, currentHistoryCount + 1);
                         updateStmt.setString(1, redbean_name);
                         updateStmt.addBatch();
@@ -259,7 +259,7 @@ public class OrderLogic {
                         if(inventoryCounts.get(pudding_name) == 0){
                             outOfStock.add(pudding_name);
                         }
-                        int currentHistoryCount = (int) inventoryHistoryData.get(pudding_name);
+                        int currentHistoryCount = (int) inventoryHistoryData.getOrDefault(pudding_name, 0);
                         inventoryHistoryData.put(pudding_name, currentHistoryCount + 1);
                         updateStmt.setString(1, pudding_name);
                         updateStmt.addBatch();
@@ -271,7 +271,7 @@ public class OrderLogic {
                         if(inventoryCounts.get(mochi_name) == 0){ 
                             outOfStock.add(mochi_name);
                         }
-                        int currentHistoryCount = (int) inventoryHistoryData.get(mochi_name);
+                        int currentHistoryCount = (int) inventoryHistoryData.getOrDefault(mochi_name, 0);
                         inventoryHistoryData.put(mochi_name, currentHistoryCount + 1);
                         updateStmt.setString(1, mochi_name);
                         updateStmt.addBatch();
@@ -306,40 +306,40 @@ public class OrderLogic {
             PreparedStatement preparedStatement2 = conn.prepareStatement(inventorySQL);
             timestamp = (Timestamp) inventoryHistoryData.get("order_timestamp");
             preparedStatement2.setTimestamp(1, timestamp);
-            preparedStatement2.setInt(2, (int) inventoryHistoryData.get("Sago"));
-            preparedStatement2.setInt(3, (int) inventoryHistoryData.get("Cups (XL)"));
-            preparedStatement2.setInt(4, (int) inventoryHistoryData.get("Cups (Regular Hot)"));
-            preparedStatement2.setInt(5, (int) inventoryHistoryData.get("Grass Jelly"));
-            preparedStatement2.setInt(6, (int) inventoryHistoryData.get("Crystal Jelly"));
-            preparedStatement2.setInt(7, (int) inventoryHistoryData.get("Mango Milk Cream"));
-            preparedStatement2.setInt(8, (int) inventoryHistoryData.get("Black Sugars"));
-            preparedStatement2.setInt(9, (int) inventoryHistoryData.get("Aloe Vera Bits"));
-            preparedStatement2.setInt(10, (int) inventoryHistoryData.get("Straws (Jumbo)"));
-            preparedStatement2.setInt(11, (int) inventoryHistoryData.get("Brown Sugar"));
-            preparedStatement2.setInt(12, (int) inventoryHistoryData.get("Black Sugar"));
-            preparedStatement2.setInt(13, (int) inventoryHistoryData.get("Lids (Dome)"));
-            preparedStatement2.setInt(14, (int) inventoryHistoryData.get("Strawberry Milk Cream"));
-            preparedStatement2.setInt(15, (int) inventoryHistoryData.get("Condiment Station Supplies"));
-            preparedStatement2.setInt(16, (int) inventoryHistoryData.get("Matcha"));
-            preparedStatement2.setInt(17, (int) inventoryHistoryData.get("Fresh Milk"));
-            preparedStatement2.setInt(18, (int) inventoryHistoryData.get("Tapioca Pearls (Boba)"));
-            preparedStatement2.setInt(19, (int) inventoryHistoryData.get("Tiger Pearls"));
-            preparedStatement2.setInt(20, (int) inventoryHistoryData.get("Cream Mousse"));
-            preparedStatement2.setInt(21, (int) inventoryHistoryData.get("Taro"));
-            preparedStatement2.setInt(22, (int) inventoryHistoryData.get("Red Beans"));
-            preparedStatement2.setInt(23, (int) inventoryHistoryData.get("Pudding"));
-            preparedStatement2.setInt(24, (int) inventoryHistoryData.get("Mochi"));
-            preparedStatement2.setInt(25, (int) inventoryHistoryData.get("Jasmine Green Tea Leaves"));
-            preparedStatement2.setInt(26, (int) inventoryHistoryData.get("Passion Fruit Tea Leaves"));
-            preparedStatement2.setInt(27, (int) inventoryHistoryData.get("Lychee Jelly"));
-            preparedStatement2.setInt(28, (int) inventoryHistoryData.get("Oat Milk"));
-            preparedStatement2.setInt(29, (int) inventoryHistoryData.get("Strawberry Mango"));
-            preparedStatement2.setInt(30, (int) inventoryHistoryData.get("Oolong Tea Leaves"));
-            preparedStatement2.setInt(31, (int) inventoryHistoryData.get("Straws (Regular)"));
-            preparedStatement2.setInt(32, (int) inventoryHistoryData.get("Lids (Flat)"));
-            preparedStatement2.setInt(33, (int) inventoryHistoryData.get("Napkins (Regular)"));
-            preparedStatement2.setInt(34, (int) inventoryHistoryData.get("To-Go Bags (Small)"));
-            preparedStatement2.setInt(35, (int) inventoryHistoryData.get("Cups (Regular)"));
+            preparedStatement2.setInt(2, (int) inventoryHistoryData.getOrDefault("Sago", 0));
+            preparedStatement2.setInt(3, (int) inventoryHistoryData.getOrDefault("Cups (XL)", 0));
+            preparedStatement2.setInt(4, (int) inventoryHistoryData.getOrDefault("Cups (Regular Hot)", 0));
+            preparedStatement2.setInt(5, (int) inventoryHistoryData.getOrDefault("Grass Jelly", 0));
+            preparedStatement2.setInt(6, (int) inventoryHistoryData.getOrDefault("Crystal Jelly", 0));
+            preparedStatement2.setInt(7, (int) inventoryHistoryData.getOrDefault("Mango Milk Cream", 0));
+            preparedStatement2.setInt(8, (int) inventoryHistoryData.getOrDefault("Black Sugars", 0));
+            preparedStatement2.setInt(9, (int) inventoryHistoryData.getOrDefault("Aloe Vera Bits", 0));
+            preparedStatement2.setInt(10, (int) inventoryHistoryData.getOrDefault("Straws (Jumbo)", 0));
+            preparedStatement2.setInt(11, (int) inventoryHistoryData.getOrDefault("Brown Sugar", 0));
+            preparedStatement2.setInt(12, (int) inventoryHistoryData.getOrDefault("Black Sugar", 0));
+            preparedStatement2.setInt(13, (int) inventoryHistoryData.getOrDefault("Lids (Dome)", 0));
+            preparedStatement2.setInt(14, (int) inventoryHistoryData.getOrDefault("Strawberry Milk Cream", 0));
+            preparedStatement2.setInt(15, (int) inventoryHistoryData.getOrDefault("Condiment Station Supplies", 0));
+            preparedStatement2.setInt(16, (int) inventoryHistoryData.getOrDefault("Matcha", 0));
+            preparedStatement2.setInt(17, (int) inventoryHistoryData.getOrDefault("Fresh Milk", 0));
+            preparedStatement2.setInt(18, (int) inventoryHistoryData.getOrDefault("Tapioca Pearls (Boba)", 0));
+            preparedStatement2.setInt(19, (int) inventoryHistoryData.getOrDefault("Tiger Pearls", 0));
+            preparedStatement2.setInt(20, (int) inventoryHistoryData.getOrDefault("Cream Mousse", 0));
+            preparedStatement2.setInt(21, (int) inventoryHistoryData.getOrDefault("Taro", 0));
+            preparedStatement2.setInt(22, (int) inventoryHistoryData.getOrDefault("Red Beans", 0));
+            preparedStatement2.setInt(23, (int) inventoryHistoryData.getOrDefault("Pudding", 0));
+            preparedStatement2.setInt(24, (int) inventoryHistoryData.getOrDefault("Mochi", 0));
+            preparedStatement2.setInt(25, (int) inventoryHistoryData.getOrDefault("Jasmine Green Tea Leaves", 0));
+            preparedStatement2.setInt(26, (int) inventoryHistoryData.getOrDefault("Passion Fruit Tea Leaves", 0));
+            preparedStatement2.setInt(27, (int) inventoryHistoryData.getOrDefault("Lychee Jelly", 0));
+            preparedStatement2.setInt(28, (int) inventoryHistoryData.getOrDefault("Oat Milk", 0));
+            preparedStatement2.setInt(29, (int) inventoryHistoryData.getOrDefault("Strawberry Mango", 0));
+            preparedStatement2.setInt(30, (int) inventoryHistoryData.getOrDefault("Oolong Tea Leaves", 0));
+            preparedStatement2.setInt(31, (int) inventoryHistoryData.getOrDefault("Straws (Regular)", 0));
+            preparedStatement2.setInt(32, (int) inventoryHistoryData.getOrDefault("Lids (Flat)", 0));
+            preparedStatement2.setInt(33, (int) inventoryHistoryData.getOrDefault("Napkins (Regular)", 0));
+            preparedStatement2.setInt(34, (int) inventoryHistoryData.getOrDefault("To-Go Bags (Small)", 0));
+            preparedStatement2.setInt(35, (int) inventoryHistoryData.getOrDefault("Cups (Regular)", 0));
 
             // Execute the SQL statement
             preparedStatement.executeUpdate();

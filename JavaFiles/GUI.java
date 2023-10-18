@@ -23,7 +23,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import java.util.*;
 
-
 /**
  * @author Chris Vu, Josh Hare, Doby Lanete, Tyson Long
  */
@@ -115,18 +114,53 @@ public class GUI extends JFrame implements ActionListener{
 
         // Initalize panel and GUI
         gui = new GUI();
+
+        Color backgroundColor = new Color(228, 229, 241);
+
         JPanel startPanel = new JPanel();
+        startPanel.setLayout(new BoxLayout(startPanel, BoxLayout.Y_AXIS));
+        startPanel.setBackground(backgroundColor);
+
+        // changing panel bg color
         startFrame.add(startPanel);
+
+        JPanel titlePanel = new JPanel();
+        titlePanel.setMaximumSize(new Dimension(1000,50));
+        titlePanel.setBackground(backgroundColor);
+        
+        JPanel logoPanel = new JPanel();
+        logoPanel.setMaximumSize(new Dimension(1000,150));
+        logoPanel.setBackground(backgroundColor);
+
+        JPanel employeeSelectorPanel = new JPanel();
+        employeeSelectorPanel.setMaximumSize(new Dimension(1000,50));
+        employeeSelectorPanel.setBackground(backgroundColor);
+
+        JPanel employeeEnterPanel = new JPanel();
+        employeeEnterPanel.setMaximumSize(new Dimension(1000,50));
+        employeeEnterPanel.setBackground(backgroundColor);
+
+        JLabel title = new JLabel("Tiger Sugar POS");
+        titlePanel.add(title);
+        
+        ImageIcon icon = new ImageIcon("images\\TigerSugarLogo.jpg");
+        JLabel logo = new JLabel(icon);
+        logoPanel.add(logo);
 
         // ComboBox for Employees
         setEmployeeComboBox();
-        startPanel.add(employeeSelector);
+        employeeSelectorPanel.add(employeeSelector);
 
         // Setup enter button
         employeeEnter = new JButton("Enter"); 
         employeeEnter.addActionListener(gui);
-        startPanel.add(employeeEnter);
-
+        employeeEnterPanel.add(employeeEnter);
+        
+        startPanel.add(titlePanel);
+        startPanel.add(logoPanel);
+        startPanel.add(employeeSelectorPanel);
+        startPanel.add(employeeEnterPanel);
+        
         // Execute first frame
         currFrame = startFrame;
         currFrame.setVisible(true);
@@ -606,6 +640,7 @@ public class GUI extends JFrame implements ActionListener{
         Vector<Employee> employees = new Vector<>(); 
         guiLogic.loadEmployees(employees);
         employeeSelector = new JComboBox<Employee>(employees);
+        employeeSelector.setMaximumSize(new Dimension(200, 50));
 
         // Configures combobox options to be the employee names
         employeeSelector.setRenderer(new DefaultListCellRenderer(){
