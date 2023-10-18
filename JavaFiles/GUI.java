@@ -296,6 +296,10 @@ public class GUI extends JFrame implements ActionListener{
         excessReportFrame.pack();
     }
 
+    /**
+     * Creates the what sales together and reads in from database
+     * @return
+     */
     public static void setUpWhatSalesTogether() {
         // Frame setup
         salesTogetherFrame = new JFrame("What Sales Together");
@@ -1775,21 +1779,22 @@ public class GUI extends JFrame implements ActionListener{
     private static JButton StyledButton(String text){
         JButton button = new JButton("<html><center>" + text + "</center></html>", null);
         button.setFont(new Font("Roboto", Font.PLAIN, 20));
-        button.setBackground(Color.WHITE);
         button.setFocusPainted(false);
+        button.setBackground(new Color(39, 41, 53));
         
         button.setBorder(BorderFactory.createEmptyBorder());
 
         button.setBorderPainted(false);
         button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        button.setForeground(Color.WHITE);
 
         // Hover Mechanics
         button.addMouseListener(new java.awt.event.MouseAdapter(){
                 public void mouseEntered(java.awt.event.MouseEvent evt){
-                button.setBackground(new Color(230, 230, 230));
+                button.setBackground(new Color(69, 73, 96));
             }
                 public void mouseExited(java.awt.event.MouseEvent evt){
-                button.setBackground(Color.WHITE);
+                button.setBackground(new Color(39, 41, 53));
             }
         });
         return button;
@@ -1820,6 +1825,8 @@ public class GUI extends JFrame implements ActionListener{
         JButton fruityButton = StyledButton("Fruity and Refreshing");
         fruityButton.setActionCommand("Fruity and Refreshing");
         fruityButton.addActionListener(gui);
+        fruityButton.setForeground(new Color(238, 212, 132));
+        fruityButton.setBackground(new Color(39, 41, 54));
         JButton coffeeButton = StyledButton("Coffee Flavored");
         coffeeButton.setActionCommand("Coffee Flavored");
         coffeeButton.addActionListener(gui);
@@ -1933,6 +1940,7 @@ public class GUI extends JFrame implements ActionListener{
         JButton creamyButton = StyledButton("Sweet and Creamy");
         creamyButton.setActionCommand("Sweet and Creamy");
         creamyButton.addActionListener(gui);
+        creamyButton.setForeground(new Color(238, 212, 132));
         JButton fruityButton = StyledButton("Fruity and Refreshing");
         fruityButton.setActionCommand("Fruity and Refreshing");
         fruityButton.addActionListener(gui);
@@ -2056,6 +2064,7 @@ public class GUI extends JFrame implements ActionListener{
         JButton coffeeButton = StyledButton("Coffee Flavored");
         coffeeButton.setActionCommand("Coffee Flavored");
         coffeeButton.addActionListener(gui);
+        coffeeButton.setForeground(new Color(238, 212, 132));
         JButton seasonalButton = StyledButton("Seasonal Drinks");
         seasonalButton.setActionCommand("Seasonal Drinks");
         seasonalButton.addActionListener(gui);
@@ -2174,6 +2183,8 @@ public class GUI extends JFrame implements ActionListener{
         JButton seasonalButton = StyledButton("Seasonal Drinks");
         seasonalButton.setActionCommand("Seasonal Drinks");
         seasonalButton.addActionListener(gui);
+        seasonalButton.setForeground(new Color(238, 212, 132));
+
 
         navPanel.add(creamyButton);
         navPanel.add(fruityButton);

@@ -119,6 +119,7 @@ public class ManagerLogic{
     /**
      * Gets a table of the 10 most recent orders
      * @param table the table to hold recent orders
+     * @param textArea the text area to hold the order details
      * @return
      */
     public static void getRecentOrders(JTable table, JTextArea textArea){
@@ -257,6 +258,8 @@ public class ManagerLogic{
     /**
     * Get the data within the specified range of time
     * @param table the table to hold stats data
+    * @param start the start of the range
+    * @param end the end of the range
     * @return the table with stats data loaded
     */
     public static JTable getCustomRange(JTable table, String start, String end){
@@ -657,6 +660,12 @@ public class ManagerLogic{
         }
     }
     
+    /**
+     * Load the "excess report" to the table
+     * @param table the table holding the excess report
+     * @param timestamp the timestamp to start the report from
+     * @return
+     */
     public static void getExcessReport(JTable table, Timestamp timestamp){
         System.out.println("Excess Rans");
         try {
@@ -776,6 +785,13 @@ public class ManagerLogic{
         }
     }
 
+    /**
+     * Load the "pairs of items" that sell togeher to the table
+     * @param table the table holding what sales together
+     * @param beginTimestamp the begin timestamp
+     * @param endTimestamp the end timestamp
+     * @return
+     */
     public static void getWhatSalesTogether(JTable table, Timestamp beginTimestamp, Timestamp endTimestamp) {
         String whatSalesTogetherQuery = "WITH OrderItems AS (\n" +
             "   SELECT DISTINCT\n" +
