@@ -21,6 +21,8 @@ import java.util.*;
 
 
 /**
+ * This class is the logic for loading data from database to the GUI.
+ * 
  * @author Nai-Yun Wu
  */
 public class GUILogic{
@@ -48,7 +50,6 @@ public class GUILogic{
     /**
      * Loads the employees from database to a vector
      * @param employees the vector where we load the data to 
-     * @return
      */
     public static void loadEmployees(Vector<Employee> employees){
         try{

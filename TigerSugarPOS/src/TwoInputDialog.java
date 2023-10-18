@@ -5,18 +5,23 @@ import java.awt.event.ActionListener;
 
 
 /**
+ * This class is a custom input dialog that takes in two inputs.
+ * 
  * @author Josh Hare
  */
 public class TwoInputDialog extends JDialog{
     // Attributes
-    private JTextField textField1;
-    private JTextField textField2;
-    private JButton okButton;
-    private TwoInputs inputs;
+    private JTextField textField1; // First input
+    private JTextField textField2; // Second input
+    private JButton okButton; // OK button
+    private TwoInputs inputs; // both inputs
 
 
     /**
      * Constructor
+     * @param parent the parent frame
+     * @param label1 the first label
+     * @param label2 the second label
      */
     public TwoInputDialog(Frame parent,String label1, String label2){
         super(parent, "Input Dialog", true);
@@ -57,6 +62,8 @@ public class TwoInputDialog extends JDialog{
 
 
 /**
+ * This class is a helper class for the TwoInputDialog class.
+ * 
  * @author Josh Hare
  */
 class TwoInputs{

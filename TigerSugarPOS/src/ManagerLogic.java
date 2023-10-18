@@ -23,6 +23,9 @@ import java.util.*;
 
 
 /**
+ * 
+ * This class handles the logic for managers; every backend function that managers can do is handled here.
+ * 
  * @author Nai-Yun Wu, Josh Hare, Doby Lanete
  */
 public class ManagerLogic{
@@ -50,7 +53,6 @@ public class ManagerLogic{
     /**
     * Loads the inventory data from database to a table
     * @param table the table to hold inventory data
-    * @return
     */
     public static void getInventory(JTable table){
         try{
@@ -120,7 +122,6 @@ public class ManagerLogic{
      * Gets a table of the 10 most recent orders
      * @param table the table to hold recent orders
      * @param textArea the text area to hold the order details
-     * @return
      */
     public static void getRecentOrders(JTable table, JTextArea textArea){
         // Getting the data
@@ -335,7 +336,6 @@ public class ManagerLogic{
     /**
     * Loads the products data from database to a table
     * @param table the table to hold products
-    * @return 
     */
     public static void getMenu(JTable table){
         try{
@@ -424,7 +424,6 @@ public class ManagerLogic{
     /**
      * Add a new item to menu
      * @param currFrame the frame of the pop out window
-     * @return 
      */
     public static void addMenuItem(JFrame currFrame){
         try{
@@ -511,7 +510,6 @@ public class ManagerLogic{
 
     /**
      * Remove an product from the menu
-     * @return
      */
     public static void removeMenuItem(){
         String input = JOptionPane.showInputDialog("Enter ID of object to be removed");
@@ -544,7 +542,6 @@ public class ManagerLogic{
     /**
      * Add supply item to database
      * @param currFrame the frame of the pop out window
-     * @return
      */
     public static void addSupplyItem(JFrame currFrame){
         try{
@@ -585,7 +582,6 @@ public class ManagerLogic{
 
     /**
      * Remove a supply item from database
-     * @return
      */
     public static void removeSupplyItem(){
         String input = JOptionPane.showInputDialog("Enter ID of object to be removed");
@@ -620,7 +616,6 @@ public class ManagerLogic{
     /**
      * Load the restock report to the table
      * @param table the table holding the restock report
-     * @return
      */
     public static void getRestockReport(JTable table){
         // Getting the data
@@ -664,7 +659,6 @@ public class ManagerLogic{
      * Load the "excess report" to the table
      * @param table the table holding the excess report
      * @param timestamp the timestamp to start the report from
-     * @return
      */
     public static void getExcessReport(JTable table, Timestamp timestamp){
         System.out.println("Excess Rans");
@@ -790,7 +784,6 @@ public class ManagerLogic{
      * @param table the table holding what sales together
      * @param beginTimestamp the begin timestamp
      * @param endTimestamp the end timestamp
-     * @return
      */
     public static void getWhatSalesTogether(JTable table, Timestamp beginTimestamp, Timestamp endTimestamp) {
         String whatSalesTogetherQuery = "WITH OrderItems AS (\n" +

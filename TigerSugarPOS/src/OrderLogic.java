@@ -11,6 +11,8 @@ import java.util.Map;
 import java.util.ArrayList;
 
 /**
+ * This is the logic behind the order system; it handles the database interactions for orders.
+ * 
  * @author Chris Vu
  */
 public class OrderLogic {
@@ -25,7 +27,9 @@ public class OrderLogic {
      * @param customerId the customer who placed the order
      * @param orderItems the items purchased
      * @param orderTotal the total of the order
-     * @return
+     * @param orderAttributes the attributes of the order
+     * @param orderAddons the addons of the order
+     * @return an arraylist of the items that are out of stock
      */
 
     public static ArrayList<String> placeOrder(int employeeId, int customerId, String[] orderItems, double orderTotal, String[] orderAttributes, String[] orderAddons){

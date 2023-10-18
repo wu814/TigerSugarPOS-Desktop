@@ -1,4 +1,6 @@
 /**
+ * This class contains the information for an employee.
+ * 
  * @author Josh Hare
  */
 public class Employee {
@@ -35,7 +37,6 @@ public class Employee {
     /**
      * Setter function for name
      * @param name the employee's name
-     * @return
     */
     public void setName(String name) {
         this.name = name;
@@ -54,7 +55,6 @@ public class Employee {
     /**
      * Setter fucntion for position
      * @param position the employee's position
-     * @return 
     */
     public void setPosition(String position) {
         this.position = position;
@@ -73,7 +73,6 @@ public class Employee {
     /**
      * Setter function for wage
      * @param wage the employee's wage
-     * @return
     */
     public void setWage(double wage) {
         this.wage = wage;
@@ -92,7 +91,6 @@ public class Employee {
     /**
      * Setter function for hours worked
      * @param hoursWorked the employee's hours worked
-     * @return
     */
     public void setHoursWorked(int hoursWorked) {
         this.hoursWorked = hoursWorked;

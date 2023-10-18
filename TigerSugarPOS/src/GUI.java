@@ -24,6 +24,8 @@ import javax.swing.table.TableColumn;
 import java.util.*;
 
 /**
+ * This class contains the GUI elements for the Tiger Sugar POS for cashiers and managers.
+ * 
  * @author Chris Vu, Josh Hare, Doby Lanete, Tyson Long
  */
 public class GUI extends JFrame implements ActionListener{
@@ -64,7 +66,6 @@ public class GUI extends JFrame implements ActionListener{
     static ArrayList<JButton> drinkButtons = new ArrayList<JButton>();
     static ArrayList<Boolean> openButtons = new ArrayList<Boolean>();
     static Timestamp timestamp = Timestamp.valueOf("2023-04-10 10:30:00");
-    
 
     /**
      * Establishes connection to the database, through the conn variable
@@ -558,8 +559,8 @@ public class GUI extends JFrame implements ActionListener{
 
     /**
      * Creates a table that contains a custom range between start and end
-     * @param start
-     * @param end
+     * @param start The start date
+     * @param end The end date
      * @return a table that contains a custom range between start and end
      */
     public static JTable customRange(String start, String end){
@@ -1676,7 +1677,7 @@ public class GUI extends JFrame implements ActionListener{
 
     /**
      * Displays either the cashier view or the manager view based on combobox selection
-     * @param manager
+     * @param manager true if manager view, false if cashier view
      */
     public static void viewSelector(boolean manager){
         startFrame.setVisible(false);
@@ -2220,7 +2221,7 @@ public class GUI extends JFrame implements ActionListener{
     
     /**
      * Main function
-     * @param args
+     * @param args command line arguments
      */
     public static void main(String[] args){
         // Connect to Database
